@@ -1,4 +1,5 @@
-        <!-- footer -->
+       <?php echo $jsonPortfolio; ?>
+	    <!-- footer -->
         <footer id="footer">
             <div class="container">
                 <div class="row">
@@ -48,7 +49,6 @@
             <i class="fa fa-angle-up" aria-hidden="true"></i>
         </button>
 
-        <script>var jsonPortfolio = <?php echo $jsonPortfolio ?>;</script>
 		<!-- modal -->
 		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
