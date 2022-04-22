@@ -1,5 +1,8 @@
 <?php
 
+// Enable Featured Image / Post Thumbnail
+add_theme_support('post-thumbnails');
+
 if( !is_admin() ){
 
 	// Remove Gutenberg Block Library CSS from loading on the frontend
