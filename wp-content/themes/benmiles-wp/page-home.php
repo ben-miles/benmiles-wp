@@ -98,36 +98,25 @@ get_header();
             </div>
             <!-- / controls -->
 
-            <!-- gallery -->
-            <div class="row animated" id="gallery" data-animation="fadeIn" style="animation-delay: 0.4s;">
-                <?php buildPortfolio( $arrayPortfolio ); ?>
-            </div>
-            <!-- / gallery -->
-
 			<!-- gallery -->
-			<div class="row">
-				<div class="col-3" v-for="(post, index) in posts" :key="index">
-					<div class="card">
-						<div class="card-image">
-							<img
-								v-if="post._embedded['wp:featuredmedia']"
-								:src="post._embedded['wp:featuredmedia'][0].source_url"
-								/>
-							<h4 class="card-title">
-								<a :href="post.link" v-html="post.title.rendered"></a>
-							</h4>
+			<div class="row animated" id="gallery" data-animation="fadeIn" style="animation-delay: 0.4s;">
+				<div v-for="(post, index) in posts" :key="index" class="gallery-item square catsMeta tagsMeta col-sm-6 col-md-4 col-lg-3" :id="index" 
+					:data-date="post.date" data-agency="agencyMeta" data-client="clientMeta">
+					<a href="javascript:void(0)">
+						<div class="text">
+							<div class="title">
+								<h3 v-html="post.title.rendered"></h3>
+								$clientDisp
+								$agencyDisp
+							</div>
+							<div class="meta">
+								<small class="date">{{ getPostDate(post.date) }}</small>
+								<small class="cats">$catsDisp</small>
+								<small class="tags">$tagsDisp</small>
+							</div>
 						</div>
-						<!--div class="card-content" v-html="post.excerpt.rendered"></div-->
-						<div class="card-action">
-							<p><strong>{{ getPostDate(post.date) }}</strong></p>
-							<ul class="categories">
-								<li v-for="(category, index) in post.categories" :key="index" v-html="getCategory(category)" class="category"></li>
-							</ul>
-							<ul class="tags">
-								<!--<li v-for="(tag, index) in post.tags" :key="index" v-html="getTag(tag)" class="tag"></li>-->
-							</ul>
-						</div>
-					</div>
+						<img v-if="post._embedded['wp:featuredmedia']" :src="post._embedded['wp:featuredmedia'][0].source_url" />
+					</a>
 				</div>
 			</div>
 			<!-- / gallery -->
