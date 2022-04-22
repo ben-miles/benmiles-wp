@@ -150,7 +150,7 @@ OUTPUT;
 *******************************************************************************/
 function displaySVG( $SVG = '', $delay = 0 ){
     $file = strtolower( str_replace( array( ' ', '!' ), '', $SVG ) );
-    $svg_file = file_get_contents( 'wp-content/themes/benmiles-wp/img/svg/' . $file . '.svg' );
+    $svg_file = file_get_contents( 'wp-content/themes/benmiles-wp/assets/icons/' . $file . '.svg' );
     $find_string = '<svg';
     $position = strpos( $svg_file, $find_string );
     $svg_file_new = substr( $svg_file, $position );
