@@ -1,9 +1,3 @@
-<?php 
-// error_reporting(0);
-require 'assets/data.php';
-require 'assets/functions.php'; 
-?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
