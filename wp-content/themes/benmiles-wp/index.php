@@ -12,19 +12,13 @@ TODO: multiple image support for lightbox
     TODO: Add captions to detail images
 */
 
-error_reporting(0);
-require 'assets/data.php';
-require 'assets/functions.php';
 get_header();
 
-// load content
-require 'core/head.php';
-require 'core/nav.php';
-require 'core/section-intro.php';
-require 'core/section-portfolio.php';
-require 'core/section-about.php';
-require 'core/modal.php';
-require 'core/foot.php';
+if ( have_posts() ){
+	while ( have_posts() ){
+		the_post();
+	}
+}
 
 get_footer();
 
