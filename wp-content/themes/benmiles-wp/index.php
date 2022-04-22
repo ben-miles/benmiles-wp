@@ -15,6 +15,7 @@ TODO: multiple image support for lightbox
 error_reporting(0);
 require 'assets/data.php';
 require 'assets/functions.php';
+get_header();
 
 // load content
 require 'core/head.php';
