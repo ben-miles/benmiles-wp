@@ -26,4 +26,6 @@ require 'core/section-about.php';
 require 'core/modal.php';
 require 'core/foot.php';
 
+get_footer();
+
 ?>

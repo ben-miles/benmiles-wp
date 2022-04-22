@@ -53,7 +53,39 @@
         <script src="/wp-content/themes/benmiles-wp/js/ie10-viewport-bug-workaround.js"></script>
         <script src="/wp-content/themes/benmiles-wp/js/imagesloaded.4.1.3.min.js"></script>
         <script src="/wp-content/themes/benmiles-wp/js/isotope.3.0.4.min.js"></script>
-        <script>var jsonPortfolio = <?php echo $jsonPortfolio; ?></script>
+        <!-- <script>var jsonPortfolio = <?php echo $jsonPortfolio; ?>;</script> -->
+        <script>var jsonPortfolio = {
+			title: 'Beer Label Illustration & Type Design',
+			agency: '',
+			client: 'Edd N Bred',
+			date: '2017-11-11',
+			cats: [
+				'Design',
+				'Featured'
+			],
+			tags: [
+				'Digital Illustration',
+				'Package Design',
+			],
+			description: '<p>Edd\'N\'Bred\'s first staple homebrew, a French-style Saison named <em>When in Rhône,</em> was in need of a label.</p><p>Brewed with real, fresh herbs du province, <em>When in Rhône</em> is an homage to tradition and history. The name is a Française play on an old addage about following conventions, and the artwork continues this play, centering on a long-lost Roman gladiator helmet among wild Basil and Sage on the banks of the Rhone River. Original concept by brewers Logan Moore and Brad Parks. I developed the idea first in pencil, then in digital matte painting in Photoshop, with the brush script type set in Illustrator.</p><p>On July 29th, 2017, <em>When in Rhône</em> went on to take second place in the <a href="https://www.facebook.com/events/1254286271355507/" target="_blank">Funky Buddha Lounge and Brewery Homebrew Competition</a>.</p>',
+			link: '',
+			img: {
+				thumb: {
+					path: 'ben-miles_edd-n-bred_when-in-rhone_isolated_gt.jpg',
+					size: 'wide'
+				},
+				gallery: [
+					{
+						full: 'ben-miles_edd-n-bred_when-in-rhone_bottle_lg.jpg',
+						thumb: 'ben-miles_edd-n-bred_when-in-rhone_bottle_dt.jpg'
+					},
+					{
+						full: 'ben-miles_edd-n-bred_when-in-rhone_isolated_lg.jpg',
+						thumb: 'ben-miles_edd-n-bred_when-in-rhone_isolated_dt.jpg'
+					}
+				]
+			}
+		};</script>
         <script src="/wp-content/themes/benmiles-wp/js/custom.js"></script>
 
     </body>
