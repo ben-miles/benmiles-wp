@@ -1,6 +1,78 @@
 /* Vue */
 var app = new Vue({
 	el: '#portfolio',
+	data: {
+		url: 'https://bcgm3.com/wp-json/wp/v2/',
+		categoriesUrl: "https://bcgm3.com/wp-json/wp/v2/categories",
+		tagsUrl: "https://bcgm3.com/wp-json/wp/v2/tags",
+		postsUrl: "https://bcgm3.com/wp-json/wp/v2/posts",
+		categories: [],
+		tags: [],
+		posts: [],
+		queryOptions: {        
+			per_page: 12,
+			page: 1,
+			_embed: true
+		}
+	},
+	methods: {
+		getCategories() {
+			axios
+				.get(this.categoriesUrl)
+				.then(response => {
+					this.categories = response.data;
+					// console.log("categories: " + this.categories);
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		},
+		getTags() {
+			axios
+				.get(this.tagsUrl)
+				.then(response => {
+					this.tags = response.data;
+				// console.log(response);
+					console.log(this.tags);
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		},
+		getPosts() {
+			axios
+				.get(this.postsUrl, { params: this.queryOptions})
+				.then(response => {
+					this.posts= response.data;
+					// console.log(this.posts);
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		},
+		getPostDate(date) {
+			return moment(date).format("LL");
+		},
+		getCategory(id) {
+			let thisCategory = this.categories.filter(category => {
+				return category.id === id;
+			})
+			return `<a href="${thisCategory[0].link}">${thisCategory[0].name}</a>`;
+		},
+		getTag(id) {
+			let thisTag = this.tags.filter(tag => {
+				return tag.id === id;
+			})
+			return `<a href="${thisTag[0].link}">${thisTag[0].name}</a>`;
+		}
+	},
+	beforeMount() {
+		this.getCategories();
+		this.getTags();
+		this.getPosts();
+	},
+	mounted() {
+	}
 })
 
 /* ON READY... ****************************************************************/

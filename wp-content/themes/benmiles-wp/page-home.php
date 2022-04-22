@@ -104,6 +104,34 @@ get_header();
             </div>
             <!-- / gallery -->
 
+			<!-- gallery -->
+			<div class="row">
+				<div class="col-3" v-for="(post, index) in posts" :key="index">
+					<div class="card">
+						<div class="card-image">
+							<img
+								v-if="post._embedded['wp:featuredmedia']"
+								:src="post._embedded['wp:featuredmedia'][0].source_url"
+								/>
+							<h4 class="card-title">
+								<a :href="post.link" v-html="post.title.rendered"></a>
+							</h4>
+						</div>
+						<!--div class="card-content" v-html="post.excerpt.rendered"></div-->
+						<div class="card-action">
+							<p><strong>{{ getPostDate(post.date) }}</strong></p>
+							<ul class="categories">
+								<li v-for="(category, index) in post.categories" :key="index" v-html="getCategory(category)" class="category"></li>
+							</ul>
+							<ul class="tags">
+								<!--<li v-for="(tag, index) in post.tags" :key="index" v-html="getTag(tag)" class="tag"></li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- / gallery -->
+
         </div>
     </div>
     <!-- / section-body -->
