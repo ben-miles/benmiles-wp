@@ -47,13 +47,7 @@
             <i class="fa fa-angle-up" aria-hidden="true"></i>
         </button>
 
-        <script src="/wp-content/themes/benmiles-wp/js/jquery.3.2.1.min.js"></script>
-        <script>window.Tether = {}; // Negates Bootstrap's silly console error RE Tether</script>
-        <script src="/wp-content/themes/benmiles-wp/js/bootstrap.4.0.0.a6.min.js"></script>
-        <script src="/wp-content/themes/benmiles-wp/js/ie10-viewport-bug-workaround.js"></script>
-        <script src="/wp-content/themes/benmiles-wp/js/imagesloaded.4.1.3.min.js"></script>
-        <script src="/wp-content/themes/benmiles-wp/js/isotope.3.0.4.min.js"></script>
-        <!-- <script>var jsonPortfolio = <?php echo $jsonPortfolio; ?>;</script> -->
+        <!-- <script>var jsonPortfolio = <?php //echo $jsonPortfolio; ?>;</script> -->
         <script>var jsonPortfolio = {
 			title: 'Beer Label Illustration & Type Design',
 			agency: '',
@@ -86,7 +80,8 @@
 				]
 			}
 		};</script>
-        <script src="/wp-content/themes/benmiles-wp/js/custom.js"></script>
+
+		<?php wp_footer(); ?>
 
     </body>
 </html>

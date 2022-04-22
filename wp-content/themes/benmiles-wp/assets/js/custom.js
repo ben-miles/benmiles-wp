@@ -1,6 +1,6 @@
 /* ON READY... ****************************************************************/
 $( document ).ready( function(){
-
+alert('testing');
     // console.log( jsonPortfolio );
 
     // Negate mobile browser addressbar maybe?
