@@ -2,6 +2,7 @@
 /*
 Template Name: Home
 */
+// error_reporting(0);
 get_header(); 
 ?>
 

@@ -1,5 +1,7 @@
 <?php
 /*
+TODO: Get rid of jQuery
+TODO: Add Vue
 TODO: linkify the animated list items to portfolio subsections?
 TODO: work/edu timelines? d3.js + gantt chart: https://github.com/dk8996/Gantt-Chart
 TODO: SVG logo?
@@ -8,8 +10,8 @@ TODO: Scrollspy for main nav?
 TODO: SEO
 TODO: image traversal ( <-- PREV and NEXT --> ) for lightbox
 TODO: multiple image support for lightbox
-    TODO: make gallery thumbnails and modal display images as backgrounds for better centering/scaling. set heights/widths as needed
-    TODO: Add captions to detail images
+TODO: make gallery thumbnails and modal display images as backgrounds for better centering/scaling. set heights/widths as needed
+TODO: Add captions to detail images
 */
 
 get_header();
