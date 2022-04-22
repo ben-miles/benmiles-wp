@@ -38,6 +38,7 @@ if( !is_admin() ){
 	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/js/imagesloaded.min.js', array(), '4.1.3', true );
 	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/js/isotope.min.js', array(), '3.0.4', true );
 	wp_enqueue_script( 'vue', get_template_directory_uri() . '/assets/js/vue.js', array(), '2.6.11', true );
+	wp_enqueue_script( 'axios', get_template_directory_uri() . '/assets/js/axios.min.js', array('vue'), '0.26.1', true );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), '', true );
 
 }
