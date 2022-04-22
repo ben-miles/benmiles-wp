@@ -1,3 +1,8 @@
+/* Vue */
+var app = new Vue({
+	el: '#portfolio',
+})
+
 /* ON READY... ****************************************************************/
 $( document ).ready( function(){
 

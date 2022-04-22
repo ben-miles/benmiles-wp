@@ -1,7 +1,6 @@
 <?php
 /*
 TODO: Get rid of jQuery
-TODO: Add Vue
 TODO: linkify the animated list items to portfolio subsections?
 TODO: work/edu timelines? d3.js + gantt chart: https://github.com/dk8996/Gantt-Chart
 TODO: SVG logo?
