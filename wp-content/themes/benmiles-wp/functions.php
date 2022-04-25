@@ -3,6 +3,9 @@
 // Enable Featured Image / Post Thumbnail
 add_theme_support('post-thumbnails');
 
+// Enable Title 
+add_theme_support('title-tag');
+
 if( !is_admin() ){
 
 	// Remove Gutenberg Block Library CSS from loading on the frontend
