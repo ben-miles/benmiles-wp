@@ -375,7 +375,7 @@ section {
 
 .navbar-brand {
     color: #fff;
-    padding: 8px 0;
+    padding: 6px 0;
     margin-right: 0;
 }
 
@@ -389,21 +389,19 @@ section {
     }
 }
 
-.navbar-brand > span {
-    display: block;
+#site-title {
+	font-size: 1.25rem;
     font-weight: 700;
-    line-height: 1.2rem;
 }
 
-.navbar-brand > span:first-of-type {
+#site-description {
     font-size: .65rem;
     font-weight: 400;
-    line-height: .6rem;
     text-transform: lowercase;
 }
 
 @media ( min-width: 992px ) {
-    .navbar-brand > span:first-of-type {
+    #site-description {
         text-align: left;
     }
 }

@@ -3,7 +3,7 @@
 <head>
 	<?php wp_head(); ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php wp_title($sep = '&raquo;', $display = true, $seplocation = 'right'); ?></title>
+	<title><?php is_front_page() ? bloginfo('description') . ' - ' . bloginfo('name') : wp_title(' - ',TRUE,'right') . bloginfo('name'); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,8 @@
 
         <!-- Branding -->
         <a class="brand navbar-brand scroll" data-section="hey" href="#hey" target="_self">
-            <span>Design by</span><span>Ben Miles</span>
+            <h1 id="site-title"><?php bloginfo('name'); ?></h1>
+			<h2 id="site-description"><?php bloginfo('description'); ?></h2>
         </a>
 
         <!-- Menu Items -->
