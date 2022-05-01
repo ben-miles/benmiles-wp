@@ -1,7 +1,7 @@
 <?php
 /*
+TODO: Add custom field for mobile thumbnail
 TODO: Get rid of jQuery
-TODO: Switch data source from flatfile to REST API
 TODO: Make Menus dynamic
 TODO: linkify the animated list items to portfolio subsections?
 TODO: work/edu timelines? d3.js + gantt chart: https://github.com/dk8996/Gantt-Chart
