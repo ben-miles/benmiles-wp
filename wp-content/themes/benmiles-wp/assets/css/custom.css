@@ -377,6 +377,7 @@ section {
     color: #fff;
     padding: 6px 0;
     margin-right: 0;
+	text-align: center;
 }
 
 .navbar-brand:hover {
@@ -386,6 +387,7 @@ section {
 @media ( min-width: 992px ) {
     .navbar-brand {
         margin-right: 1rem;
+		text-align: left;
     }
 }
 
@@ -398,12 +400,6 @@ section {
     font-size: .65rem;
     font-weight: 400;
     text-transform: lowercase;
-}
-
-@media ( min-width: 992px ) {
-    #site-description {
-        text-align: left;
-    }
 }
 
 .nav-link,
