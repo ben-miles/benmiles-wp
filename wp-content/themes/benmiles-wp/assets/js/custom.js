@@ -59,6 +59,16 @@ var app = new Vue({
 					console.log(error);
 				});
 		},
+		getPortfolio() {
+			axios
+				.get(this.portfolioUrl)
+				.then(response => {
+					this.portfolio = response.data;
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		},
 		getPosts() {
 			axios
 				.get(this.postsUrl)
@@ -107,23 +117,6 @@ var app = new Vue({
 		this.isotopeInit();
 	}
 })
-
-/* ON READY... ****************************************************************/
-$( document ).ready( function(){
-
-    // console.log( jsonPortfolio );
-
-    // Negate mobile browser addressbar maybe?
-    // seems to be resisting my charms
-    // if( $( window ).width() < 900 ){
-    // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    //     $( window ).scrollTop( 50 );
-    // }
-
-    // Apply animations
-    // applyAnimations();
-
-} );
 
 /* ON SCROLL... ***************************************************************/
 
@@ -258,10 +251,6 @@ $( '.btn-group-sort button' ).click( function() {
   $gallery.isotope( { sortBy: sort } );
 } );
 
-// SHUFFLE
-$( '#shuffle' ).click( function(){
-    // shuffle
-  $gallery.isotope( 'shuffle' );
 } );
 
 // Footer social menu //////////////////////////////////////////////////////////
