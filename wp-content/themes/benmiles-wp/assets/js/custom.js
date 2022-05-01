@@ -12,6 +12,30 @@ var app = new Vue({
 		portfolio: []
 	},
 	methods: {
+		formatCategory(categoryID) {
+			let thisCategory = this.categories.filter(category => {
+				return category.id === categoryID;
+			})
+			return thisCategory[0].name;
+		},
+		formatDate(date) {
+			return moment(date).format('MMMM Do YYYY');
+		},
+		formatSize(size) {
+			if( size === 'tall' ){
+				return 'tall col-sm-6 col-md-4 col-lg-3';
+			}
+			if( size === 'wide' ){
+				return 'wide col-sm-12 col-md-8 col-lg-6';
+			}
+			return 'col-sm-6 col-md-4 col-lg-3';
+		},
+		formatTag(tagID) {
+			let thisTag = this.tags.filter(tag => {
+				return tag.id === tagID;
+			})
+			return thisTag[0].name;
+		},
 		getCategories() {
 			axios
 				.get(this.categoriesUrl)
@@ -46,20 +70,6 @@ var app = new Vue({
 					console.log(error);
 				});
 		},
-		getPostDate(date) {
-			return moment(date).format("LL");
-		},
-		getCategory(id) {
-			let thisCategory = this.categories.filter(category => {
-				return category.id === id;
-			})
-			return `<a href="${thisCategory[0].link}">${thisCategory[0].name}</a>`;
-		},
-		getTag(id) {
-			let thisTag = this.tags.filter(tag => {
-				return tag.id === id;
-			})
-			return `<a href="${thisTag[0].link}">${thisTag[0].name}</a>`;
 		}
 	},
 	beforeMount() {
