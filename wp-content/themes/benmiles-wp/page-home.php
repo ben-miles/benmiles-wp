@@ -53,7 +53,7 @@ get_header();
 </section>
 <!-- / intro -->
 
-<!-- port'o'folio (a kid in middle school said it like that once and everybody laughed) -->
+<!-- port'o'folio (once, in middle school, a kid said it like that, and everybody laughed, even the teacher) -->
 <section id="portfolio">
 
     <!-- section-header -->
@@ -99,25 +99,35 @@ get_header();
             <!-- / controls -->
 
 			<!-- gallery -->
-			<div class="row animated" id="gallery" data-animation="fadeIn" style="animation-delay: 0.4s;">
-				<div v-for="(post, index) in posts" :key="index" class="gallery-item square catsMeta tagsMeta col-sm-6 col-md-4 col-lg-3" :id="index" 
-					:data-date="post.date" data-agency="agencyMeta" data-client="clientMeta">
+			<div class="row" id="gallery" style="height:auto !important;">
+				<!-- gallery-item -->
+				<div v-for="(piece, index) in portfolio" :key="index" :class="['gallery-item',formatSize(piece.acf.thumbnail_size[0])]" :id="`piece_${index}`" 
+					:data-date="piece.date" data-agency="agencyMeta" data-client="clientMeta" :data-title="piece.title.rendered">
 					<a href="javascript:void(0)">
 						<div class="text">
 							<div class="title">
-								<h3 v-html="post.title.rendered"></h3>
-								$clientDisp
-								$agencyDisp
+								<h3 v-html="piece.title.rendered"></h3>
+								<div v-if="piece.acf.agency" class="agency">{{ piece.acf.agency }}</div>
+								<div v-if="piece.acf.client" class="client">{{ piece.acf.client }}</div>
 							</div>
 							<div class="meta">
-								<small class="date">{{ getPostDate(post.date) }}</small>
-								<small class="cats">$catsDisp</small>
-								<small class="tags">$tagsDisp</small>
+								<small class="date">{{ formatDate(piece.date) }}</small>
+								<small class="categories">
+									<ul>
+										<li v-for="(category, index) in piece.categories" :key="index">{{ formatCategory(category) }}</li>
+									</ul>
+								</small>
+								<small class="tags">
+									<ul>
+										<li v-for="(tag, index) in piece.tags" :key="index">{{ formatTag(tag) }}</li>
+									</ul>
+								</small>
 							</div>
 						</div>
-						<img v-if="post._embedded['wp:featuredmedia']" :src="post._embedded['wp:featuredmedia'][0].source_url" />
+						<img v-if="piece._embedded['wp:featuredmedia']" :src="piece._embedded['wp:featuredmedia'][0].source_url" />
 					</a>
 				</div>
+				<!-- / gallery-item -->
 			</div>
 			<!-- / gallery -->
 
