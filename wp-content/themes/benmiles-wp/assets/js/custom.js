@@ -2,18 +2,14 @@
 var app = new Vue({
 	el: '#portfolio',
 	data: {
-		url: 'https://bcgm3.com/wp-json/wp/v2/',
-		categoriesUrl: "https://bcgm3.com/wp-json/wp/v2/categories",
-		tagsUrl: "https://bcgm3.com/wp-json/wp/v2/tags",
-		postsUrl: "https://bcgm3.com/wp-json/wp/v2/posts",
+		categoriesUrl: "http://benmiles-wp.test/wp-json/wp/v2/categories",
+		tagsUrl: "http://benmiles-wp.test/wp-json/wp/v2/tags?per_page=99",
+		postsUrl: "http://benmiles-wp.test/wp-json/wp/v2/posts?per_page=36&page=1&_embed=true",
+		portfolioUrl: "http://benmiles-wp.test/wp-json/wp/v2/portfolio?per_page=36&page=1&_embed=true",
 		categories: [],
 		tags: [],
 		posts: [],
-		queryOptions: {        
-			per_page: 12,
-			page: 1,
-			_embed: true
-		}
+		portfolio: []
 	},
 	methods: {
 		getCategories() {
@@ -41,7 +37,7 @@ var app = new Vue({
 		},
 		getPosts() {
 			axios
-				.get(this.postsUrl, { params: this.queryOptions})
+				.get(this.postsUrl)
 				.then(response => {
 					this.posts= response.data;
 					// console.log(this.posts);
