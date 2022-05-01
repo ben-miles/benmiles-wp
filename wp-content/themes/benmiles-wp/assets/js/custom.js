@@ -70,14 +70,41 @@ var app = new Vue({
 					console.log(error);
 				});
 		},
+		isotopeInit() {
+			var gallery = document.getElementById('gallery');
+			var isotope = new Isotope(
+				gallery, 
+				{
+					itemSelector: '.gallery-item',
+					getSortData: {
+						agency: '[data-agency]',
+						category: '.cats',
+						client: '[data-client]',
+						date: '[data-date]',
+						title: '[data-title]',
+					},
+					sortAscending: {
+						date: false
+					},
+					masonry: {
+						columnWidth: '.gallery-item:not(.col-lg-6)'
+					},
+					sortBy: 'date',
+					// filter: '.featured'
+					filter: '*'
+				}
+			);
 		}
 	},
 	beforeMount() {
 		this.getCategories();
 		this.getTags();
-		this.getPosts();
+		this.getPortfolio();
 	},
 	mounted() {
+	},
+	updated() {
+		this.isotopeInit();
 	}
 })
 
@@ -205,31 +232,6 @@ $galleryitem.click( this, function(){
 $( '.thumbs' ).on( 'click', '.thumb', function(){
     var full = $( this ).data( 'full' );
     $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + full + '" />' );
-} );
-
-
-// INIT imageLoaded + Isotope
-var $gallery = $( '#gallery' ).imagesLoaded( function() {
-  // init Isotope after all images have loaded
-  $gallery.isotope( {
-    itemSelector: '.gallery-item',
-    getSortData: {
-        agency: '[data-agency]',
-        category: '.cats',
-        client: '[data-client]',
-        date: '[data-date]',
-        title: '.title h3'
-    },
-    sortAscending: {
-        date: false
-    },
-    masonry: {
-        columnWidth: '.gallery-item:not(.col-lg-6)'
-    },
-    sortBy: 'date',
-    // filter: '.featured'
-    filter: '*'
-  } );
 } );
 
 // FILTER
