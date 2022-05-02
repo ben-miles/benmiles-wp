@@ -103,23 +103,23 @@ get_header();
 				<!-- gallery-item -->
 				<div v-for="(piece, index) in portfolio" :key="index" :class="['gallery-item',formatSize(piece.acf.thumbnail_size[0])]" :id="`piece_${index}`" 
 					:data-date="piece.date" data-agency="agencyMeta" data-client="clientMeta" :data-title="piece.title.rendered">
-					<a href="javascript:void(0)">
+					<a :href="piece.link" target="_self">
 						<div class="text">
 							<div class="title">
 								<h3 v-html="piece.title.rendered"></h3>
-								<div v-if="piece.acf.agency" class="agency">{{ piece.acf.agency }}</div>
-								<div v-if="piece.acf.client" class="client">{{ piece.acf.client }}</div>
+								<div v-if="piece.acf.agency" class="agency">{{piece.acf.agency}}</div>
+								<div v-if="piece.acf.client" class="client">{{piece.acf.client}}</div>
 							</div>
 							<div class="meta">
-								<small class="date">{{ formatDate(piece.date) }}</small>
+								<small class="date">{{formatDate(piece.date)}}</small>
 								<small class="categories">
 									<ul>
-										<li v-for="(category, index) in piece.categories" :key="index">{{ formatCategory(category) }}</li>
+										<li v-for="(category, index) in piece.categories" :key="index">{{formatCategory(category)}}</li>
 									</ul>
 								</small>
 								<small class="tags">
 									<ul>
-										<li v-for="(tag, index) in piece.tags" :key="index">{{ formatTag(tag) }}</li>
+										<li v-for="(tag, index) in piece.tags" :key="index">{{formatTag(tag)}}</li>
 									</ul>
 								</small>
 							</div>
