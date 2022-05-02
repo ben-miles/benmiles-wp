@@ -29,7 +29,11 @@
         </button>
 
         <!-- Branding -->
+		<?php if(is_front_page()){ ?>
         <a class="brand navbar-brand scroll" data-section="hey" href="#hey" target="_self">
+		<?php } else {; ?>
+		<a class="brand navbar-brand scroll" href="<?php bloginfo('url'); ?>" target="_self">
+		<?php } ?>
             <h1 id="site-title"><?php bloginfo('name'); ?></h1>
 			<h2 id="site-description"><?php bloginfo('description'); ?></h2>
         </a>
