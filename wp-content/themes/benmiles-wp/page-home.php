@@ -124,7 +124,7 @@ get_header();
 								</small>
 							</div>
 						</div>
-						<img v-if="piece._embedded['wp:featuredmedia']" :src="piece._embedded['wp:featuredmedia'][0].source_url" />
+						<img v-if="piece._embedded['wp:featuredmedia']" :src="piece._embedded['wp:featuredmedia'][0].source_url" :alt="piece.title.rendered" />
 					</a>
 				</div>
 				<!-- / gallery-item -->
