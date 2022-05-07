@@ -1,123 +1,3 @@
-/* Vue */
-var app = new Vue({
-	el: '#portfolio',
-	data: {
-		categoriesUrl: "http://benmiles-wp.test/wp-json/wp/v2/categories",
-		tagsUrl: "http://benmiles-wp.test/wp-json/wp/v2/tags?per_page=99",
-		postsUrl: "http://benmiles-wp.test/wp-json/wp/v2/posts?per_page=36&page=1&_embed=true",
-		portfolioUrl: "http://benmiles-wp.test/wp-json/wp/v2/portfolio?per_page=36&page=1&_embed=true",
-		categories: [],
-		tags: [],
-		posts: [],
-		portfolio: []
-	},
-	methods: {
-		formatCategory(categoryID) {
-			let thisCategory = this.categories.filter(category => {
-				return category.id === categoryID;
-			})
-			return thisCategory[0].name;
-		},
-		formatDate(date) {
-			return moment(date).format('MMMM Do YYYY');
-		},
-		formatSize(size) {
-			if( size === 'tall' ){
-				return 'tall col-sm-6 col-md-4 col-lg-3';
-			}
-			if( size === 'wide' ){
-				return 'wide col-sm-12 col-md-8 col-lg-6';
-			}
-			return 'col-sm-6 col-md-4 col-lg-3';
-		},
-		formatTag(tagID) {
-			let thisTag = this.tags.filter(tag => {
-				return tag.id === tagID;
-			})
-			return thisTag[0].name;
-		},
-		getCategories() {
-			axios
-				.get(this.categoriesUrl)
-				.then(response => {
-					this.categories = response.data;
-					// console.log("categories: " + this.categories);
-				})
-				.catch(error => {
-					console.log(error);
-				});
-		},
-		getTags() {
-			axios
-				.get(this.tagsUrl)
-				.then(response => {
-					this.tags = response.data;
-				// console.log(response);
-					console.log(this.tags);
-				})
-				.catch(error => {
-					console.log(error);
-				});
-		},
-		getPortfolio() {
-			axios
-				.get(this.portfolioUrl)
-				.then(response => {
-					this.portfolio = response.data;
-				})
-				.catch(error => {
-					console.log(error);
-				});
-		},
-		getPosts() {
-			axios
-				.get(this.postsUrl)
-				.then(response => {
-					this.posts= response.data;
-					// console.log(this.posts);
-				})
-				.catch(error => {
-					console.log(error);
-				});
-		},
-		isotopeInit() {
-			var gallery = document.getElementById('gallery');
-			var isotope = new Isotope(
-				gallery, 
-				{
-					itemSelector: '.gallery-item',
-					getSortData: {
-						agency: '[data-agency]',
-						category: '.cats',
-						client: '[data-client]',
-						date: '[data-date]',
-						title: '[data-title]',
-					},
-					sortAscending: {
-						date: false
-					},
-					masonry: {
-						columnWidth: '.gallery-item:not(.col-lg-6)'
-					},
-					sortBy: 'date',
-					// filter: '.featured'
-					filter: '*'
-				}
-			);
-		}
-	},
-	beforeMount() {
-		this.getCategories();
-		this.getTags();
-		this.getPortfolio();
-	},
-	mounted() {
-	},
-	updated() {
-		this.isotopeInit();
-	}
-})
-
 /* ON SCROLL... ***************************************************************/
 
 var opacityMin = 0.25, // initial background-color-opacity for nav
@@ -310,3 +190,57 @@ function applyAnimations(){
         }
     } );
 }
+
+/* ISOTOPE ********************************************************************/
+
+// INIT
+var isotope = new Isotope(
+	'#gallery', 
+	{
+		itemSelector: '.gallery-item',
+		getSortData: {
+			agency: '.agency',
+			client: '.client',
+			date: '[data-date]',
+			title: '.title'
+		},
+		sortAscending: {
+			date: false
+		},
+		masonry: {
+			columnWidth: '.gallery-item.square'
+		},
+		sortBy: 'date',
+		filter: '*'
+	}
+);
+
+// FILTER
+var isotopeFilterBtns = document.getElementsByClassName('btn-filter');
+function isotopeFilter(el){
+	// clear other btns' active states
+	for(isotopeFilterBtn of isotopeFilterBtns){
+		isotopeFilterBtn.classList.remove( 'active' );
+	}
+	// set this btn active
+	el.classList.add( 'active' );
+	// set filter to btn's data-filter value
+	var filter = el.getAttribute( 'data-filter' );
+	// filter
+	isotope.arrange( { filter: filter } );
+};
+
+// SORT
+var isotopeSortBtns = document.getElementsByClassName('btn-sort');
+function isotopeSort(el){
+	// clear other btns' active states
+	for(isotopeSortBtn of isotopeSortBtns){
+		isotopeSortBtn.classList.remove('active');
+	}
+	// set this btn active
+	el.classList.add( 'active' );
+	// set sort to btn's data-sort value
+	var sort = el.getAttribute( 'data-sort' );
+	// sort
+	isotope.arrange( { sortBy: sort } );
+};

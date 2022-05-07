@@ -78,20 +78,22 @@ get_header();
                     <div class="btn-toolbar" role="toolbar" aria-label="Gallery Toolbar">
                         <div class="btn-group btn-group-filter animated" role="group" aria-label="Gallery Filter Buttons" data-animation="fadeIn" style="animation-delay: 0.2s;">
                             <span class="input-group-addon">Show:&nbsp;</span>
-                            <!-- <button type="button" class="btn btn-default" data-filter=".featured">Featured</button> -->
-                            <button type="button" class="btn btn-default" data-filter=".design">Design</button>
-                            <button type="button" class="btn btn-default" data-filter=".development">Development</button>
-                            <button type="button" class="btn btn-default" data-filter=".diy">DIY</button>
-                            <button type="button" class="btn btn-default active" data-filter="*">All</button>
+                            <button type="button" class="btn btn-default btn-filter active" onclick="isotopeFilter(this)" data-filter="*">All</button>
+                            <button type="button" class="btn btn-default btn-filter" onclick="isotopeFilter(this)" data-filter=".design">Design</button>
+                            <button type="button" class="btn btn-default btn-filter" onclick="isotopeFilter(this)" data-filter=".logo">Logo</button>
+                            <button type="button" class="btn btn-default btn-filter" onclick="isotopeFilter(this)" data-filter=".print">Print</button>
+                            <button type="button" class="btn btn-default btn-filter" onclick="isotopeFilter(this)" data-filter=".diy">DIY</button>
+                            <button type="button" class="btn btn-default btn-filter" onclick="isotopeFilter(this)" data-filter=".website">Website</button>
+                            <!-- <button type="button" class="btn btn-default btn-filter" onclick="isotopeFilter(this)" data-filter=".featured">Featured</button> -->
                         </div>
                         <div class="btn-group btn-group-sort animated" role="group" aria-label="Gallery Sort Buttons" data-animation="fadeIn" style="animation-delay: 0.2s;">
                             <span class="input-group-addon">Sort:&nbsp;</span>
-                            <!-- <button type="button" class="btn active btn-default" data-sort="original-order">Original</button> -->
-                            <button type="button" class="btn btn-default active" data-sort="date">Date</button>
-                            <button type="button" class="btn btn-default" data-sort="title">Title</button>
-                            <button type="button" class="btn btn-default" data-sort="agency">Agency</button>
-                            <button type="button" class="btn btn-default" data-sort="client">Client</button>
-                            <!-- <button type="button" class="btn btn-default" id="shuffle">Random</button> -->
+                            <button type="button" class="btn btn-default btn-sort active" onclick="isotopeSort(this)" data-sort="date">Date</button>
+                            <button type="button" class="btn btn-default btn-sort" onclick="isotopeSort(this)" data-sort="title">Title</button>
+                            <button type="button" class="btn btn-default btn-sort" onclick="isotopeSort(this)" data-sort="agency">Agency</button>
+                            <button type="button" class="btn btn-default btn-sort" onclick="isotopeSort(this)" data-sort="client">Client</button>
+                            <!-- <button type="button" class="btn active btn-sort btn-default" onclick="isotopeSort(this)" data-sort="original">Original</button> -->
+                            <!-- <button type="button" class="btn btn-default" onclick="isotopeSort(this)" data-sort="random">Random</button> -->
                         </div>
                     </div>
                 </div>
@@ -100,34 +102,70 @@ get_header();
 
 			<!-- gallery -->
 			<div class="row" id="gallery" style="height:auto !important;">
+				<?php
+				$args = array(  
+					'post_type' => 'portfolio',
+					'post_status' => 'publish',
+					'posts_per_page' => -1, 
+					'orderby' => 'date', 
+					'order' => 'DESC'
+				);
+				$loop = new WP_Query( $args );
+				while ( $loop->have_posts() ) : $loop->the_post(); 
+				// Format Advanced Custom Fields
+				$the_thumbnail_size = trim( get_field( 'thumbnail_size' ), '"' );
+				$the_agency = get_field( 'agency' ) ? '<div class="agency"><span class="label">Agency:</span> ' . get_field( 'agency' ) .'</div>' : '';
+				$the_client = get_field( 'client' ) ? '<div class="client"><span class="label">Client:</span> ' . get_field( 'client' ) .'</div>' : '';
+				// Format Categories
+				$categories = get_the_category();
+				foreach($categories as $category) {
+					$the_category = $category->name; 
+				}
+				// Format Tags
+				$the_tags = '<ul>';
+				$tags = get_the_tags();
+				foreach($tags as $tag) {
+					$the_tags .= '<li>' . $tag->name . '</li>'; 
+				}
+				$the_tags .= '</ul>';
+				// Format Date
+				$the_date = get_the_date('Ymd');
+				?>
+
 				<!-- gallery-item -->
-				<div v-for="(piece, index) in portfolio" :key="index" :class="['gallery-item',formatSize(piece.acf.thumbnail_size[0])]" :id="`piece_${index}`" 
-					:data-date="piece.date" data-agency="agencyMeta" data-client="clientMeta" :data-title="piece.title.rendered">
-					<a :href="piece.link" target="_self">
+				<div class="gallery-item <?php echo strtolower( $the_category ) . ' ' . $the_thumbnail_size; ?>" data-date="<?php echo $the_date; ?>">
+					<a href="<?php the_permalink() ?>">
 						<div class="text">
 							<div class="title">
-								<h3 v-html="piece.title.rendered"></h3>
-								<div v-if="piece.acf.agency" class="agency">{{piece.acf.agency}}</div>
-								<div v-if="piece.acf.client" class="client">{{piece.acf.client}}</div>
+								<h3><?php the_title() ?></h3>
 							</div>
 							<div class="meta">
-								<small class="date">{{formatDate(piece.date)}}</small>
-								<small class="categories">
+								<?php echo $the_agency; ?>
+								<?php echo $the_client; ?>
+								<div class="date"><?php the_date() ?></div>
+								<div class="category">
+									<span class="label">Category:</span>
 									<ul>
-										<li v-for="(category, index) in piece.categories" :key="index">{{formatCategory(category)}}</li>
+										<li><?php echo $the_category; ?></li>
 									</ul>
-								</small>
-								<small class="tags">
-									<ul>
-										<li v-for="(tag, index) in piece.tags" :key="index">{{formatTag(tag)}}</li>
-									</ul>
-								</small>
+								</div>
+								<div class="tags">
+									<span class="label">Tags:</span>
+									<?php echo $the_tags; ?>
+								</div>
+								
 							</div>
 						</div>
-						<img v-if="piece._embedded['wp:featuredmedia']" :src="piece._embedded['wp:featuredmedia'][0].source_url" :alt="piece.title.rendered" />
+						<?php the_post_thumbnail(); ?>
 					</a>
 				</div>
 				<!-- / gallery-item -->
+
+				<?php
+				endwhile;
+				wp_reset_postdata(); 
+				?>
+
 			</div>
 			<!-- / gallery -->
 
