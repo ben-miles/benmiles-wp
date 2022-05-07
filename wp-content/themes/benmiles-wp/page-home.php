@@ -403,6 +403,4 @@ get_header();
 </section>
 <!-- / about -->
 
-<script>var jsonPortfolio = <?php echo $jsonPortfolio; ?>;</script>
-
 <?php get_footer(); ?>

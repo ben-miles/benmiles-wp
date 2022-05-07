@@ -64,6 +64,4 @@ get_header();
 </section>
 <!-- / port'o'folio -->
 
-<script>var jsonPortfolio = <?php echo $jsonPortfolio; ?>;</script>
-
 <?php get_footer(); ?>

@@ -53,85 +53,59 @@ $( '.scroll' ).click( function( e ) {
 });
 
 // Gallery /////////////////////////////////////////////////////////////////////
-var $galleryitem = $( '.gallery-item' ),
-    $modal = $( '#modal' ),
-    id;
+// var $galleryitem = $( '.gallery-item' ),
+//     $modal = $( '#modal' ),
+//     id;
 
-// On click of gallery item
-$galleryitem.click( this, function(){
+// // On click of gallery item
+// $galleryitem.click( this, function(){
 
-    // Fetch and interpret data for this gallery item
-    var $this = $( this ),
-        id = $( this ).data( 'id' ),
-        data = jsonPortfolio[id];
+//     // Fetch and interpret data for this gallery item
+//     var $this = $( this ),
+//         id = $( this ).data( 'id' ),
+//         data = jsonPortfolio[id];
 
-    // title
-    // var title = $( '<h2>', { text: ( data.client ? data.client + ': ' : '' ) + data.title } );
-    var title = $( '<h2>', { html: data.title } ),
-        client = $( '<h6>', { class: 'client', html: data.client ? '<small>CLIENT: ' + data.client + '</small>' : '' } ),
-        agency = $( '<h6>', { class: 'agency', html: data.agency ? '<small>AGENCY: ' + data.agency + '</small>' : '' } );
-    $modal.find( '.header' ).html( title ).append( client, agency );
+//     // title
+//     // var title = $( '<h2>', { text: ( data.client ? data.client + ': ' : '' ) + data.title } );
+//     var title = $( '<h2>', { html: data.title } ),
+//         client = $( '<h6>', { class: 'client', html: data.client ? '<small>CLIENT: ' + data.client + '</small>' : '' } ),
+//         agency = $( '<h6>', { class: 'agency', html: data.agency ? '<small>AGENCY: ' + data.agency + '</small>' : '' } );
+//     $modal.find( '.header' ).html( title ).append( client, agency );
 
-    // meta
-    var date = $( '<small>', { text: data.date, class: 'date' } ),
-        cats = $( '<small>', { text: data.cats.join(', '), class: 'cats' } ),
-        tags = $( '<small>', { text: data.tags.join(', '), class: 'tags' } );
-    $modal.find( '.meta' ).html( date ).append( cats ).append( tags );
+//     // meta
+//     var date = $( '<small>', { text: data.date, class: 'date' } ),
+//         cats = $( '<small>', { text: data.cats.join(', '), class: 'cats' } ),
+//         tags = $( '<small>', { text: data.tags.join(', '), class: 'tags' } );
+//     $modal.find( '.meta' ).html( date ).append( cats ).append( tags );
 
-    // thumbs
-    $modal.find( '.thumbs' ).html('');
-    if( data.img.gallery.length >= 2 ){
-        for ( i = 0; i < data.img.gallery.length; i++ ) {
-            var thumbImg = $( '<img>', { class: 'img-fluid', src: 'img/portfolio/' +  data.img.gallery[i].thumb } ),
-                thumb = $( '<a>', { class: 'thumb', 'data-full': data.img.gallery[i].full, href: 'javascript:void(0)' } ).append( thumbImg );
-            $modal.find( '.thumbs' ).append( thumb );
-        }
-        $modal.find( '.thumbs' ).show( 0 );
-    } else {
-        $modal.find( '.thumbs' ).hide( 0 );
-    }
+//     // thumbs
+//     $modal.find( '.thumbs' ).html('');
+//     if( data.img.gallery.length >= 2 ){
+//         for ( i = 0; i < data.img.gallery.length; i++ ) {
+//             var thumbImg = $( '<img>', { class: 'img-fluid', src: 'img/portfolio/' +  data.img.gallery[i].thumb } ),
+//                 thumb = $( '<a>', { class: 'thumb', 'data-full': data.img.gallery[i].full, href: 'javascript:void(0)' } ).append( thumbImg );
+//             $modal.find( '.thumbs' ).append( thumb );
+//         }
+//         $modal.find( '.thumbs' ).show( 0 );
+//     } else {
+//         $modal.find( '.thumbs' ).hide( 0 );
+//     }
 
-    // body
-    var link = ( data.link ?  $( '<a>', { href: data.link, text: data.link, target: '_blank', class: 'external' } ) : '' );
-    $modal.find( '.body' ).html( data.description ).append( link );
+//     // body
+//     var link = ( data.link ?  $( '<a>', { href: data.link, text: data.link, target: '_blank', class: 'external' } ) : '' );
+//     $modal.find( '.body' ).html( data.description ).append( link );
 
-    $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + data.img.gallery[0].full + '" />' );
+//     $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + data.img.gallery[0].full + '" />' );
 
-    // show modal
-    $modal.modal( 'show' );
-} );
+//     // show modal
+//     $modal.modal( 'show' );
+// } );
 
 // On click of gallery item details item (!)
-$( '.thumbs' ).on( 'click', '.thumb', function(){
-    var full = $( this ).data( 'full' );
-    $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + full + '" />' );
-} );
-
-// FILTER
-$( '.btn-group-filter button' ).click( function(){
-  // clear other btns' active states
-  $( '.btn-group-filter button' ).removeClass( 'active' );
-  // set this btn active
-  $( this ).addClass( 'active' );
-  // set filter to btn's data-filter value
-  var filter = $( this ).attr( 'data-filter' );
-  // filter
-  $gallery.isotope( { filter: filter } );
-} );
-
-// SORT
-$( '.btn-group-sort button' ).click( function() {
-  // clear other btns' active states
-  $( '.btn-group-sort button' ).removeClass('active');
-  // set this btn active
-  $( this ).addClass( 'active' );
-  // set sort to btn's data-sort value
-  var sort = $( this ).attr( 'data-sort' );
-  // sort
-  $gallery.isotope( { sortBy: sort } );
-} );
-
-} );
+// $( '.thumbs' ).on( 'click', '.thumb', function(){
+//     var full = $( this ).data( 'full' );
+//     $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + full + '" />' );
+// } );
 
 // Footer social menu //////////////////////////////////////////////////////////
 var $footer = $( "footer" ),

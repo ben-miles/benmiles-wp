@@ -1,4 +1,3 @@
-       <?php echo $jsonPortfolio; ?>
 	    <!-- footer -->
         <footer id="footer">
             <div class="container">
