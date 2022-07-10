@@ -1,3 +1,55 @@
+/* google-webfonts-helper by https://google-webfonts-helper.herokuapp.com/ ****/
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 200;
+	src: local(''),
+		 url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-200.woff2') format('woff2'),
+		 url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-200.woff') format('woff'),
+		 url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-200.ttf') format('truetype'),
+		 url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-200.svg#Poppins') format('svg');
+}
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	src: local(''),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-regular.woff2') format('woff2'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-regular.ttf') format('truetype'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
+}
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 600;
+	src: local(''),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-600.woff2') format('woff2'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-600.woff') format('woff'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-600.ttf') format('truetype'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-600.svg#Poppins') format('svg');
+}
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 800;
+	src: local(''),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-800.woff2') format('woff2'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-800.woff') format('woff'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-800.ttf') format('truetype'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-800.svg#Poppins') format('svg');
+}
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 900;
+	src: local(''),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-900.woff2') format('woff2'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-900.woff') format('woff'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-900.ttf') format('truetype'),
+		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-900.svg#Poppins') format('svg');
+}
+
 /*******************************************************************************
   FONTS
 *******************************************************************************/
