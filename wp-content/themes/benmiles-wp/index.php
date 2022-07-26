@@ -1,18 +1,10 @@
 <?php
-/*
-TODO: Add custom field for mobile thumbnail
-TODO: Get rid of jQuery
-TODO: Make Menus dynamic
-TODO: linkify the animated list items to portfolio subsections?
-TODO: work/edu timelines? d3.js + gantt chart: https://github.com/dk8996/Gantt-Chart
-TODO: SVG logo?
-TODO: normalize gallery item heights to prevent big gaps?
-TODO: Scrollspy for main nav?
-TODO: SEO
-TODO: image traversal ( <-- PREV and NEXT --> ) for lightbox
-TODO: multiple image support for lightbox
-TODO: make gallery thumbnails and modal display images as backgrounds for better centering/scaling. set heights/widths as needed
-TODO: Add captions to detail images
+/* TODOs:
+- Get rid of jQuery & Bootstrap
+- Make Menus dynamic
+- Scrollspy for main nav?
+- SEO
+- Add captions to detail images
 */
 
 get_header();
