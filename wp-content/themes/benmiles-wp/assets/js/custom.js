@@ -1,125 +1,91 @@
+/* IMPORTS ********************************************************************/
+import { spline } from "/wp-content/themes/benmiles-wp/assets/js/spline.min.js";
+import SimplexNoise from "/wp-content/themes/benmiles-wp/assets/js/simplex-noise.min.js";
+
+/* VARS ***********************************************************************/
+let isotope;
+let navToggle = document.getElementById('nav-toggle');
+let navLinks = document.getElementsByClassName('nav-link');
+
+/* ON LOAD... *****************************************************************/
+window.onload = function(e){
+
+	// Apply animations
+    applyAnimations();
+
+	// Home page only
+	if(document.body.classList.contains('home')){
+		// Animated blob effect on portrait
+		animateBlob();
+		// Update video sizes
+		resizeVideoThumbnails();
+		// Add event listeners to video thumbnails
+		controlVideoThumbnails();
+	}
+
+	// Portfolio page only
+	if(document.body.classList.contains('portfolio')){
+		// Initialize Isotope
+		initIsotope();
+	}
+
+};
+
 /* ON SCROLL... ***************************************************************/
-
-var opacityMin = 0.25, // initial background-color-opacity for nav
-    opacityMax = 1, // background-color-opacity for nav at bottom of Intro section
-    rgbMin = 255, // initial rgb() color for nav items
-    rgbMax = 119; // rgb() color for nav items at bottom of Intro section
-
-$( window ).scroll( function( e ){
+window.onscroll = function(e){
 
     // Apply animations
     applyAnimations();
 
-    // Determine scroll
-    var pxToTop = $( this ).scrollTop(), // px between top of viewport and top of document ( 0 = scrolled all the way up )
-        pxClientHeight = document.getElementById( 'hey' ).clientHeight; // px height of the Intro section (100vh)
+	// Add or remove the 'scrolled' class, based on scroll position
+	if( window.scrollY > 50 ){
+		document.body.classList.add('scrolled');
+	} else {
+		document.body.classList.remove('scrolled');
+	}
 
-    if( pxToTop < pxClientHeight ){
+};
 
-        var scrollProgress = ( pxToTop / pxClientHeight ).toFixed( 1 ), // decimal ( 0.0 - 1.0 ) representing percentage of scroll position in Intro section
-            opacity = ( opacityMin + ( scrollProgress * ( opacityMax - opacityMin ) ) ).toFixed( 2 ),
-            rgb = Math.round( rgbMin - ( scrollProgress * ( rgbMin - rgbMax ) ) );
+/* ON RESIZE... ***************************************************************/
+window.onresize = function(e){
 
-        $( 'nav' ).css( 'background-color', 'rgba( 255, 255, 255, ' + opacity + ' )' );
-        $( '.navbar-brand, .nav-link, .navbar-toggler-right' ).css( 'color', 'rgb( ' + rgb + ', ' + rgb + ', ' + rgb + ' )' );
-        $( 'nav, .navbar-toggler' ).css( 'border-color', 'rgb( ' + rgb + ', ' + rgb + ', ' + rgb + ' )' );
-        $( '#backToTop' ).css( 'opacity', scrollProgress );
-    }
+	// Home page only
+	if (document.body.classList.contains('home')) {
+		// Update video thumbnails
+		resizeVideoThumbnails();
+	}
 
-    else {
-        $( 'nav' ).css( 'background-color', 'rgba( 255, 255, 255, ' + opacityMax + ' )' );
-        $( '.navbar-brand, .nav-link, .navbar-toggler-right' ).css( 'color', 'rgb( ' + rgbMax + ', ' + rgbMax + ', ' + rgbMax + ' )' );
-        $( 'nav, .navbar-toggler' ).css( 'border-color', 'rgb( ' + rgbMax + ', ' + rgbMax + ', ' + rgbMax + ' )' );
-        $( '#backToTop' ).css( 'opacity', 1 );
-    }
+	let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+	for(let navLink of navLinks){
+		if(vw < 768){
+			navLink.addEventListener('click', toggleNav);
+		} else {
+			navLink.removeEventListener('click', toggleNav);
+		}
+	}
 
-} );
+};
 
 /* ON CLICK... ****************************************************************/
-// ...Auto-Scrolling Links/Buttons
-$( '.scroll' ).click( function( e ) {
-    // Prevent anchor click from following href attribute
-    e.preventDefault;
-    // Get clicked link/button's destination section from data-section attribute
-    var $section = $( this ).data( 'section' );
-    // Close the mobile menu
-    $( '#navbarCollapse' ).collapse( 'hide' );
-    // Scroll to the section from the link's data-section attribute
-    $( 'html, body' )
-        .animate(
-            { scrollTop: $( '#' + $section ).offset().top },
-            1000
-        );
-});
+// Auto-Scrolling Links/Buttons
+// $( '.scroll' ).click( function( e ) {
+//     // Prevent anchor click from following href attribute
+//     e.preventDefault;
+//     // Get clicked link/button's destination section from data-section attribute
+//     var $section = $( this ).data( 'section' );
+//     // Close the mobile menu
+//     $( '#navbarCollapse' ).collapse( 'hide' );
+//     // Scroll to the section from the link's data-section attribute
+//     $( 'html, body' )
+//         .animate(
+//             { scrollTop: $( '#' + $section ).offset().top },
+//             1000
+//         );
+// });
 
-// Gallery /////////////////////////////////////////////////////////////////////
-// var $galleryitem = $( '.gallery-item' ),
-//     $modal = $( '#modal' ),
-//     id;
-
-// // On click of gallery item
-// $galleryitem.click( this, function(){
-
-//     // Fetch and interpret data for this gallery item
-//     var $this = $( this ),
-//         id = $( this ).data( 'id' ),
-//         data = jsonPortfolio[id];
-
-//     // title
-//     // var title = $( '<h2>', { text: ( data.client ? data.client + ': ' : '' ) + data.title } );
-//     var title = $( '<h2>', { html: data.title } ),
-//         client = $( '<h6>', { class: 'client', html: data.client ? '<small>CLIENT: ' + data.client + '</small>' : '' } ),
-//         agency = $( '<h6>', { class: 'agency', html: data.agency ? '<small>AGENCY: ' + data.agency + '</small>' : '' } );
-//     $modal.find( '.header' ).html( title ).append( client, agency );
-
-//     // meta
-//     var date = $( '<small>', { text: data.date, class: 'date' } ),
-//         cats = $( '<small>', { text: data.cats.join(', '), class: 'cats' } ),
-//         tags = $( '<small>', { text: data.tags.join(', '), class: 'tags' } );
-//     $modal.find( '.meta' ).html( date ).append( cats ).append( tags );
-
-//     // thumbs
-//     $modal.find( '.thumbs' ).html('');
-//     if( data.img.gallery.length >= 2 ){
-//         for ( i = 0; i < data.img.gallery.length; i++ ) {
-//             var thumbImg = $( '<img>', { class: 'img-fluid', src: 'img/portfolio/' +  data.img.gallery[i].thumb } ),
-//                 thumb = $( '<a>', { class: 'thumb', 'data-full': data.img.gallery[i].full, href: 'javascript:void(0)' } ).append( thumbImg );
-//             $modal.find( '.thumbs' ).append( thumb );
-//         }
-//         $modal.find( '.thumbs' ).show( 0 );
-//     } else {
-//         $modal.find( '.thumbs' ).hide( 0 );
-//     }
-
-//     // body
-//     var link = ( data.link ?  $( '<a>', { href: data.link, text: data.link, target: '_blank', class: 'external' } ) : '' );
-//     $modal.find( '.body' ).html( data.description ).append( link );
-
-//     $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + data.img.gallery[0].full + '" />' );
-
-//     // show modal
-//     $modal.modal( 'show' );
-// } );
-
-// On click of gallery item details item (!)
-// $( '.thumbs' ).on( 'click', '.thumb', function(){
-//     var full = $( this ).data( 'full' );
-//     $modal.find( '.image > .wrapper' ).html( '<img src="/wp-content/themes/benmiles-wp/img/portfolio/' + full + '" />' );
-// } );
-
-// Footer social menu //////////////////////////////////////////////////////////
+/* Footer social menu *********************************************************/
 var $footer = $( "footer" ),
     color = {
-        facebook: "#3b5998",
-        twitter: "#1da1f2",
-        instagram: "radial-gradient(circle farthest-corner at 35% 90%, #fec564, rgba(0, 0, 0, 0) 50%),"
-                     + "radial-gradient(circle farthest-corner at 0 140%, #fec564, rgba(0, 0, 0, 0) 50%),"
-                     + "radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, rgba(0, 0, 0, 0) 50%),"
-                     + "radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, rgba(0, 0, 0, 0) 50%),"
-                     + "radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, rgba(0, 0, 0, 0) 50%),"
-                     + "radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, rgba(0, 0, 0, 0) 50%),"
-                     + "radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, rgba(0, 0, 0, 0)),"
-                     + "linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%)",
         linkedin: "#283e4a",
         codepen: "#191919",
         github: "#959da5"
@@ -158,7 +124,7 @@ $( ".social" ).mouseleave( function(){
 function applyAnimations(){
     $( '.animated' ).each( function( i, el ) {
         var el = $( el );
-        var animation = $( el ).data( 'animation');
+        var animation = $( el ).data('animation');
         if ( el.visible( true ) ) {
             el.addClass( animation );
         }
@@ -168,36 +134,137 @@ function applyAnimations(){
 /* ISOTOPE ********************************************************************/
 
 // INIT
-var isotope = new Isotope(
-	'#gallery', 
-	{
-		itemSelector: '.gallery-item',
-		getSortData: {
-			agency: '.agency',
-			client: '.client',
-			date: '[data-date]',
-			title: '.title'
-		},
-		sortAscending: {
-			date: false
-		},
-		masonry: {
-			columnWidth: '.gallery-item.square'
-		},
-		sortBy: 'date',
-		filter: '*'
+function initIsotope(){
+	isotope = new Isotope(
+		'#gallery', 
+		{
+			itemSelector: '.gallery-item',
+			getSortData: {
+				agency: '.agency',
+				client: '.client',
+				date: '[data-date]',
+				title: '.title'
+			},
+			sortAscending: {
+				date: false
+			},
+			masonry: {
+				columnWidth: '.gallery-item.square'
+			},
+			sortBy: 'date',
+			filter: '*'
+		}
+	);
+}
+
+/* BLOB ***************************************************************************/
+// Based on "Build a Smooth, Animated Blob Using SVG + JavaScript" by George Francis
+// https://georgefrancis.dev/writing/build-a-smooth-animated-blob-with-svg-and-js/
+
+const noiseStep = 0.0025;   // rate of speed
+const effect = 10;          // range of motion
+const numPoints = 6;        // number of  points
+const rad = 90;             // radius of circle
+const path = document.querySelector("svg#portrait path");
+const simplex = new SimplexNoise();
+const points = createPoints();
+
+function animateBlob() {
+  path.setAttribute("d", spline(points, 1, true));
+
+  // for every point...
+  for (let i = 0; i < points.length; i++) {
+    const point = points[i];
+
+    // return a pseudo random value between -1 / 1 based on this point's current x, y positions in "time"
+    const nX = noise(point.noiseOffsetX, point.noiseOffsetX);
+    const nY = noise(point.noiseOffsetY, point.noiseOffsetY);
+    // map this noise value to a new value, somewhere between it's original location -20 and it's original location + 20
+    const x = map(nX, -1, 1, point.originX - effect, point.originX + effect);
+    const y = map(nY, -1, 1, point.originY - effect, point.originY + effect);
+
+    // update the point's current coordinates
+    point.x = x;
+    point.y = y;
+
+    // progress the point's x, y values through "time"
+    point.noiseOffsetX += noiseStep;
+    point.noiseOffsetY += noiseStep;
+  }
+
+  requestAnimationFrame(animateBlob);
+};
+
+function map(n, start1, end1, start2, end2) {
+  return ((n - start1) / (end1 - start1)) * (end2 - start2) + start2;
+}
+
+function noise(x, y) {
+  return simplex.noise2D(x, y);
+}
+
+function createPoints() {
+  const points = [];
+  // used to equally space each point around the circle
+  const angleStep = (Math.PI * 2) / numPoints;
+  for (let i = 1; i <= numPoints; i++) {
+    // x & y coordinates of the current point
+    const theta = i * angleStep;
+
+    const x = 100 + Math.cos(theta) * rad;
+    const y = 100 + Math.sin(theta) * rad;
+
+    // store the point's position
+    points.push({
+      x: x,
+      y: y,
+      // we need to keep a reference to the point's original point for when we modulate the values later
+      originX: x,
+      originY: y,
+      noiseOffsetX: Math.random() * 1000,
+      noiseOffsetY: Math.random() * 1000
+    });
+  }
+
+  return points;
+}
+
+/* Home > Portfolio: Video Thumbnails */
+let portfolioItems = document.querySelectorAll('.portfolio-item.has-video');
+
+/* Add event listeners to the Portfolio Items so that their videos only play on hover/mouseenter, and pause on mouseleave */
+function controlVideoThumbnails () {
+	for(let portfolioItem of portfolioItems){
+		let video = portfolioItem.querySelector('.video');
+		portfolioItem.addEventListener('mouseenter', function(e){video.play()});
+		portfolioItem.addEventListener('mouseleave', function(e){video.pause()});
 	}
-);
+}
+
+/* Resize videos to match their corresponding image thumbnails, to avoid a "jump" when switching between them */
+function resizeVideoThumbnails () {
+	for(let portfolioItem of portfolioItems){
+		let image = portfolioItem.querySelector('.image');
+		let size = image.getBoundingClientRect();
+		let video = portfolioItem.querySelector('.video');
+		video.setAttribute('style','height: ' + (Math.round(size.height * 100) / 100) + 'px; width: ' + (Math.round(size.width * 100) / 100) + 'px;');
+	}
+}
+
 
 // FILTER
-var isotopeFilterBtns = document.getElementsByClassName('btn-filter');
+let isotopeFilterBtns = document.getElementsByClassName('btn-filter');
+for(let isotopeFilterBtn of isotopeFilterBtns){
+	isotopeFilterBtn.addEventListener('click', isotopeFilter);
+}
 function isotopeFilter(el){
+	console.log(event.target);
 	// clear other btns' active states
-	for(isotopeFilterBtn of isotopeFilterBtns){
+	for(let isotopeFilterBtn of isotopeFilterBtns){
 		isotopeFilterBtn.classList.remove( 'active' );
 	}
 	// set this btn active
-	el.classList.add( 'active' );
+	event.target.classList.add( 'active' );
 	// set filter to btn's data-filter value
 	var filter = el.getAttribute( 'data-filter' );
 	// filter
@@ -205,7 +272,7 @@ function isotopeFilter(el){
 };
 
 // SORT
-var isotopeSortBtns = document.getElementsByClassName('btn-sort');
+let isotopeSortBtns = document.getElementsByClassName('btn-sort');
 function isotopeSort(el){
 	// clear other btns' active states
 	for(isotopeSortBtn of isotopeSortBtns){
@@ -218,3 +285,17 @@ function isotopeSort(el){
 	// sort
 	isotope.arrange( { sortBy: sort } );
 };
+
+// NAV TOGGLER
+
+
+navToggle.addEventListener('click', toggleNav);
+function toggleNav(){
+	let menuIsOpen = document.body.classList.toggle('menu-open');
+	navToggle.setAttribute('aria-expanded', menuIsOpen);
+}
+
+// TODO: Scroll from top to bottom slowly (for recording video thumbnails)
+// let footer = document.getElementById('footer');
+// console.log(footer);
+// footer.scrollIntoView(true,{behavior:'smooth',block:'center',inline:'center'});
