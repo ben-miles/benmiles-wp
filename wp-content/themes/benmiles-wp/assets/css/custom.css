@@ -1329,5 +1329,10 @@ svg:hover #color {
 
 #error-404 {
 	padding: calc( var(--header-height) + 30px) 0;
-	min-height: calc( 100vh - var(--header-height) );
+	min-height: 100vh;
+}
+@media only screen and (min-width: 768px) {
+	#error-404 {
+    	height: 100vh;
+	}
 }

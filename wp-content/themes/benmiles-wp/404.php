@@ -8,8 +8,8 @@ get_header();
 
 <!-- 404 -->
 <section id="error-404">
-	<div class="container">
-		<div class="row">
+	<div class="container-new" style="height:100%;">
+		<div class="row-new">
 			<div class="column column-1">
 				
 				<!-- header -->
