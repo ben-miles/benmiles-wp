@@ -47,6 +47,7 @@
 		<!-- Navigation -->
 		<nav id="nav">
 			<ul>
+			<?php if(is_front_page()){ ?>
 				<li class="nav-item">
 					<a class="nav-link" href="#about" target="_self">About</a>
 				</li>
@@ -56,6 +57,17 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#footer" target="_self">Footer</a>
 				</li>
+			<?php } else {; ?>
+				<li class="nav-item">
+					<a class="nav-link" href="/about" target="_self">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/portfolio" target="_self">Portfolio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/footer" target="_self">Footer</a>
+				</li>
+			<?php } ?>
 			</ul>
 		</nav>
 		
