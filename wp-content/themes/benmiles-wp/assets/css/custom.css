@@ -986,6 +986,124 @@ footer .social-media svg {
 }
 
 /* ABOUT */
+/*------------------------------------------------------------------------------
+	Portfolio-Item (Single Page)
+------------------------------------------------------------------------------*/
+
+#single-portfolio {
+	padding: calc( var(--header-height) + 30px) 0;
+}
+
+#single-portfolio span.label {
+	display: block;
+	font-size: 85%;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+} 
+
+/* Meta */
+#single-portfolio .post-meta {
+	color: #eee;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 30px;
+	justify-content: center;
+	line-height: 1.4em;
+	margin: 0 auto 30px;
+	padding: 25px 30px;
+	width: 100%;
+}
+#single-portfolio .post-meta-item {
+	width: 100%;
+	text-align: center;
+}
+@media only screen and ( min-width: 768px ){
+	#single-portfolio .post-meta-item {
+		width: auto;
+		text-align: center;
+	}
+}
+
+/* Thumbnail */
+#single-portfolio .wp-post-image {
+	width: 100%; 
+	height: auto;
+	margin-bottom: 20px;
+}
+
+/* Gallery */
+#single-portfolio .portfolio {
+	width: 100%;
+}
+#single-portfolio .portfolio-item img {
+	height: auto;
+	width: 100%;
+}
+
+/* Text */
+#single-portfolio .content,
+#single-portfolio .categories,
+#single-portfolio .tags {
+	background-color: #3e4047;
+	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
+	color: #eee;
+	line-height: 1.4em;
+	margin: 0 auto 30px;
+	padding: 25px 30px;
+	width: 100%;
+}
+#single-portfolio .content p {
+	font-weight: 200;
+}
+#single-portfolio .content p:first-of-type {
+	margin-top: 0;
+}
+#single-portfolio .content p:last-of-type {
+	margin-bottom: 0;
+}
+#single-portfolio .post-categories,
+#single-portfolio .post-tags {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 25px 10px;
+	list-style: none;
+	margin: 16px 0;
+	padding: 0;
+}
+#single-portfolio .post-categories a,
+#single-portfolio .post-tags a {
+	background: #ccc;
+	border-radius: 50px;
+	color: #222;
+	padding: 5px 15px;
+}
+
+/* Post Navigation */
+.post-navigation {
+	margin: 50px 0;
+	width: 100%;
+}
+.post-navigation .nav-links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.post-navigation .nav-links .nav-previous, 
+.post-navigation .nav-links .nav-next {
+	width: 50%;
+}
+.post-navigation .nav-links .nav-previous {
+	text-align: left;
+}
+.post-navigation .nav-links .nav-next {
+	text-align: right;
+}
+.post-navigation .nav-links a {
+	color: #fff;
+}
 
 #about {
 	background-attachment: scroll;
