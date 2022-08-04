@@ -51,7 +51,7 @@
 }
 
 /*******************************************************************************
-  VARIABLES
+	VARIABLES
 *******************************************************************************/
 :root {
 	--header-height: 70px;
@@ -70,13 +70,13 @@
 }
 
 /*******************************************************************************
-  RESET
+	RESET
 *******************************************************************************/
 *, 
 ::after, 
 ::before {
-	-webkit-box-sizing: inherit;
-    box-sizing: inherit;
+	-webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 body {
 	margin: 0;
@@ -86,7 +86,39 @@ svg:not(:root) {
 }
 
 /*******************************************************************************
-  CONTAINER
+	ACCESSIBILITY
+*******************************************************************************/
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+/*******************************************************************************
+	CONTAINER
 *******************************************************************************/
 .container-new {
 	margin: 0 auto;
@@ -176,7 +208,7 @@ svg:not(:root) {
 }
 
 /*******************************************************************************
-  FONTS
+	FONTS
 *******************************************************************************/
 
 html,
@@ -201,7 +233,7 @@ b, strong {
 }
 
 /*******************************************************************************
-  UI
+	UI
 *******************************************************************************/
 
 /*	Links --------------------------------------------------------------------*/
@@ -232,89 +264,8 @@ a:hover {
     color: #333;
 }
 
-/*	Cards ---------------------------------------------------------------------*/
-/* .card {
-    margin-bottom: 2.5rem;
-    border-radius: 0;
-}
-
-.card-img-top-wrapper {
-    border-radius: .25rem .25rem 0 0;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
-}
-
-.card-img-top {
-    width: 100%;
-    position: absolute;
-    top: -60px;
-}
-
-.card-header {
-    display: flex;
-	flex-direction: row;
-	align-items: center;
-    padding: 1.25rem 1.25rem 1.5rem;
-}
-
-.card-header .brand {
-	margin-right: 10px;
-	line-height: 1;
-}
-
-.card-header.card-2-col {
-    justify-content: space-between;
-}
-
-.card-header h1,
-.card-header h2,
-.card-header h3,
-.card-header h4,
-.card-header h5,
-.card-header h6 {
-    display: inline-block;
-    margin: 0;
-}
-
-.card-footer {
-    padding: 1.75rem .25rem 2rem;
-}
-
-.card-columns .card {
-	margin-bottom: 1.25rem;
-}
-
-@media (min-width: 576px) {
-    .card-columns {
-        -webkit-column-count: 1;
-        -moz-column-count: 1;
-        column-count: 1;
-    }
-}
-
-@media (min-width: 768px) {
-    .card-columns {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
-}
-
-@media (min-width: 992px) {
-    .card-columns {
-        -webkit-column-count: 3;
-        -moz-column-count: 3;
-        column-count: 3;
-    }
-}
-
-.card .list-group-item {
-    background-color: #f7f7f9;
-} */
-
 /*******************************************************************************
-  COMMON
+	COMMON
 *******************************************************************************/
 .social {
     display: flex;
@@ -358,7 +309,7 @@ body.portfolio .meta > .tags:before {
 }
 
 /*------------------------------------------------------------------------------
-    HTML, BODY, SECTIONs
+	HTML, BODY, SECTIONs
 ------------------------------------------------------------------------------*/
 html {
     font-size: 16px;
@@ -623,7 +574,7 @@ header .container-new {
 }
 
 /*------------------------------------------------------------------------------
-    Footer
+	Footer
 ------------------------------------------------------------------------------*/
 
 footer {
@@ -638,13 +589,8 @@ footer .social-media svg {
 	width: 50px;
 }
 
-
-/*******************************************************************************
-  SECTION-SPECIFIC
-*******************************************************************************/
-
 /*------------------------------------------------------------------------------
-    Intro
+	Home Page > Intro
 ------------------------------------------------------------------------------*/
 
 #intro {
@@ -739,7 +685,7 @@ footer .social-media svg {
 }
 
 /*------------------------------------------------------------------------------
-    Frontpage Portofolio 
+	Home Page > Featured Portfolio
 ------------------------------------------------------------------------------*/
 .category {
 	margin-bottom: 50px;
@@ -829,7 +775,7 @@ footer .social-media svg {
 }
 
 /*------------------------------------------------------------------------------
-    Portofolio Page
+	Portfolio Page
 ------------------------------------------------------------------------------*/
 
 #portfolio {
@@ -985,7 +931,6 @@ footer .social-media svg {
     }
 }
 
-/* ABOUT */
 /*------------------------------------------------------------------------------
 	Portfolio-Item (Single Page)
 ------------------------------------------------------------------------------*/
@@ -1105,6 +1050,10 @@ footer .social-media svg {
 	color: #fff;
 }
 
+/*------------------------------------------------------------------------------
+	Home Page > About
+------------------------------------------------------------------------------*/
+
 #about {
 	background-attachment: scroll;
     background-color: #222;
@@ -1187,6 +1136,10 @@ footer .social-media svg {
 .svg-row .svg svg {
 	width: 100%;
 	height: auto;
+	transition: all .2s ease-in-out;
+}
+.svg-row .svg svg:hover {
+	transform: scale(1.25);
 }
 
 /* SVG: Hover */
@@ -1206,7 +1159,7 @@ svg:hover #color {
 }
 
  
-/* timeline based on https://bootsnipp.com/snippets/featured/timeline-responsive */
+/* Timeline, based on https://bootsnipp.com/snippets/featured/timeline-responsive */
 .timeline {
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
@@ -1368,34 +1321,3 @@ svg:hover #color {
       width: 46%;
     }
 }
-
-/* Screen Reader Text */
-.screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	word-wrap: normal !important;
-}
-.screen-reader-text:focus {
-	background-color: #eee;
-	clip: auto !important;
-	clip-path: none;
-	color: #444;
-	display: block;
-	font-size: 1em;
-	height: auto;
-	left: 5px;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	text-decoration: none;
-	top: 5px;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar. */
-}
- 

@@ -95,14 +95,6 @@ function getPosts($category){
 		$the_video = get_field( 'home_page_video' );
 		$the_external_url = get_field( 'url' );
 		$the_permalink = get_permalink();
-		// $the_tags = '<ul>';
-		// $tags = get_the_tags();
-		// foreach($tags as $tag) {
-		// 	$the_tags .= '<li>' . $tag->name . '</li>'; 
-		// }
-		// $the_tags .= '</ul>';
-
-		// Output as HTML
 		?>
 		<div class="column column-<?php echo $loop->post_count; ?>">
 			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $i; ?>s;">
