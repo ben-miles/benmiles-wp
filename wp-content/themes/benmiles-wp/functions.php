@@ -59,12 +59,12 @@ if( !is_admin() ){
 
 }
 
-/*******************************************************************************
+/*
 * displaySVG
 * Generates a responsive SVG item from a filename
 * Based on https://stackoverflow.com/a/30000684/6853842
-*** $arrayPortfolioPiece: The input array.
-*******************************************************************************/
+* $arrayPortfolioPiece: The input array.
+*/
 function displaySVG( $SVG = '', $delay = 0 ){
     $file = strtolower( str_replace( array( ' ', '!' ), '', $SVG ) );
     $svg_file = file_get_contents( 'wp-content/themes/benmiles-wp/assets/icons/' . $file . '.svg' );
@@ -74,6 +74,10 @@ function displaySVG( $SVG = '', $delay = 0 ){
     echo '<div class="svg animated ' . $file . '" title="' . $SVG . '" alt="' . $SVG . '" style="animation-delay: ' . $delay . 's;" data-animation="fadeInUp">' . $svg_file_new . '</div>';
 }
 
+/*
+* getPosts
+* Gets and formats Portfolio Items for display
+*/
 function getPosts($category){
 	$args = array(
 		'category_name' => 'featured+' . $category,
@@ -110,7 +114,7 @@ function getPosts($category){
 					<a href="<?php echo $the_permalink; ?>" target="_self">
 						<h6 class="title"><?php echo $the_title; ?></h6>
 					</a>
-					<!--<div class="date"><?php echo $the_date; ?></div>-->
+					<!--<div class="date"><?php //echo $the_date; ?></div>-->
 					<p class="excerpt"><?php echo $the_excerpt; ?></p>
 					<?php if($the_external_url){ ?>
 					<a href="<?php echo $the_external_url; ?>" target="_blank" class="external-link"><?php echo mb_strimwidth( str_replace( "https://", "", $the_external_url ), 0, 25, "..."); ?></a>
@@ -123,25 +127,5 @@ function getPosts($category){
 	}
 	wp_reset_postdata();
 }
-
-/**
- * Based on "Array to string," by alexgordon25, via https://support.advancedcustomfields.com/forums/topic/select-field-array-problem/
- * This function is a workaround to ACF Select fields that sometimes output an array instead of a string.
- * When passed an array, it returns that array's first item as a string. 
- * @param array $array Array value.
- * @return string value as string.
- */
-function arr2str( $array ) {
-	if ( empty( $array ) ) {
-		return;
-	}
-	if ( is_array( $array ) ) {
-		$string = end($array);
-	} else {
-		$string = $array;
-	}
-	return $string;
-}
-
 
 ?>

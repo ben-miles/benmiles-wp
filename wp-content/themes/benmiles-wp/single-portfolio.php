@@ -25,10 +25,10 @@ get_header();
 			<div class="column column-1">
 				<div class="post-meta">
 					<div class="post-meta-item date"><span class="label">Date </span><?php the_date(); ?></div>
-					<?php if( post_custom( 'agency' )[0] ){ ?>
-					<div class="post-meta-item agency"><span class="label">Agency </span><?php echo arr2str(post_custom( 'agency' )); //some items output as string, some as array ?></div>
-					<?php } if( post_custom( 'client' )[0] ){ ?>
-					<div class="post-meta-item client"><span class="label">Client </span><?php echo arr2str(post_custom( 'client' )); ?></div>
+					<?php if( get_field( 'agency' ) ){ ?>
+					<div class="post-meta-item agency"><span class="label">Agency </span><?php echo get_field( 'agency' ); //some items output as string, some as array ?></div>
+					<?php } if( get_field( 'client' ) ){ ?>
+					<div class="post-meta-item client"><span class="label">Client </span><?php echo get_field( 'client' ); ?></div>
 					<?php } ?>
 				</div>
 			</div>
