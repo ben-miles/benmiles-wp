@@ -706,7 +706,7 @@ footer .social-media svg {
 	display: flex;
     flex-direction: column;
     height: 100%;
-	line-height: 1.4em;
+	line-height: 1.4;
 	margin-bottom: 30px;
 	transition: background-color, box-shadow .125s ease-in-out;
 	width: 100%;
@@ -745,7 +745,7 @@ footer .social-media svg {
 .portfolio-item .title { 
 	font-size: 22px;
 	font-weight: 600;
-	line-height: 1.4em;
+	line-height: 1.4;
 	margin-bottom: 10px;
 	text-align: center;
 }
@@ -772,7 +772,7 @@ footer .social-media svg {
 .portfolio-item .excerpt {
 	text-align: center;
 	font-weight: 200;
-	line-height: 1.4em;
+	line-height: 1.4;
 }
 
 /*------------------------------------------------------------------------------
@@ -956,7 +956,7 @@ footer .social-media svg {
 	flex-wrap: wrap;
 	gap: 30px;
 	justify-content: center;
-	line-height: 1.4em;
+	line-height: 1.4;
 	margin: 0 auto 30px;
 	padding: 25px 30px;
 	width: 100%;
@@ -995,7 +995,7 @@ footer .social-media svg {
 	background-color: #3e4047;
 	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
 	color: #eee;
-	line-height: 1.4em;
+	line-height: 1.4;
 	margin: 0 auto 30px;
 	padding: 25px 30px;
 	width: 100%;
@@ -1089,7 +1089,7 @@ footer .social-media svg {
 	background-color: #3e4047;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
     color: #eee;
-    line-height: 1.4em;
+    line-height: 1.4;
 	margin: 0 auto 30px;
 	padding: 25px 30px;
 }
@@ -1235,7 +1235,7 @@ svg:hover #color {
     width: 50px;
     height: 50px;
     line-height: 50px;
-    font-size: 1.4em;
+    font-size: 1.4;
     text-align: center;
     position: absolute;
     top: 16px;
