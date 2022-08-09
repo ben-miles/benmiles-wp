@@ -25,8 +25,11 @@ get_header();
 			<div class="column column-1">
 				<div class="post-meta">
 					<div class="post-meta-item date"><span class="label">Date </span><?php the_date(); ?></div>
-					<div class="post-meta-item agency"><span class="label">Agency </span><?php echo post_custom( $key = 'agency' ); ?></div>
-					<div class="post-meta-item client"><span class="label">Client </span><?php echo post_custom( $key = 'client' ); ?></div>
+					<?php if( post_custom( 'agency' )[0] ){ ?>
+					<div class="post-meta-item agency"><span class="label">Agency </span><?php echo arr2str(post_custom( 'agency' )); //some items output as string, some as array ?></div>
+					<?php } if( post_custom( 'client' )[0] ){ ?>
+					<div class="post-meta-item client"><span class="label">Client </span><?php echo arr2str(post_custom( 'client' )); ?></div>
+					<?php } ?>
 				</div>
 			</div>
 				
@@ -80,9 +83,11 @@ get_header();
 			
 			<!-- Text -->
 			<div class="column column-2" style="justify-content: flex-start;">
+			<?php if(get_the_content()){ ?>
 				<div class="content animated" style="animation-delay: .1s;" data-animation="fadeIn">
 					<?php the_content(); ?>
 				</div>
+			<?php } ?>
 				<div class="categories animated" style="animation-delay: .2s;" data-animation="fadeIn">
 					<h4>Categories</h4>
 					<?php the_category(); ?>

@@ -123,4 +123,25 @@ function getPosts($category){
 	}
 	wp_reset_postdata();
 }
+
+/**
+ * Based on "Array to string," by alexgordon25, via https://support.advancedcustomfields.com/forums/topic/select-field-array-problem/
+ * This function is a workaround to ACF Select fields that sometimes output an array instead of a string.
+ * When passed an array, it returns that array's first item as a string. 
+ * @param array $array Array value.
+ * @return string value as string.
+ */
+function arr2str( $array ) {
+	if ( empty( $array ) ) {
+		return;
+	}
+	if ( is_array( $array ) ) {
+		$string = end($array);
+	} else {
+		$string = $array;
+	}
+	return $string;
+}
+
+
 ?>
