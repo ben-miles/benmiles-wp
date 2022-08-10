@@ -940,7 +940,7 @@ footer .social-media svg {
 	padding: calc( var(--header-height) + 30px) 0;
 }
 
-#single-portfolio span.label {
+.label {
 	display: block;
 	font-size: 85%;
 	font-weight: 600;

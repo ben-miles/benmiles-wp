@@ -24,11 +24,11 @@ get_header();
 			<!-- Meta -->
 			<div class="column column-1">
 				<div class="post-meta">
-					<div class="post-meta-item date"><span class="label">Date </span><?php the_date(); ?></div>
+					<div class="post-meta-item date"><h4 class="label">Date </h4><?php the_date(); ?></div>
 					<?php if( get_field( 'agency' ) ){ ?>
-					<div class="post-meta-item agency"><span class="label">Agency </span><?php echo get_field( 'agency' ); //some items output as string, some as array ?></div>
+					<div class="post-meta-item agency"><h4 class="label">Agency </h4><?php echo get_field( 'agency' ); ?></div>
 					<?php } if( get_field( 'client' ) ){ ?>
-					<div class="post-meta-item client"><span class="label">Client </span><?php echo get_field( 'client' ); ?></div>
+					<div class="post-meta-item client"><h4 class="label">Client </h4><?php echo get_field( 'client' ); ?></div>
 					<?php } ?>
 				</div>
 			</div>
@@ -89,11 +89,11 @@ get_header();
 				</div>
 			<?php } ?>
 				<div class="categories animated" style="animation-delay: .2s;" data-animation="fadeIn">
-					<h4>Categories</h4>
+					<h4 class="label">Categories</h4>
 					<?php the_category(); ?>
 				</div>
 				<div class="tags animated" style="animation-delay: .3s;" data-animation="fadeIn">
-					<h4>Tags</h4>
+					<h4 class="label">Tags</h4>
 					<?php the_tags('<ul class="post-tags"><li>','</li><li>','</li></ul>'); ?>
 				</div>
 			</div>
@@ -103,8 +103,8 @@ get_header();
 				<?php 
 				the_post_navigation(
 					array(
-						'next_text' => '<span class="label">Next: </span>%title',
-						'prev_text' => '<span class="label">Previous: </span>%title',
+						'next_text' => '<h4 class="label">Next: </h4>%title',
+						'prev_text' => '<h4 class="label">Previous: </h4>%title',
 						)
 					);
 					?>
