@@ -84,19 +84,19 @@ window.onresize = function(e){
 // });
 
 /* Footer social menu *********************************************************/
-var $footer = $( "footer" ),
-    color = {
-        linkedin: "#283e4a",
-        codepen: "#191919",
-        github: "#959da5"
-    };
-$( "a" ).hover( function(){
-  var thisSocial = $( this ).attr( "class" );
-  $footer.css( "background", color[thisSocial] );
-} );
-$( ".social" ).mouseleave( function(){
-  $footer.css( "background", "#111111" );
-} );
+// var $footer = $( "footer" ),
+//     color = {
+//         linkedin: "#283e4a",
+//         codepen: "#191919",
+//         github: "#959da5"
+//     };
+// $( "a" ).hover( function(){
+//   var thisSocial = $( this ).attr( "class" );
+//   $footer.css( "background", color[thisSocial] );
+// } );
+// $( ".social" ).mouseleave( function(){
+//   $footer.css( "background", "#111111" );
+// } );
 
 /* FUNCTIONS... ***************************************************************/
 
