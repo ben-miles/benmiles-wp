@@ -18,16 +18,6 @@ if( !is_admin() ){
 	} 
 	add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
-	// Override WordPress core's default jQuery
-	function override_jquery() {
-		if( !is_admin()){
-			wp_deregister_script( 'jquery' );
-			wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', [], '3.2.1', true );
-			wp_enqueue_script( 'jquery' );
-		}
-	}
-	add_action('init', 'override_jquery');
-
 	// Make sure the main script gets a `type` attribute set to `module`
 	function add_type_attribute($tag, $handle, $src) {
 		// if not your script, do nothing and return original $tag
@@ -45,7 +35,6 @@ if( !is_admin() ){
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css',false, '','all' );
 
 	// Scripts
-	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.2.1', true );
 	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/js/imagesloaded.min.js', array(), '4.1.3', true );
 	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/js/isotope.min.js', array(), '3.0.4', true );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), '', true );
