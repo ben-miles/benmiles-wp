@@ -66,23 +66,6 @@ window.onresize = function(e){
 
 };
 
-/* ON CLICK... ****************************************************************/
-// Auto-Scrolling Links/Buttons
-// $( '.scroll' ).click( function( e ) {
-//     // Prevent anchor click from following href attribute
-//     e.preventDefault;
-//     // Get clicked link/button's destination section from data-section attribute
-//     var $section = $( this ).data( 'section' );
-//     // Close the mobile menu
-//     $( '#navbarCollapse' ).collapse( 'hide' );
-//     // Scroll to the section from the link's data-section attribute
-//     $( 'html, body' )
-//         .animate(
-//             { scrollTop: $( '#' + $section ).offset().top },
-//             1000
-//         );
-// });
-
 /* Footer social menu *********************************************************/
 // var $footer = $( "footer" ),
 //     color = {
