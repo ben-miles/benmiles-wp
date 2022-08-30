@@ -66,38 +66,30 @@ window.onresize = function(e){
 
 };
 
-/* FUNCTIONS... ***************************************************************/
+/* isScrolledIntoView *********************************************************
+	Returns true if a given Element is anywhere inside the viewport 
+	Based on https://stackoverflow.com/a/22480938/6853842 */
 
-// Checks if an element is visible (within the viewport)
-(function($) {
-/** Copyright 2012, Digital Fusion
-* Licensed under the MIT license.
-* http://teamdf.com/jquery-plugins/license/
-* @author Sam Sehnert
-*/
-  $.fn.visible = function(partial) {
-      var $t            = $(this),
-          $w            = $(window),
-          viewTop       = $w.scrollTop(),
-          viewBottom    = viewTop + $w.height(),
-          _top          = $t.offset().top,
-          _bottom       = _top + $t.height(),
-          compareTop    = partial === true ? _bottom : _top,
-          compareBottom = partial === true ? _top : _bottom;
-    return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
-  };
-})(jQuery);
-
-// Applys animation-type class to a visible element with a data-animation attribute
-function applyAnimations(){
-    $( '.animated' ).each( function( i, el ) {
-        var el = $( el );
-        var animation = $( el ).data('animation');
-        if ( el.visible( true ) ) {
-            el.addClass( animation );
-        }
-    } );
+function isScrolledIntoView(el) {
+	var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+    var isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
 }
+
+/* applyAnimations ************************************************************
+	Applies animation class to an Element */
+
+function applyAnimations(){
+	var animatedElements = document.getElementsByClassName('animated');
+	for(const animatedElement of animatedElements){
+		if(isScrolledIntoView(animatedElement)){
+			var animation = animatedElement.getAttribute('data-animation');
+            animatedElement.classList.add( animation );
+		}	
+	};
+};
 
 /* ISOTOPE ********************************************************************/
 
@@ -125,9 +117,9 @@ function initIsotope(){
 	);
 }
 
-/* BLOB ***************************************************************************/
-// Based on "Build a Smooth, Animated Blob Using SVG + JavaScript" by George Francis
-// https://georgefrancis.dev/writing/build-a-smooth-animated-blob-with-svg-and-js/
+/* BLOB ***************************************************************************
+	Based on "Build a Smooth, Animated Blob Using SVG + JavaScript" by George Francis
+	https://georgefrancis.dev/writing/build-a-smooth-animated-blob-with-svg-and-js/ */
 
 const noiseStep = 0.0025;   // rate of speed
 const effect = 10;          // range of motion
