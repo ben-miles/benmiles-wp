@@ -25,33 +25,6 @@ get_header();
     <div class="section-body">
         <div class="container">
 
-            <!-- controls -->
-            <div class="row" id="row-buttons">
-                <div class="col">
-                    <div class="btn-toolbar" role="toolbar" aria-label="Gallery Toolbar">
-                        <div class="btn-group btn-group-filter animated" role="group" aria-label="Gallery Filter Buttons" data-animation="fadeIn" style="animation-delay: 0.2s;">
-                            <span class="input-group-addon">Show:&nbsp;</span>
-                            <button type="button" class="btn btn-default btn-filter active" data-filter="*">All</button>
-                            <button type="button" class="btn btn-default btn-filter" data-filter=".design">Design</button>
-                            <button type="button" class="btn btn-default btn-filter" data-filter=".logo">Logo</button>
-                            <button type="button" class="btn btn-default btn-filter" data-filter=".print">Print</button>
-                            <button type="button" class="btn btn-default btn-filter" data-filter=".diy">DIY</button>
-                            <button type="button" class="btn btn-default btn-filter" data-filter=".website">Website</button>
-                            <!-- <button type="button" class="btn btn-default btn-filter" data-filter=".featured">Featured</button> -->
-                        </div>
-                        <div class="btn-group btn-group-sort animated" role="group" aria-label="Gallery Sort Buttons" data-animation="fadeIn" style="animation-delay: 0.2s;">
-                            <span class="input-group-addon">Sort:&nbsp;</span>
-                            <button type="button" class="btn btn-default btn-sort active" data-sort="date">Date</button>
-                            <button type="button" class="btn btn-default btn-sort" data-sort="title">Title</button>
-                            <button type="button" class="btn btn-default btn-sort" data-sort="agency">Agency</button>
-                            <button type="button" class="btn btn-default btn-sort" data-sort="client">Client</button>
-                            <!-- <button type="button" class="btn active btn-sort btn-default" data-sort="original">Original</button> -->
-                            <!-- <button type="button" class="btn btn-default" data-sort="random">Random</button> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- / controls -->
 
 			<!-- gallery -->
 			<div class="row" id="gallery" style="height:auto !important;">

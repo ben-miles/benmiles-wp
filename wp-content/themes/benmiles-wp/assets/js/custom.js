@@ -3,7 +3,7 @@ import { spline } from "/wp-content/themes/benmiles-wp/assets/js/spline.min.js";
 import SimplexNoise from "/wp-content/themes/benmiles-wp/assets/js/simplex-noise.min.js";
 
 /* VARS ***********************************************************************/
-let isotope;
+// let isotope;
 let navToggle = document.getElementById('nav-toggle');
 let navLinks = document.getElementsByClassName('nav-link');
 
@@ -21,12 +21,6 @@ window.onload = function(e){
 		resizeVideoThumbnails();
 		// Add event listeners to video thumbnails
 		controlVideoThumbnails();
-	}
-
-	// Portfolio page only
-	if(document.body.classList.contains('portfolio')){
-		// Initialize Isotope
-		initIsotope();
 	}
 
 };
@@ -90,32 +84,6 @@ function applyAnimations(){
 		}	
 	};
 };
-
-/* ISOTOPE ********************************************************************/
-
-// INIT
-function initIsotope(){
-	isotope = new Isotope(
-		'#gallery', 
-		{
-			itemSelector: '.gallery-item',
-			getSortData: {
-				agency: '.agency',
-				client: '.client',
-				date: '[data-date]',
-				title: '.title'
-			},
-			sortAscending: {
-				date: false
-			},
-			masonry: {
-				columnWidth: '.gallery-item.square'
-			},
-			sortBy: 'date',
-			filter: '*'
-		}
-	);
-}
 
 /* BLOB ***************************************************************************
 	Based on "Build a Smooth, Animated Blob Using SVG + JavaScript" by George Francis
@@ -211,44 +179,7 @@ function resizeVideoThumbnails () {
 	}
 }
 
-
-// FILTER
-let isotopeFilterBtns = document.getElementsByClassName('btn-filter');
-for(let isotopeFilterBtn of isotopeFilterBtns){
-	isotopeFilterBtn.addEventListener('click', isotopeFilter);
-}
-function isotopeFilter(el){
-	console.log(event.target);
-	// clear other btns' active states
-	for(let isotopeFilterBtn of isotopeFilterBtns){
-		isotopeFilterBtn.classList.remove( 'active' );
-	}
-	// set this btn active
-	event.target.classList.add( 'active' );
-	// set filter to btn's data-filter value
-	var filter = el.getAttribute( 'data-filter' );
-	// filter
-	isotope.arrange( { filter: filter } );
-};
-
-// SORT
-let isotopeSortBtns = document.getElementsByClassName('btn-sort');
-function isotopeSort(el){
-	// clear other btns' active states
-	for(isotopeSortBtn of isotopeSortBtns){
-		isotopeSortBtn.classList.remove('active');
-	}
-	// set this btn active
-	el.classList.add( 'active' );
-	// set sort to btn's data-sort value
-	var sort = el.getAttribute( 'data-sort' );
-	// sort
-	isotope.arrange( { sortBy: sort } );
-};
-
 // NAV TOGGLER
-
-
 navToggle.addEventListener('click', toggleNav);
 function toggleNav(){
 	let menuIsOpen = document.body.classList.toggle('menu-open');
