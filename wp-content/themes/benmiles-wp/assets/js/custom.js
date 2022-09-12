@@ -13,10 +13,14 @@ window.onload = function(e){
 	// Apply animations
     applyAnimations();
 
-	// Home page only
-	if(document.body.classList.contains('home')){
+	// Home only
+	if( document.body.classList.contains('home') ){
 		// Animated blob effect on portrait
 		animateBlob();
+	}
+
+	// Home, Portfolio & Archives
+	if( document.body.classList.contains('home') || document.body.classList.contains('portfolio') || document.body.classList.length == 0 ){
 		// Update video sizes
 		resizeVideoThumbnails();
 		// Add event listeners to video thumbnails
@@ -43,8 +47,8 @@ window.onscroll = function(e){
 /* ON RESIZE... ***************************************************************/
 window.onresize = function(e){
 
-	// Home page only
-	if (document.body.classList.contains('home')) {
+	// Home, Portfolio & Archives
+	if( document.body.classList.contains('home') || document.body.classList.contains('portfolio') || document.body.classList.length == 0 ){
 		// Update video thumbnails
 		resizeVideoThumbnails();
 	}
@@ -157,7 +161,7 @@ function createPoints() {
   return points;
 }
 
-/* Home > Portfolio: Video Thumbnails */
+/* Portfolio Item: Video Thumbnails */
 let portfolioItems = document.querySelectorAll('.portfolio-item.has-video');
 
 /* Add event listeners to the Portfolio Items so that their videos only play on hover/mouseenter, and pause on mouseleave */
