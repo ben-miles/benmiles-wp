@@ -79,7 +79,7 @@ function getPortfolioItems($category=null,$tag=null,$maxItems=-1){
 		$the_title = get_the_title();
 		$the_date = get_the_date();
 		$the_excerpt = get_the_excerpt();
-		$the_thumbnail = wp_get_attachment_image( get_field('home_page_thumbnail'), 'medium', false, ['class' => 'image'] );
+		$the_thumbnail = get_the_post_thumbnail( null, 'medium', ['class' => 'thumbnail-image'] );
 		$the_video = get_field( 'home_page_video' );
 		$the_external_url = get_field( 'url' );
 		$the_permalink = get_permalink();
@@ -90,7 +90,7 @@ function getPortfolioItems($category=null,$tag=null,$maxItems=-1){
 				<a href="<?php echo $the_permalink; ?>" target="_self" class="media">
 					<?php echo $the_thumbnail;
 					if($the_video){ ?>
-					<video loop muted preload="none" class="video">
+					<video loop muted preload="none" class="thumbnail-video">
 						<source src="<?php echo $the_video; ?>" type="video/webm">
 					</video>
 					<?php } ?>

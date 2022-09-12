@@ -167,7 +167,7 @@ let portfolioItems = document.querySelectorAll('.portfolio-item.has-video');
 /* Add event listeners to the Portfolio Items so that their videos only play on hover/mouseenter, and pause on mouseleave */
 function controlVideoThumbnails () {
 	for(let portfolioItem of portfolioItems){
-		let video = portfolioItem.querySelector('.video');
+		let video = portfolioItem.querySelector('.thumbnail-video');
 		portfolioItem.addEventListener('mouseenter', function(e){video.play()});
 		portfolioItem.addEventListener('mouseleave', function(e){video.pause()});
 	}
@@ -176,10 +176,12 @@ function controlVideoThumbnails () {
 /* Resize videos to match their corresponding image thumbnails, to avoid a "jump" when switching between them */
 function resizeVideoThumbnails () {
 	for(let portfolioItem of portfolioItems){
-		let image = portfolioItem.querySelector('.image');
-		let size = image.getBoundingClientRect();
-		let video = portfolioItem.querySelector('.video');
-		video.setAttribute('style','height: ' + (Math.round(size.height * 100) / 100) + 'px; width: ' + (Math.round(size.width * 100) / 100) + 'px;');
+		if(portfolioItem.querySelector('.thumbnail-image')){
+			let image = portfolioItem.querySelector('.thumbnail-image');
+			let size = image.getBoundingClientRect();
+			let video = portfolioItem.querySelector('.thumbnail-video');
+			video.setAttribute('style','height: ' + (Math.round(size.height * 100) / 100) + 'px; width: ' + (Math.round(size.width * 100) / 100) + 'px;');
+		}
 	}
 }
 

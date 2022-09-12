@@ -718,21 +718,21 @@ footer .social-media svg {
 .portfolio-item .media {
 	display: block;
 }
-.portfolio-item .image,
-.portfolio-item .video {
+.portfolio-item .thumbnail-image,
+.portfolio-item .thumbnail-video {
 	width: 100%;
 	height: auto;
 }
-.portfolio-item .image {
+.portfolio-item .thumbnail-image {
 	display: block;
 }
-.portfolio-item.has-video:hover .image {
+.portfolio-item.has-video:hover .thumbnail-image {
 	display: none;
 }
-.portfolio-item .video {
+.portfolio-item .thumbnail-video {
 	display: none;
 }
-.portfolio-item.has-video:hover .video {
+.portfolio-item.has-video:hover .thumbnail-video {
 	display: block;
 }
 .portfolio-item .meta {
