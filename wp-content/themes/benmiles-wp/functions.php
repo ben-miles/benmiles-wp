@@ -56,17 +56,20 @@ function displaySVG( $SVG = '', $delay = 0 ){
 }
 
 /*
-* getPosts
+* getPortfolioItems
 * Gets and formats Portfolio Items for display
+* Accepts: Category Name(s), Tag(s), and a Max number of Items to collect, as arguments
+* Returns: the collection of Portfolio Items, formatted for display, as a single string of HTML
 */
-function getPosts($category){
+function getPortfolioItems($category=null,$tag=null,$maxItems=-1){
 	$args = array(
-		'category_name' => 'featured+' . $category,
-		'post_type' => 'portfolio',
-		'post_status' => 'publish',
-		'posts_per_page' => 4,
+		'category_name' => $category,
+		'order' => 'DESC',
 		'orderby' => 'date',
-		'order' => 'DESC'
+		'post_status' => 'publish',
+		'post_type' => 'portfolio',
+		'posts_per_page' => $maxItems,
+		'tag' => $tag,
 	);
 	$loop = new WP_Query($args);
 	$i = 0;
@@ -80,8 +83,9 @@ function getPosts($category){
 		$the_video = get_field( 'home_page_video' );
 		$the_external_url = get_field( 'url' );
 		$the_permalink = get_permalink();
+		$maxItems = ( $maxItems > 4 || $maxItems === -1) ? 4 : $maxItems;
 		?>
-		<div class="column column-<?php echo $loop->post_count; ?>">
+		<div class="column column-<?php echo $maxItems; ?>">
 			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $i; ?>s;">
 				<a href="<?php echo $the_permalink; ?>" target="_self" class="media">
 					<?php echo $the_thumbnail;
