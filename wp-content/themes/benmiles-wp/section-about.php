@@ -19,6 +19,7 @@ Template Name: Section - About
 					<p>I've freelanced, incorporated and run my own design company with a brick-and-mortar location, worked lead positions for print and web agencies, both as an artist and developer, both in-person and remotely. I have always enjoyed the juxtaposition of art and engineering that a career in commercial design offers. </p>
 					<p>Outside of work, I'm an avid gardener, a homebrewer, a musician and a movie buff. </p>
 				</div>
+					<a href="<?php bloginfo('url'); ?>/about" target="_self" class="cta-button">Learn more about me</a>
 
 				<!-- code languages -->
 				<h3>Code Languages</h3>
