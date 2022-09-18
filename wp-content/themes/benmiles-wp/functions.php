@@ -61,14 +61,14 @@ function displaySVG( $SVG = '', $delay = 0 ){
 * Accepts: Category Name(s), Tag(s), and a Max number of Items to collect, as arguments
 * Returns: the collection of Portfolio Items, formatted for display, as a single string of HTML
 */
-function getPortfolioItems($category=null,$tag=null,$maxItems=-1){
+function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 	$args = array(
 		'category_name' => $category,
 		'order' => 'DESC',
 		'orderby' => 'date',
 		'post_status' => 'publish',
 		'post_type' => 'portfolio',
-		'posts_per_page' => $maxItems,
+		'posts_per_page' => $max_items,
 		'tag' => $tag,
 	);
 	$loop = new WP_Query($args);
@@ -83,10 +83,11 @@ function getPortfolioItems($category=null,$tag=null,$maxItems=-1){
 		$the_video = get_field( 'home_page_video' );
 		$the_external_url = get_field( 'url' );
 		$the_permalink = get_permalink();
-		$maxItems = ( $maxItems > 4 || $maxItems === -1) ? 4 : $maxItems;
+		$max_items = ( $max_items > 4 || $max_items === -1) ? 4 : $max_items;
+		$animation_delay = $i % $max_items;
 		?>
-		<div class="column column-<?php echo $maxItems; ?>">
-			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $i; ?>s;">
+		<div class="column column-<?php echo $max_items; ?>">
+			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $animation_delay; ?>s;">
 				<a href="<?php echo $the_permalink; ?>" target="_self" class="media">
 					<?php echo $the_thumbnail;
 					if($the_video){ ?>
