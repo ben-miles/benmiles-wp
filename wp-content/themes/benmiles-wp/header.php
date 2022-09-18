@@ -55,7 +55,7 @@
 					<a class="nav-link" href="#portfolio" target="_self">Portfolio</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#footer" target="_self">Footer</a>
+					<a class="nav-link" href="#contact" target="_self">Contact</a>
 				</li>
 			<?php } else {; ?>
 				<li class="nav-item">
@@ -65,7 +65,7 @@
 					<a class="nav-link" href="/portfolio" target="_self">Portfolio</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/footer" target="_self">Footer</a>
+					<a class="nav-link" href="/contact" target="_self">Contact</a>
 				</li>
 			<?php } ?>
 			</ul>
