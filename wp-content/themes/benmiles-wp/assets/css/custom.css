@@ -383,7 +383,7 @@ header .container-new {
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
-@media ( min-width: 768px ) {
+@media only screen and ( min-width: 768px ) {
 	header .container-new,
 	header #nav,
 	header #nav ul,
@@ -419,7 +419,7 @@ header .container-new {
 .scrolled .brand-new {
 	color: #666;
 } */
-@media ( min-width: 992px ) {
+@media only screen and ( min-width: 992px ) {
 	.brand-new {
 		font-size: 24px;
 		margin-right: 1rem;
@@ -449,7 +449,7 @@ header .container-new {
 	outline: none;
 	padding: 0;
 }
-@media ( min-width: 768px ) {
+@media only screen and ( min-width: 768px ) {
 	#nav-toggle {
 		display: none;
     }
@@ -821,7 +821,7 @@ footer .social-media svg {
     margin-bottom: -1px;
 }
 
-@media ( min-width: 576px ) {
+@media only screen and ( min-width: 576px ) {
     .btn-toolbar .input-group-addon {
         width: auto;
     	border-right: none;
@@ -836,7 +836,7 @@ footer .social-media svg {
     width: 100%;
 }
 
-@media ( min-width: 768px ) {
+@media only screen and ( min-width: 768px ) {
     .btn-group {
         margin-right: 30px;
         width: auto;
@@ -849,11 +849,12 @@ footer .social-media svg {
 }
 
 #gallery {
+	height: auto;
     margin-bottom: 40px;
 }
 
 .gallery-item {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .gallery-item > a {
@@ -864,7 +865,7 @@ footer .social-media svg {
     transition: all 0.25s ease-in-out;
 }
 
-@media ( min-width: 576px ) {
+@media only screen and ( min-width: 576px ) {
     .gallery-item > a:hover {
         box-shadow: 0 20px 25px rgba(0,0,0,0.5);
         transform: scale(1.1);
@@ -885,7 +886,7 @@ footer .social-media svg {
     align-items: stretch;
 }
 
-@media ( min-width: 576px ) {
+@media only screen and ( min-width: 576px ) {
     .gallery-item .text {
         width: 100%;
     }
@@ -916,7 +917,7 @@ footer .social-media svg {
         opacity: 1;
 }
 
-@media ( min-width: 576px ) {
+@media only screen and ( min-width: 576px ) {
     .gallery-item {
       margin-bottom: 30px;
     }
@@ -928,7 +929,7 @@ footer .social-media svg {
     }
 }
 
-@media ( min-width: 768px ) {
+@media only screen and ( min-width: 768px ) {
     .gallery-item img {
       height: 210px;
     }
@@ -937,7 +938,7 @@ footer .social-media svg {
     }
 }
 
-@media ( min-width: 1200px ) {
+@media only screen and ( min-width: 1200px ) {
     .gallery-item img {
       height: 255px;
     }
@@ -999,15 +1000,20 @@ footer .social-media svg {
 }
 
 /* Text */
-#single-portfolio .content,
-#single-portfolio .categories,
-#single-portfolio .tags {
+#single-portfolio .content {
 	background-color: #3e4047;
 	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
 	color: #eee;
 	line-height: 1.4;
 	margin: 0 auto 30px;
 	padding: 25px 30px;
+	width: 100%;
+}
+#single-portfolio .categories,
+#single-portfolio .tags {
+	color: #eee;
+	line-height: 1.4;
+	margin: 0 auto 30px;
 	width: 100%;
 }
 #single-portfolio .content p {
@@ -1076,14 +1082,13 @@ footer .social-media svg {
     min-height: 100vh;
     padding-top: 40%;
 }
-@media ( min-width: 768px ) {
+@media only screen and ( min-width: 768px ) {
     #about {
         background-attachment: fixed;
 		background-size: contain;
+		height: 100vh;
 		padding-top: var(--header-height);
     }
-}
-@media only screen and ( min-width: 768px ) {
 	#about .row {
 		justify-content: flex-start;
 	}
@@ -1106,9 +1111,9 @@ footer .social-media svg {
 .bio p {
 	font-weight: 200;
 }
-.bio p:last-of-type {
+/* .bio p:last-of-type {
 	margin: 0;
-}
+} */
 #about h3 {
 	color: #ccc;
     font-size: 18px;
@@ -1118,6 +1123,7 @@ footer .social-media svg {
     text-transform: uppercase;
     text-align: left;
     display: block;
+	display: none;
     width: 100%;
 }
 
@@ -1147,9 +1153,11 @@ footer .social-media svg {
 .svg-row .svg svg {
 	width: 100%;
 	height: auto;
+	opacity: 0.7;
 	transition: all .2s ease-in-out;
 }
 .svg-row .svg svg:hover {
+	opacity: 1;
 	transform: scale(1.25);
 }
 
@@ -1281,7 +1289,7 @@ svg:hover #color {
 .timeline-body > p + p {
     margin-top: 5px;
 }
-@media ( min-width: 576px ) {
+@media only screen and ( min-width: 576px ) {
     .timeline {
         padding: 2.5rem 0 0;
     }
@@ -1292,7 +1300,7 @@ svg:hover #color {
       padding: 1.25rem;
     }
 }
-@media ( min-width: 768px ) {
+@media only screen and ( min-width: 768px ) {
     .timeline:before {
       left: 50%;
       margin-left: -1.5px;
@@ -1322,12 +1330,12 @@ svg:hover #color {
       right: -14px;
     }
 }
-@media ( min-width: 992px ) {
+@media only screen and ( min-width: 992px ) {
     .timeline > li > .timeline-panel {
       width: 44%;
     }
 }
-@media ( min-width: 1200px ) {
+@media only screen and ( min-width: 1200px ) {
     .timeline > li > .timeline-panel {
       width: 46%;
     }
@@ -1345,3 +1353,19 @@ svg:hover #color {
     	height: 100vh;
 	}
 }
+
+
+
+/* .float { 
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
+ 
+@keyframes float {
+    0% { transform: translate(0,  0px) rotate(1deg); }
+    50%  { transform: translate(0, 15px) rotate(180deg); }
+    100%   { transform: translate(0, -0px) rotate(360deg); }   
+} */

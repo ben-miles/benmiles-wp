@@ -12,7 +12,7 @@ Template Name: Section - Portfolio (Featured)
 			<div class="column column-1">
 
 				<h2 class="section-header animated" data-animation="fadeIn">Portfolio</h2>
-				<p>These are some of my favorite projects that I've worked on recently.</p>
+				<p style="color:#fff;">These are some of my favorite projects that I've worked on recently.</p>
 				<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="cta-button">See more of my work</a>
 
 				<!-- web development -->

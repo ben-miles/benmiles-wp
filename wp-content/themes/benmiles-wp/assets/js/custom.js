@@ -53,6 +53,7 @@ window.onresize = function(e){
 		resizeVideoThumbnails();
 	}
 
+	// Add/Remove mobile menu toggle, based on viewport width
 	let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 	for(let navLink of navLinks){
 		if(vw < 768){
@@ -97,7 +98,7 @@ const noiseStep = 0.0025;   // rate of speed
 const effect = 10;          // range of motion
 const numPoints = 6;        // number of  points
 const rad = 90;             // radius of circle
-const path = document.querySelector("svg#portrait path");
+const path = document.querySelector("svg#portrait #path");
 const simplex = new SimplexNoise();
 const points = createPoints();
 
