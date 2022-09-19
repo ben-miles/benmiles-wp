@@ -8,8 +8,8 @@ get_header();
 
 <!-- single-portfolio -->
 <section id="single-portfolio">
-    <div class="container-new">
-    	<div class="row-new">
+    <div class="container">
+    	<div class="row">
 
 			<?php 
 			// Start the loop.
@@ -43,7 +43,7 @@ get_header();
 					</div> -->
 				</div>
 				<div class="portfolio">
-					<div class="row-new" style="width:auto;margin:0 -15px;">
+					<div class="row" style="width:auto;margin:0 -15px;">
 						<?php 
 						// acf_photo_gallery('additional_images',$post->ID); 
 						//Get the images ids from the post_metadata

@@ -7,8 +7,8 @@ Template Name: Section - Intro
 
 <!-- intro -->
 <section id="intro">
-    <div class="container-new" style="height:100%;">
-    	<div class="row-new">
+    <div class="container" style="height:100%;">
+    	<div class="row">
 
 			<!-- portrait -->
 			<div class="column column-2">

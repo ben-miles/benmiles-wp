@@ -7,8 +7,8 @@ Template Name: Section - About
 
 <!-- about -->
 <section id="about">
-	<div class="container-new" style="height:100%;">
-		<div class="row-new">
+	<div class="container" style="height:100%;">
+		<div class="row">
 			<div class="column column-1">
 
 				<h2 class="section-header animated" data-animation="fadeInUp">About Ben Miles</h2>

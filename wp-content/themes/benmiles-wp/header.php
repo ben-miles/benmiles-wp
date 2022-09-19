@@ -22,13 +22,13 @@
 <body class="<?php echo get_post_type() . ' ' . get_post_field('post_name'); ?>">
 	
 <header id="site-header">
-	<div class="container-new">
+	<div class="container">
 
 		<!-- Branding -->
 		<?php if(is_front_page()){ ?>
-		<a class="brand-new" href="#intro" target="_self">
+		<a class="brand" href="#intro" target="_self">
 		<?php } else {; ?>
-		<a class="brand-new" href="<?php bloginfo('url'); ?>" target="_self">
+		<a class="brand" href="<?php bloginfo('url'); ?>" target="_self">
 		<?php } ?>
 			<?php displaySVG( 'ben-miles_logo' ); ?>
 			<h1 class="site-title"><?php bloginfo('name'); ?></h1>

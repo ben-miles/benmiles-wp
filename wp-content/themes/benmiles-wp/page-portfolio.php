@@ -8,8 +8,8 @@ get_header();
 
 <!-- portfolio -->
 <section id="portfolio">
-	<div class="container-new">
-		<div class="row-new">
+	<div class="container">
+		<div class="row">
 
 			<!-- Title -->
 			<div class="column column-1">
@@ -17,7 +17,7 @@ get_header();
 			</div>
 
 			<!-- Gallery -->
-			<div class="row-new">
+			<div class="row">
 				<?php getPortfolioItems(); ?>
 			</div>
 

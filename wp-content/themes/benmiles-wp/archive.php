@@ -21,8 +21,8 @@ if ( is_category() ) {
 
 <!-- archive -->
 <section id="archive">
-	<div class="container-new">
-		<div class="row-new">
+	<div class="container">
+		<div class="row">
 			<div class="column col-1">
 
 				<h2 class="section-header animated" data-animation="fadeIn">
@@ -30,7 +30,7 @@ if ( is_category() ) {
 				</h2>
 
 				<!-- gallery -->
-				<div class="row-new">
+				<div class="row">
 					<?php getPortfolioItems($category,$tag); ?>
 				</div>
 				<!-- / gallery -->

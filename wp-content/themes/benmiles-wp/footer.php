@@ -1,7 +1,7 @@
 	    <!-- footer -->
         <footer id="footer">
-            <div class="container-new">
-                <div class="row-new">
+            <div class="container">
+                <div class="row">
                     <div class="column column-1">
 
 						<!-- social media links -->

@@ -121,7 +121,7 @@ svg:not(:root) {
 /*******************************************************************************
 	CONTAINER
 *******************************************************************************/
-.container-new {
+.container {
 	margin: 0 auto;
 	max-width: 100%;
 	padding: 0 15px;
@@ -135,33 +135,33 @@ svg:not(:root) {
 	justify-content: center;
 }
 /* @media only screen and ( min-width: 576px ) {
-	.container-new {
+	.container {
 		max-width: 540px;
 	}
 } */
 @media only screen and ( min-width: 768px ) {
-	.container-new {
+	.container {
 		max-width: 720px;
 	}
 }
 @media only screen and ( min-width: 992px ) {
-	.container-new {
+	.container {
 		max-width: 960px;
 	}
 }
 @media only screen and ( min-width: 1200px ) {
-	.container-new {
+	.container {
 		max-width: 1140px;
 	}
 }
 @media only screen and ( min-width: 1400px ) {
-	.container-new {
+	.container {
 		max-width: 1320px;
 	}
 }
 
 /*	ROW ----------------------------------------------------------------------*/
-.row-new {
+.row {
 	display: flex; 
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -379,12 +379,12 @@ header {
 	height: 100vh;
 	transition-timing-function: ease-out;
 }
-header .container-new {
+header .container {
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
 @media only screen and ( min-width: 768px ) {
-	header .container-new,
+	header .container,
 	header #nav,
 	header #nav ul,
 	header #nav ul li,
@@ -394,7 +394,7 @@ header .container-new {
 }
 
 /* BRAND */
-.brand-new {
+.brand {
 	display: flex;
     flex-direction: column;
     justify-content: center;
@@ -402,36 +402,36 @@ header .container-new {
     white-space: nowrap;
 	color: #fff;
 }
-.brand-new:hover {
+.brand:hover {
 	color: #bbb !important;
 }
-.brand-new .ben-miles_logo svg {
+.brand .ben-miles_logo svg {
 	display: block;
 	height: auto;
 	width: 150px;
 } 
-.brand-new .ben-miles_logo path,
-.brand-new .ben-miles_logo polygon,
-.brand-new .ben-miles_logo rect {
+.brand .ben-miles_logo path,
+.brand .ben-miles_logo polygon,
+.brand .ben-miles_logo rect {
 	fill: #fff;
 }
-/* .menu-open .brand-new,
-.scrolled .brand-new {
+/* .menu-open .brand,
+.scrolled .brand {
 	color: #666;
 } */
 @media only screen and ( min-width: 992px ) {
-	.brand-new {
+	.brand {
 		font-size: 24px;
 		margin-right: 1rem;
 		text-align: left;
 	}
 }
-.brand-new .site-title {
+.brand .site-title {
 	display: none;
 	font-size: 100%;
 	font-weight: 700;
 }
-.brand-new .site-description {
+.brand .site-description {
 	display: none;
 	font-size: 43%;
 	font-weight: 400;
@@ -1096,7 +1096,7 @@ footer .social-media svg {
 		max-width: 50%;
 	}
 }
-#about > .container-new > .row-new {
+#about > .container > .row {
 	justify-content: flex-start;
 }
 

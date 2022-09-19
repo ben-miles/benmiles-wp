@@ -7,8 +7,8 @@ Template Name: Section - Portfolio (Featured)
 
 <!-- portfolio (featured) -->
 <section id="portfolio">
-	<div class="container-new">
-		<div class="row-new">
+	<div class="container">
+		<div class="row">
 			<div class="column column-1">
 
 				<h2 class="section-header animated" data-animation="fadeIn">Portfolio</h2>
@@ -18,7 +18,7 @@ Template Name: Section - Portfolio (Featured)
 				<!-- web development -->
 				<div class="category" id="web-development">
 					<h3 class="category-heading">Web Development</h3>
-					<div class="row-new">
+					<div class="row">
 						<?php getPortfolioItems('featured+web-development',null,3); ?>
 					</div>
 				</div>
@@ -26,7 +26,7 @@ Template Name: Section - Portfolio (Featured)
 				<!-- web design -->
 				<div class="category" id="web-design">
 					<h3 class="category-heading">Web Design</h3>
-					<div class="row-new">
+					<div class="row">
 						<?php getPortfolioItems('featured+web-design',null,4); ?>
 					</div>
 				</div>
@@ -34,7 +34,7 @@ Template Name: Section - Portfolio (Featured)
 				<!-- branding -->
 				<div class="category" id="branding">
 					<h3 class="category-heading">Branding</h3>
-					<div class="row-new">
+					<div class="row">
 						<?php getPortfolioItems('featured+branding',null,4); ?>
 					</div>
 				</div>
@@ -42,7 +42,7 @@ Template Name: Section - Portfolio (Featured)
 				<!-- print design -->
 				<div class="category" id="print-design">
 					<h3 class="category-heading">Print Design</h3>
-					<div class="row-new">
+					<div class="row">
 						<?php getPortfolioItems('featured+print-design',null,4); ?>
 					</div>
 				</div>
