@@ -26,7 +26,6 @@ if( !is_admin() ){
 	add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
 	// Styles
-	wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/css/animate.min.css',false,'3.5.2','all' );
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css',false, '','all' );
 
 	// Scripts

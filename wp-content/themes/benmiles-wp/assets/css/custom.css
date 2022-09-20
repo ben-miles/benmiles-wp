@@ -1369,3 +1369,20 @@ svg:hover #color {
     50%  { transform: translate(0, 15px) rotate(180deg); }
     100%   { transform: translate(0, -0px) rotate(360deg); }   
 } */
+
+
+/*------------------------------------------------------------------------------
+	Animations
+--------------------------------------------------------------------------------
+	Via animate.css, Version 3.5.2, by Daniel Eden http://daneden.me/animate
+	Licensed under the MIT license http://opensource.org/licenses/MIT
+------------------------------------------------------------------------------*/
+
+.animated {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+.fadeInUp {
+	animation-name: fadeInUp;
+}
+@keyframes fadeInUp {from{opacity:0;transform:translate3d(0,100%,0)}to{opacity:1;transform:none}}
