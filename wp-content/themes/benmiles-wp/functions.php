@@ -25,10 +25,10 @@ if( !is_admin() ){
 	}
 	add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
-	// Styles
+	// Load Styles
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css',false, '','all' );
 
-	// Scripts
+	// Load Scripts
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), '', true );
 
 }
@@ -37,7 +37,6 @@ if( !is_admin() ){
 * displaySVG
 * Generates a responsive SVG item from a filename
 * Based on https://stackoverflow.com/a/30000684/6853842
-* $arrayPortfolioPiece: The input array.
 */
 function displaySVG( $SVG = '', $delay = 0 ){
     $file = strtolower( str_replace( array( ' ', '!' ), '', $SVG ) );

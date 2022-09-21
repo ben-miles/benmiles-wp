@@ -1,4 +1,81 @@
-/* google-webfonts-helper by https://google-webfonts-helper.herokuapp.com/ ****/
+/*******************************************************************************
+	RESET
+*******************************************************************************/
+
+*, 
+::after, 
+::before {
+	-webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/*******************************************************************************
+	ACCESSIBILITY
+*******************************************************************************/
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+/*******************************************************************************
+	VARIABLES
+*******************************************************************************/
+
+:root {
+	--header-height: 70px;
+	--footer-height: 150px;
+	--color-black: rgba( 0, 0, 0, 1 );
+	--color-white: rgba(255, 255, 255, 1 );
+}
+@media only screen and ( min-width: 992px ) {
+	:root {
+		--header-height: 70px;
+	}
+}
+@media only screen and ( min-width: 1200 ) {
+	:root {
+		--header-height: 70px;
+	}
+}
+
+/*******************************************************************************
+	FONTS
+*******************************************************************************/
+
+/*	POPPINS ------------------------------------------------------------------*/
+/* 	Via google-webfonts-helper https://google-webfonts-helper.herokuapp.com/ -*/
+
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
@@ -50,95 +127,133 @@
 		url('/wp-content/themes/benmiles-wp/assets/fonts/poppins-v20-latin-900.svg#Poppins') format('svg');
 }
 
-/*******************************************************************************
-	VARIABLES
-*******************************************************************************/
-:root {
-	--header-height: 70px;
-	--footer-height: 150px;
-	--color-black: rgba( 0, 0, 0, 1 );
-	--color-white: rgba(255, 255, 255, 1 );
-}
-@media only screen and ( min-width: 992px ) {
-	:root {
-		--header-height: 70px;
-	}
-}
-@media only screen and ( min-width: 1200 ) {
-	:root {
-		--header-height: 70px;
-	}
-}
-
-/*******************************************************************************
-	RESET
-*******************************************************************************/
-*, 
-::after, 
-::before {
-	-webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
+html,
 body {
-	margin: 0;
+    font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
-svg:not(:root) {
-    overflow: hidden;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
 }
-
-/*******************************************************************************
-	ACCESSIBILITY
-*******************************************************************************/
-.screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	word-wrap: normal !important;
-}
-.screen-reader-text:focus {
-	background-color: #eee;
-	clip: auto !important;
-	clip-path: none;
-	color: #444;
-	display: block;
-	font-size: 1em;
-	height: auto;
-	left: 5px;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	text-decoration: none;
-	top: 5px;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar. */
+b, strong {
+	font-weight: inherit;
+    font-weight: bolder;
 }
 
 /*******************************************************************************
-	CONTAINER
+	ANIMATIONS
 *******************************************************************************/
+
+/*	Fade In Up ---------------------------------------------------------------*/
+/*	Via animate.css, v3.5.2, Daniel Eden http://daneden.me/animate -----------*/
+
+.animated {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+.fadeInUp {
+	animation-name: fadeInUp;
+}
+@keyframes fadeInUp {from{opacity:0;transform:translate3d(0,100%,0)}to{opacity:1;transform:none}}
+
+/*	Bounce -------------------------------------------------------------------*/
+/*	Via codeconvey.com https://codepad.co/snippet/AYXI3hjg -------------------*/
+
+.bounce {
+	-moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 10%, 90%, 100% {
+		-moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+		-moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+		-moz-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px);
+    }
+}
+
+/*	Float --------------------------------------------------------------------*/
+/*	Via geeksforgeeks https://www.geeksforgeeks.org/css-floating-animation/ --*/
+
+.float { 
+	animation-name: float;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+ 
+@keyframes float {
+	0% { transform: translate(0,  0px) rotate(1deg); }
+	50%  { transform: translate(0, 15px) rotate(180deg); }
+	100%   { transform: translate(0, -0px) rotate(360deg); }   
+}
+
+/*******************************************************************************
+	LAYOUT
+*******************************************************************************/
+
+/*	HTML, BODY, SECTIONS -----------------------------------------------------*/
+
+html {
+    font-size: 16px;
+    overflow-x: hidden;
+	scroll-behavior: smooth;
+	-ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+	background-color: #222;
+}
+
+section {
+	padding: calc( var(--header-height) + 30px) 0;
+	box-sizing: border-box;
+}
+
+.section-header {
+	border-bottom: 2px solid #ccc;
+    color: #ccc;
+    display: inline-block;
+	font-size: 28px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+/*	CONTAINER ----------------------------------------------------------------*/
+
 .container {
 	margin: 0 auto;
 	max-width: 100%;
 	padding: 0 15px;
 	position: relative;
-	/* height: 100%; */
-	/* width: 100%; */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
-/* @media only screen and ( min-width: 576px ) {
-	.container {
-		max-width: 540px;
-	}
-} */
 @media only screen and ( min-width: 768px ) {
 	.container {
 		max-width: 720px;
@@ -160,7 +275,8 @@ svg:not(:root) {
 	}
 }
 
-/*	ROW ----------------------------------------------------------------------*/
+/*	ROWS ---------------------------------------------------------------------*/
+
 .row {
 	display: flex; 
 	flex-direction: row;
@@ -170,7 +286,8 @@ svg:not(:root) {
 	width: 100%;
 }
 
-/*	COLUMN -------------------------------------------------------------------*/
+/*	COLUMNS ------------------------------------------------------------------*/
+
 .column {
 	display: flex;
 	flex-direction: column;
@@ -209,44 +326,10 @@ svg:not(:root) {
 }
 
 /*******************************************************************************
-	FONTS
+	COMMON UI
 *******************************************************************************/
 
-html,
-body {
-    font-family: 'Poppins', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-    line-height: 1.15;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-}
-b, strong {
-	font-weight: inherit;
-    font-weight: bolder;
-}
-
-/*******************************************************************************
-	UI
-*******************************************************************************/
-
-/*	Links --------------------------------------------------------------------*/
-
-a,
-a:hover {
-	text-decoration: none;
-	background-color: transparent;
-    -webkit-text-decoration-skip: objects;
-}
-
-/*	Buttons ------------------------------------------------------------------*/
+/*	BUTTONS ------------------------------------------------------------------*/
 
 .btn {
     border-radius: 0;
@@ -265,6 +348,17 @@ a:hover {
     color: #333;
 }
 
+/*	BUTTONS > BACK TO TOP ----------------------------------------------------*/
+
+#backToTop {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+}
+
+/*	BUTTONS > CTA ------------------------------------------------------------*/
+
 .cta-button {
 	background-color: #fff;
 	border-radius: 0;
@@ -279,86 +373,46 @@ a:hover {
 	background-color: #ccc;
 }
 
+/*	LABELS -------------------------------------------------------------------*/
+
+.label {
+	display: block;
+	font-size: 85%;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+/*	LINKS --------------------------------------------------------------------*/
+
+a,
+a:hover {
+	text-decoration: none;
+	background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+/*	SOCIAL MEDIA -------------------------------------------------------------*/
+
+.social-media {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	list-style: none;
+	padding: 0;
+	margin: 0 auto 100px;
+	width: 256px;
+}
+.social-media svg {
+	fill: #fff;
+	width: 30px;
+	height: auto;
+}
+
 /*******************************************************************************
-	COMMON
+    SITE > HEADER
 *******************************************************************************/
-.social {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-}
 
-.social a {
-    color: #fff;
-}
-
-body.portfolio .meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-	line-height: 1.5;
-}
-
-body.portfolio .meta > div:before {
-    font-family: 'fontAwesome';
-    margin-right: 0.3em;
-}
-body.portfolio .meta > .date:before {
-    content: '\f073';
-}
-
-body.portfolio .meta > .category:before {
-    content: '\f07c';
-}
-
-body.portfolio .meta > .tags:before {
-    content: '\f02c';
-}
-
-#backToTop {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    opacity: 0;
-}
-
-/*------------------------------------------------------------------------------
-	HTML, BODY, SECTIONs
-------------------------------------------------------------------------------*/
-html {
-    font-size: 16px;
-    overflow-x: hidden;
-	scroll-behavior: smooth;
-	-ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: transparent;
-}
-
-body {
-	background-color: #222;
-}
-
-section {
-	padding: calc( var(--header-height) + 30px) 0;
-	box-sizing: border-box;
-}
-
-.section-header {
-	border-bottom: 2px solid #ccc;
-    color: #ccc;
-    display: inline-block;
-	font-size: 28px;
-    margin: 30px auto;
-    text-align: center;
-}
-
-#whatis {
-    background: #444;
-}
-
-/*------------------------------------------------------------------------------
-    HEADER
-------------------------------------------------------------------------------*/
 header {
 	background-color: rgba( 55, 55, 55, 0.25 );
 	backdrop-filter: blur(10px);
@@ -393,7 +447,8 @@ header .container {
 	}
 }
 
-/* BRAND */
+/*	BRAND --------------------------------------------------------------------*/
+
 .brand {
 	display: flex;
     flex-direction: column;
@@ -415,10 +470,6 @@ header .container {
 .brand .ben-miles_logo rect {
 	fill: #fff;
 }
-/* .menu-open .brand,
-.scrolled .brand {
-	color: #666;
-} */
 @media only screen and ( min-width: 992px ) {
 	.brand {
 		font-size: 24px;
@@ -437,8 +488,8 @@ header .container {
 	font-weight: 400;
 }
 
+/*	NAV TOGGLE ---------------------------------------------------------------*/
 
-/* NAV TOGGLE */
 #nav-toggle {
 	background: transparent;
     border: none;
@@ -465,19 +516,17 @@ header .container {
 	width: 60px;
 	height: auto;
 }
-/* TOGGLE SVG */
-/* Copyright (c) 2022 by Mikael Ainalem (https://codepen.io/ainalem/pen/wvKOEMV) */
+
+/*	NAV TOGGLE > SVG ---------------------------------------------------------*/
+/*	Via Mikael Ainalem https://codepen.io/ainalem/pen/wvKOEMV ----------------*/
+
 .line {
 	fill: none;
 	stroke: #fff;
 	stroke-width: 6;
 	transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-		stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+	stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* .menu-open .line,
-.scrolled .line {
-	stroke: #666;
-} */
 .line1 {
 	stroke-dasharray: 60 207;
 	stroke-width: 6;
@@ -506,7 +555,8 @@ header .container {
 	stroke-width: 6;
 }
 
-/* NAV */
+/*	NAV MENU -----------------------------------------------------------------*/
+
 #nav {
 	position: relative;
 	padding: 0;
@@ -544,7 +594,8 @@ header .container {
     }
 }
 
-/* MENU ITEMS */
+/*	NAV MENU > MENU ITEMS ----------------------------------------------------*/
+
 .nav-item {
 	opacity: 0;
 	transition: opacity ease-in .6s;
@@ -588,9 +639,9 @@ header .container {
     height: 50px;
 }
 
-/*------------------------------------------------------------------------------
-	Footer
-------------------------------------------------------------------------------*/
+/*******************************************************************************
+	SITE > FOOTER
+*******************************************************************************/
 
 footer {
     background: #111;
@@ -604,472 +655,22 @@ footer .social-media svg {
 	width: 50px;
 }
 
-/*------------------------------------------------------------------------------
-	Home Page > Intro
-------------------------------------------------------------------------------*/
+/*******************************************************************************
+	SECTIONS > 404
+*******************************************************************************/
 
-#intro {
-	color: #fff;
-	height: auto;
+#error-404 {
 	min-height: 100vh;
 }
-@media only screen and ( min-width: 768px ) {
-	#intro {
-		height: 100vh;
+@media only screen and (min-width: 768px) {
+	#error-404 {
+    	height: 100vh;
 	}
 }
 
-#intro #portrait {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	width: 100%;
-    height: auto;
-}
-
-#intro .site-title {
-    font-size: 4rem;
-    font-weight: 900;
-	text-align: center;
-	display: none;
-}
-#intro .ben-miles_logo .tagline {
-	display: none;    
-}
-#intro .site-description {
-	font-size: 28px;
-    font-weight: 200;
-    margin: 0 auto 25px;
-    text-align: center;
-}
-
-#intro .scroll {
-	margin: 0 0 1.75rem;
-	width: 256px;
-} 
-
-/* Based on Pure CSS Arrow Down Bouncing Animation by Codeconvey.com: https://codepad.co/snippet/AYXI3hjg */
-.bounce {
-    -moz-animation: bounce 2s infinite;
-    -webkit-animation: bounce 2s infinite;
-    animation: bounce 2s infinite;
-}
-@keyframes bounce {
-    0%, 10%, 90%, 100% {
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    40% {
-        -moz-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-        -webkit-transform: translateY(-10px);
-        transform: translateY(-10px);
-    }
-    60% {
-        -moz-transform: translateY(10px);
-        -ms-transform: translateY(10px);
-        -webkit-transform: translateY(10px);
-        transform: translateY(10px);
-    }
-}
-
-.social-media {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	list-style: none;
-	padding: 0;
-	margin: 0 auto 100px;
-	width: 256px;
-}
-.social-media svg {
-	fill: #fff;
-	width: 30px;
-	height: auto;
-}
-.social-media .linkedin a:hover {
-    color: #283e4a;
-}
-.social-media .codepen a:hover {
-    color: #191919;
-}
-.social-media .github a:hover {
-    color: #959da5;
-}
-
-/*------------------------------------------------------------------------------
-	Home Page > Featured Portfolio
-------------------------------------------------------------------------------*/
-.category {
-	margin-bottom: 50px;
-}
-.category-heading {
-	color: #aaa;
-	margin-bottom: 20px;
-	width: 100%;
-}
-#portfolio .column {
-	justify-content: flex-start;
-}
-.portfolio-item {
-	background-color: #3e4047;
-	box-shadow: 0 .125rem .25rem rgba(0,0,0,.25);
-    color: #eee;
-	display: flex;
-    flex-direction: column;
-    height: 100%;
-	line-height: 1.4;
-	margin-bottom: 30px;
-	transition: background-color, box-shadow .125s ease-in-out;
-	width: 100%;
-}
-.portfolio-item:hover {
-	background-color: #4c4e57;
-	box-shadow: 0 0.75rem 1rem rgb(0 0 0 / 40%);
-}
-.portfolio-item .media {
-	display: block;
-}
-.portfolio-item .thumbnail-image,
-.portfolio-item .thumbnail-video {
-	width: 100%;
-	height: auto;
-}
-.portfolio-item .thumbnail-image {
-	display: block;
-}
-.portfolio-item.has-video:hover .thumbnail-image {
-	display: none;
-}
-.portfolio-item .thumbnail-video {
-	display: none;
-}
-.portfolio-item.has-video:hover .thumbnail-video {
-	display: block;
-}
-.portfolio-item .meta {
-	display: flex;
-    flex-direction: column;
-	height: 100%;
-    align-items: center;
-	padding: 15px;
-}
-.portfolio-item .title { 
-	font-size: 22px;
-	font-weight: 600;
-	line-height: 1.4;
-	margin-bottom: 10px;
-	text-align: center;
-}
-.portfolio-item .date {
-	font-size: 14px;
-}
-.portfolio-item a {
-	color: #7c96b2;
-}
-.portfolio-item .external-link {
-	font-size: 14px;
-	margin-top: auto;
-}
-.portfolio-item .external-link:before {
-	display: block;
-    float: left;
-    content: '';
-    background-image: url('/wp-content/themes/benmiles-wp/assets/icons/external-link.svg');
-    background-size: contain;
-    width: 12px;
-    height: 12px;
-    margin: 5px 5px 0 0;
-}
-.portfolio-item .excerpt {
-	text-align: center;
-	font-weight: 200;
-	line-height: 1.4;
-}
-
-/*------------------------------------------------------------------------------
-	Portfolio Page
-------------------------------------------------------------------------------*/
-
-#portfolio {
-    height: auto;
-}
-
-/* @media ( min-width: 992px ) {
-    #portfolio {
-		padding-top: 500px;
-	}
-} */
-
-.btn-toolbar {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-.btn-toolbar .input-group-addon {
-    background-color: transparent;
-    border-radius: 0;
-    border-color: #adadad;
-    color: #fff;
-    font-weight: 700;
-    width: 100%;
-	border-right: 1px solid #adadad;
-    margin-bottom: -1px;
-}
-
-@media only screen and ( min-width: 576px ) {
-    .btn-toolbar .input-group-addon {
-        width: auto;
-    	border-right: none;
-        margin-bottom: 0;
-    }
-}
-
-.btn-group {
-	margin-bottom: 15px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-@media only screen and ( min-width: 768px ) {
-    .btn-group {
-        margin-right: 30px;
-        width: auto;
-    }
-}
-
-.btn-toolbar .btn.active {
-    background-color: #ccc;
-    color: #333;
-}
-
-#gallery {
-	height: auto;
-    margin-bottom: 40px;
-}
-
-.gallery-item {
-	margin-bottom: 15px;
-}
-
-.gallery-item > a {
-    box-shadow: 0 10px 14px rgba(0,0,0,0.75);
-    color: #292b2c;
-    display: block;
-    text-decoration: none;
-    transition: all 0.25s ease-in-out;
-}
-
-@media only screen and ( min-width: 576px ) {
-    .gallery-item > a:hover {
-        box-shadow: 0 20px 25px rgba(0,0,0,0.5);
-        transform: scale(1.1);
-    }
-}
-
-.gallery-item .text {
-    background-color: rgba( 255, 255, 255, 0.9 );
-    opacity: 0;
-    position: absolute;
-    padding: 10px 15px;
-    width: calc( 100% - 30px);
-    height: 100%;
-    transition: opacity .25s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-}
-
-@media only screen and ( min-width: 576px ) {
-    .gallery-item .text {
-        width: 100%;
-    }
-}
-
-.gallery-item .title {
-    text-align: center;
-    border-bottom: 1px solid #999;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-}
-
-.gallery-item .title h6 {
-	font-size: 12px;
-	letter-spacing: 1px;
-	color: #777;
-	font-weight: lighter;
-}
-
-.gallery-item img {
-    border: 1px solid #ccc;
-    width: 100%;
-    height: auto;
-    transition: filter .25s ease-in-out;
-}
-
-.gallery-item a:hover .text {
-        opacity: 1;
-}
-
-@media only screen and ( min-width: 576px ) {
-    .gallery-item {
-      margin-bottom: 30px;
-    }
-    .gallery-item img {
-      height: 240px;
-    }
-    .gallery-item.tall img {
-      height: 510px;
-    }
-}
-
-@media only screen and ( min-width: 768px ) {
-    .gallery-item img {
-      height: 210px;
-    }
-    .gallery-item.tall img {
-      height: 450px;
-    }
-}
-
-@media only screen and ( min-width: 1200px ) {
-    .gallery-item img {
-      height: 255px;
-    }
-    .gallery-item.tall img {
-      height: 540px;
-    }
-}
-
-/*------------------------------------------------------------------------------
-	Portfolio-Item (Single Page)
-------------------------------------------------------------------------------*/
-
-.label {
-	display: block;
-	font-size: 85%;
-	font-weight: 600;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-} 
-
-/* Meta */
-#single-portfolio .post-meta {
-	color: #eee;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 30px;
-	justify-content: center;
-	line-height: 1.4;
-	margin: 0 auto 30px;
-	padding: 25px 30px;
-	width: 100%;
-}
-#single-portfolio .post-meta-item {
-	width: 100%;
-	text-align: center;
-}
-@media only screen and ( min-width: 768px ){
-	#single-portfolio .post-meta-item {
-		width: auto;
-		text-align: center;
-	}
-}
-
-/* Thumbnail */
-#single-portfolio .wp-post-image {
-	width: 100%; 
-	height: auto;
-	margin-bottom: 20px;
-}
-
-/* Gallery */
-#single-portfolio .portfolio {
-	width: 100%;
-}
-#single-portfolio .portfolio-item img {
-	height: auto;
-	width: 100%;
-}
-
-/* Text */
-#single-portfolio .content {
-	background-color: #3e4047;
-	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
-	color: #eee;
-	line-height: 1.4;
-	margin: 0 auto 30px;
-	padding: 25px 30px;
-	width: 100%;
-}
-#single-portfolio .categories,
-#single-portfolio .tags {
-	color: #eee;
-	line-height: 1.4;
-	margin: 0 auto 30px;
-	width: 100%;
-}
-#single-portfolio .content p {
-	font-weight: 200;
-}
-#single-portfolio .content p:first-of-type {
-	margin-top: 0;
-}
-#single-portfolio .content p:last-of-type {
-	margin-bottom: 0;
-}
-#single-portfolio .post-categories,
-#single-portfolio .post-tags {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 25px 10px;
-	list-style: none;
-	margin: 16px 0;
-	padding: 0;
-}
-#single-portfolio .post-categories a,
-#single-portfolio .post-tags a {
-	background: #ccc;
-	border-radius: 50px;
-	color: #222;
-	padding: 5px 15px;
-}
-
-/* Post Navigation */
-.post-navigation {
-	margin: 50px 0;
-	width: 100%;
-}
-.post-navigation .nav-links {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-}
-.post-navigation .nav-links .nav-previous, 
-.post-navigation .nav-links .nav-next {
-	width: 50%;
-}
-.post-navigation .nav-links .nav-previous {
-	text-align: left;
-}
-.post-navigation .nav-links .nav-next {
-	text-align: right;
-}
-.post-navigation .nav-links a {
-	color: #fff;
-}
-
-/*------------------------------------------------------------------------------
-	Home Page > About
-------------------------------------------------------------------------------*/
+/*******************************************************************************
+	SECTIONS > ABOUT
+*******************************************************************************/
 
 #about {
 	background-attachment: scroll;
@@ -1111,9 +712,6 @@ footer .social-media svg {
 .bio p {
 	font-weight: 200;
 }
-/* .bio p:last-of-type {
-	margin: 0;
-} */
 #about h3 {
 	color: #ccc;
     font-size: 18px;
@@ -1127,7 +725,8 @@ footer .social-media svg {
     width: 100%;
 }
 
-/* SVG */
+/*	ABOUT > SVG ICONS --------------------------------------------------------*/
+
 .svg-row {
 	display: flex;
 	flex-direction: row;
@@ -1161,7 +760,8 @@ footer .social-media svg {
 	transform: scale(1.25);
 }
 
-/* SVG: Hover */
+/*	ABOUT > SVG ICONS > HOVER ------------------------------------------------*/
+
 svg #mask {
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
@@ -1177,8 +777,9 @@ svg:hover #color {
     opacity: 1;
 }
 
- 
-/* Timeline, based on https://bootsnipp.com/snippets/featured/timeline-responsive */
+/*	ABOUT > TIMELINE ---------------------------------------------------------*/
+/*	Via https://bootsnipp.com/snippets/featured/timeline-responsive ----------*/
+
 .timeline {
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
@@ -1341,48 +942,263 @@ svg:hover #color {
     }
 }
 
-/*------------------------------------------------------------------------------
-	404 Page
-------------------------------------------------------------------------------*/
+/*******************************************************************************
+	SECTIONS > INTRO
+*******************************************************************************/
 
-#error-404 {
+#intro {
+	color: #fff;
+	height: auto;
 	min-height: 100vh;
 }
-@media only screen and (min-width: 768px) {
-	#error-404 {
-    	height: 100vh;
+@media only screen and ( min-width: 768px ) {
+	#intro {
+		height: 100vh;
+	}
+}
+#intro #portrait {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	width: 100%;
+    height: auto;
+}
+#intro .site-title {
+    font-size: 4rem;
+    font-weight: 900;
+	text-align: center;
+	display: none;
+}
+#intro .ben-miles_logo .tagline {
+	display: none;    
+}
+#intro .site-description {
+	font-size: 28px;
+    font-weight: 200;
+    margin: 0 auto 25px;
+    text-align: center;
+}
+#intro .scroll {
+	margin: 0 0 1.75rem;
+	width: 256px;
+} 
+
+/*******************************************************************************
+	SECTIONS > PORTFOLIO
+*******************************************************************************/
+
+#portfolio .column {
+	justify-content: flex-start;
+}
+.portfolio-item {
+	background-color: #3e4047;
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.25);
+    color: #eee;
+	display: flex;
+    flex-direction: column;
+    height: 100%;
+	line-height: 1.4;
+	margin-bottom: 30px;
+	transition: background-color, box-shadow .125s ease-in-out;
+	width: 100%;
+}
+.portfolio-item:hover {
+	background-color: #4c4e57;
+	box-shadow: 0 0.75rem 1rem rgb(0 0 0 / 40%);
+}
+.portfolio-item .media {
+	display: block;
+}
+.portfolio-item .thumbnail-image,
+.portfolio-item .thumbnail-video {
+	width: 100%;
+	height: auto;
+}
+.portfolio-item .thumbnail-image {
+	display: block;
+}
+.portfolio-item.has-video:hover .thumbnail-image {
+	display: none;
+}
+.portfolio-item .thumbnail-video {
+	display: none;
+}
+.portfolio-item.has-video:hover .thumbnail-video {
+	display: block;
+}
+.portfolio-item .meta {
+	display: flex;
+    flex-direction: column;
+	height: 100%;
+    align-items: center;
+	padding: 20px;
+}
+.portfolio-item .title { 
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.portfolio-item .date {
+	font-size: 14px;
+}
+.portfolio-item a {
+	color: #7c96b2;
+}
+.portfolio-item .external-link {
+	font-size: 14px;
+	margin-top: auto;
+}
+.portfolio-item .external-link:before {
+	display: block;
+    float: left;
+    content: '';
+    background-image: url('/wp-content/themes/benmiles-wp/assets/icons/external-link.svg');
+    background-size: contain;
+    width: 12px;
+    height: 12px;
+    margin: 5px 5px 0 0;
+}
+.portfolio-item .excerpt {
+	text-align: center;
+	font-weight: 200;
+	line-height: 1.4;
+	margin: 0 0 20px;
+}
+
+/*******************************************************************************
+	SECTIONS > CONTACT
+*******************************************************************************/
+
+/*******************************************************************************
+	PAGES > HOME
+*******************************************************************************/
+
+/*	HOME > FEATURED PORTFOLIO ------------------------------------------------*/
+
+.category {
+	margin-bottom: 50px;
+}
+.category-heading {
+	color: #aaa;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+/*******************************************************************************
+	PAGES > PORTFOLIO ITEM
+*******************************************************************************/
+
+/*	Meta ---------------------------------------------------------------------*/
+
+#single-portfolio .post-meta {
+	color: #eee;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 30px;
+	justify-content: center;
+	line-height: 1.4;
+	margin: 0 auto 30px;
+	padding: 25px 30px;
+	width: 100%;
+}
+#single-portfolio .post-meta-item {
+	width: 100%;
+	text-align: center;
+}
+@media only screen and ( min-width: 768px ){
+	#single-portfolio .post-meta-item {
+		width: auto;
+		text-align: center;
 	}
 }
 
+/*	Thumbnail ----------------------------------------------------------------*/
 
-
-/* .float { 
-    animation-name: float;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-
+#single-portfolio .wp-post-image {
+	width: 100%; 
+	height: auto;
+	margin-bottom: 20px;
 }
- 
-@keyframes float {
-    0% { transform: translate(0,  0px) rotate(1deg); }
-    50%  { transform: translate(0, 15px) rotate(180deg); }
-    100%   { transform: translate(0, -0px) rotate(360deg); }   
-} */
 
+/*	Gallery ------------------------------------------------------------------*/
 
-/*------------------------------------------------------------------------------
-	Animations
---------------------------------------------------------------------------------
-	Via animate.css, Version 3.5.2, by Daniel Eden http://daneden.me/animate
-	Licensed under the MIT license http://opensource.org/licenses/MIT
-------------------------------------------------------------------------------*/
-
-.animated {
-	animation-duration: 1s;
-	animation-fill-mode: both;
+#single-portfolio .portfolio {
+	width: 100%;
 }
-.fadeInUp {
-	animation-name: fadeInUp;
+#single-portfolio .portfolio-item img {
+	height: auto;
+	width: 100%;
 }
-@keyframes fadeInUp {from{opacity:0;transform:translate3d(0,100%,0)}to{opacity:1;transform:none}}
+
+/*	Text ---------------------------------------------------------------------*/
+
+#single-portfolio .content {
+	background-color: #3e4047;
+	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
+	color: #eee;
+	line-height: 1.4;
+	margin: 0 auto 30px;
+	padding: 25px 30px;
+	width: 100%;
+}
+#single-portfolio .categories,
+#single-portfolio .tags {
+	color: #eee;
+	line-height: 1.4;
+	margin: 0 auto 30px;
+	width: 100%;
+}
+#single-portfolio .content p {
+	font-weight: 200;
+}
+#single-portfolio .content p:first-of-type {
+	margin-top: 0;
+}
+#single-portfolio .content p:last-of-type {
+	margin-bottom: 0;
+}
+#single-portfolio .post-categories,
+#single-portfolio .post-tags {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 25px 10px;
+	list-style: none;
+	margin: 16px 0;
+	padding: 0;
+}
+#single-portfolio .post-categories a,
+#single-portfolio .post-tags a {
+	background: #ccc;
+	border-radius: 50px;
+	color: #222;
+	padding: 5px 15px;
+}
+
+/*	Post Navigation -----------------------------------------------------------*/
+
+.post-navigation {
+	margin: 50px 0;
+	width: 100%;
+}
+.post-navigation .nav-links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.post-navigation .nav-links .nav-previous, 
+.post-navigation .nav-links .nav-next {
+	width: 50%;
+}
+.post-navigation .nav-links .nav-previous {
+	text-align: left;
+}
+.post-navigation .nav-links .nav-next {
+	text-align: right;
+}
+.post-navigation .nav-links a {
+	color: #fff;
+}

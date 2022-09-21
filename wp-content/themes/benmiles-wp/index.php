@@ -1,6 +1,5 @@
 <?php
 /* TODOs:
-- Get rid of jQuery & Bootstrap
 - Make Menus dynamic
 - Scrollspy for main nav?
 - SEO
