@@ -1048,10 +1048,14 @@ form .row {
     margin: 0 auto 25px;
     text-align: center;
 }
-#intro .scroll {
-	margin: 0 0 1.75rem;
-	width: 256px;
-} 
+#intro .cta-button {
+	padding: 10px 100px;
+}
+#intro .down svg {
+	fill: #222;
+	height: auto;
+	width: 30px;
+}
 
 /*******************************************************************************
 	SECTIONS > PORTFOLIO
