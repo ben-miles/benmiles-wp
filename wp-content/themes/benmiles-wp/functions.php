@@ -6,6 +6,13 @@ add_theme_support('post-thumbnails');
 // Enable Title 
 add_theme_support('title-tag');
 
+// Shorten Auto-Excerpts
+// Via https://www.hostinger.com/tutorials/wordpress-excerpt-length
+function shorten_auto_excerpts($length){ 
+	return 18; 
+}
+add_filter('excerpt_length', 'shorten_auto_excerpts');
+
 // Remove p and br tags from Contact Form 7
 // Via https://stackoverflow.com/a/49025096/6853842
 add_filter('wpcf7_autop_or_not', '__return_false');
