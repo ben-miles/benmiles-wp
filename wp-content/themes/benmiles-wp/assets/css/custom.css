@@ -402,6 +402,12 @@ a:hover {
     -webkit-text-decoration-skip: objects;
 }
 
+/*	SVGS ---------------------------------------------------------------------*/
+
+.svg svg {
+	display: block;
+}
+
 /*	SOCIAL MEDIA -------------------------------------------------------------*/
 
 .social-media {
