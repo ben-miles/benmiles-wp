@@ -12,8 +12,8 @@ Template Name: Section - Portfolio (Featured)
 			<div class="column column-1">
 
 				<h2 class="section-header animated" data-animation="fadeIn">Portfolio</h2>
-				<p style="color:#fff;">These are some of my favorite projects that I've worked on recently.</p>
-				<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="cta-button">See more of my work</a>
+				<p style="color:#fff;margin: 0 0 30px;">These are just a few of my favorite projects.</p>
+				<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="cta-button" style="margin-bottom: 30px;">See all of my work</a>
 
 				<!-- web development -->
 				<div class="category" id="web-development">

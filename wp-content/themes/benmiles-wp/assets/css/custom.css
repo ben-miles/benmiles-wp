@@ -1108,7 +1108,7 @@ form .row {
 	padding: 20px;
 }
 .portfolio-item .title { 
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: 600;
 	line-height: 1.4;
 	margin-bottom: 20px;
@@ -1125,14 +1125,13 @@ form .row {
 	margin-top: auto;
 }
 .portfolio-item .external-link:before {
-	display: block;
-    float: left;
+	float: left;
     content: '';
     background-image: url('/wp-content/themes/benmiles-wp/assets/icons/external-link.svg');
     background-size: contain;
-    width: 12px;
-    height: 12px;
-    margin: 5px 5px 0 0;
+    width: 14px;
+    height: 14px;
+    margin: 2px 10px 0 0;
 }
 .portfolio-item .excerpt {
 	text-align: center;
