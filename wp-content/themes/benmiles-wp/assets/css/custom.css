@@ -194,19 +194,29 @@ b, strong {
 }
 
 /*	Float --------------------------------------------------------------------*/
-/*	Via geeksforgeeks https://www.geeksforgeeks.org/css-floating-animation/ --*/
 
-.float { 
-	animation-name: float;
-	animation-duration: 3s;
+.float {
+	transform-origin: center;
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-in-out;
 }
- 
-@keyframes float {
-	0% { transform: translate(0,  0px) rotate(1deg); }
-	50%  { transform: translate(0, 15px) rotate(180deg); }
-	100%   { transform: translate(0, -0px) rotate(360deg); }   
+.float1 {
+	animation-duration: 3s;
+	animation-name: float1;
+}
+@keyframes float1 {
+	0% { transform: scaleX(1.6) scaleY(1.6) translate(55%, 52%); }
+    50%  { transform: scaleX(1.1) scaleY(1.65) translate(55%, 56%); }
+    100%   { transform: scaleX(1.6) scaleY(1.6) translate(55%, 52%); }
+}
+.float2 {
+	animation-duration: 3.25s;
+	animation-name: float2;
+}
+@keyframes float2 {
+    0% { transform: scaleX(1.4) scaleY(1.4) translate(52%, 50%); }
+    50%  { transform: scaleX(1.5) scaleY(1.2) translate(52%, 52%); }
+    100%   { transform: scaleX(1.4) scaleY(1.4) translate(52%, 50%); }
 }
 
 /*******************************************************************************

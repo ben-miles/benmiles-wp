@@ -13,14 +13,14 @@ Template Name: Section - Intro
 			<!-- portrait -->
 			<div class="column column-2">
 				<svg id="portrait" viewBox="0 0 200 200" style="overflow:visible;">
-					<path class="float" fill="#ccc" d="M39.4,-18.4C44.5,2.9,37.6,22.6,21.3,36C5,49.4,-20.6,56.6,-40.8,44.7C-60.9,32.8,-75.5,1.7,-67.7,-23.2C-60,-48.1,-30,-66.9,-6.4,-64.8C17.2,-62.7,34.3,-39.7,39.4,-18.4Z" style="transform: scale(0.7) translate(25%, 25%);" />
 					<defs>
 						<clipPath id="mask">
 							<path d="" id="path"></path>
 						</clipPath>
 					</defs>
+					<path class="float float1" fill="#ccc" d="M39.4,-18.4C44.5,2.9,37.6,22.6,21.3,36C5,49.4,-20.6,56.6,-40.8,44.7C-60.9,32.8,-75.5,1.7,-67.7,-23.2C-60,-48.1,-30,-66.9,-6.4,-64.8C17.2,-62.7,34.3,-39.7,39.4,-18.4Z" style="transform: scale(0.7) translate(25%, 25%);" />
+					<path class="float float2" fill="#7c96b2" d="M52.3,-41.3C63.3,-28,64.4,-6.5,59.6,13.1C54.7,32.7,43.7,50.4,28,57.9C12.2,65.5,-8.4,62.8,-29.5,55.1C-50.6,47.3,-72.3,34.4,-77.3,16.5C-82.3,-1.4,-70.6,-24.2,-55,-38.5C-39.3,-52.9,-19.7,-58.7,0.5,-59.2C20.7,-59.6,41.4,-54.5,52.3,-41.3Z" style="transform: scale(0.6) translate(150%, 140%);" />
 					<image clip-path="url(#mask)" height="100%" width="100%" href="wp-content/themes/benmiles-wp/img/ben-miles_portrait_IMG-1724_sq.jpg" />
-					<path class="float" fill="#7c96b2" d="M52.3,-41.3C63.3,-28,64.4,-6.5,59.6,13.1C54.7,32.7,43.7,50.4,28,57.9C12.2,65.5,-8.4,62.8,-29.5,55.1C-50.6,47.3,-72.3,34.4,-77.3,16.5C-82.3,-1.4,-70.6,-24.2,-55,-38.5C-39.3,-52.9,-19.7,-58.7,0.5,-59.2C20.7,-59.6,41.4,-54.5,52.3,-41.3Z" style="transform: scale(0.6) translate(150%, 140%);" />
 				</svg>
 			</div>
 
@@ -46,8 +46,10 @@ Template Name: Section - Intro
 						</a>
 					</li>
 				</ul>
-				<a href="#about" class="bounce" target="_self">
-					<?php displaySVG( 'Down', .6 ); ?>
+				<a href="#about" target="_self" class="cta-button">
+					<div class="bounce">
+						<?php displaySVG( 'Down', .6 ); ?>
+					</div>
 				</a>
 			</div>
 
