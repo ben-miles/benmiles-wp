@@ -371,9 +371,11 @@ section {
 
 .cta-button {
 	background-color: #fff;
+	border: none;
 	border-radius: 0;
 	color: #222;
 	display: inline-block;
+	font-size: 16px;
 	font-weight: 500;
 	margin: 0 auto;
 	padding: 10px 15px;
