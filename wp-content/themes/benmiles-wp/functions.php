@@ -6,6 +6,10 @@ add_theme_support('post-thumbnails');
 // Enable Title 
 add_theme_support('title-tag');
 
+// Remove p and br tags from Contact Form 7
+// Via https://stackoverflow.com/a/49025096/6853842
+add_filter('wpcf7_autop_or_not', '__return_false');
+
 if( !is_admin() ){
 
 	// Remove Gutenberg Block Library CSS from loading on the frontend

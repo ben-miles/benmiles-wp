@@ -943,6 +943,58 @@ svg:hover #color {
 }
 
 /*******************************************************************************
+	SECTIONS > CONTACT
+*******************************************************************************/
+
+#contact {
+	background-color: #3e4047;
+}
+.form-control {
+	background: #eee;
+	border: none;
+	/* border-bottom: 2px solid #00ade6; */
+	display: block;
+	font-size: 16px;
+	margin-bottom: 10px;
+	outline: none;
+	padding: 10px;
+	width: 100%;
+}
+/* .form-control:focus, 
+.form-control:valid {
+	border-bottom: 2px solid #fff;
+} */
+textarea.form-control {
+	height: 120px;
+	resize: none;
+}
+.form-group span:first-child {
+	display: block;
+	margin-bottom: 10px;
+}
+#submit {
+	cursor: pointer;
+}
+form .row {
+	margin-bottom: 20px;
+}
+.wpcf7 label {
+	width: 100%;
+}
+.wpcf7-not-valid-tip {
+	margin-bottom: 10px;
+}
+.wpcf7 .wpcf7-response-output {
+	text-align: center;
+}
+.wpcf7 form.sent .wpcf7-response-output {
+	/* success */
+}
+.wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output, .wpcf7 form.payment-required .wpcf7-response-output {
+	/* warning */
+}
+
+/*******************************************************************************
 	SECTIONS > INTRO
 *******************************************************************************/
 
@@ -1066,10 +1118,6 @@ svg:hover #color {
 	line-height: 1.4;
 	margin: 0 0 20px;
 }
-
-/*******************************************************************************
-	SECTIONS > CONTACT
-*******************************************************************************/
 
 /*******************************************************************************
 	PAGES > HOME
