@@ -46,16 +46,15 @@ if( !is_admin() ){
 
 /*
 * displaySVG
-* Generates a responsive SVG item from a filename
+* Generates optimized, inline SVG code from an SVG file
 * Based on https://stackoverflow.com/a/30000684/6853842
 */
-function displaySVG( $SVG = '', $delay = 0 ){
-    $file = strtolower( str_replace( array( ' ', '!' ), '', $SVG ) );
-    $svg_file = file_get_contents( 'wp-content/themes/benmiles-wp/assets/icons/' . $file . '.svg' );
+function displaySVG( $filename = '' ){
+    $svg_file = file_get_contents( get_template_directory_uri() . '/assets/icons/' . $filename . '.svg' );
     $find_string = '<svg';
     $position = strpos( $svg_file, $find_string );
-    $svg_file_new = substr( $svg_file, $position );
-    echo '<div class="svg animated ' . $file . '" title="' . $SVG . '" alt="' . $SVG . '" style="animation-delay: ' . $delay . 's;" data-animation="fadeInUp">' . $svg_file_new . '</div>';
+    $svg_code = substr( $svg_file, $position );
+    echo $svg_code;
 }
 
 /*

@@ -405,8 +405,11 @@ a:hover {
 
 /*	SVGS ---------------------------------------------------------------------*/
 
-.svg svg {
+.svg-wrapper svg {
 	display: block;
+	fill: #fff;
+	height: auto;
+	width: 100%;
 }
 
 /*	SOCIAL MEDIA -------------------------------------------------------------*/
@@ -421,7 +424,6 @@ a:hover {
 	width: 256px;
 }
 .social-media svg {
-	fill: #fff;
 	width: 30px;
 	height: auto;
 }
@@ -477,16 +479,9 @@ header .container {
 .brand:hover {
 	color: #bbb !important;
 }
-.brand .ben-miles_logo svg {
-	display: block;
-	height: auto;
+.brand .svg-ben-miles_logo svg {
 	width: 150px;
 } 
-.brand .ben-miles_logo path,
-.brand .ben-miles_logo polygon,
-.brand .ben-miles_logo rect {
-	fill: #fff;
-}
 @media only screen and ( min-width: 992px ) {
 	.brand {
 		font-size: 24px;
@@ -531,7 +526,6 @@ header .container {
 }
 #nav-toggle svg {
 	width: 60px;
-	height: auto;
 }
 
 /*	NAV TOGGLE > SVG ---------------------------------------------------------*/
@@ -774,45 +768,45 @@ footer .social-media {
 	margin: 0 auto 20px;
 	width: 100%;
 }
-.svg path, 
-.svg polygon {
-	transition: fill 0.25s;
-}
-.svg-row .svg {
+.svg-row .svg-wrapper {
 	padding: 0 3%;
 	flex: 1 1 20%;
 }
 @media only screen and ( min-width: 1200px ){
-	.svg-row .svg {
+	.svg-row .svg-wrapper {
 		padding: 0 5%;
 	}
 }
-.svg-row .svg svg {
+.svg-row .svg-wrapper svg {
 	width: 100%;
 	height: auto;
 	opacity: 0.7;
 	transition: all .2s ease-in-out;
 }
-.svg-row .svg svg:hover {
+.svg-row .svg-wrapper path, 
+.svg-row .svg-wrapper polygon {
+	transition: fill 0.25s;
+}
+.svg-row .svg-wrapper svg:hover {
 	opacity: 1;
 	transform: scale(1.25);
 }
-
-/*	ABOUT > SVG ICONS > HOVER ------------------------------------------------*/
-
-svg #mask {
+.svg-row .svg-wrapper svg #mask {
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
 }
-svg #color {
+.svg-row .svg-wrapper svg #color {
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
-svg:hover #mask {
+.svg-row .svg-wrapper svg:hover #mask {
     opacity: 0;
 }
-svg:hover #color {
+.svg-row .svg-wrapper svg:hover #color {
     opacity: 1;
+}
+.svg-row .svg-wrapper.svg-phpstorm svg {
+    fill: unset;
 }
 
 /*	ABOUT > TIMELINE ---------------------------------------------------------*/
@@ -888,7 +882,6 @@ svg:hover #color {
     content: " ";
 }
 .timeline > li > .timeline-badge {
-    color: #fff;
     width: 50px;
     height: 50px;
     line-height: 50px;
@@ -896,11 +889,7 @@ svg:hover #color {
     text-align: center;
     position: absolute;
     top: 16px;
-    background-color: #999999;
-    border-top-right-radius: 50%;
-    border-top-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
+    border-radius: 50%;
 }
 .timeline-badge.primary {
     background-color: #2e6da4 !important;
@@ -1065,8 +1054,8 @@ textarea.form-control {
 	text-align: center;
 	display: none;
 }
-#intro .ben-miles_logo .tagline {
-	display: none;    
+#intro .svg-ben-miles_logo .tagline {
+	display: none;
 }
 #intro .site-description {
 	font-size: 28px;
@@ -1077,9 +1066,8 @@ textarea.form-control {
 #intro .cta-button {
 	padding: 10px 100px;
 }
-#intro .down svg {
+#intro .svg-down svg {
 	fill: #222;
-	height: auto;
 	width: 30px;
 }
 

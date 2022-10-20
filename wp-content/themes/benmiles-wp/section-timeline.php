@@ -18,7 +18,9 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge success">
-                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-work">
+									<?php displaySVG('work'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -37,7 +39,9 @@ Template Name: Section - Timeline
 
 						<li>
                             <div class="timeline-badge success">
-                                <i class="fa fa-building" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-work">
+									<?php displaySVG('work'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -56,7 +60,9 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge" style="background: #739c43;">
-                                <i class="fa fa-building" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-work">
+									<?php displaySVG('work'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -75,7 +81,9 @@ Template Name: Section - Timeline
 
                         <li>
                             <div class="timeline-badge" style="background: #bdab49;">
-                                <i class="fa fa-building" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-work">
+									<?php displaySVG('work'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -94,7 +102,9 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge warning">
-                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-work">
+									<?php displaySVG('work'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -113,7 +123,9 @@ Template Name: Section - Timeline
 
                         <li>
                             <div class="timeline-badge" style="background: #f0954f;">
-                                <i class="fa fa-building" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-work">
+									<?php displaySVG('work'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -132,7 +144,9 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge" style="background: #e66f4f;">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-school">
+									<?php displaySVG('school'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -151,7 +165,9 @@ Template Name: Section - Timeline
 
                         <li>
                             <div class="timeline-badge danger">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+								<div class="svg-wrapper svg-school">
+									<?php displaySVG('school'); ?>
+								</div>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">

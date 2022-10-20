@@ -15,17 +15,23 @@
 						<ul class="social-media">
 							<li>
 								<a href="https://www.linkedin.com/in/benjaminmiles/" target="_blank">
-									<?php displaySVG( 'LinkedIn' ); ?>
+									<div class="svg-wrapper svg-linkedin">
+										<?php displaySVG('linkedin'); ?>
+									</div>
 								</a>
 							</li>
 							<li>
 								<a href="https://codepen.io/benmiles/" target="_blank">
-									<?php displaySVG( 'CodePen' ); ?>
+									<div class="svg-wrapper svg-codepen">
+										<?php displaySVG('codepen'); ?>
+									</div>
 								</a>
 							</li>
 							<li>
 								<a href="https://github.com/ben-miles" target="_blank">
-									<?php displaySVG( 'GitHub' ); ?>
+									<div class="svg-wrapper svg-github">
+										<?php displaySVG('github'); ?>
+									</div>
 								</a>
 							</li>
 						</ul>

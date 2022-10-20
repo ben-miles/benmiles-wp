@@ -26,43 +26,69 @@ Template Name: Section - About
 				<!-- TODO: Update the text content above to reflect knowledge of these items, briefly.  -->
 
 				<!-- code languages -->
-				<!-- <h3>Code Languages</h3> -->
-				<!-- <div class="svg-row">
-					<?php
-					// displaySVG( 'HTML 5' );
-					// displaySVG( 'CSS 3', .1 );
-					// displaySVG( 'JavaScript', .2 );
-					// displaySVG( 'PHP', .3 );
-					// displaySVG( 'mySQL', .4 );
-					?>
-				</div> -->
+				<h3>Code Languages</h3>
+				<div class="svg-row">
+					<div class="svg-wrapper svg-html">
+						<?php displaySVG('html'); ?>
+					</div>
+					<div class="svg-wrapper svg-css">
+						<?php displaySVG('css'); ?>
+					</div>
+					<div class="svg-wrapper svg-js">
+						<?php displaySVG('js'); ?>
+					</div>
+					<div class="svg-wrapper svg-php">
+						<?php displaySVG('php'); ?>
+					</div>
+					<div class="svg-wrapper svg-mysql">
+						<?php displaySVG('mysql'); ?>
+					</div>
+				</div>
 				<!-- frameworks, libraries -->
-				<!-- <h3>Frameworks & Libraries</h3> -->
-				<!-- <div class="svg-row">
-					<?php
-					// displaySVG( 'Bootstrap', .1 );
-					// displaySVG( 'jQuery', .2 );
-					// displaySVG( 'Joomla!', .3 );
-					?>
-				</div> -->
-				<!-- <div class="svg-row">
-					<?php
-					// displaySVG( 'Vue', .4 );
-					// displaySVG( 'Laravel', .5 );
-					// displaySVG( 'WordPress', .6 );
-					?>
-				</div> -->
+				<h3>Frameworks & Libraries</h3>
+				<div class="svg-row">
+					<div class="svg-wrapper svg-bootstrap">
+						<?php displaySVG('bootstrap'); ?>
+					</div>
+					<div class="svg-wrapper svg-jquery">
+						<?php displaySVG('jquery'); ?>
+					</div>
+					<div class="svg-wrapper svg-joomla">
+						<?php displaySVG('joomla'); ?>
+					</div>
+				</div>
+				<div class="svg-row">
+					<div class="svg-wrapper svg-vue">
+						<?php displaySVG('vue'); ?>
+					</div>
+					<div class="svg-wrapper svg-laravel">
+						<?php displaySVG('laravel'); ?>
+					</div>
+					<div class="svg-wrapper svg-wordpress">
+						<?php displaySVG('wordpress'); ?>
+					</div>
+				</div>
 				<!-- software -->
-				<!-- <h3>Software</h3> -->
-				<!-- <div class="svg-row">
-					<?php
-					// displaySVG( 'phpStorm', .1 );
-					// displaySVG( 'Photoshop', .2 );
-					// displaySVG( 'Illustrator', .3 );
-					// displaySVG( 'inDesign', .4 );
-					// displaySVG( 'VS Code', .4 );
-					?>
-				</div> -->
+				<h3>Software</h3>
+				<div class="svg-row">
+					<div class="svg-wrapper svg-phpstorm">
+						<?php displaySVG('phpstorm'); ?>
+					</div>
+					<div class="svg-wrapper svg-photoshop">
+						<?php displaySVG('photoshop'); ?>
+					</div>
+					<div class="svg-wrapper svg-illustrator">
+						<?php displaySVG('illustrator'); ?>
+					</div>
+					<div class="svg-wrapper svg-indesign">
+						<?php displaySVG('indesign'); ?>
+					</div>
+					<div class="svg-wrapper svg-vscode">
+						<?php displaySVG('vscode'); ?>
+					</div>
+				</div>
+
+				<?php } // End if() for Home/About Page Content ?>				
 
             </div>
         </div>

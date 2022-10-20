@@ -26,29 +26,37 @@ Template Name: Section - Intro
 
 			<!-- info -->
 			<div class="column column-2">
-				<?php displaySVG( 'ben-miles_logo' ); ?>
+				<div class="svg-wrapper svg-ben-miles_logo">
+					<?php displaySVG('ben-miles_logo'); ?>
+				</div>
 				<h1 class="animated fadeInUp site-title" data-animation="fadeInUp" style="animation-delay: .1s;">Ben Miles</h2>
 				<h2 class="animated fadeInUp site-description" data-animation="fadeInUp" style="animation-delay: .2s;">Graphic Designer & <br>Full-Stack Web Developer</h2>
 				<ul class="social-media">
 					<li>
 						<a href="https://www.linkedin.com/in/benjaminmiles/" target="_blank">
-							<?php displaySVG( 'LinkedIn', .3 ); ?>
+							<div class="svg-wrapper svg-linkedin">
+								<?php displaySVG('linkedin'); ?>
+							</div>
 						</a>
 					</li>
 					<li>
 						<a href="https://codepen.io/benmiles/" target="_blank">
-							<?php displaySVG( 'CodePen', .4 ); ?>
+							<div class="svg-wrapper svg-codepen">
+								<?php displaySVG('codepen'); ?>
+							</div>
 						</a>
 					</li>
 					<li>
 						<a href="https://github.com/ben-miles" target="_blank">
-							<?php displaySVG( 'GitHub', .5 ); ?>
+							<div class="svg-wrapper svg-github">
+								<?php displaySVG('github'); ?>
+							</div>
 						</a>
 					</li>
 				</ul>
 				<a href="#about" target="_self" class="cta-button">
-					<div class="bounce">
-						<?php displaySVG( 'Down', .6 ); ?>
+					<div class="svg-wrapper svg-down bounce">
+						<?php displaySVG('down'); ?>
 					</div>
 				</a>
 			</div>
