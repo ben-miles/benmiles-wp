@@ -54,7 +54,6 @@ svg:not(:root) {
 
 :root {
 	--header-height: 70px;
-	--footer-height: 150px;
 	--color-black: rgba( 0, 0, 0, 1 );
 	--color-white: rgba(255, 255, 255, 1 );
 }
@@ -663,14 +662,35 @@ header .container {
 
 footer {
     background: #111;
+	color: #fff;
     transition: background 0.3s;
+	padding: 20px 0;
+}
+footer a,
+footer a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+footer .copyright {
+	font-size: 14px;
+	font-weight: 200;
 }
 footer .social-media {
-	margin: 50px auto;
-	width: 500px;
+	margin: 20px auto 0;
 }
-footer .social-media svg {
-	width: 50px;
+@media only screen and ( min-width: 768px ) {
+    footer .column-2:first-of-type {
+		align-items: flex-start;
+	}
+	footer .copyright {
+		text-align: center;
+	}
+	footer .column-2:last-of-type {
+		align-items: flex-end;
+	}
+	footer .social-media {
+		margin: 0 0 0 auto;
+	}
 }
 
 /*******************************************************************************

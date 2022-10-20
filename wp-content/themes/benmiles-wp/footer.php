@@ -2,9 +2,16 @@
         <footer id="footer">
             <div class="container">
                 <div class="row">
-                    <div class="column column-1">
 
-						<!-- social media links -->
+					<!-- copyright -->
+                    <div class="column column-2">
+						<div class="copyright">
+							© <?php echo date('Y'); ?> <a href="<?php bloginfo('url'); ?>" target="_self">Ben Miles</a>. All Rights Reserved.
+						</div>	
+					</div>
+                    
+					<!-- social media links -->
+					<div class="column column-2">
 						<ul class="social-media">
 							<li>
 								<a href="https://www.linkedin.com/in/benjaminmiles/" target="_blank">
@@ -22,9 +29,8 @@
 								</a>
 							</li>
 						</ul>
-						<!-- / social media links -->
-						
                     </div>
+
                 </div>
             </div>
         </footer>
@@ -34,38 +40,6 @@
         <button class="btn btn-default scroll" id="backToTop" data-section="intro">
             <i class="fa fa-angle-up" aria-hidden="true"></i>
         </button>
-
-		<!-- modal -->
-		<!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-body">
-						<div class="row">
-							<div class="image col-md-8">
-								<button type="button" class="close d-md-none" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<div class="wrapper"></div>
-							</div>
-							<div class="info col-md-4">
-								<button type="button" class="close d-none d-md-block" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<div class="row">
-									<div class="col-12">
-										<div class="header"></div>
-										<div class="meta"></div>
-										<div class="thumbs"></div>
-										<div class="body"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- / modal -->
 
 		<?php wp_footer(); ?>
 
