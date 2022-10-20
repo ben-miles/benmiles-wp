@@ -1013,10 +1013,14 @@ textarea.form-control {
 #submit {
 	cursor: pointer;
 }
-form .row {
+.wpcf7 .row {
 	margin-bottom: 20px;
 }
+.wpcf7 .column-2 {
+	justify-content: space-between;
+}
 .wpcf7 label {
+	color: #fff;
 	width: 100%;
 }
 .wpcf7-not-valid-tip {
@@ -1028,7 +1032,9 @@ form .row {
 .wpcf7 form.sent .wpcf7-response-output {
 	/* success */
 }
-.wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output, .wpcf7 form.payment-required .wpcf7-response-output {
+.wpcf7 form.invalid .wpcf7-response-output, 
+.wpcf7 form.unaccepted .wpcf7-response-output, 
+.wpcf7 form.payment-required .wpcf7-response-output {
 	/* warning */
 }
 
