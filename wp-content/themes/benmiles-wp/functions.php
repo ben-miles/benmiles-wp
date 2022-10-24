@@ -47,21 +47,24 @@ if( !is_admin() ){
 /*
 * displaySVG
 * Generates optimized, inline SVG code from an SVG file
+* Accepts: Name of SVG file, Additional CSS Class(es)
+* Returns: String of HTML containing optimized, inline SVG code
 * Based on https://stackoverflow.com/a/30000684/6853842
 */
-function displaySVG( $filename = '' ){
+function displaySVG( $filename = '', $additional_classes = NULL ){
     $svg_file = file_get_contents( get_template_directory_uri() . '/assets/icons/' . $filename . '.svg' );
-    $find_string = '<svg';
-    $position = strpos( $svg_file, $find_string );
-    $svg_code = substr( $svg_file, $position );
-    echo $svg_code;
+    $search_string = '<svg';
+    $start_position = strpos( $svg_file, $search_string );
+    $svg_code = substr( $svg_file, $start_position );
+    $output = '<div class="svg-wrapper svg-' . $filename . ' ' . $additional_classes . '">' . $svg_code . '</div>';
+    echo $output;
 }
 
 /*
 * getPortfolioItems
 * Gets and formats Portfolio Items for display
 * Accepts: Category Name(s), Tag(s), and a Max number of Items to collect, as arguments
-* Returns: the collection of Portfolio Items, formatted for display, as a single string of HTML
+* Returns: String of HTML containing the collection of Portfolio Items, formatted for display
 */
 function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 	$args = array(

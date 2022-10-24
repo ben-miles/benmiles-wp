@@ -18,9 +18,7 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge success">
-								<div class="svg-wrapper svg-work">
-									<?php displaySVG('work'); ?>
-								</div>
+								<?php displaySVG('work'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -39,9 +37,7 @@ Template Name: Section - Timeline
 
 						<li>
                             <div class="timeline-badge success">
-								<div class="svg-wrapper svg-work">
-									<?php displaySVG('work'); ?>
-								</div>
+								<?php displaySVG('work'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -60,9 +56,7 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge" style="background: #739c43;">
-								<div class="svg-wrapper svg-work">
-									<?php displaySVG('work'); ?>
-								</div>
+								<?php displaySVG('work'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -81,9 +75,7 @@ Template Name: Section - Timeline
 
                         <li>
                             <div class="timeline-badge" style="background: #bdab49;">
-								<div class="svg-wrapper svg-work">
-									<?php displaySVG('work'); ?>
-								</div>
+								<?php displaySVG('work'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -102,9 +94,7 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge warning">
-								<div class="svg-wrapper svg-work">
-									<?php displaySVG('work'); ?>
-								</div>
+								<?php displaySVG('work'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -123,9 +113,7 @@ Template Name: Section - Timeline
 
                         <li>
                             <div class="timeline-badge" style="background: #f0954f;">
-								<div class="svg-wrapper svg-work">
-									<?php displaySVG('work'); ?>
-								</div>
+								<?php displaySVG('work'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -144,9 +132,7 @@ Template Name: Section - Timeline
 
                         <li class="timeline-inverted">
                             <div class="timeline-badge" style="background: #e66f4f;">
-								<div class="svg-wrapper svg-school">
-									<?php displaySVG('school'); ?>
-								</div>
+								<?php displaySVG('school'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">
@@ -165,9 +151,7 @@ Template Name: Section - Timeline
 
                         <li>
                             <div class="timeline-badge danger">
-								<div class="svg-wrapper svg-school">
-									<?php displaySVG('school'); ?>
-								</div>
+								<?php displaySVG('school'); ?>
                             </div>
                             <div class="timeline-panel animated" data-animation="fadeInUp">
                                 <div class="timeline-heading">

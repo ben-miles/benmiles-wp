@@ -30,18 +30,14 @@
 		<?php } else {; ?>
 		<a class="brand" href="<?php bloginfo('url'); ?>" target="_self">
 		<?php } ?>
-			<div class="svg-wrapper svg-ben-miles_logo">
-				<?php displaySVG('ben-miles_logo'); ?>
-			</div>
+			<?php displaySVG('ben-miles_logo'); ?>
 			<h1 class="site-title"><?php bloginfo('name'); ?></h1>
 			<h2 class="site-description"><?php bloginfo('description'); ?></h2>
 		</a>
 
 		<!-- Mobile Menu Toggle -->
 		<button class="btn" id="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle Navigation">
-			<div class="svg-wrapper svg-menu">
-				<?php displaySVG('menu'); ?>
-			</div>
+			<?php displaySVG('menu'); ?>
 		</button>
 			
 		<!-- Navigation -->

@@ -28,64 +28,40 @@ Template Name: Section - About
 				<!-- code languages -->
 				<h3>Code Languages</h3>
 				<div class="svg-row">
-					<div class="svg-wrapper svg-html">
-						<?php displaySVG('html'); ?>
-					</div>
-					<div class="svg-wrapper svg-css">
-						<?php displaySVG('css'); ?>
-					</div>
-					<div class="svg-wrapper svg-js">
-						<?php displaySVG('js'); ?>
-					</div>
-					<div class="svg-wrapper svg-php">
-						<?php displaySVG('php'); ?>
-					</div>
-					<div class="svg-wrapper svg-mysql">
-						<?php displaySVG('mysql'); ?>
-					</div>
+					<?php 
+					displaySVG('html');
+					displaySVG('css');
+					displaySVG('js');
+					displaySVG('php');
+					displaySVG('mysql');
+					?>
 				</div>
 				<!-- frameworks, libraries -->
 				<h3>Frameworks & Libraries</h3>
 				<div class="svg-row">
-					<div class="svg-wrapper svg-bootstrap">
-						<?php displaySVG('bootstrap'); ?>
-					</div>
-					<div class="svg-wrapper svg-jquery">
-						<?php displaySVG('jquery'); ?>
-					</div>
-					<div class="svg-wrapper svg-joomla">
-						<?php displaySVG('joomla'); ?>
-					</div>
+					<?php
+					displaySVG('bootstrap');
+					displaySVG('jquery');
+					displaySVG('joomla');
+					?>
 				</div>
 				<div class="svg-row">
-					<div class="svg-wrapper svg-vue">
-						<?php displaySVG('vue'); ?>
-					</div>
-					<div class="svg-wrapper svg-laravel">
-						<?php displaySVG('laravel'); ?>
-					</div>
-					<div class="svg-wrapper svg-wordpress">
-						<?php displaySVG('wordpress'); ?>
-					</div>
+					<?php
+					displaySVG('vue');
+					displaySVG('laravel');
+					displaySVG('wordpress');
+					?>
 				</div>
 				<!-- software -->
 				<h3>Software</h3>
 				<div class="svg-row">
-					<div class="svg-wrapper svg-phpstorm">
-						<?php displaySVG('phpstorm'); ?>
-					</div>
-					<div class="svg-wrapper svg-photoshop">
-						<?php displaySVG('photoshop'); ?>
-					</div>
-					<div class="svg-wrapper svg-illustrator">
-						<?php displaySVG('illustrator'); ?>
-					</div>
-					<div class="svg-wrapper svg-indesign">
-						<?php displaySVG('indesign'); ?>
-					</div>
-					<div class="svg-wrapper svg-vscode">
-						<?php displaySVG('vscode'); ?>
-					</div>
+					<?php
+					displaySVG('phpstorm');
+					displaySVG('photoshop');
+					displaySVG('illustrator');
+					displaySVG('indesign');
+					displaySVG('vscode');
+					?>
 				</div>
 
 				<?php } // End if() for Home/About Page Content ?>				
