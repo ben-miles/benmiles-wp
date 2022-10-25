@@ -9,7 +9,7 @@ Template Name: Section - Contact
 <section id="contact">
     <div class="container" style="height:100%;">
     	<div class="row">
-			<div class="column column-1">
+			<div class="column column-12">
 				<h2 class="section-header animated" data-animation="fadeIn">Contact</h2>
 				<p style="color:#fff;margin-bottom:40px;">Send me a message with the form below.</p>
 				<div class="form-wrapper">

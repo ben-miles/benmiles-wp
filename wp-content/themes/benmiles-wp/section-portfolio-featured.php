@@ -9,7 +9,7 @@ Template Name: Section - Portfolio (Featured)
 <section id="portfolio">
 	<div class="container">
 		<div class="row">
-			<div class="column column-1">
+			<div class="column column-12">
 
 				<h2 class="section-header animated" data-animation="fadeIn">Portfolio</h2>
 				<p style="color:#fff;margin: 0 0 30px;">These are just a few of my favorite projects.</p>

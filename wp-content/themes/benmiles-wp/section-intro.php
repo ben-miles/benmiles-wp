@@ -11,7 +11,7 @@ Template Name: Section - Intro
     	<div class="row">
 
 			<!-- portrait -->
-			<div class="column column-2">
+			<div class="column column-6">
 				<svg id="portrait" viewBox="0 0 200 200" style="overflow:visible;">
 					<defs>
 						<clipPath id="mask">
@@ -25,7 +25,7 @@ Template Name: Section - Intro
 			</div>
 
 			<!-- info -->
-			<div class="column column-2">
+			<div class="column column-6">
 				<?php displaySVG('ben-miles_logo'); ?>
 				<h1 class="animated fadeInUp site-title" data-animation="fadeInUp" style="animation-delay: .1s;">Ben Miles</h2>
 				<h2 class="animated fadeInUp site-description" data-animation="fadeInUp" style="animation-delay: .2s;">Graphic Designer & <br>Full-Stack Web Developer</h2>

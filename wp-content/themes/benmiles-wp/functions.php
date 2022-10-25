@@ -89,9 +89,10 @@ function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 		$the_external_url = get_field( 'url' );
 		$the_permalink = get_permalink();
 		$max_items = ( $max_items > 4 || $max_items === -1) ? 4 : $max_items;
+		$column_class = 12 / $max_items;
 		$animation_delay = $i % $max_items;
 		?>
-		<div class="column column-<?php echo $max_items; ?>">
+		<div class="column column-<?php echo $column_class; ?>">
 			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $animation_delay; ?>s;">
 				<a href="<?php echo $the_permalink; ?>" target="_self" class="media">
 					<?php echo $the_thumbnail;

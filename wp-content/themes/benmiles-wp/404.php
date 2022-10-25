@@ -10,7 +10,7 @@ get_header();
 <section id="error-404">
 	<div class="container" style="height:100%;">
 		<div class="row">
-			<div class="column column-1">
+			<div class="column column-12">
 				
 				<!-- header -->
 				<h1 class="section-header animated" data-animation="fadeInUp">404</h1>

@@ -12,7 +12,7 @@ get_header();
 		<div class="row">
 
 			<!-- Title -->
-			<div class="column column-1">
+			<div class="column column-12">
 				<h2 class="section-header animated fadeInUp" data-animation="fadeInUp"><?php the_title(); ?></h1>
 			</div>
 
