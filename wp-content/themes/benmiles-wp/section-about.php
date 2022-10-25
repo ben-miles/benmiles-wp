@@ -11,7 +11,7 @@ Template Name: Section - About
 		<div class="row">
 			<div class="column column-12">
 
-				<h2 class="section-header animated" data-animation="fadeInUp">About Ben Miles</h2>
+				<h2 class="heading animated" data-animation="fadeInUp">About Ben Miles</h2>
 
 				<div class="animated bio" style="animation-delay: .1s;" data-animation="fadeInUp">
 					<p><b>I am an experienced and well-rounded graphic designer and web developer located in central Florida.</b></p>

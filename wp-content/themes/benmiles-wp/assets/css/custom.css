@@ -142,6 +142,25 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
     color: inherit;
 }
+.heading {
+	border-bottom: 2px solid #ccc;
+    color: #ccc;
+    display: inline-block;
+	font-size: 28px;
+    margin: 30px auto;
+    text-align: center;
+}
+.sub-heading {
+	color: #ccc;
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin: 20px auto;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
+}
 b, strong {
 	font-weight: inherit;
     font-weight: bolder;
@@ -239,15 +258,6 @@ body {
 section {
 	padding: calc( var(--header-height) + 30px) 0;
 	box-sizing: border-box;
-}
-
-.section-header {
-	border-bottom: 2px solid #ccc;
-    color: #ccc;
-    display: inline-block;
-	font-size: 28px;
-    margin: 30px auto;
-    text-align: center;
 }
 
 /*	CONTAINER ----------------------------------------------------------------*/
@@ -758,18 +768,6 @@ footer .social-media {
 .bio p {
 	font-weight: 200;
 }
-#about h3 {
-	color: #ccc;
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 3px;
-    margin: 20px auto;
-    text-transform: uppercase;
-    text-align: left;
-    display: block;
-	display: none;
-    width: 100%;
-}
 
 /*	ABOUT > SVG ICONS --------------------------------------------------------*/
 
@@ -1176,11 +1174,6 @@ textarea.form-control {
 
 .category {
 	margin-bottom: 50px;
-}
-.category-heading {
-	color: #aaa;
-	margin-bottom: 20px;
-	width: 100%;
 }
 
 /*******************************************************************************

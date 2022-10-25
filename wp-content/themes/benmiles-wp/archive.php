@@ -25,7 +25,7 @@ if ( is_category() ) {
 		<div class="row">
 			<div class="column col-1">
 
-				<h2 class="section-header animated" data-animation="fadeIn">
+				<h2 class="heading animated" data-animation="fadeIn">
 					<?php echo $meta_type . ': ' . $meta_key->name;	?>
 				</h2>
 

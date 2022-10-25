@@ -13,7 +13,7 @@ get_header();
 			<div class="column column-12">
 				
 				<!-- header -->
-				<h1 class="section-header animated" data-animation="fadeInUp">404</h1>
+				<h1 class="heading animated" data-animation="fadeInUp">404</h1>
 				
 				<!-- content -->
 				<div class="animated card error-404" style="animation-delay: .1s;" data-animation="fadeInUp">

@@ -27,7 +27,7 @@ Template Name: Section - Intro
 			<!-- info -->
 			<div class="column column-6">
 				<?php displaySVG('ben-miles_logo'); ?>
-				<h1 class="animated fadeInUp site-title" data-animation="fadeInUp" style="animation-delay: .1s;">Ben Miles</h2>
+				<h1 class="site-title animated fadeInUp" data-animation="fadeInUp" style="animation-delay: .1s;">Ben Miles</h2>
 				<h2 class="animated fadeInUp site-description" data-animation="fadeInUp" style="animation-delay: .2s;">Graphic Designer & <br>Full-Stack Web Developer</h2>
 				<ul class="social-media">
 					<li>
