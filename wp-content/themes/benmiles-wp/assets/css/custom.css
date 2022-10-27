@@ -1303,12 +1303,22 @@ textarea.form-control {
 .post-navigation .nav-links .nav-next {
 	width: 50%;
 }
-.post-navigation .nav-links .nav-previous {
-	text-align: left;
-}
-.post-navigation .nav-links .nav-next {
-	text-align: right;
-}
 .post-navigation .nav-links a {
 	color: #fff;
+	display: block;
+	padding: 20px;
+}
+.post-navigation .nav-links .nav-previous a {
+	background: linear-gradient(90deg, rgba(62, 64, 71, 1) 0%, rgba(62, 64, 71, 0) 75%);
+	text-align: left;
+}
+.post-navigation .nav-links .nav-previous a:hover {
+	background: linear-gradient(90deg, rgba(76, 78, 87, 1) 0%, rgba(76, 78, 87, 0) 75%);
+}
+.post-navigation .nav-links .nav-next a {
+	background: linear-gradient(90deg, rgba(62, 64, 71, 0) 25%, rgba(62, 64, 71, 1) 100%);
+	text-align: right;
+}
+.post-navigation .nav-links .nav-next a:hover {
+	background: linear-gradient(90deg, rgba(76, 78, 87, 0) 25%, rgba(76, 78, 87, 1) 100%);
 }
