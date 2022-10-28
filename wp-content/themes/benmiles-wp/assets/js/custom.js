@@ -193,6 +193,41 @@ function toggleNav(){
 	navToggle.setAttribute('aria-expanded', menuIsOpen);
 }
 
+/* LIGHTBOX ***********************************************************************
+	Based on "How to Create a Lightbox Using HTML, CSS, and JavaScript" by FreeCodeCamp
+	https://www.freecodecamp.org/news/how-to-create-a-lightbox-using-html-css-and-javascript/ */
+
+var lightbox = document.getElementsByClassName('lightbox-container')[0];
+var lightboxImages = document.getElementsByClassName('open-in-lightbox');
+for(let lightboxImage of lightboxImages){
+	lightboxImage.addEventListener('click', openLightbox);
+}
+function openLightbox(target) {
+	// override default behavior of opening link in new tab/window
+	event.preventDefault();
+	// clear contents of lightbox-body
+	var lightboxBody = lightbox.getElementsByClassName('lightbox-body')[0];
+	lightboxBody.innerHTML = '';
+	// get full-size image from the clicked link
+	var fullSizeImageURL = target.path[1].href;
+	var img = document.createElement('img');
+	img.src = fullSizeImageURL;
+	// add it to lightbox body
+	lightboxBody.append(img);
+	// disable vertical scroll on html
+	document.documentElement.style.overflow = 'hidden';
+	// open the lightbox
+	lightbox.style.display = 'block';
+}
+var lightboxCloseButton = document.getElementsByClassName('lightbox-close')[0];
+lightboxCloseButton.addEventListener('click', closeLightbox);
+function closeLightbox() {
+	// re-enable vertical scroll on html
+	document.documentElement.style.overflow = 'auto';
+	// close the lightbox
+	lightbox.style.display = 'none';
+};
+
 // TODO: Scroll from top to bottom slowly (for recording video thumbnails)
 // let footer = document.getElementById('footer');
 // console.log(footer);

@@ -52,7 +52,7 @@ get_header();
 						?>
 						<div class="column column-2">
 							<div class="portfolio-item">
-								<?php if( !empty($full_image_url) ){ ?><a href="<?php echo $full_image_url; ?>" class="foobox"><?php } ?>
+								<?php if( !empty($full_image_url) ){ ?><a href="<?php echo $full_image_url; ?>" target="_blank" class="open-in-lightbox"><?php } ?>
 									<img src="<?php echo $custom_thumbnail_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 									<?php if( !empty($full_image_url) ){ ?></a><?php } ?>
 								<div class="meta">
@@ -106,5 +106,14 @@ get_header();
 	</div>
 </section>
 <!-- / about -->
+
+<!-- lightbox -->
+<div class="lightbox-container">
+	<div class="lightbox">
+		<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+		<div class="lightbox-body"></div>
+	</div>
+</div>
+<!-- / lightbox -->
 
 <?php get_footer(); ?>
