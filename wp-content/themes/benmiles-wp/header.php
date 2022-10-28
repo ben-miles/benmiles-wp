@@ -19,7 +19,15 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="<?php echo get_post_type() . ' ' . get_post_field('post_name'); ?>">
+<?php
+$post = get_queried_object();
+$postType = get_post_type_object(get_post_type($post));
+$customPostType = "";
+if ($postType) {
+    $customPostType =  str_replace(' ', '-', strtolower(esc_html($postType->labels->singular_name)));
+}
+?>
+<body class="<?php echo get_post_type() . ' ' . $customPostType . ' ' . get_post_field('post_name'); ?>">
 	
 <header id="site-header">
 	<div class="container">
