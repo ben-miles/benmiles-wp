@@ -22,7 +22,7 @@ get_header();
 			</div>
 			
 			<!-- Meta -->
-			<div class="column column-1">
+			<div class="column column-12">
 				<div class="post-meta">
 					<div class="post-meta-item date"><h4 class="label">Date </h4><?php the_date(); ?></div>
 					<?php if( get_field( 'agency' ) ){ ?>
@@ -34,7 +34,7 @@ get_header();
 			</div>
 				
 			<!-- Images -->
-			<div class="column column-2" style="justify-content: flex-start;">
+			<div class="column column-6" style="justify-content: flex-start;">
 				<div class="thumbnail">
 					<?php the_post_thumbnail($post->ID,'small'); ?>
 				</div>
@@ -50,7 +50,7 @@ get_header();
 								$full_image_url = $image['full_image_url'];
 								$custom_thumbnail_image_url = acf_photo_gallery_resize_image($full_image_url, 360, 200);
 						?>
-						<div class="column column-2">
+						<div class="column column-6">
 							<div class="portfolio-item">
 								<?php if( !empty($full_image_url) ){ ?><a href="<?php echo $full_image_url; ?>" target="_blank" class="open-in-lightbox"><?php } ?>
 									<img src="<?php echo $custom_thumbnail_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
@@ -69,7 +69,7 @@ get_header();
 			</div>
 			
 			<!-- Text -->
-			<div class="column column-2" style="justify-content: flex-start;">
+			<div class="column column-6" style="justify-content: flex-start;">
 			<?php if(get_the_content()){ ?>
 				<div class="content animated" style="animation-delay: .1s;" data-animation="fadeIn">
 					<?php the_content(); ?>
@@ -86,7 +86,7 @@ get_header();
 			</div>
 
 			<!-- Post Navigation -->
-			<div class="column column-1">
+			<div class="column column-12">
 				<?php 
 				the_post_navigation(
 					array(
@@ -94,7 +94,7 @@ get_header();
 						'prev_text' => '<h4 class="label">Previous: </h4>%title',
 						)
 					);
-					?>
+				?>
 			</div>
 
 			<?php 
