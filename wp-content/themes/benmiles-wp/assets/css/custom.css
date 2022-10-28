@@ -351,7 +351,7 @@ section {
 		flex: 1 1 50%;
 	}
 }
-@media only screen and ( min-width: 1024px ) {
+@media only screen and ( min-width: 992px ) {
 	.column.column-12 {
 		max-width: 100%;
 		flex: 1 1 100%;
@@ -487,7 +487,7 @@ header {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-index: 10;
 	height: var(--header-height);
 	transition: height ease-in .4s;
 	overflow: hidden;
@@ -738,7 +738,7 @@ footer .social-media {
 #error-404 {
 	min-height: 100vh;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and ( min-width: 768px ) {
 	#error-404 {
     	height: 100vh;
 	}
@@ -789,7 +789,7 @@ footer .social-media {
 	font-weight: 200;
 }
 
-/*	ABOUT > SVG ICONS --------------------------------------------------------*/
+/*	ABOUT > SKILLS --------------------------------------------------------*/
 
 .svg-row {
 	display: flex;
@@ -1037,7 +1037,7 @@ textarea.form-control {
 .wpcf7 .row {
 	margin-bottom: 20px;
 }
-.wpcf7 .column-2 {
+.wpcf7 .column-6 {
 	justify-content: space-between;
 }
 .wpcf7 label {
@@ -1126,7 +1126,7 @@ textarea.form-control {
 	background-color: #4c4e57;
 	box-shadow: 0 0.75rem 1rem rgb(0 0 0 / 40%);
 }
-.portfolio-item .media {
+.portfolio-item .open-in-lightbox {
 	display: block;
 }
 .portfolio-item .thumbnail-image,

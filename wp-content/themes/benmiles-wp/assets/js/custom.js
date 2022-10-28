@@ -162,7 +162,8 @@ function createPoints() {
   return points;
 }
 
-/* Portfolio Item: Video Thumbnails */
+/* PORTFOLIO VIDEO THUMBNAILS ****************************************************/
+
 let portfolioItems = document.querySelectorAll('.portfolio-item.has-video');
 
 /* Add event listeners to the Portfolio Items so that their videos only play on hover/mouseenter, and pause on mouseleave */
@@ -186,7 +187,8 @@ function resizeVideoThumbnails () {
 	}
 }
 
-// NAV TOGGLER
+/* NAV TOGGLER *******************************************************************/
+
 navToggle.addEventListener('click', toggleNav);
 function toggleNav(){
 	let menuIsOpen = document.body.classList.toggle('menu-open');
