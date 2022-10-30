@@ -14,57 +14,19 @@ Template Name: Section - About
 				<h2 class="heading animated" data-animation="fadeInUp">About Ben Miles</h2>
 
 				<div class="animated bio" style="animation-delay: .1s;" data-animation="fadeInUp">
-					<p><b>I am an experienced and well-rounded graphic designer and web developer located in central Florida.</b></p>
-					<p>I've freelanced, incorporated and run my own design company with a brick-and-mortar location, worked lead positions for print and web agencies, both as an artist and developer, both in-person and remotely. I have always enjoyed the juxtaposition of art and engineering that a career in commercial design offers. </p>
-					<p>Outside of work, I'm an avid gardener, a homebrewer, a musician and a movie buff. </p>
+					<p><b>I'm a graphic designer and full-stack web developer, located in central Florida, with 20 years of experience.</b></p>
+					<p>I have always found joy in the balance of creative and problem-solving tasks that my career offers.</p>
+					<p>I've freelanced, incorporated and run my own design company, and worked lead positions in both design and development agencies.</p>
+					<p>Outside of work, I prefer to spend time homebrewing, screenprinting, or gardening.</p>
 				</div>
+				
 				<p style="text-align:center">
-					<a href="<?php bloginfo('url'); ?>/about" target="_self" class="cta-button">Learn more about me</a>
+					<?php if( is_front_page() ){ // Display this content on the Home Page ?>
+						<a href="<?php bloginfo('url'); ?>/about" target="_self" class="btn-cta"><span class="btn-cta-text">Learn more about me</span></a>
+						<?php } else { // Display this content on the About Page ?>
+							<a href="#experience-and-skills" target="_self" class="btn-cta"><span class="btn-cta-text">Experience & Skills</span></a>
+					<?php } // End if() for Home/About Page Content ?>
 				</p>
-
-				<!-- TODO: SHOW all of this stuff on the About page, but HIDE on the Home page -->
-				<!-- TODO: Update the text content above to reflect knowledge of these items, briefly.  -->
-
-				<!-- code languages -->
-				<h3>Code Languages</h3>
-				<div class="svg-row">
-					<?php 
-					displaySVG('html');
-					displaySVG('css');
-					displaySVG('js');
-					displaySVG('php');
-					displaySVG('mysql');
-					?>
-				</div>
-				<!-- frameworks, libraries -->
-				<h3>Frameworks & Libraries</h3>
-				<div class="svg-row">
-					<?php
-					displaySVG('bootstrap');
-					displaySVG('jquery');
-					displaySVG('joomla');
-					?>
-				</div>
-				<div class="svg-row">
-					<?php
-					displaySVG('vue');
-					displaySVG('laravel');
-					displaySVG('wordpress');
-					?>
-				</div>
-				<!-- software -->
-				<h3>Software</h3>
-				<div class="svg-row">
-					<?php
-					displaySVG('phpstorm');
-					displaySVG('photoshop');
-					displaySVG('illustrator');
-					displaySVG('indesign');
-					displaySVG('vscode');
-					?>
-				</div>
-
-				<?php } // End if() for Home/About Page Content ?>				
 
             </div>
         </div>
