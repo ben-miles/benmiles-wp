@@ -1036,15 +1036,9 @@ textarea.form-control {
 	margin-bottom: 10px;
 }
 .wpcf7 .wpcf7-response-output {
+	background: #fff;
+    margin: 0;
 	text-align: center;
-}
-.wpcf7 form.sent .wpcf7-response-output {
-	/* success */
-}
-.wpcf7 form.invalid .wpcf7-response-output, 
-.wpcf7 form.unaccepted .wpcf7-response-output, 
-.wpcf7 form.payment-required .wpcf7-response-output {
-	/* warning */
 }
 
 /*******************************************************************************
