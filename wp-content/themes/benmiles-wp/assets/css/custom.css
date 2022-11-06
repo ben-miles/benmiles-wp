@@ -1041,6 +1041,12 @@ textarea.form-control {
 	text-align: center;
 }
 
+@media only screen and (min-width: 768px) {
+	body.contact section#contact {
+		height: calc( 100vh - 70px );
+	}
+}
+
 /*******************************************************************************
 	SECTIONS > INTRO
 *******************************************************************************/
