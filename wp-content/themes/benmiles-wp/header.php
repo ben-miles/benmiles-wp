@@ -13,6 +13,8 @@
     <meta name="description" content="Web Design & Development Portfolio of Ben Miles">
     <meta name="author" content="Ben Miles">
     <link rel="icon" href="/wp-content/themes/benmiles-wp/img/ben-miles_favicon.png">
+	<!-- Workaround for Google reCAPTCHA v3 in Contact Form 7 -->
+	<script src="https://www.google.com/recaptcha/api.js?<?php echo GOOGLE_RECAPTCHA_SITE_KEY; ?>"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

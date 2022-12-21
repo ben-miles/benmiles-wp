@@ -83,7 +83,9 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+// ** Other Keys and Credentials ** //
+/** Google reCAPTCHA Site Key */
+define( 'GOOGLE_RECAPTCHA_SITE_KEY', 'Your Google reCAPTCHA v3 Site Key here' );
 
 /* That's all, stop editing! Happy publishing. */
 

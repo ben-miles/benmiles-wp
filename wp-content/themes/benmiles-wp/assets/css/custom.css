@@ -1355,3 +1355,13 @@ div.portfolio-item .excerpt {
 .post-navigation .nav-links .nav-next a:hover {
 	background: linear-gradient(90deg, rgba(76, 78, 87, 0) 25%, rgba(76, 78, 87, 1) 100%);
 }
+
+/******************************************************************************
+	PLUGINS
+******************************************************************************/
+
+/*	Google reCAPTCHA --------------------------------------------------------*/
+
+.grecaptcha-badge {
+    display: none !important;
+}
