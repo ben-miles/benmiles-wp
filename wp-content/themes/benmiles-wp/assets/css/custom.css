@@ -996,10 +996,13 @@ footer .social-media {
 #contact {
 	background-color: #3e4047;
 }
+#contact p {
+	color: #fff;
+	margin-bottom: 40px;
+}
 .form-control {
 	background: #eee;
 	border: none;
-	/* border-bottom: 2px solid #00ade6; */
 	display: block;
 	font-size: 16px;
 	margin-bottom: 10px;
@@ -1007,10 +1010,6 @@ footer .social-media {
 	padding: 10px;
 	width: 100%;
 }
-/* .form-control:focus, 
-.form-control:valid {
-	border-bottom: 2px solid #fff;
-} */
 textarea.form-control {
 	height: 120px;
 	resize: none;
