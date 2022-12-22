@@ -59,12 +59,14 @@ if( !is_admin() ){
 	} 
 	add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
-	// Make sure the main script gets a `type` attribute set to `module`
-	function add_type_attribute($tag, $handle, $src) {
-		$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+	// Make sure the custom script gets a `type` attribute set to `module`
+	add_filter( 'script_loader_tag', 'add_type_to_script', 10, 3 );
+	function add_type_to_script( $tag, $handle, $src ) {
+		if ( $handle === 'custom' ) {
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		}
 		return $tag;
 	}
-	add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
 
 	// Load Styles
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css', false, '', 'all' );
