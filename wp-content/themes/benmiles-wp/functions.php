@@ -72,7 +72,7 @@ if( !is_admin() ){
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css', false, '', 'all' );
 
 	// Load Scripts
-	wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js?' . GOOGLE_RECAPTCHA_SITE_KEY, array('index'), false, false );
+	wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . GOOGLE_RECAPTCHA_SITE_KEY, array(), null, false );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), false, false );
 
 }
