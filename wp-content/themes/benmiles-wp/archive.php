@@ -23,7 +23,7 @@ if ( is_category() ) {
 <section id="archive">
 	<div class="container">
 		<div class="row">
-			<div class="column col-1">
+			<div class="column column-12">
 
 				<h2 class="heading animated" data-animation="fadeIn">
 					<?php echo $meta_type . ': ' . $meta_key->name;	?>
