@@ -1,11 +1,4 @@
 <?php
-/* TODOs:
-- Make Menus dynamic
-- Scrollspy for main nav?
-- SEO
-- Add captions to detail images
-*/
-
 get_header();
 
 if ( have_posts() ){
@@ -15,5 +8,4 @@ if ( have_posts() ){
 }
 
 get_footer();
-
 ?>

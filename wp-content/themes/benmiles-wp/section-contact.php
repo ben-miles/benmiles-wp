@@ -2,7 +2,6 @@
 /*
 Template Name: Section - Contact
 */
-// error_reporting(0);
 ?>
 
 <!-- contact -->

@@ -2,7 +2,7 @@
 /*
 Template Name: Single Portfolio
 */
-// error_reporting(0);
+
 get_header(null, ['bodyClass' => 'page-portfolio-item']);
 ?>
 

@@ -3,19 +3,18 @@
 Template Name: Archive
 */
 
-$category =	$tag = "";
+$category =	$tag = null;
 if ( is_tag() ) {
 	$meta_type = 'Tag';
 	$meta_key = get_tag( get_query_var( 'tag_id' ) );
-	$category = null;
 	$tag = $meta_key->name;
 }
 if ( is_category() ) {
 	$meta_type = 'Category';
 	$meta_key = get_category( get_query_var( 'cat' ) );
 	$category = $meta_key->name;
-	$tag = null;
 }
+
 get_header(null, ['bodyClass' => 'page-archive']);
 ?>
 

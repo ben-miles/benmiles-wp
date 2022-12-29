@@ -2,9 +2,8 @@
 /*
 Template Name: Contact
 */
-// error_reporting(0);
+
+get_header(null, ['bodyClass' => 'page-contact']);
+include('section-contact.php');
+get_footer();
 ?>
-
-<?php include('section-contact.php'); ?>
-
-<?php get_footer(); ?>include('section-contact.php');

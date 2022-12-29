@@ -3,7 +3,6 @@ import { spline } from "/wp-content/themes/benmiles-wp/assets/js/spline.min.js";
 import SimplexNoise from "/wp-content/themes/benmiles-wp/assets/js/simplex-noise.min.js";
 
 /* VARS ***********************************************************************/
-// let isotope;
 let navToggle = document.getElementById('nav-toggle');
 let navLinks = document.getElementsByClassName('nav-link');
 
@@ -234,8 +233,3 @@ if( document.body.classList.contains('page-portfolio-item') ){
 	};
 
 }
-
-// TODO: Scroll from top to bottom slowly (for recording video thumbnails)
-// let footer = document.getElementById('footer');
-// console.log(footer);
-// footer.scrollIntoView(true,{behavior:'smooth',block:'center',inline:'center'});
