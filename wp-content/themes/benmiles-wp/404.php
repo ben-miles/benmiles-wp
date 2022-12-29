@@ -3,7 +3,7 @@
 Template Name: 404
 */
 // error_reporting(0);
-get_header(); 
+get_header(null, ['bodyClass' => 'page-404']);
 ?>
 
 <!-- 404 -->

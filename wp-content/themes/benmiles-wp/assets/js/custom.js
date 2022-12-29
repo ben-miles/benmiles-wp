@@ -14,13 +14,13 @@ window.onload = function(e){
     applyAnimations();
 
 	// Home only
-	if( document.body.classList.contains('home') ){
+	if( document.body.classList.contains('page-home') ){
 		// Animated blob effect on portrait
 		animateBlob();
 	}
 
 	// Home, Portfolio & Archives
-	if( document.body.classList.contains('home') || document.body.classList.contains('portfolio') || document.body.classList.length == 0 ){
+	if( document.body.classList.contains('page-home') || document.body.classList.contains('page-portfolio') || document.body.classList.contains('page-archive') ){
 		// Update video sizes
 		resizeVideoThumbnails();
 		// Add event listeners to video thumbnails
@@ -48,7 +48,7 @@ window.onscroll = function(e){
 window.onresize = function(e){
 
 	// Home, Portfolio & Archives
-	if( document.body.classList.contains('home') || document.body.classList.contains('portfolio') || document.body.classList.length == 0 ){
+	if( document.body.classList.contains('page-home') || document.body.classList.contains('page-portfolio') || document.body.classList.contains('page-archive') ){
 		// Update video thumbnails
 		resizeVideoThumbnails();
 	}
@@ -200,7 +200,7 @@ function toggleNav(){
 	https://www.freecodecamp.org/news/how-to-create-a-lightbox-using-html-css-and-javascript/ */
 
 // isolate to single portfolio item pages
-if( document.body.classList.contains('portfolio-item') ){
+if( document.body.classList.contains('page-portfolio-item') ){
 
 	var lightbox = document.getElementsByClassName('lightbox-container')[0];
 	var lightboxImages = document.getElementsByClassName('open-in-lightbox');

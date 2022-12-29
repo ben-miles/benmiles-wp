@@ -2,7 +2,6 @@
 /*
 Template Name: Archive
 */
-get_header(); 
 
 $category =	$tag = "";
 if ( is_tag() ) {
@@ -17,6 +16,7 @@ if ( is_category() ) {
 	$category = $meta_key->name;
 	$tag = null;
 }
+get_header(null, ['bodyClass' => 'page-archive']);
 ?>
 
 <!-- archive -->

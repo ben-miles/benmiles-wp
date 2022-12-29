@@ -1044,7 +1044,7 @@ textarea.form-control {
 }
 
 @media only screen and (min-width: 768px) {
-	body.contact section#contact {
+	body.page-contact section#contact {
 		height: calc( 100vh - 70px );
 	}
 }
