@@ -1323,6 +1323,10 @@ div.portfolio-item .excerpt {
 	color: #222;
 	padding: 5px 15px;
 }
+#single-portfolio .post-categories a:hover, 
+#single-portfolio .post-tags a:hover {
+    background: #fff;
+}
 
 /*	Post Navigation ---------------------------------------------------------*/
 
