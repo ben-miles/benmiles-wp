@@ -1236,16 +1236,17 @@ div.portfolio-item .excerpt {
 /*	Lightbox ----------------------------------------------------------------*/
 
 .lightbox-container {
+	background-color: rgba(0, 0, 0, .9);
+	backdrop-filter: blur(3px);
 	display: none;
 	position: fixed;
-	z-index: 20;
 	padding: 0;
 	left: 0;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
 	overflow: auto;
-	background-color: rgba(34, 34, 34, .9);
+	z-index: 20;
 }
 .lightbox-body {
 	position: relative;
@@ -1263,18 +1264,24 @@ div.portfolio-item .excerpt {
     width: 100%;
     object-fit: contain;
 }
-.lightbox-close {
-	color: white;
+#lightbox-close {
+	color: #ccc;
 	position: absolute;
 	top: 10px;
 	right: 25px;
 	font-size: 35px;
 	font-weight: bold;
 	z-index: 30;
+	background-color: transparent;
+    border: none;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+	cursor: pointer;
 }
-.close:hover,
-.close:focus {
-	color: #999;
+#lightbox-close:hover,
+#lightbox-close:focus {
+	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
 }

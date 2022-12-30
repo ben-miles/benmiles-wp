@@ -223,8 +223,13 @@ if( document.body.classList.contains('page-portfolio-item') ){
 		// open the lightbox
 		lightbox.style.display = 'block';
 	}
-	var lightboxCloseButton = document.getElementsByClassName('lightbox-close')[0];
+	var lightboxCloseButton = document.getElementById('lightbox-close');
 	lightboxCloseButton.addEventListener('click', closeLightbox);
+	document.body.addEventListener('keydown', function(e) {
+		if(e.key === "Escape" || e.key === "Esc") {
+			closeLightbox();
+		}
+	});
 	function closeLightbox() {
 		// re-enable vertical scroll on html
 		document.documentElement.style.overflow = 'auto';
