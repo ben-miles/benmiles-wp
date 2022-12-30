@@ -108,10 +108,10 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 <!-- / about -->
 
 <!-- lightbox -->
-<div class="lightbox-container">
-	<div class="lightbox">
+<div id="lightbox">
+	<div id="lightbox-inner">
 		<button id="lightbox-close">&times;</button>
-		<div class="lightbox-body"></div>
+		<div id="lightbox-body"></div>
 	</div>
 </div>
 <!-- / lightbox -->

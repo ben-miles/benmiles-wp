@@ -198,43 +198,54 @@ function toggleNav(){
 	Based on "How to Create a Lightbox Using HTML, CSS, and JavaScript" by FreeCodeCamp
 	https://www.freecodecamp.org/news/how-to-create-a-lightbox-using-html-css-and-javascript/ */
 
-// isolate to single portfolio item pages
+/* Isolate to Single Portfolio Item Pages */
 if( document.body.classList.contains('page-portfolio-item') ){
 
-	var lightbox = document.getElementsByClassName('lightbox-container')[0];
-	var lightboxImages = document.getElementsByClassName('open-in-lightbox');
-	for(let lightboxImage of lightboxImages){
-		lightboxImage.addEventListener('click', openLightbox);
-	}
-	function openLightbox(target) {
+	/* Declare vars for UI elements */
+	var lightbox = document.getElementById('lightbox');
+	var lightboxLinks = document.getElementsByClassName('open-in-lightbox');
+	var lightboxBody = document.getElementById('lightbox-body');
+	var lightboxCloseButton = document.getElementById('lightbox-close');
+
+	/* Opening the Lightbox */
+	function openLightbox(e) {
 		// override default behavior of opening link in new tab/window
-		event.preventDefault();
+		e.preventDefault();
 		// clear contents of lightbox-body
-		var lightboxBody = lightbox.getElementsByClassName('lightbox-body')[0];
 		lightboxBody.innerHTML = '';
 		// get full-size image from the clicked link
-		var fullSizeImageURL = target.path[1].href;
-		var img = document.createElement('img');
-		img.src = fullSizeImageURL;
+		var lightboxImageSrc = e.path[1].href;
+		var lightboxImage = document.createElement('img');
+		lightboxImage.src = lightboxImageSrc;
 		// add it to lightbox body
-		lightboxBody.append(img);
+		lightboxBody.append(lightboxImage);
 		// disable vertical scroll on html
 		document.documentElement.style.overflow = 'hidden';
 		// open the lightbox
 		lightbox.style.display = 'block';
 	}
-	var lightboxCloseButton = document.getElementById('lightbox-close');
-	lightboxCloseButton.addEventListener('click', closeLightbox);
-	document.body.addEventListener('keydown', function(e) {
-		if(e.key === "Escape" || e.key === "Esc") {
-			closeLightbox();
-		}
-	});
+	for(let lightboxLink of lightboxLinks){
+		lightboxLink.addEventListener('click', openLightbox);
+	}
+	
+	/* Closing the Lightbox */
 	function closeLightbox() {
 		// re-enable vertical scroll on html
 		document.documentElement.style.overflow = 'auto';
 		// close the lightbox
 		lightbox.style.display = 'none';
-	};
+	}
+	lightboxCloseButton.addEventListener('click', closeLightbox);
+	lightboxBody.addEventListener('click', function(e) {
+		if(e.target !== this) {
+			return;
+		}
+		closeLightbox();
+	});
+	document.body.addEventListener('keydown', function(e) {
+		if(e.key === "Escape" || e.key === "Esc") {
+			closeLightbox();
+		}
+	});
 
 }

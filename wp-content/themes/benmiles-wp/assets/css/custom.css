@@ -1235,7 +1235,7 @@ div.portfolio-item .excerpt {
 
 /*	Lightbox ----------------------------------------------------------------*/
 
-.lightbox-container {
+#lightbox {
 	background-color: rgba(0, 0, 0, .9);
 	backdrop-filter: blur(3px);
 	display: none;
@@ -1248,7 +1248,7 @@ div.portfolio-item .excerpt {
 	overflow: auto;
 	z-index: 20;
 }
-.lightbox-body {
+#lightbox-body {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -1259,10 +1259,9 @@ div.portfolio-item .excerpt {
 	height: 100vh;
 	width: auto;
 }
-.lightbox-body img {
-	height: 100%;
-    width: 100%;
-    object-fit: contain;
+#lightbox-body img {
+	max-height: 100%;
+    max-width: 100%;
 }
 #lightbox-close {
 	color: #ccc;
