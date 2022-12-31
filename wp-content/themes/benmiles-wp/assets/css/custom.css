@@ -399,6 +399,22 @@ section {
 .btn-default:hover {
     background: rgba( 255, 255, 255, 1 );
     color: #333;
+} */
+
+.button {
+	background: #ccc;
+	border: none;
+	border-radius: 0;
+	color: #222;
+	cursor: pointer;
+	font-family: 'Poppins', 'Arial', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 8px 16px;
+	transition: all .2s ease-in-out;
+}
+.button:hover {
+	background: #fff;
 }
 
 /*	BUTTONS > BACK TO TOP ---------------------------------------------------*/
@@ -1185,6 +1201,54 @@ div.portfolio-item .excerpt {
 .category {
 	margin-bottom: 50px;
 }
+
+/******************************************************************************
+	PAGES > PORTFOLIO
+******************************************************************************/
+
+body.page-portfolio #portfolio {
+	min-height: 100vh;
+}
+body.page-portfolio #portfolio > .container {
+	height: 100%;
+}
+
+/*	Category Description ----------------------------------------------------*/
+#category-description p {
+	color: #fff;
+	margin: 0 0 50px;
+}
+
+/*	Filter ------------------------------------------------------------------*/
+.filter {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0 0 30px;
+}
+.filter .label {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 8px;
+    color: #fff;
+    line-height: 1;
+}
+.filter .button-group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 4px;
+	justify-content: flex-start;
+}
+/* .filter .filter-button {
+	background: #ccc;
+	border: none;
+	
+	flex-grow: 1;
+	padding: 8px;
+} */
+
 
 /******************************************************************************
 	PAGES > PORTFOLIO ITEM

@@ -248,4 +248,33 @@ if( document.body.classList.contains('page-portfolio-item') ){
 		}
 	});
 
+/* ISOTOPE ************************************************************************
+	https://isotope.metafizzy.co/ */
+
+/* Declare common vars */
+var isotopeItems = document.getElementById('portfolio-items');
+var filterButtons = document.getElementsByClassName('filter-button');
+var categoryDescription = document.getElementById('category-description');
+
+/* Initialize filtering on Portfolio Items */
+var isotope = new Isotope(isotopeItems, {
+	itemSelector: '.column',
+	layoutMode: 'masonry'
+});
+
+/* Redo the layout after each image loads */
+imagesLoaded(isotopeItems).on('progress', function() {
+	isotope.layout();
+});
+
+/* Filter */
+for(let filterButton of filterButtons){
+	filterButton.addEventListener('click', function() {
+		// Trigger Isotope filtering
+		var selectedCategory = filterButton.dataset.filter;
+		isotope.arrange({filter: selectedCategory});
+		// Update Category Description
+		var selectedDescription = filterButton.dataset.description;
+		categoryDescription.innerHTML = '<p>' + selectedDescription + '</p>';
+	});
 }

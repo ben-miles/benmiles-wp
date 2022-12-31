@@ -73,6 +73,8 @@ if( !is_admin() ){
 
 	// Load Scripts
 	wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . GOOGLE_RECAPTCHA_SITE_KEY, array(), null, false );
+	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/js/isotope.min.js', array(), false, false );
+	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/js/imagesloaded.min.js', array(), false, false );
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), false, false );
 
 }
@@ -115,6 +117,11 @@ function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 		$loop->the_post();
 		// Format Meta
 		$the_title = get_the_title();
+		$the_categories = get_the_category();
+		$the_categories_classes = "";
+		foreach($the_categories as $the_category){
+			$the_categories_classes .= $the_category->slug . ' ';
+		}
 		$the_date = get_the_date();
 		$the_excerpt = get_the_excerpt();
 		$the_thumbnail = get_the_post_thumbnail( null, 'medium', ['class' => 'thumbnail-image'] );
@@ -126,7 +133,7 @@ function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 		$column_class = 12 / $max_items;
 		$animation_delay = $i % $max_items;
 		?>
-		<div class="column column-<?php echo $column_class; ?>">
+		<div class="column column-<?php echo $column_class . ' ' . $the_categories_classes; ?>">
 			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $animation_delay; ?>s;">
 				<a href="<?php echo $the_permalink; ?>" target="_self" class="media">
 					<?php echo $the_thumbnail;
