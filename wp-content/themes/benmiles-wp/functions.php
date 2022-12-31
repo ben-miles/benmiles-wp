@@ -17,6 +17,16 @@ add_filter('excerpt_length', 'shorten_auto_excerpts');
 // Via https://stackoverflow.com/a/49025096/6853842
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+// Remove Gutenberg / Block Library CSS
+function remove_wp_block_library_css(){
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'wc-blocks-style' );
+	wp_dequeue_style( 'global-styles' );
+
+} 
+add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
+
 // Remove Emojis
 // Via https://kinsta.com/knowledgebase/disable-emojis-wordpress/
 function disable_emojis() {
@@ -48,16 +58,6 @@ return $urls;
 
 // FRONTEND ONLY:
 if( !is_admin() ){
-
-	// Remove Gutenberg Block Library CSS
-	function smartwp_remove_wp_block_library_css(){
-		wp_dequeue_style( 'wp-block-library' );
-		wp_dequeue_style( 'wp-block-library-theme' );
-		wp_dequeue_style( 'wc-blocks-style' );
-		wp_dequeue_style( 'global-styles' );
-
-	} 
-	add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
 	// Make sure the custom script gets a `type` attribute set to `module`
 	add_filter( 'script_loader_tag', 'add_type_to_script', 10, 3 );
