@@ -384,7 +384,7 @@ section {
 
 /*	BUTTONS -----------------------------------------------------------------*/
 
-.btn {
+/* .btn {
     border-radius: 0;
 }
 
@@ -419,12 +419,12 @@ section {
 
 /*	BUTTONS > BACK TO TOP ---------------------------------------------------*/
 
-#backToTop {
+/* #backToTop {
     position: fixed;
     bottom: 15px;
     right: 15px;
     opacity: 0;
-}
+} */
 
 /*	BUTTONS > CTA -----------------------------------------------------------*/
 

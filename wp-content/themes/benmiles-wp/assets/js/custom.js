@@ -61,7 +61,6 @@ window.onresize = function(e){
 			navLink.removeEventListener('click', toggleNav);
 		}
 	}
-
 };
 
 /* isScrolledIntoView *********************************************************
@@ -105,7 +104,7 @@ function animateBlob() {
   path.setAttribute("d", spline(points, 1, true));
 
   // for every point...
-  for (let i = 0; i < points.length; i++) {
+  for(let i = 0; i < points.length; i++) {
     const point = points[i];
 
     // return a pseudo random value between -1 / 1 based on this point's current x, y positions in "time"
@@ -139,7 +138,7 @@ function createPoints() {
   const points = [];
   // used to equally space each point around the circle
   const angleStep = (Math.PI * 2) / numPoints;
-  for (let i = 1; i <= numPoints; i++) {
+  for(let i = 1; i <= numPoints; i++) {
     // x & y coordinates of the current point
     const theta = i * angleStep;
 
@@ -247,6 +246,7 @@ if( document.body.classList.contains('page-portfolio-item') ){
 			closeLightbox();
 		}
 	});
+}
 
 /* ISOTOPE ************************************************************************
 	https://isotope.metafizzy.co/ */

@@ -3,17 +3,17 @@
 // Enable Featured Image / Post Thumbnail
 add_theme_support('post-thumbnails');
 
-// Enable Title 
+// Enable Custom Page Titles
 add_theme_support('title-tag');
 
-// Shorten Auto-Excerpts
+// Shorten Automatic Excerpts
 // Via https://www.hostinger.com/tutorials/wordpress-excerpt-length
 function shorten_auto_excerpts($length){ 
 	return 18; 
 }
 add_filter('excerpt_length', 'shorten_auto_excerpts');
 
-// Remove p and br tags from Contact Form 7
+// Remove Automatic <p> and <br> Tags from Contact Form 7
 // Via https://stackoverflow.com/a/49025096/6853842
 add_filter('wpcf7_autop_or_not', '__return_false');
 
@@ -29,7 +29,7 @@ add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
 
 // Remove Emojis
 // Via https://kinsta.com/knowledgebase/disable-emojis-wordpress/
-function disable_emojis() {
+function remove_emojis() {
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -37,18 +37,18 @@ function disable_emojis() {
 	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
 	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
-	add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
+	add_filter( 'tiny_mce_plugins', 'remove_emojis_tinymce' );
+	add_filter( 'wp_resource_hints', 'remove_emojis_remove_dns_prefetch', 10, 2 );
 }
-add_action( 'init', 'disable_emojis' );
-function disable_emojis_tinymce( $plugins ) {
+add_action( 'init', 'remove_emojis' );
+function remove_emojis_tinymce( $plugins ) {
 	if ( is_array( $plugins ) ) {
 		return array_diff( $plugins, array( 'wpemoji' ) );
 	} else {
 		return array();
 	}
 }
-function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+function remove_emojis_remove_dns_prefetch( $urls, $relation_type ) {
 if ( 'dns-prefetch' == $relation_type ) {
 	$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
 	$urls = array_diff( $urls, array( $emoji_svg_url ) );
