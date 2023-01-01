@@ -25,7 +25,7 @@ get_header(null, ['bodyClass' => 'page-portfolio']);
 						<span>Show: </span>
 					</div>
 					<div class="button-group">
-						<button class="button filter-button" data-filter="*" data-description="Showing all projects. Click the buttons above to filter by category.">All</button>
+						<button class="button filter-button active" data-filter="*" data-description="Showing all projects. Click the buttons above to filter by category.">All</button>
 						<?php 
 						$the_categories = get_categories();
 						foreach($the_categories as $the_category){

@@ -264,13 +264,19 @@ if( document.body.classList.contains('page-portfolio') ){
 
 	/* Filter */
 	for(let filterButton of filterButtons){
-		filterButton.addEventListener('click', function() {
+		filterButton.addEventListener('click', function(e) {
 			// Trigger Isotope filtering
 			var selectedCategory = filterButton.dataset.filter;
 			isotope.arrange({filter: selectedCategory});
 			// Update Category Description
 			var selectedDescription = filterButton.dataset.description;
 			categoryDescription.innerHTML = '<p>' + selectedDescription + '</p>';
+			// Clear 'active' class from all filter buttons
+			for(let filterButton of filterButtons){
+				filterButton.classList.remove('active');
+			}
+			// Add 'active' class to the clicked filter button
+			filterButton.classList.add('active');
 		});
 	}
 }
