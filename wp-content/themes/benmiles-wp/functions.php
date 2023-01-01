@@ -73,10 +73,12 @@ function load_custom_scripts_and_styles() {
 
 	// Load Scripts
 	wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . GOOGLE_RECAPTCHA_SITE_KEY, array(), null, false );
-	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/js/isotope.min.js', array(), false, false );
-	wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/js/imagesloaded.min.js', array(), false, false );
-	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), false, false );
-
+	if(is_page( 'Portfolio' )){
+		// Portfolio Page Only:
+		wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/assets/js/imagesloaded.min.js', array(), null, false );
+		wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/js/isotope.min.js', array('imagesloaded'), null, false );
+	}
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), null, false );
 }
 add_action( 'wp_enqueue_scripts', 'load_custom_scripts_and_styles' );
 
