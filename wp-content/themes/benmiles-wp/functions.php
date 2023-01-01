@@ -56,8 +56,8 @@ if ( 'dns-prefetch' == $relation_type ) {
 return $urls;
 }
 
-// FRONTEND ONLY:
-if( !is_admin() ){
+// Load Custom Scripts and Styles
+function load_custom_scripts_and_styles() {
 
 	// Make sure the custom script gets a `type` attribute set to `module`
 	add_filter( 'script_loader_tag', 'add_type_to_script', 10, 3 );
@@ -78,6 +78,7 @@ if( !is_admin() ){
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), false, false );
 
 }
+add_action( 'wp_enqueue_scripts', 'load_custom_scripts_and_styles' );
 
 /*
 * displaySVG
