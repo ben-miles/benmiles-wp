@@ -20,8 +20,6 @@ window.onload = function(e){
 
 	// Home, Portfolio & Archives
 	if( document.body.classList.contains('page-home') || document.body.classList.contains('page-portfolio') || document.body.classList.contains('page-archive') ){
-		// Update video sizes
-		resizeVideoThumbnails();
 		// Add event listeners to video thumbnails
 		controlVideoThumbnails();
 	}
@@ -45,12 +43,6 @@ window.onscroll = function(e){
 
 /* ON RESIZE... ***************************************************************/
 window.onresize = function(e){
-
-	// Home, Portfolio & Archives
-	if( document.body.classList.contains('page-home') || document.body.classList.contains('page-portfolio') || document.body.classList.contains('page-archive') ){
-		// Update video thumbnails
-		resizeVideoThumbnails();
-	}
 
 	// Add/Remove mobile menu toggle, based on viewport width
 	let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -160,28 +152,28 @@ function createPoints() {
   return points;
 }
 
-/* PORTFOLIO VIDEO THUMBNAILS ****************************************************/
-
+/* PORTFOLIO VIDEO THUMBNAILS *****************************************************
+	Play Portfolio Items' video thumbnails on hover */
+	
 let portfolioItems = document.querySelectorAll('.portfolio-item.has-video');
-
-/* Add event listeners to the Portfolio Items so that their videos only play on hover/mouseenter, and pause on mouseleave */
 function controlVideoThumbnails () {
 	for(let portfolioItem of portfolioItems){
 		let video = portfolioItem.querySelector('.thumbnail-video');
-		portfolioItem.addEventListener('mouseenter', function(e){video.play()});
-		portfolioItem.addEventListener('mouseleave', function(e){video.pause()});
-	}
-}
-
-/* Resize videos to match their corresponding image thumbnails, to avoid a "jump" when switching between them */
-function resizeVideoThumbnails () {
-	for(let portfolioItem of portfolioItems){
-		if(portfolioItem.querySelector('.thumbnail-image')){
-			let image = portfolioItem.querySelector('.thumbnail-image');
-			let size = image.getBoundingClientRect();
-			let video = portfolioItem.querySelector('.thumbnail-video');
-			video.setAttribute('style','height: ' + (Math.round(size.height * 100) / 100) + 'px; width: ' + (Math.round(size.width * 100) / 100) + 'px;');
-		}
+		portfolioItem.addEventListener('mouseenter', function(){
+			video.play();
+		});
+		portfolioItem.addEventListener('mouseleave', function(){
+			var playPromise = video.play();
+			if (playPromise !== undefined) {
+				playPromise.then(_ => {
+				  video.pause();
+				  video.currentTime = 0;
+				})
+				.catch(error => {
+					console.error(error);
+				});
+			}
+		});
 	}
 }
 
