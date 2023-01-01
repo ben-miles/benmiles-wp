@@ -1160,7 +1160,6 @@ textarea.form-control {
 .portfolio-item .meta {
 	display: flex;
     flex-direction: column;
-	height: 100%;
     align-items: center;
 	padding: 20px;
 }
