@@ -36,7 +36,7 @@
 		</a>
 
 		<!-- Mobile Menu Toggle -->
-		<button class="btn" id="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle Navigation">
+		<button id="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle Navigation">
 			<?php displaySVG('menu'); ?>
 		</button>
 			

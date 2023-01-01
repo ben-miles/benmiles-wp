@@ -36,11 +36,6 @@
         </footer>
         <!-- / footer -->
 
-		<!-- back to top -->
-        <!-- <button class="btn btn-default scroll" id="backToTop" data-section="intro">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
-        </button> -->
-
 		<?php wp_footer(); ?>
 
     </body>

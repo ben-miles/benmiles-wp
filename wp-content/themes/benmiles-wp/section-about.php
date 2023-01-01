@@ -22,9 +22,9 @@ Template Name: Section - About
 				
 				<p style="text-align:center">
 					<?php if( is_front_page() ){ // Display this content on the Home Page ?>
-						<a href="<?php bloginfo('url'); ?>/about" target="_self" class="btn-cta"><span class="btn-cta-text">Learn more about me</span></a>
+						<a href="<?php bloginfo('url'); ?>/about" target="_self" class="button cta"><span>Learn more about me</span></a>
 						<?php } else { // Display this content on the About Page ?>
-							<a href="#experience-and-skills" target="_self" class="btn-cta"><span class="btn-cta-text">Experience & Skills</span></a>
+							<a href="#experience-and-skills" target="_self" class="button cta"><span>Experience & Skills</span></a>
 					<?php } // End if() for Home/About Page Content ?>
 				</p>
 

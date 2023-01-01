@@ -46,7 +46,7 @@ Template Name: Section - Intro
 						</a>
 					</li>
 				</ul>
-				<a href="#about" target="_self" class="btn-cta">
+				<a href="#about" target="_self" class="button cta">
 					<?php displaySVG('down', 'bounce'); ?>
 				</a>
 			</div>

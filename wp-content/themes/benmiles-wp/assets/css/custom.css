@@ -384,23 +384,6 @@ section {
 
 /*	BUTTONS -----------------------------------------------------------------*/
 
-/* .btn {
-    border-radius: 0;
-}
-
-.btn-default {
-    border: 1px solid #fff;
-    border-radius: 0;
-    background: rgba( 255, 255, 255, 0.25 );
-    color: #fff;
-    cursor: pointer;
-}
-
-.btn-default:hover {
-    background: rgba( 255, 255, 255, 1 );
-    color: #333;
-} */
-
 .button {
 	background: #ccc;
 	border: none;
@@ -413,22 +396,14 @@ section {
 	padding: 8px 16px;
 	transition: all .2s ease-in-out;
 }
-.button:hover {
+.button:hover,
+.button.active {
 	background: #fff;
 }
 
-/*	BUTTONS > BACK TO TOP ---------------------------------------------------*/
-
-/* #backToTop {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    opacity: 0;
-} */
-
 /*	BUTTONS > CTA -----------------------------------------------------------*/
 
-.btn-cta {
+.button.cta {
 	align-items: center;
 	background-color: #fff;
 	border: none;
@@ -444,13 +419,13 @@ section {
 	padding: 10px 15px;
 	transition: all .2s ease-in-out;
 }
-.btn-cta:hover {
+.button.cta:hover {
 	background-color: #ccc;
 }
-.btn-cta .svg-wrapper {
+.button.cta .svg-wrapper {
 	width: 30px;
 }
-.btn-cta .svg-wrapper svg {
+.button.cta .svg-wrapper svg {
 	fill: #222;
 }
 
@@ -1101,7 +1076,7 @@ textarea.form-control {
     margin: 0 auto 25px;
     text-align: center;
 }
-#intro .btn-cta {
+#intro .button.cta {
 	padding: 10px 100px;
 }
 #intro .svg-down svg {
@@ -1245,14 +1220,9 @@ body.page-portfolio #portfolio > .container {
 	gap: 4px;
 	justify-content: flex-start;
 }
-/* .filter .filter-button {
-	background: #ccc;
-	border: none;
-	
+.filter .button-group .button {
 	flex-grow: 1;
-	padding: 8px;
-} */
-
+}
 
 /******************************************************************************
 	PAGES > PORTFOLIO ITEM
