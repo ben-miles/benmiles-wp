@@ -50,6 +50,7 @@ window.onresize = function(e){
 		if(vw < 768){
 			navLink.addEventListener('click', toggleNav);
 		} else {
+			document.body.classList.remove('menu-open');
 			navLink.removeEventListener('click', toggleNav);
 		}
 	}
