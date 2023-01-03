@@ -1134,6 +1134,7 @@ textarea.form-control {
     flex-direction: column;
     align-items: center;
 	padding: 20px;
+	flex-grow: 1;
 }
 .portfolio-item .title { 
 	font-size: 18px;
