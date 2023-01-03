@@ -978,6 +978,16 @@ footer .social-media {
 }
 
 /******************************************************************************
+	SECTIONS > ARCHIVE
+******************************************************************************/
+
+@media only screen and (min-width: 768px) {
+	body.page-archive #archive {
+		min-height: calc( 100vh - var(--header-height) );
+	}
+}
+
+/******************************************************************************
 	SECTIONS > CONTACT
 ******************************************************************************/
 
@@ -1032,8 +1042,8 @@ textarea.form-control {
 }
 
 @media only screen and (min-width: 768px) {
-	body.page-contact section#contact {
-		height: calc( 100vh - 70px );
+	body.page-contact #contact {
+		height: calc( 100vh - var(--header-height) );
 	}
 }
 
@@ -1180,14 +1190,14 @@ textarea.form-control {
 ******************************************************************************/
 
 body.page-portfolio #portfolio {
-	min-height: 100vh;
+	min-height: calc( 100vh - var(--header-height) );
 }
 body.page-portfolio #portfolio > .container {
 	height: 100%;
 }
 
 /*	Category Description ----------------------------------------------------*/
-#category-description p {
+#meta-description p {
 	color: var(--color-white);
 	margin: 0 0 50px;
 }

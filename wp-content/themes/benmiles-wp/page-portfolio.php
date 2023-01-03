@@ -43,7 +43,7 @@ get_header(null, ['bodyClass' => 'page-portfolio']);
 		<!-- Category Description -->
 		<div class="row">
 			<div class="column column-12">
-				<div id="category-description">
+				<div id="meta-description">
 					<p>Showing all projects. Click the buttons above to filter by category.</p>
 				</div>
 			</div>
