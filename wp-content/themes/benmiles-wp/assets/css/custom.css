@@ -16,6 +16,23 @@ svg:not(:root) {
 }
 
 /******************************************************************************
+	VARIABLES
+******************************************************************************/
+
+:root {
+	--header-height: 70px;
+	--color-black: #000;
+	--color-gray1: #111;
+	--color-gray2: #222;
+	--color-grayc: #ccc;
+	--color-graye: #eee;
+	--color-white: #fff;
+	--color-bbblu: #b6d9ff;
+	--color-slate: #7c96b2;
+	--color-onyxx: #3e4047;
+}
+
+/******************************************************************************
 	ACCESSIBILITY
 ******************************************************************************/
 
@@ -46,26 +63,6 @@ svg:not(:root) {
 	top: 5px;
 	width: auto;
 	z-index: 100000; /* Above WP toolbar. */
-}
-
-/******************************************************************************
-	VARIABLES
-******************************************************************************/
-
-:root {
-	--header-height: 70px;
-	--color-black: rgba( 0, 0, 0, 1 );
-	--color-white: rgba(255, 255, 255, 1 );
-}
-@media only screen and ( min-width: 992px ) {
-	:root {
-		--header-height: 70px;
-	}
-}
-@media only screen and ( min-width: 1200 ) {
-	:root {
-		--header-height: 70px;
-	}
 }
 
 /******************************************************************************
@@ -143,15 +140,15 @@ h1, h2, h3, h4, h5, h6 {
     color: inherit;
 }
 .heading {
-	border-bottom: 2px solid #ccc;
-    color: #ccc;
+	border-bottom: 2px solid var(--color-grayc);
+    color: var(--color-grayc);
     display: inline-block;
 	font-size: 28px;
     margin: 30px auto;
     text-align: center;
 }
 .sub-heading {
-	color: #ccc;
+	color: var(--color-grayc);
     display: block;
     font-size: 18px;
     font-weight: 400;
@@ -272,7 +269,7 @@ html {
 }
 
 body {
-	background-color: #222;
+	background-color: var(--color-gray2);
 }
 
 section {
@@ -385,10 +382,10 @@ section {
 /*	BUTTONS -----------------------------------------------------------------*/
 
 .button {
-	background: #ccc;
+	background-color: var(--color-grayc);
 	border: none;
 	border-radius: 0;
-	color: #222;
+	color: var(--color-gray2);
 	cursor: pointer;
 	font-family: 'Poppins', 'Arial', sans-serif;
 	font-size: 16px;
@@ -398,17 +395,17 @@ section {
 }
 .button:hover,
 .button.active {
-	background: #fff;
+	background-color: var(--color-white);
 }
 
 /*	BUTTONS > CTA -----------------------------------------------------------*/
 
 .button.cta {
 	align-items: center;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border: none;
 	border-radius: 0;
-	color: #222;
+	color: var(--color-gray2);
 	display: flex;
 	flex-direction: row;
 	font-size: 16px;
@@ -420,13 +417,13 @@ section {
 	transition: all .2s ease-in-out;
 }
 .button.cta:hover {
-	background-color: #ccc;
+	background-color: var(--color-grayc);
 }
 .button.cta .svg-wrapper {
 	width: 30px;
 }
 .button.cta .svg-wrapper svg {
-	fill: #222;
+	fill: var(--color-gray2);
 }
 
 /*	LABELS ------------------------------------------------------------------*/
@@ -441,18 +438,21 @@ section {
 
 /*	LINKS -------------------------------------------------------------------*/
 
-a,
-a:hover {
+a {
+	color: var(--color-bbblu);
 	text-decoration: none;
 	background-color: transparent;
     -webkit-text-decoration-skip: objects;
+}
+a:hover {
+	color: var(--color-slate);
 }
 
 /*	SVGS --------------------------------------------------------------------*/
 
 .svg-wrapper svg {
 	display: block;
-	fill: #fff;
+	fill: var(--color-white);
 	height: auto;
 	width: 100%;
 }
@@ -478,12 +478,12 @@ a:hover {
 ******************************************************************************/
 
 header {
-	background-color: rgba( 55, 55, 55, 0.25 );
+	background-color: rgba(55,55,55,.25);
 	backdrop-filter: blur(10px);
 	padding: 0;
 	border: none;
 	border-width: 0;
-	border-bottom: 1px solid #fff;
+	border-bottom: 1px solid var(--color-white);
 	position: fixed;
     top: 0;
     right: 0;
@@ -548,7 +548,7 @@ header .container {
 /*	NAV TOGGLE --------------------------------------------------------------*/
 
 #nav-toggle {
-	background: transparent;
+	background-color: transparent;
     border: none;
     border-radius: 0.25rem;
 	cursor: pointer;
@@ -578,7 +578,7 @@ header .container {
 
 .line {
 	fill: none;
-	stroke: #fff;
+	stroke: var(--color-white);
 	stroke-width: 6;
 	transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
 	stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -672,7 +672,7 @@ header .container {
 	transition-delay: .375s;
 }
 .nav-link {
-	color: #fff;
+	color: var(--color-white);
 	display: block;
     padding: .75em 1em;
 	padding: 15px;
@@ -687,8 +687,8 @@ header .container {
 .nav-item.active .nav-link,
 .nav-link:hover,
 .navbar-toggler:hover {
-    background-color: #fff !important;
-    color: #333 !important;
+    background-color: var(--color-white) !important;
+    color: var(--color-gray2) !important;
 }
 .nav > li > a {
     padding: 15px;
@@ -700,14 +700,14 @@ header .container {
 ******************************************************************************/
 
 footer {
-    background: #111;
-	color: #fff;
+    background-color: var(--color-gray1);
+	color: var(--color-white);
     transition: background 0.3s;
 	padding: 20px 0;
 }
 footer a,
 footer a:hover {
-	color: #fff;
+	color: var(--color-white);
 	text-decoration: underline;
 }
 footer .copyright {
@@ -751,7 +751,7 @@ footer .social-media {
 
 #about {
 	background-attachment: scroll;
-    background-color: #222;
+    background-color: var(--color-gray2);
     background-image: url(/wp-content/themes/benmiles-wp/img/ben-miles_about_bkg.jpg);
     background-position-x: right;
     background-position-y: top;
@@ -779,9 +779,9 @@ footer .social-media {
 }
 
 .bio {
-	background-color: #3e4047;
-    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
-    color: #eee;
+	background-color: var(--color-onyxx);
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.25);
+    color: var(--color-graye);
     line-height: 1.4;
 	margin: 0 auto 30px;
 	padding: 25px 30px;
@@ -849,7 +849,7 @@ footer .social-media {
     position: absolute;
     content: " ";
     width: 3px;
-    background-color: #eee;
+    background-color: var(--color-graye);
     left: 23px;
 }
 .timeline-item {
@@ -867,8 +867,8 @@ footer .social-media {
 .timeline-panel {
     padding: 7px 15px;
     position: relative;
-    background: #fff;
-    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
+    background-color: var(--color-white);
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.25);
     left: 55px;
 	width: calc( 100% - 55px );
 }
@@ -878,8 +878,8 @@ footer .social-media {
     left: -15px;
     display: inline-block;
     border-top: 15px solid transparent;
-    border-left: 0 solid #ccc;
-    border-right: 15px solid #ccc;
+    border-left: 0 solid var(--color-grayc);
+    border-right: 15px solid var(--color-grayc);
     border-bottom: 15px solid transparent;
     content: " ";
 }
@@ -889,8 +889,8 @@ footer .social-media {
     left: -14px;
     display: inline-block;
     border-top: 14px solid transparent;
-    border-left: 0 solid #fff;
-    border-right: 14px solid #fff;
+    border-left: 0 solid var(--color-white);
+    border-right: 14px solid var(--color-white);
     border-bottom: 14px solid transparent;
     content: " ";
 }
@@ -905,7 +905,7 @@ footer .social-media {
     border-radius: 50%;
 }
 .timeline-badge {
-    background-color: #3e4047;
+    background-color: var(--color-onyxx);
 }
 .timeline-badge svg {
 	opacity: 0.7;
@@ -926,7 +926,7 @@ footer .social-media {
 	width: 12px;
 }
 .timeline-details .svg-wrapper svg path {
-	fill: #3e4047 !important;
+	fill: var(--color-onyxx) !important;
 }
 @media only screen and ( min-width: 576px ) {
     .timeline {
@@ -985,14 +985,14 @@ footer .social-media {
 ******************************************************************************/
 
 #contact {
-	background-color: #3e4047;
+	background-color: var(--color-onyxx);
 }
 #contact p {
-	color: #fff;
+	color: var(--color-white);
 	margin-bottom: 40px;
 }
 .form-control {
-	background: #eee;
+	background-color: var(--color-graye);
 	border: none;
 	display: block;
 	font-size: 16px;
@@ -1022,14 +1022,14 @@ textarea.form-control {
 	justify-content: space-between;
 }
 .wpcf7 label {
-	color: #fff;
+	color: var(--color-white);
 	width: 100%;
 }
 .wpcf7-not-valid-tip {
 	margin-bottom: 10px;
 }
 .wpcf7 .wpcf7-response-output {
-	background: #fff;
+	background-color: var(--color-white);
     margin: 0;
 	text-align: center;
 }
@@ -1045,7 +1045,7 @@ textarea.form-control {
 ******************************************************************************/
 
 #intro {
-	color: #fff;
+	color: var(--color-white);
 	height: auto;
 	min-height: 100vh;
 }
@@ -1080,7 +1080,7 @@ textarea.form-control {
 	padding: 10px 100px;
 }
 #intro .svg-down svg {
-	fill: #222;
+	fill: var(--color-gray2);
 	width: 30px;
 }
 
@@ -1092,9 +1092,9 @@ textarea.form-control {
 	justify-content: flex-start;
 }
 .portfolio-item {
-	background-color: #3e4047;
+	background-color: var(--color-onyxx);
 	box-shadow: 0 .125rem .25rem rgba(0,0,0,.25);
-    color: #eee;
+    color: var(--color-graye);
 	display: flex;
     flex-direction: column;
     height: 100%;
@@ -1105,7 +1105,7 @@ textarea.form-control {
 }
 .portfolio-item:hover {
 	background-color: #4c4e57;
-	box-shadow: 0 0.75rem 1rem rgb(0 0 0 / 40%);
+	box-shadow: 0 0.75rem 1rem rgba(0,0,0,.4);
 }
 .portfolio-item .media {
 	aspect-ratio: 16 / 10;
@@ -1147,9 +1147,6 @@ textarea.form-control {
 }
 .portfolio-item .date {
 	font-size: 14px;
-}
-.portfolio-item a {
-	color: #7c96b2;
 }
 .portfolio-item .external-link {
 	font-size: 14px;
@@ -1194,7 +1191,7 @@ body.page-portfolio #portfolio > .container {
 
 /*	Category Description ----------------------------------------------------*/
 #category-description p {
-	color: #fff;
+	color: var(--color-white);
 	margin: 0 0 50px;
 }
 
@@ -1210,7 +1207,7 @@ body.page-portfolio #portfolio > .container {
     flex-direction: column;
     justify-content: center;
     padding-right: 8px;
-    color: #fff;
+    color: var(--color-white);
     line-height: 1;
 }
 .filter .button-group {
@@ -1231,7 +1228,7 @@ body.page-portfolio #portfolio > .container {
 /*	Meta --------------------------------------------------------------------*/
 
 #single-portfolio .post-meta {
-	color: #eee;
+	color: var(--color-graye);
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -1277,9 +1274,9 @@ body.page-portfolio #portfolio > .container {
 /*	Text --------------------------------------------------------------------*/
 
 #single-portfolio .content {
-	background-color: #3e4047;
-	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
-	color: #eee;
+	background-color: var(--color-onyxx);
+	box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.25);
+	color: var(--color-graye);
 	line-height: 1.4;
 	margin: 0 auto 30px;
 	padding: 25px 30px;
@@ -1287,7 +1284,7 @@ body.page-portfolio #portfolio > .container {
 }
 #single-portfolio .categories,
 #single-portfolio .tags {
-	color: #eee;
+	color: var(--color-graye);
 	line-height: 1.4;
 	margin: 0 auto 30px;
 	width: 100%;
@@ -1313,9 +1310,9 @@ body.page-portfolio #portfolio > .container {
 }
 #single-portfolio .post-categories a,
 #single-portfolio .post-tags a {
-	background: #ccc;
+	background-color: var(--color-grayc);
 	border-radius: 50px;
-	color: #222;
+	color: var(--color-gray2);
 	padding: 5px 15px;
 }
 #single-portfolio .post-categories a:hover, 
@@ -1339,23 +1336,23 @@ body.page-portfolio #portfolio > .container {
 	width: 50%;
 }
 .post-navigation .nav-links a {
-	color: #fff;
+	color: var(--color-white);
 	display: block;
 	padding: 20px;
 }
 .post-navigation .nav-links .nav-previous a {
-	background: linear-gradient(90deg, rgba(62, 64, 71, 1) 0%, rgba(62, 64, 71, 0) 75%);
+	background: linear-gradient(90deg, rgba(62,64,71,1) 0%, rgba(62,64,71,0) 75%);
 	text-align: left;
 }
 .post-navigation .nav-links .nav-previous a:hover {
-	background: linear-gradient(90deg, rgba(76, 78, 87, 1) 0%, rgba(76, 78, 87, 0) 75%);
+	background: linear-gradient(90deg, rgba(76,78,87,1) 0%, rgba(76,78,87,0) 75%);
 }
 .post-navigation .nav-links .nav-next a {
-	background: linear-gradient(90deg, rgba(62, 64, 71, 0) 25%, rgba(62, 64, 71, 1) 100%);
+	background: linear-gradient(90deg, rgba(62,64,71,0) 25%, rgba(62,64,71,1) 100%);
 	text-align: right;
 }
 .post-navigation .nav-links .nav-next a:hover {
-	background: linear-gradient(90deg, rgba(76, 78, 87, 0) 25%, rgba(76, 78, 87, 1) 100%);
+	background: linear-gradient(90deg, rgba(76,78,87,0) 25%, rgba(76,78,87,1) 100%);
 }
 
 /******************************************************************************
@@ -1371,15 +1368,15 @@ body.page-portfolio #portfolio > .container {
 /*	GLightbox ---------------------------------------------------------------*/
 
 .glightbox-clean .gslide-description {
-    background: #3e4047;
+    background-color: var(--color-onyxx);
 }
 .glightbox-clean .gslide-title {
-	color: #fff;
+	color: var(--color-white);
 	font-family: 'Poppins', Arial, sans-serif;
 	font-weight: 500;
 }
 .glightbox-clean .gslide-desc {
-	color: #fff;
+	color: var(--color-white);
 	font-family: 'Poppins', Arial, sans-serif;
 	font-weight: 200;
 }
