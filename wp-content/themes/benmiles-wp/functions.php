@@ -13,6 +13,12 @@ function shorten_auto_excerpts($length){
 }
 add_filter('excerpt_length', 'shorten_auto_excerpts');
 
+// Change "More" Indicator on Auto Excerpts
+function excerpt_more_indicator( $more ) {
+	return '...';
+}
+add_filter( 'excerpt_more', 'excerpt_more_indicator' );
+
 // Remove Automatic <p> and <br> Tags from Contact Form 7
 // Via https://stackoverflow.com/a/49025096/6853842
 add_filter('wpcf7_autop_or_not', '__return_false');
