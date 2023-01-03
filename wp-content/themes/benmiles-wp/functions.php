@@ -69,6 +69,11 @@ function load_custom_scripts_and_styles() {
 	}
 
 	// Load Styles
+	if(is_singular( 'portfolio' )){
+		// Single Portfolio Pages Only:
+		wp_enqueue_style( 'glightbox', get_template_directory_uri() . '/assets/css/glightbox.min.css', array(), null, false );
+		wp_enqueue_script( 'glightbox', get_template_directory_uri() . '/assets/js/glightbox.min.js', array(), null, false );
+	}
 	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css', false, '', 'all' );
 
 	// Load Scripts

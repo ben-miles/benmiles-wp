@@ -1266,64 +1266,12 @@ body.page-portfolio #portfolio > .container {
 #single-portfolio .portfolio {
 	width: 100%;
 }
-#single-portfolio .portfolio-item .open-in-lightbox {
+#single-portfolio .portfolio-item .glightbox {
 	display: block;
 }
 #single-portfolio .portfolio-item img {
 	height: auto;
 	width: 100%;
-}
-
-/*	Lightbox ----------------------------------------------------------------*/
-
-#lightbox {
-	background-color: rgba(0, 0, 0, .9);
-	backdrop-filter: blur(3px);
-	display: none;
-	position: fixed;
-	padding: 0;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	overflow: auto;
-	z-index: 20;
-}
-#lightbox-body {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
-	padding: 20px;
-	height: 100vh;
-	width: auto;
-}
-#lightbox-body img {
-	max-height: 100%;
-    max-width: 100%;
-}
-#lightbox-close {
-	color: #ccc;
-	position: absolute;
-	top: 10px;
-	right: 25px;
-	font-size: 35px;
-	font-weight: bold;
-	z-index: 30;
-	background-color: transparent;
-    border: none;
-    height: 40px;
-    width: 40px;
-    padding: 0;
-	cursor: pointer;
-}
-#lightbox-close:hover,
-#lightbox-close:focus {
-	color: #fff;
-	text-decoration: none;
-	cursor: pointer;
 }
 
 /*	Text --------------------------------------------------------------------*/
@@ -1418,4 +1366,20 @@ body.page-portfolio #portfolio > .container {
 
 .grecaptcha-badge {
     display: none !important;
+}
+
+/*	GLightbox ---------------------------------------------------------------*/
+
+.glightbox-clean .gslide-description {
+    background: #3e4047;
+}
+.glightbox-clean .gslide-title {
+	color: #fff;
+	font-family: 'Poppins', Arial, sans-serif;
+	font-weight: 500;
+}
+.glightbox-clean .gslide-desc {
+	color: #fff;
+	font-family: 'Poppins', Arial, sans-serif;
+	font-weight: 200;
 }

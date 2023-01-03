@@ -52,7 +52,7 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 						?>
 						<div class="column column-6">
 							<div class="portfolio-item">
-								<?php if( !empty($full_image_url) ){ ?><a href="<?php echo $full_image_url; ?>" target="_blank" class="open-in-lightbox"><?php } ?>
+								<?php if( !empty($full_image_url) ){ ?><a href="<?php echo $full_image_url; ?>" target="_blank" class="glightbox" data-glightbox="title: <?php echo $title; ?>; description: <?php echo $caption; ?>"><?php } ?>
 									<img src="<?php echo $custom_thumbnail_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 									<?php if( !empty($full_image_url) ){ ?></a><?php } ?>
 								<div class="meta">
@@ -108,12 +108,12 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 <!-- / about -->
 
 <!-- lightbox -->
-<div id="lightbox">
+<!-- <div id="lightbox">
 	<div id="lightbox-inner">
 		<button id="lightbox-close">&times;</button>
 		<div id="lightbox-body"></div>
 	</div>
-</div>
+</div> -->
 <!-- / lightbox -->
 
 <?php get_footer(); ?>
