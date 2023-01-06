@@ -1086,10 +1086,6 @@ textarea.form-control {
 #intro .button.cta {
 	padding: 10px 100px;
 }
-#intro .svg-down svg {
-	fill: var(--color-gray2);
-	width: 30px;
-}
 
 /******************************************************************************
 	SECTIONS > PORTFOLIO

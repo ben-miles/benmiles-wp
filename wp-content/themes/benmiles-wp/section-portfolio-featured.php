@@ -13,7 +13,7 @@ Template Name: Section - Portfolio (Featured)
 
 				<h2 class="heading animated" data-animation="fadeIn">Portfolio</h2>
 				<p style="color:#fff;margin: 0 0 30px;">These are just a few of my favorite projects.</p>
-				<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="button cta" style="margin-bottom: 30px;"><span>See all of my work</span></a>
+				<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="button cta" style="margin-bottom: 30px;"><span>See all of my work</span><?php displaySVG('right'); ?></a>
 
 				<!-- web development -->
 				<div class="category" id="web-development">
