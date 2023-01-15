@@ -19,7 +19,7 @@ A custom WordPress theme plus data and plugins, for my portfolio website: [benmi
 ### Additional Images
 - **Dimensions:** Any aspect ratio, no wider than 720 pixels
 - **File Names:** `ben-miles_[project-name]_[unique-description-of-image].png`
-- **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. For web site screenshots, I prefer to use FastStone Image Resizer with the following settings:
+- **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. For web site screenshots, I prefer to use [FastStone Image Resizer](https://www.faststone.org/FSResizerDownload.htm) with the following settings:
   - Format: JPG, Quality: 70, Photometric: RGB, Color Subsampling: Disabled, Smoothing: 0, Optimize Huffman Table: Enabled, Progressive: Disabled, Keep EXIF: Enabled
   - Advanced Options: Resize ( Based on one side, Width, Exactly 720px, Filter: Lancos3 )
 ### Video
