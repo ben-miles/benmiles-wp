@@ -17,9 +17,11 @@ A custom WordPress theme plus data and plugins, for my portfolio website: [benmi
 - **File Names:** `ben-miles_[project-name]_16x10.png`
 - **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. 
 ### Additional Images
-- **Dimensions:** Any aspect ratio, no wider than 1080 pixels
+- **Dimensions:** Any aspect ratio, no wider than 720 pixels
 - **File Names:** `ben-miles_[project-name]_[unique-description-of-image].png`
-- **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. 
+- **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. For web site screenshots, I prefer to use FastStone Image Resizer with the following settings:
+  - Format: JPG, Quality: 70, Photometric: RGB, Color Subsampling: Disabled, Smoothing: 0, Optimize Huffman Table: Enabled, Progressive: Disabled, Keep EXIF: Enabled
+  - Advanced Options: Resize ( Based on one side, Width, Exactly 720px, Filter: Lancos3 )
 ### Video
 - **Audio:** Muted or removed
 - **Dimensions:** 960x600 for original capture, and 384x240 for optimized assets
