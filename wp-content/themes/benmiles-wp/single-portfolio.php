@@ -34,7 +34,15 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 						<?php echo get_field( 'agency' ); ?>
 					</div>
 					<?php } if( get_field( 'client' ) ){ ?>
-					<div class="post-meta-item client"><h4 class="label">Client </h4><?php echo get_field( 'client' ); ?></div>
+					<div class="post-meta-item client">
+						<h4 class="label">Client</h4>
+						<?php echo get_field( 'client' ); ?>
+					</div>
+					<?php } if( get_field( 'url' ) ){ ?>
+					<div class="post-meta-item url">
+						<h4 class="label">URL</h4>
+						<a href="<?php echo get_field( 'url' ); ?>" target="_blank" class="external-link"><?php displaySVG('external-link'); echo urlToLabel( get_field( 'url' ) ); ?></a>
+					</div>
 					<?php } ?>
 				</div>
 			</div>
