@@ -33,7 +33,7 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 				</div>
 			</div>
 				
-			<!-- Images -->
+			<!-- Additional Images -->
 			<div class="column column-6" style="justify-content: flex-start;">
 				<div class="thumbnail">
 					<?php the_post_thumbnail($post->ID,'small'); ?>
@@ -56,7 +56,7 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 									<img src="<?php echo $custom_thumbnail_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 									<?php if( !empty($full_image_url) ){ ?></a><?php } ?>
 								<div class="meta">
-									<?php echo $caption; ?>
+									<?php echo $title; ?>
 								</div>
 							</div>
 						</div>
