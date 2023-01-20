@@ -453,6 +453,9 @@ a:hover {
 	color: var(--color-slate);
 }
 
+a.external-link {
+	display: inline-block;
+}
 a.external-link .svg-wrapper {
     float: left;
 	height: 16px;
