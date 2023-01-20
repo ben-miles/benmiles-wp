@@ -66,12 +66,10 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 						?>
 						<div class="column column-6">
 							<div class="portfolio-item">
-								<?php if( !empty($full_image_url) ){ ?><a href="<?php echo $full_image_url; ?>" target="_blank" class="glightbox" data-glightbox="title: <?php echo $title; ?>; description: <?php echo $caption; ?>"><?php } ?>
+								<a href="<?php echo $full_image_url; ?>" target="_blank" class="glightbox" data-glightbox="title: <?php echo $title; ?>; description: <?php echo $caption; ?>">
 									<img src="<?php echo $custom_thumbnail_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
-									<?php if( !empty($full_image_url) ){ ?></a><?php } ?>
-								<div class="meta">
-									<?php echo $title; ?>
-								</div>
+									<div class="meta"><?php echo $title; ?></div>
+								</a>
 							</div>
 						</div>
 						<?php 
