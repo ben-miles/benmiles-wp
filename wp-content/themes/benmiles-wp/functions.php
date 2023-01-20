@@ -120,6 +120,20 @@ function displaySVG( $filename = '', $additional_classes = NULL ){
 }
 
 /*
+* urlToLabel
+* Formats a complete URL string into a simpler label
+* Accepts: A string containing a complete URL 
+* Returns: A string containing only the domain name and extension
+*/
+function urlToLabel($url){
+	// Remove common prefixes
+	$label = str_replace( ["http://", "https://", "www."], "", $url );
+	// Remove paths
+	$label = explode('/', $label, 2);
+	return $label[0];
+}
+
+/*
 * getPortfolioItems
 * Gets and formats Portfolio Items for display
 * Accepts: Category Name(s), Tag(s), and a Max number of Items to collect, as arguments
@@ -151,7 +165,7 @@ function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 		$the_thumbnail = get_the_post_thumbnail( null, 'medium', ['class' => 'thumbnail-image'] );
 		$the_video = get_field( 'home_page_video' );
 		$the_external_url = get_field( 'url' );
-		$the_external_url_label = mb_strimwidth( str_replace( ["http://", "https://", "www."], "", $the_external_url ), 0, 25, "...");
+		$the_external_url_label = mb_strimwidth( urlToLabel( $the_external_url ), 0, 25, "..." );
 		$the_permalink = get_permalink();
 		$max_items = ( $max_items > 4 || $max_items === -1) ? 4 : $max_items;
 		$column_class = 12 / $max_items;
@@ -174,7 +188,7 @@ function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 					<!--<div class="date"><?php //echo $the_date; ?></div>-->
 					<p class="excerpt"><?php echo $the_excerpt; ?></p>
 					<?php if($the_external_url){ ?>
-					<a href="<?php echo $the_external_url; ?>" target="_blank" class="external-link"><?php echo $the_external_url_label; ?></a>
+					<a href="<?php echo $the_external_url; ?>" target="_blank" class="external-link"><?php displaySVG('external-link'); echo $the_external_url_label; ?></a>
 					<?php } ?>
 				</div>
 			</div>
