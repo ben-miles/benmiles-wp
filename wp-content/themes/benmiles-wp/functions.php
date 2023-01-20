@@ -93,6 +93,13 @@ function load_custom_scripts_and_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'load_custom_scripts_and_styles' );
 
+// Load custom Admin Styles
+function load_custom_admin_styles() {
+	// Admin
+	wp_enqueue_style( 'admin', get_template_directory_uri() . '/assets/css/admin.css', array(), null, false );
+}
+add_action( 'admin_enqueue_scripts', 'load_custom_admin_styles' );
+
 /*
 * displaySVG
 * Generates optimized, inline SVG code from an SVG file
