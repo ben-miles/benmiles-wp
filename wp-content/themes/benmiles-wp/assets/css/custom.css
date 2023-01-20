@@ -453,6 +453,19 @@ a:hover {
 	color: var(--color-slate);
 }
 
+a.external-link .svg-wrapper {
+    float: left;
+	height: 16px;
+	margin: 2px 10px 0 0;
+	width: 16px;
+}
+a.external-link .svg-wrapper svg {
+	fill: var(--color-bbblu);
+}
+a.external-link:hover .svg-wrapper svg {
+	fill: var(--color-slate);
+}
+
 /*	SVGS --------------------------------------------------------------------*/
 
 .svg-wrapper svg {
@@ -1156,14 +1169,9 @@ textarea.form-control {
 	font-size: 14px;
 	margin-top: auto;
 }
-.portfolio-item .external-link:before {
-	float: left;
-    content: '';
-    background-image: url('/wp-content/themes/benmiles-wp/assets/icons/external-link.svg');
-    background-size: contain;
-    width: 14px;
-    height: 14px;
-    margin: 2px 10px 0 0;
+.portfolio-item .external-link .svg-wrapper {
+	height: 14px;
+	width: 14px;
 }
 .portfolio-item .excerpt {
 	text-align: center;

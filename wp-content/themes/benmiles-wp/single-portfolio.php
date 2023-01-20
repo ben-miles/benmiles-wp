@@ -24,9 +24,15 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 			<!-- Meta -->
 			<div class="column column-12">
 				<div class="post-meta">
-					<div class="post-meta-item date"><h4 class="label">Date </h4><?php the_date(); ?></div>
+					<div class="post-meta-item date">
+						<h4 class="label">Date</h4>
+						<?php the_date(); ?>
+					</div>
 					<?php if( get_field( 'agency' ) ){ ?>
-					<div class="post-meta-item agency"><h4 class="label">Agency </h4><?php echo get_field( 'agency' ); ?></div>
+					<div class="post-meta-item agency">
+						<h4 class="label">Agency</h4>
+						<?php echo get_field( 'agency' ); ?>
+					</div>
 					<?php } if( get_field( 'client' ) ){ ?>
 					<div class="post-meta-item client"><h4 class="label">Client </h4><?php echo get_field( 'client' ); ?></div>
 					<?php } ?>
@@ -70,7 +76,7 @@ get_header(null, ['bodyClass' => 'page-portfolio-item']);
 			
 			<!-- Text -->
 			<div class="column column-6" style="justify-content: flex-start;">
-			<?php if(get_the_content()){ ?>
+			<?php if( get_the_content() ){ ?>
 				<div class="content animated" style="animation-delay: .1s;" data-animation="fadeIn">
 					<?php the_content(); ?>
 				</div>
