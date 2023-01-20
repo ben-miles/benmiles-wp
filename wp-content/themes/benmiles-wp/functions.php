@@ -6,6 +6,9 @@ add_theme_support('post-thumbnails');
 // Enable Custom Page Titles
 add_theme_support('title-tag');
 
+// Disable automatic image scaling
+add_filter( 'big_image_size_threshold', '__return_false' );
+
 // Shorten Automatic Excerpts
 // Via https://www.hostinger.com/tutorials/wordpress-excerpt-length
 function shorten_auto_excerpts($length){ 
