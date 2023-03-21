@@ -27,7 +27,7 @@ Template Name: Section - About
 						<a href="<?php echo home_url(); ?>/about" target="_self" class="button cta"><span>Learn more about me</span><?php displaySVG('right'); ?></a>
 					<?php } else { 
 						// Display this content on the About Page ?>
-						<a href="#experience-and-skills" target="_self" class="button cta"><span>Experience & Skills</span><?php echo displaySVG('down', 'bounce'); ?></a>;
+						<a href="#experience-and-skills" target="_self" class="button cta"><span>Experience & Skills</span><?php echo displaySVG('down', 'bounce'); ?></a>
 					<?php } ?>
 				<!-- </p> -->
 
