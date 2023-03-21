@@ -1350,6 +1350,12 @@ body.page-portfolio #portfolio > .container {
 .post-navigation .nav-links .nav-next {
 	width: 50%;
 }
+.post-navigation .nav-links .nav-next {
+	margin-left: auto;
+}
+.post-navigation .nav-links .nav-previous {
+	margin-right: auto;
+}
 .post-navigation .nav-links a {
 	color: var(--color-white);
 	display: block;
