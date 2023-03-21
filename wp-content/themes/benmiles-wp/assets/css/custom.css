@@ -178,6 +178,7 @@ b, strong {
 .animated {
 	animation-duration: 1s;
 	animation-fill-mode: both;
+	opacity: 0;
 }
 .fadeIn {
 	animation-name: fadeIn;
