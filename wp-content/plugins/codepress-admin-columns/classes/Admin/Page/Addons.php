@@ -52,7 +52,7 @@ class Addons implements Enqueueables, Renderable, RenderableHead {
 	public function render() {
 		ob_start();
 
-		echo '<h1 class="screen-reader-text">'. __( 'Add-ons', 'codepress-admin-columns' ) .'</h1>';
+		echo '<h1 class="screen-reader-text">' . __( 'Add-ons', 'codepress-admin-columns' ) . '</h1>';
 		echo '<div class="ac-addons-groups">';
 
 		foreach ( $this->get_grouped_addons() as $group ) :
@@ -64,6 +64,7 @@ class Addons implements Enqueueables, Renderable, RenderableHead {
 				<ul>
 					<?php
 					foreach ( $group['integrations'] as $addon ) {
+						$actions = $this->render_actions( $addon );
 						/* @var AC\Integration $addon */
 
 						$view = new AC\View( [
@@ -72,7 +73,7 @@ class Addons implements Enqueueables, Renderable, RenderableHead {
 							'slug'        => $addon->get_slug(),
 							'description' => $addon->get_description(),
 							'link'        => $addon->get_link(),
-							'actions'     => $this->render_actions( $addon )->render(),
+							'actions'     => $actions ? $actions->render() : null,
 						] );
 
 						echo $view->set_template( 'admin/edit-addon' );
@@ -92,31 +93,22 @@ class Addons implements Enqueueables, Renderable, RenderableHead {
 	 *
 	 * @return Renderable
 	 */
-	protected function render_actions( AC\Integration $addon ) {
+	protected function render_actions( AC\Integration $addon ): ?Renderable {
 		return new Admin\Section\AddonStatus( $addon );
 	}
 
 	/**
 	 * @return array
 	 */
-	private function get_grouped_addons() {
-
-		$active = $this->integrations->find_all( [
-			IntegrationRepository::ARG_FILTER => [
-				new Filter\IsActive( is_multisite(), is_network_admin() ),
-			],
-		] );
-
+	protected function get_grouped_addons() {
 		$recommended = $this->integrations->find_all( [
 			IntegrationRepository::ARG_FILTER => [
-				new Filter\IsNotActive( is_multisite(), is_network_admin() ),
 				new Filter\IsPluginActive(),
 			],
 		] );
 
 		$available = $this->integrations->find_all( [
 			IntegrationRepository::ARG_FILTER => [
-				new Filter\IsNotActive( is_multisite(), is_network_admin() ),
 				new Filter\IsPluginNotActive(),
 			],
 		] );
@@ -128,14 +120,6 @@ class Addons implements Enqueueables, Renderable, RenderableHead {
 				'title'        => __( 'Recommended', 'codepress-admin-columns' ),
 				'class'        => 'recommended',
 				'integrations' => $recommended,
-			];
-		}
-
-		if ( $active->exists() ) {
-			$groups[] = [
-				'title'        => __( 'Active', 'codepress-admin-columns' ),
-				'class'        => 'active',
-				'integrations' => $active,
 			];
 		}
 

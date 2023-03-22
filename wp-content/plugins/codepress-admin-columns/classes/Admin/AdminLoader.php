@@ -4,26 +4,17 @@ namespace AC\Admin;
 
 use AC\Asset\Enqueueable;
 use AC\Asset\Enqueueables;
-use AC\Registrable;
+use AC\Registerable;
 use AC\Renderable;
 use AC\Request;
 use AC\View;
 
-class AdminLoader implements Registrable {
+class AdminLoader implements Registerable {
 
-	/**
-	 * @var string
-	 */
 	protected $hook;
 
-	/**
-	 * @var RequestHandlerInterface
-	 */
 	protected $request_handler;
 
-	/**
-	 * @var Enqueueables
-	 */
 	protected $assets;
 
 	/**
@@ -31,7 +22,7 @@ class AdminLoader implements Registrable {
 	 */
 	private $page;
 
-	public function __construct( $hook, RequestHandlerInterface $request_handler, Enqueueables $assets ) {
+	public function __construct( string $hook, RequestHandlerInterface $request_handler, Enqueueables $assets ) {
 		$this->hook = $hook;
 		$this->request_handler = $request_handler;
 		$this->assets = $assets;
@@ -53,7 +44,7 @@ class AdminLoader implements Registrable {
 			return;
 		}
 
-		if ( $this->page instanceof Registrable ) {
+		if ( $this->page instanceof Registerable ) {
 			$this->register();
 		}
 
@@ -82,13 +73,13 @@ class AdminLoader implements Registrable {
 		add_filter( 'screen_settings', [ $this, 'screen_options' ] );
 	}
 
-	public function head() {
+	public function head(): void {
 		if ( $this->page instanceof RenderableHead ) {
 			echo $this->page->render_head();
 		}
 	}
 
-	public function body() {
+	public function body(): void {
 		if ( $this->page instanceof Renderable ) {
 			$view = new View( [
 				'content' => $this->page->render(),
@@ -98,7 +89,7 @@ class AdminLoader implements Registrable {
 		}
 	}
 
-	protected function enqueue( Enqueueable $asset ) {
+	protected function enqueue( Enqueueable $asset ): void {
 		$asset->enqueue();
 	}
 

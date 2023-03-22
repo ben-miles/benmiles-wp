@@ -2,14 +2,11 @@
 
 namespace AC;
 
-use AC\Column\Placeholder;
 use AC\Sanitize\Kses;
 use AC\Type\ListScreenId;
 use AC\Type\Url\Editor;
 use DateTime;
 use LogicException;
-use ReflectionClass;
-use ReflectionException;
 
 /**
  * List Screen
@@ -119,7 +116,9 @@ abstract class ListScreen {
 	 */
 	private $network_only = false;
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $title;
 
 	/**
@@ -156,6 +155,17 @@ abstract class ListScreen {
 	 * @return void
 	 */
 	abstract protected function register_column_types();
+
+	/**
+	 * Register column types from a list with (fully qualified) class names
+	 *
+	 * @param string[] $list
+	 */
+	protected function register_column_types_from_list( array $list ): void {
+		foreach ( $list as $column ) {
+			$this->register_column_type( new $column );
+		}
+	}
 
 	/**
 	 * @return string
@@ -601,37 +611,16 @@ abstract class ListScreen {
 
 		// Register default columns
 		foreach ( $this->get_original_columns() as $type => $label ) {
-
 			// Ignore the mandatory checkbox column
 			if ( 'cb' === $type ) {
 				continue;
 			}
 
-			$column = new Column();
-
-			$column
-				->set_type( $type )
-				->set_original( true );
+			$column = new Column;
+			$column->set_type( $type )
+			       ->set_original( true );
 
 			$this->register_column_type( $column );
-		}
-
-		$integrations = new IntegrationRepository();
-
-		// Placeholder columns
-		foreach ( $integrations->find_all() as $integration ) {
-			if ( ! $integration->show_placeholder( $this ) ) {
-				continue;
-			}
-
-			$plugin_info = new PluginInformation( $integration->get_basename() );
-
-			if ( $integration->is_plugin_active() && ! $plugin_info->is_active() ) {
-				$column = new Placeholder();
-				$column->set_integration( $integration );
-
-				$this->register_column_type( $column );
-			}
 		}
 
 		// Load Custom columns
@@ -643,23 +632,6 @@ abstract class ListScreen {
 		 * @param ListScreen $this
 		 */
 		do_action( 'ac/column_types', $this );
-	}
-
-	/**
-	 * @param string $namespace Namespace from the current path
-	 *
-	 * @throws ReflectionException
-	 */
-	public function register_column_types_from_dir( $namespace ) {
-		$classes = Autoloader::instance()->get_class_names_from_dir( $namespace );
-
-		foreach ( $classes as $class ) {
-			$reflection = new ReflectionClass( $class );
-
-			if ( $reflection->isInstantiable() ) {
-				$this->register_column_type( new $class );
-			}
-		}
 	}
 
 	/**
@@ -702,7 +674,9 @@ abstract class ListScreen {
 			return false;
 		}
 
-		/* @var Column $column */
+		/**
+		 * @var Column $column
+		 */
 		$column = new $class();
 		$column->set_list_screen( $this )
 		       ->set_type( $settings['type'] );
@@ -821,6 +795,8 @@ abstract class ListScreen {
 	 * @return string
 	 */
 	public function get_display_value_by_column_name( $column_name, $id, $original_value = null ) {
+		$id = (int) $id;
+
 		$column = $this->get_column_by_name( $column_name );
 
 		if ( ! $column ) {
@@ -829,8 +805,8 @@ abstract class ListScreen {
 
 		$value = $column->get_value( $id );
 
-		if ( apply_filters( 'ac/column/value/sanitize', true, $column, $id ) ) {
-			$value = ( new Kses() )->sanitize( $value );
+		if ( is_scalar( $value ) && apply_filters( 'ac/column/value/sanitize', true, $column, $id )  ) {
+			$value = ( new Kses() )->sanitize( (string) $value );
 		}
 
 		// You can overwrite the display value for original columns by making sure get_value() does not return an empty string.
@@ -847,9 +823,15 @@ abstract class ListScreen {
 		 *
 		 * @since 3.0
 		 */
-		$value = apply_filters( 'ac/column/value', $value, $id, $column );
+		return (string) apply_filters( 'ac/column/value', $value, $id, $column );
+	}
 
-		return $value;
+	/**
+	 * @param string $namespace Namespace from the current path
+	 *                          Can be removed after a short while from 6.0, e.g. 6.1 or after a few months, as this very custom to begin with
+	 */
+	public function register_column_types_from_dir( $namespace ) {
+		_deprecated_function( __FUNCTION__, '6.0' );
 	}
 
 	/**

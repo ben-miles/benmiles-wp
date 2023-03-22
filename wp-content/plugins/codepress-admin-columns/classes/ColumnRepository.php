@@ -7,8 +7,8 @@ use AC\ColumnRepository\Sort;
 
 class ColumnRepository {
 
-	const ARG_FILTER = 'filter';
-	const ARG_SORT = 'sort';
+	public const ARG_FILTER = 'filter';
+	public const ARG_SORT = 'sort';
 
 	/**
 	 * @var ListScreen
@@ -40,14 +40,23 @@ class ColumnRepository {
 	 */
 	public function find_all( array $args = [] ) {
 		$args = array_merge( [
-			self::ARG_FILTER => null,
 			self::ARG_SORT   => null,
+			self::ARG_FILTER => [],
 		], $args );
 
 		$columns = $this->list_screen->get_columns();
 
+		// Deprecated usage
 		if ( $args[ self::ARG_FILTER ] instanceof Filter ) {
-			$columns = $args[ self::ARG_FILTER ]->filter( $columns );
+			$args[ self::ARG_FILTER ] = [ $args[ self::ARG_FILTER ] ];
+		}
+
+		if ( $args[ self::ARG_FILTER ] ) {
+			foreach ( $args[ self::ARG_FILTER ] as $filter ) {
+				if ( $filter instanceof Filter ) {
+					$columns = $filter->filter( $columns );
+				}
+			}
 		}
 
 		if ( $args[ self::ARG_SORT ] instanceof Sort ) {

@@ -21,24 +21,30 @@ class Columns extends Script {
 	 */
 	private $list_screen;
 
-	public function __construct( $handle, Location $location, DefaultColumnsRepository $default_columns, ListScreen $list_screen ) {
+	public function __construct(
+		string $handle,
+		Location $location,
+		DefaultColumnsRepository $default_columns,
+		ListScreen $list_screen
+	) {
 		parent::__construct( $handle, $location, [
 			'jquery',
 			'jquery-ui-slider',
 			'jquery-ui-sortable',
+			'jquery-touch-punch',
 		] );
 
 		$this->default_columns = $default_columns;
 		$this->list_screen = $list_screen;
 	}
 
-	private function get_list_screens() {
+	private function get_list_screens(): array {
 		return is_network_admin()
 			? ListScreenTypes::instance()->get_list_screens( [ ListScreenTypes::ARG_NETWORK => true ] )
 			: ListScreenTypes::instance()->get_list_screens( [ ListScreenTypes::ARG_SITE => true ] );
 	}
 
-	public function register() {
+	public function register(): void {
 		parent::register();
 
 		if ( null === $this->list_screen ) {
