@@ -15,8 +15,8 @@ Template Name: Section - Experience & Skills
 
 				<!-- experience -->
 				<div class="column column-9 experience">
-					<h2 class="heading animated" data-animation="fadeInUp">Experience & Education</h2>
-                    <ul class="timeline">
+					<h2 class="heading animated" data-animation="fadeIn">Experience & Education</h2>
+                    <ul class="timeline animated" data-animation="fadeIn" style="animation-delay:0.1s;">
 
                         <li class="timeline-item timeline-inverted animated" data-animation="fadeInUp">
                             <div class="timeline-badge">
@@ -136,42 +136,44 @@ Template Name: Section - Experience & Skills
 
 				<!-- skills -->
                 <div class="column column-3 skills" style="justify-content: flex-start;">
-					<h2 class="heading animated" data-animation="fadeInUp">Skills</h2>
+					<h2 class="heading animated" data-animation="fadeIn">Skills</h2>
 
 					<!-- code languages -->
-					<h3 class="sub-heading">Code Languages</h3>
+					<h3 class="sub-heading animated" data-animation="fadeInUp">Code Languages</h3>
 					<div class="row">
 						<?php 
-						displaySVG('html');
-						displaySVG('css');
-						displaySVG('js');
-						displaySVG('php');
-						displaySVG('mysql');
+							$icons = ['html', 'css', 'js', 'php', 'mysql'];
+							$animationDelay = 0;
+							foreach ($icons as $icon) {
+								echo '<div class="skill-icon animated" data-animation="fadeInUp" style="animation-delay: ' . $animationDelay . 's;">' . displaySVG($icon) . '</div>';
+								$animationDelay += 0.1;
+							}
 						?>
 					</div>
 
 					<!-- frameworks, libraries -->
-					<h3 class="sub-heading">Frameworks & Libraries</h3>
+					<h3 class="sub-heading animated" data-animation="fadeInUp">Frameworks & Libraries</h3>
 					<div class="row">
 						<?php
-						displaySVG('bootstrap', 'wide');
-						displaySVG('jquery', 'wide');
-						displaySVG('joomla', 'wide');
-						displaySVG('vue', 'wide');
-						displaySVG('laravel', 'wide');
-						displaySVG('wordpress', 'wide');
+							$icons = ['bootstrap', 'jquery', 'joomla', 'vue', 'laravel', 'wordpress'];
+							$animationDelay = 0;
+							foreach ($icons as $icon) {
+								echo '<div class="skill-icon wide animated" data-animation="fadeInUp" style="animation-delay: ' . $animationDelay . 's;">' . displaySVG($icon) . '</div>';
+								$animationDelay += 0.1;
+							}
 						?>
 					</div>
 
 					<!-- software -->
-					<h3 class="sub-heading">Software</h3>
+					<h3 class="sub-heading animated" data-animation="fadeInUp">Software</h3>
 					<div class="row">
 						<?php
-						displaySVG('phpstorm');
-						displaySVG('photoshop');
-						displaySVG('illustrator');
-						displaySVG('indesign');
-						displaySVG('vscode');
+							$icons = ['illustrator', 'indesign', 'photoshop', 'phpstorm', 'vscode'];
+							$animationDelay = 0;
+							foreach ($icons as $icon) {
+								echo '<div class="skill-icon animated" data-animation="fadeInUp" style="animation-delay: ' . $animationDelay . 's;">' . displaySVG($icon) . '</div>';
+								$animationDelay += 0.1;
+							}
 						// TODO: Add Figma icon
 						// TODO: Update Adobe icons
 						?>

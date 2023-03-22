@@ -11,7 +11,7 @@ Template Name: Section - About
 		<div class="row">
 			<div class="column column-12">
 
-				<h2 class="heading animated" data-animation="fadeInUp">About Ben Miles</h2>
+				<h2 class="heading animated" data-animation="fadeIn">About Ben Miles</h2>
 
 				<div class="animated card" data-animation="fadeIn" style="animation-delay: .1s;">
 					<p><b>I'm a graphic designer and full-stack web developer, located in central Florida, with 20 years of experience.</b></p>
@@ -24,10 +24,10 @@ Template Name: Section - About
 					<?php 
 					if( is_front_page() ){
 						// Display this content on the Home Page ?>
-						<a href="<?php echo home_url(); ?>/about" target="_self" class="button cta"><span>Learn more about me</span><?php displaySVG('right'); ?></a>
+						<a href="<?php echo home_url(); ?>/about" target="_self" class="button cta animated" data-animation="fadeInUp" style="animation-delay: .2s;"><span>Learn more about me</span><?php echo displaySVG('right'); ?></a>
 					<?php } else { 
 						// Display this content on the About Page ?>
-						<a href="#experience-and-skills" target="_self" class="button cta"><span>Experience & Skills</span><?php echo displaySVG('down', 'bounce'); ?></a>
+						<a href="#experience-and-skills" target="_self" class="button cta animated" data-animation="fadeInUp" style="animation-delay: .2s;"><span>Experience & Skills</span><?php echo displaySVG('down', 'bounce'); ?></a>
 					<?php } ?>
 				<!-- </p> -->
 

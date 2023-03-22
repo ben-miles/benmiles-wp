@@ -13,14 +13,12 @@ get_header(null, ['bodyClass' => 'page-404']);
 			<div class="column column-12">
 				
 				<!-- header -->
-				<h1 class="heading animated" data-animation="fadeInUp">404</h1>
+				<h2 class="heading animated" data-animation="fadeIn">404</h2>
 				
 				<!-- content -->
-				<div class="animated card error-404" style="animation-delay: .1s;" data-animation="fadeInUp">
-					<div class="card-block">
-						<p class="card-text">Page not found.</p>
-						<p class="card-text">Go to <a href="<?php bloginfo('url'); ?>" target="_self">home page</a>?</p>
-					</div>
+				<div class="animated card" style="animation-delay: .1s; text-align:center;" data-animation="fadeInUp">
+					<p>Page not found.</p>
+					<p>Go to <a href="<?php bloginfo('url'); ?>" target="_self">home page</a>?</p>
 				</div>
 				
 			</div>	
