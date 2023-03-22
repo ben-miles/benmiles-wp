@@ -1,7 +1,10 @@
 # benmiles-wp
 A custom WordPress theme plus data and plugins, for my portfolio website: [benmiles.com](https://benmiles.com/)
 
-![This is an image](/wp-content/themes/benmiles-wp/screenshot.png)
+![BenMiles-WP Screenshot](/wp-content/themes/benmiles-wp/screenshot.png)
+
+[![WordPress](https://img.shields.io/badge/WordPress-3858E9?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/)
+[![Vultr](https://img.shields.io/badge/Vultr-007BFC?style=for-the-badge&logo=vultr&logoColor=white)](https://vultr.com/)
 
 ## Installation & Updating
 1. In the destination environment, complete the steps to install [WordPress](https://wordpress.org/)
