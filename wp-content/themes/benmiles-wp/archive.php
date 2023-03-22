@@ -13,8 +13,9 @@ if ( is_tag() ) {
 if ( is_category() ) {
 	$meta_type = 'Category';
 	$meta_key = get_category( get_query_var( 'cat' ) );
+	// var_dump($meta_key);
 	$meta_description = '<p>' . $meta_key->description . '</p>';
-	$category = $meta_key->name;
+	$category = $meta_key->slug;
 }
 
 get_header(null, ['bodyClass' => 'page-archive']);
