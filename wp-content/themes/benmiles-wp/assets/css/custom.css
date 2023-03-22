@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 3px;
     margin: 20px auto;
     text-transform: uppercase;
-    text-align: left;
+    text-align: center;
     width: 100%;
 }
 b, strong {
