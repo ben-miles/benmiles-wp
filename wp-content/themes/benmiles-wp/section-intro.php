@@ -12,7 +12,7 @@ Template Name: Section - Intro
 
 			<!-- portrait -->
 			<div class="column column-6">
-				<svg id="portrait" viewBox="0 0 200 200" style="overflow:visible;">
+				<svg class="animated" data-animation="fadeIn" id="portrait" viewBox="0 0 200 200" style="overflow:visible;">
 					<defs>
 						<clipPath id="mask">
 							<path d="" id="path"></path>
@@ -26,28 +26,28 @@ Template Name: Section - Intro
 
 			<!-- info -->
 			<div class="column column-6">
-				<?php displaySVG('ben-miles_logo'); ?>
-				<h1 class="site-title animated fadeInUp" data-animation="fadeInUp" style="animation-delay: .1s;">Ben Miles</h2>
-				<h2 class="animated fadeInUp site-description" data-animation="fadeInUp" style="animation-delay: .2s;">Graphic Designer & <br>Full-Stack Web Developer</h2>
+				<div class="animated" data-animation="fadeInUp"><?php echo displaySVG('ben-miles_logo'); ?></div>
+				<h1 class="site-title animated" data-animation="fadeInUp" style="animation-delay: .1s;">Ben Miles</h2>
+				<h2 class="site-description animated" data-animation="fadeInUp" style="animation-delay: .2s;">Graphic Designer & <br>Full-Stack Web Developer</h2>
 				<ul class="social-media">
-					<li>
+					<li class="animated" data-animation="fadeInUp" style="animation-delay: .3s;">
 						<a href="https://www.linkedin.com/in/benjaminmiles/" target="_blank">
-							<?php displaySVG('linkedin'); ?>
+							<?php echo displaySVG('linkedin'); ?>
 						</a>
 					</li>
-					<li>
+					<li class="animated" data-animation="fadeInUp" style="animation-delay: .4s;">
 						<a href="https://codepen.io/benmiles/" target="_blank">
-							<?php displaySVG('codepen'); ?>
+							<?php echo displaySVG('codepen'); ?>
 						</a>
 					</li>
-					<li>
+					<li class="animated" data-animation="fadeInUp" style="animation-delay: .5s;">
 						<a href="https://github.com/ben-miles" target="_blank">
-							<?php displaySVG('github'); ?>
+							<?php echo displaySVG('github'); ?>
 						</a>
 					</li>
 				</ul>
-				<a href="#about" target="_self" class="button cta">
-					<?php displaySVG('down', 'bounce'); ?>
+				<a href="#about" target="_self" class="button cta animated" data-animation="fadeInUp" style="animation-delay: .5s;">
+					<?php echo displaySVG('down', 'bounce'); ?>
 				</a>
 			</div>
 

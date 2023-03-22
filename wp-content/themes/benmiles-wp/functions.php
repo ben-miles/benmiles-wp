@@ -116,7 +116,7 @@ function displaySVG( $filename = '', $additional_classes = NULL ){
     $start_position = strpos( $svg_file, $search_string );
     $svg_code = substr( $svg_file, $start_position );
     $output = '<div class="svg-wrapper svg-' . $filename . ' ' . $additional_classes . '">' . $svg_code . '</div>';
-    echo $output;
+    return $output;
 }
 
 /*
@@ -188,7 +188,7 @@ function getPortfolioItems($category=null,$tag=null,$max_items=-1){
 					<!--<div class="date"><?php //echo $the_date; ?></div>-->
 					<p class="excerpt"><?php echo $the_excerpt; ?></p>
 					<?php if($the_external_url){ ?>
-					<a href="<?php echo $the_external_url; ?>" target="_blank" class="external-link"><?php displaySVG('external-link'); echo $the_external_url_label; ?></a>
+					<a href="<?php echo $the_external_url; ?>" target="_blank" class="external-link"><?php echo displaySVG('external-link'); echo $the_external_url_label; ?></a>
 					<?php } ?>
 				</div>
 			</div>

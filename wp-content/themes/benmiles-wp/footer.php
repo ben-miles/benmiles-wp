@@ -15,17 +15,17 @@
 						<ul class="social-media">
 							<li>
 								<a href="https://www.linkedin.com/in/benjaminmiles/" target="_blank">
-									<?php displaySVG('linkedin'); ?>
+									<?php echo displaySVG('linkedin'); ?>
 								</a>
 							</li>
 							<li>
 								<a href="https://codepen.io/benmiles/" target="_blank">
-									<?php displaySVG('codepen'); ?>
+									<?php echo displaySVG('codepen'); ?>
 								</a>
 							</li>
 							<li>
 								<a href="https://github.com/ben-miles" target="_blank">
-									<?php displaySVG('github'); ?>
+									<?php echo displaySVG('github'); ?>
 								</a>
 							</li>
 						</ul>
