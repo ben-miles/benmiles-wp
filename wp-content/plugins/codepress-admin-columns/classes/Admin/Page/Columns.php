@@ -22,8 +22,10 @@ use AC\ListScreenTypes;
 use AC\Renderable;
 use AC\Request;
 use AC\Type\ListScreenId;
+use AC\Type\Url;
 use AC\Type\Url\Documentation;
 use AC\Type\Url\Site;
+use AC\Type\Url\Tweet;
 use AC\Type\Url\UtmTags;
 use AC\View;
 
@@ -64,40 +66,52 @@ class Columns implements Enqueueables, Admin\ScreenOptions, Renderable, Renderab
 	/**
 	 * @var bool
 	 */
+	private $is_acp_active;
+
+	/**
+	 * @var bool
+	 */
 	private $is_network;
 
-	public function __construct( Location\Absolute $location, DefaultColumnsRepository $default_columns, Menu $menu, Storage $storage, Renderable $head, Preference\ListScreen $preference, $is_network = false ) {
+	public function __construct(
+		Location\Absolute $location,
+		DefaultColumnsRepository $default_columns,
+		Menu $menu,
+		Storage $storage,
+		Renderable $head,
+		Preference\ListScreen $preference,
+		bool $is_acp_active,
+		bool $is_network = false
+	) {
 		$this->location = $location;
 		$this->default_columns = $default_columns;
 		$this->menu = $menu;
 		$this->storage = $storage;
 		$this->head = $head;
 		$this->preference = $preference;
-		$this->is_network = (bool) $is_network;
+		$this->is_acp_active = $is_acp_active;
+		$this->is_network = $is_network;
 	}
 
 	public function render_head() {
 		return $this->head;
 	}
 
-	/**
-	 * @return ListScreen|null
-	 */
-	private function get_list_screen_from_request() {
+	public function get_list_screen_from_request():? ListScreen {
 		$request = new Request();
-		$request->add_middleware( new Middleware\ListScreenAdmin( $this->storage, $this->preference, $this->is_network ) );
-
-		$list_key = $request->get( Middleware\ListScreenAdmin::PARAM_LIST_KEY );
-
-		if ( ! $list_key ) {
-			return null;
-		}
+		$request->add_middleware(
+			new Middleware\ListScreenAdmin( $this->storage, $this->preference, $this->is_network )
+		);
 
 		$list_id = $request->get( Middleware\ListScreenAdmin::PARAM_LIST_ID );
 
-		return $list_id && ListScreenId::is_valid_id( $list_id )
-			? $this->storage->find( new ListScreenId( $list_id ) )
-			: ListScreenTypes::instance()->get_list_screen_by_key( $list_key );
+		if ( ListScreenId::is_valid_id( $list_id ) ) {
+			return $this->storage->find( new ListScreenId( $list_id ) );
+		}
+
+		$list_key = $request->get( Middleware\ListScreenAdmin::PARAM_LIST_KEY );
+
+		return ListScreenTypes::instance()->get_list_screen_by_key( $list_key );
 	}
 
 	public function get_assets() {
@@ -147,6 +161,15 @@ class Columns implements Enqueueables, Admin\ScreenOptions, Renderable, Renderab
 		if ( $list_screen->has_id() ) {
 			$this->preference->set_list_id( $list_screen->get_key(), $list_screen->get_id()->get_id() );
 		}
+	}
+
+	private function get_tweet_url(): Url {
+		return new Tweet(
+			__( "I'm using Admin Columns for WordPress!", 'codepress-admin-columns' ),
+			new Url\WordpressPluginRepo(),
+			Tweet::TWITTER_HANDLE,
+			'admincolumns'
+		);
 	}
 
 	public function render() {
@@ -207,7 +230,7 @@ class Columns implements Enqueueables, Admin\ScreenOptions, Renderable, Renderab
 
 						$delete_confirmation_message = false;
 
-						if ( (bool) apply_filters( 'ac/delete_confirmation', true ) ) {
+						if ( apply_filters( 'ac/delete_confirmation', true ) ) {
 							$delete_confirmation_message = sprintf( __( "Warning! The %s columns data will be deleted. This cannot be undone. 'OK' to delete, 'Cancel' to stop", 'codepress-admin-columns' ), "'" . $list_screen->get_title() . "'" );
 						}
 
@@ -227,13 +250,16 @@ class Columns implements Enqueueables, Admin\ScreenOptions, Renderable, Renderab
 
 					<?php if ( apply_filters( 'ac/show_banner', true ) ) : ?>
 
-						<?= new Banner(); ?>
+						<?= new Banner() ?>
 
 						<?php
 						$view = new View( [
 							'documentation_url' => ( new UtmTags( new Documentation(), 'feedback-docs-button' ) )->get_url(),
 							'upgrade_url'       => ( new UtmTags( new Site( Site::PAGE_ABOUT_PRO ), 'feedback-purchase-button' ) )->get_url(),
+							'tweet_url'         => $this->get_tweet_url()->get_url(),
+							'review_url'        => ( new Url\WordpressPluginReview() )->get_url(),
 						] );
+
 						echo $view->set_template( 'admin/side-feedback' );
 						?>
 
@@ -285,7 +311,7 @@ class Columns implements Enqueueables, Admin\ScreenOptions, Renderable, Renderab
 
 						do_action( 'ac/settings/after_columns', $list_screen );
 
-						if ( ! ac_is_pro_active() ) {
+						if ( ! $this->is_acp_active ) {
 							echo ( new View() )->set_template( 'admin/list-screen-settings-mockup' )->render();
 						}
 

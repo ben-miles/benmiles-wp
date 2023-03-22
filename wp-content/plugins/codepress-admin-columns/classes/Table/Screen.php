@@ -8,13 +8,13 @@ use AC\Capabilities;
 use AC\ColumnSize;
 use AC\Form;
 use AC\ListScreen;
-use AC\Registrable;
+use AC\Registerable;
 use AC\Renderable;
 use AC\ScreenController;
 use AC\Settings;
 use WP_Post;
 
-final class Screen implements Registrable {
+final class Screen implements Registerable {
 
 	/**
 	 * @var Asset\Location\Absolute
@@ -46,7 +46,12 @@ final class Screen implements Registrable {
 	 */
 	private $column_size_user_storage;
 
-	public function __construct( Asset\Location\Absolute $location, ListScreen $list_screen, ColumnSize\ListStorage $column_size_list_storage, ColumnSize\UserStorage $column_size_user_storage ) {
+	public function __construct(
+		Asset\Location\Absolute $location,
+		ListScreen $list_screen,
+		ColumnSize\ListStorage $column_size_list_storage,
+		ColumnSize\UserStorage $column_size_user_storage
+	) {
 		$this->location = $location;
 		$this->list_screen = $list_screen;
 		$this->column_size_list_storage = $column_size_list_storage;
@@ -226,14 +231,19 @@ final class Screen implements Registrable {
 	 * @since 2.2.4
 	 */
 	public function admin_scripts() {
-		$script = new Asset\Script( 'ac-table', $this->location->with_suffix( 'assets/js/table.js' ), [ 'jquery' ] );
-		$script->enqueue();
 
-		$style = new Asset\Style( 'ac-table', $this->location->with_suffix( 'assets/css/table.css' ) );
+		$style = new Asset\Style( 'ac-table', $this->location->with_suffix( 'assets/css/table.css' ), [ 'ac-ui' ] );
 		$style->enqueue();
 
-		wp_localize_script( 'ac-table', 'AC',
-			[
+		$table_translation = Asset\Script\Localize\Translation::create( [
+			'value_loading' => __( 'Loading...', 'codepress-admin-columns' ),
+			'edit'          => __( 'Edit', 'codepress-admin-columns' ),
+			'download'      => __( 'Download', 'codepress-admin-columns' ),
+		] );
+
+		$script = new Asset\Script( 'ac-table', $this->location->with_suffix( 'assets/js/table.js' ), [ 'jquery', Asset\Script\GlobalTranslationFactory::HANDLE ] );
+		$script
+			->add_inline_variable( 'AC', [
 				'assets'           => $this->location->with_suffix( 'assets/' )->get_url(),
 				'list_screen'      => $this->list_screen->get_key(),
 				'layout'           => $this->list_screen->get_layout_id(),
@@ -243,16 +253,13 @@ final class Screen implements Registrable {
 				'screen'           => $this->get_current_screen_id(),
 				'meta_type'        => $this->list_screen->get_meta_type(),
 				'list_screen_link' => $this->get_list_screen_clear_link(),
-			]
-		);
-
-		wp_localize_script( 'ac-table', 'AC_I18N',
-			[
-				'value_loading' => __( 'Loading...', 'codepress-admin-columns' ),
-				'edit'          => __( 'Edit', 'codepress-admin-columns' ),
-				'download'      => __( 'Download', 'codepress-admin-columns' ),
-			]
-		);
+				'number_format'    => [
+					'decimal_point' => $this->get_local_number_format( 'decimal_point' ),
+					'thousands_sep' => $this->get_local_number_format( 'thousands_sep' ),
+				],
+			] )
+			->localize( 'AC_I18N', $table_translation )
+			->enqueue();
 
 		/**
 		 * @param ListScreen $list_screen
@@ -263,6 +270,12 @@ final class Screen implements Registrable {
 		foreach ( $this->list_screen->get_columns() as $column ) {
 			$column->scripts();
 		}
+	}
+
+	private function get_local_number_format( string $var ) {
+		global $wp_locale;
+
+		return $wp_locale->number_format[ $var ] ?? null;
 	}
 
 	/**

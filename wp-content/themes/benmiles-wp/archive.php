@@ -8,7 +8,7 @@ if ( is_tag() ) {
 	$meta_type = 'Tag';
 	$meta_key = get_tag( get_query_var( 'tag_id' ) );
 	$meta_description = '<p>' . $meta_key->description . '</p>';
-	$tag = $meta_key->name;
+	$tag = $meta_key->slug;
 }
 if ( is_category() ) {
 	$meta_type = 'Category';

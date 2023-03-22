@@ -3,12 +3,12 @@
 namespace AC\Screen;
 
 use AC\ListScreenRepository\Storage;
-use AC\Registrable;
+use AC\Registerable;
 use AC\ScreenController;
 use AC\Table\LayoutPreference;
 use AC\Type\ListScreenId;
 
-class QuickEdit implements Registrable {
+class QuickEdit implements Registerable {
 
 	/**
 	 * @var Storage
@@ -62,11 +62,11 @@ class QuickEdit implements Registrable {
 
 		$id = $this->preference->get( $type );
 
-		if ( ! $id ) {
+		if ( ! ListScreenId::is_valid_id( $id ) ) {
 			return;
 		}
 
-		$list_screen = $this->storage->find( new ListScreenId( $id ) );
+		$list_screen = $this->storage->find_by_user( new ListScreenId( $id ), wp_get_current_user() );
 
 		if ( ! $list_screen ) {
 			return;

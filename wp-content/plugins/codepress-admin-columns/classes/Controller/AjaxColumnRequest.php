@@ -7,11 +7,11 @@ use AC\Controller\ColumnRequest\Refresh;
 use AC\Controller\ColumnRequest\Select;
 use AC\Controller\ListScreen\Save;
 use AC\ListScreenRepository\Storage;
-use AC\Registrable;
+use AC\Registerable;
 use AC\Request;
 use LogicException;
 
-class AjaxColumnRequest implements Registrable {
+class AjaxColumnRequest implements Registerable {
 
 	/**
 	 * @var Storage
@@ -32,10 +32,7 @@ class AjaxColumnRequest implements Registrable {
 		$this->get_ajax_handler()->register();
 	}
 
-	/**
-	 * @return Ajax\Handler
-	 */
-	private function get_ajax_handler() {
+	private function get_ajax_handler(): Ajax\Handler {
 		$handler = new Ajax\Handler();
 		$handler
 			->set_action( 'ac-columns' )
@@ -44,7 +41,7 @@ class AjaxColumnRequest implements Registrable {
 		return $handler;
 	}
 
-	public function handle_ajax_request() {
+	public function handle_ajax_request(): void {
 		$this->get_ajax_handler()->verify_request();
 
 		switch ( $this->request->get( 'id' ) ) {

@@ -7,6 +7,7 @@ use AC\Admin\AdminScripts;
 use AC\Admin\PageRequestHandler;
 use AC\Admin\PageRequestHandlers;
 use AC\Admin\Preference;
+use AC\Asset\Script\Localize\Translation;
 use AC\Controller;
 use AC\ListScreenRepository\Database;
 use AC\ListScreenRepository\Storage;
@@ -17,6 +18,7 @@ use AC\Service;
 use AC\Settings\GeneralOption;
 use AC\Table;
 use AC\ThirdParty;
+use AC\Vendor\DI\ContainerBuilder;
 
 class AdminColumns extends Plugin {
 
@@ -43,6 +45,7 @@ class AdminColumns extends Plugin {
 
 		$plugin_information = new PluginInformation( $this->get_basename() );
 		$is_network_active = $plugin_information->is_network_active();
+		$is_acp_active = $this->is_acp_active();
 
 		$this->storage = new Storage();
 		$this->storage->set_repositories( [
@@ -52,16 +55,33 @@ class AdminColumns extends Plugin {
 			),
 		] );
 
+		$definitions = [
+			'translations.global' => function (): Translation {
+				return new Translation( require $this->get_dir() . '/settings/translations/global.php' );
+			},
+		];
+
+		$container = ( new ContainerBuilder() )
+			->addDefinitions( $definitions )
+			->build();
+
+		/**
+		 * @var Translation $global_translations
+		 */
+		$global_translations = $container->get( 'translations.global' );
+
 		$location = $this->get_location();
 		$menu_factory = new Admin\MenuFactory( admin_url( 'options-general.php' ), $location );
 
 		$page_handler = new PageRequestHandler();
-		$page_handler->add( 'columns', new Admin\PageFactory\Columns( $this->storage, $location, $menu_factory ) )
-		             ->add( 'settings', new Admin\PageFactory\Settings( $location, $menu_factory ) )
+		$page_handler->add( 'columns', new Admin\PageFactory\Columns( $this->storage, $location, $menu_factory, $is_acp_active ) )
+		             ->add( 'settings', new Admin\PageFactory\Settings( $location, $menu_factory, $is_acp_active ) )
 		             ->add( 'addons', new Admin\PageFactory\Addons( $location, new IntegrationRepository(), $menu_factory ) )
 		             ->add( 'help', new Admin\PageFactory\Help( $location, $menu_factory ) );
 
 		PageRequestHandlers::add_handler( $page_handler );
+
+		$color_repository = new Admin\Colors\ColorRepository( new Admin\Colors\Storage\OptionFactory() );
 
 		$services = [
 			new Admin\Admin( new PageRequestHandlers(), $location, new AdminScripts( $location ) ),
@@ -71,6 +91,7 @@ class AdminColumns extends Plugin {
 			new Screen(),
 			new ThirdParty\ACF(),
 			new ThirdParty\NinjaForms(),
+			new ThirdParty\MediaLibraryAssistant\MediaLibraryAssistant(),
 			new ThirdParty\WooCommerce(),
 			new ThirdParty\WPML( $this->storage ),
 			new Controller\DefaultColumns( new Request(), new DefaultColumnsRepository() ),
@@ -84,11 +105,24 @@ class AdminColumns extends Plugin {
 			new Controller\AjaxScreenOptions( new Preference\ScreenOptions() ),
 			new Controller\ListScreenRestoreColumns( $this->storage ),
 			new Controller\RestoreSettingsRequest( $this->storage->get_repository( 'acp-database' ) ),
-			new PluginActionLinks( $this->get_basename() ),
-			new NoticeChecks( $location ),
-			new Controller\TableListScreenSetter( $this->storage, new PermissionChecker(), $location, new Table\LayoutPreference() ),
+			new PluginActionLinks( $this->get_basename(), $is_acp_active ),
+			new Controller\TableListScreenSetter( $this->storage, $location, new Table\LayoutPreference() ),
 			new Admin\Scripts( $location ),
+			new Service\IntegrationColumns( new IntegrationRepository() ),
+			new Service\CommonAssets( $location, $global_translations ),
+			new Service\Colors(
+				new Admin\Colors\Shipped\ColorUpdater(
+					new Admin\Colors\Shipped\ColorParser( ABSPATH . 'wp-admin/css/common.css' ),
+					$color_repository,
+					new Admin\Colors\Storage\OptionFactory()
+				),
+				new Admin\Colors\StyleInjector( $color_repository )
+			),
 		];
+
+		if ( ! $is_acp_active ) {
+			$services[] = new Service\NoticeChecks( $location );
+		}
 
 		$setup_factory = new SetupFactory\AdminColumns( 'ac_version', $this->get_version() );
 
@@ -98,22 +132,23 @@ class AdminColumns extends Plugin {
 			$services[] = new Service\Setup( $setup_factory->create( SetupFactory::NETWORK ) );
 		}
 
-		array_map( static function ( Registrable $service ) {
+		array_map( static function ( Registerable $service ) {
 			$service->register();
 		}, $services );
 	}
 
-	/**
-	 * @return Storage
-	 */
-	public function get_storage() {
+	private function is_acp_active(): bool {
+		return defined( 'ACP_FILE' );
+	}
+
+	public function get_storage(): Storage {
 		return $this->storage;
 	}
 
 	/**
 	 * @deprecated 4.3.1
 	 */
-	public function admin() {
+	public function admin(): void {
 		_deprecated_function( __METHOD__, '4.3.1' );
 	}
 
@@ -121,7 +156,7 @@ class AdminColumns extends Plugin {
 	 * @since      3.0
 	 * @deprecated 4.0
 	 */
-	public function api() {
+	public function api(): void {
 		_deprecated_function( __METHOD__, '4.0' );
 	}
 
@@ -129,7 +164,7 @@ class AdminColumns extends Plugin {
 	 * @return ListScreen[]
 	 * @deprecated 4.0
 	 */
-	public function get_list_screens() {
+	public function get_list_screens(): array {
 		_deprecated_function( __METHOD__, '4.0', 'ListScreenTypes::instance()->get_list_screens()' );
 
 		return ListScreenTypes::instance()->get_list_screens();
@@ -137,10 +172,9 @@ class AdminColumns extends Plugin {
 
 	/**
 	 * @return array
-	 * @since      1.0
 	 * @deprecated 4.1
 	 */
-	public function get_post_types() {
+	public function get_post_types(): array {
 		_deprecated_function( __METHOD__, '4.1' );
 
 		return ( new ListScreens )->get_post_types();
@@ -152,7 +186,7 @@ class AdminColumns extends Plugin {
 	 * @return self
 	 * @deprecated 4.1
 	 */
-	public function register_list_screen( ListScreen $list_screen ) {
+	public function register_list_screen( ListScreen $list_screen ): self {
 		_deprecated_function( __METHOD__, '4.1', 'ListScreenTypes::instance()->register_list_screen()' );
 
 		ListScreenTypes::instance()->register_list_screen( $list_screen );
