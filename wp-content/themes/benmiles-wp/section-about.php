@@ -13,7 +13,7 @@ Template Name: Section - About
 
 				<h2 class="heading animated" data-animation="fadeInUp">About Ben Miles</h2>
 
-				<div class="animated bio" style="animation-delay: .1s;" data-animation="fadeInUp">
+				<div class="animated card" data-animation="fadeIn" style="animation-delay: .1s;">
 					<p><b>I'm a graphic designer and full-stack web developer, located in central Florida, with 20 years of experience.</b></p>
 					<p>I have always found joy in the balance of creative and problem-solving tasks that my career offers.</p>
 					<p>I've freelanced, incorporated and run my own design company, and worked lead positions in both design and development agencies.</p>

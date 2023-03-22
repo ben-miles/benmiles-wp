@@ -790,7 +790,7 @@ footer .social-media {
 	justify-content: flex-start;
 }
 
-.bio {
+.card {
 	background-color: var(--color-onyxx);
     box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.25);
     color: var(--color-graye);
