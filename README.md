@@ -6,16 +6,28 @@ A custom WordPress theme plus data and plugins, for my portfolio website: [benmi
 [![WordPress](https://img.shields.io/badge/WordPress-3858E9?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/)
 [![Vultr](https://img.shields.io/badge/Vultr-007BFC?style=for-the-badge&logo=vultr&logoColor=white)](https://vultr.com/)
 
-## Installation & Updating
-1. In the destination environment, complete the steps to install [WordPress](https://wordpress.org/)
-2. Copy the contents of `/wp-content/` into the destination environment
-3. Export a .SQL file from the develpment environment, containing structure + data for all tables
-4. Open the .SQL file in a text editor, and find-and-replace the develpment URL with the destination URL
-5. Save the .SQL file and import it into the destination database
-6. In the WordPress backend, check that the custom theme and all plugins are activated and configured properly
+## Development
+Instructions in this README are based on the following setup:
 
-## Media for Portfolio Items
-### Featured Image
+- **IDE:** [Visual Studio Code](https://code.visualstudio.com/)
+- **Local Server:** [Laragon](https://laragon.org)
+- **Database:** [HeidiSQL](https://www.heidisql.com/)
+- **FTP:** [Filezilla](https://filezilla-project.org/)
+
+## Installation
+1. In the destination environment, complete the steps to install [WordPress](https://wordpress.org/)
+2. In the WordPress backend, check that the custom theme and all plugins are activated and configured properly
+3. Copy the contents of `/wp-content/` into the destination environment
+4. Export a .SQL file from the develpment environment, containing structure + data for all tables
+5. Open the .SQL file in a text editor, and find-and-replace the develpment URL with the destination URL
+6. Save the .SQL file and import it into the destination database
+
+## Updating
+- **Code & Files:** Keep code changes in Git, and migrate file changes via FTP.
+- **Data:** From local, export only those tables effected. Download a backup of the remote database prior to importing, just in case. For the quickest update, make sure that "Drop" and "Create" are both checked for the selected table(s). Do a search-and-replace for the local and remote domains, as noted above in [Installation](#installation). Import the file, watch for errors and check the remote deployment for the new data.
+
+## Notes Regarding Media
+### Featured Images
 - **Dimensions:** 1200x750 pixels (or similar, but at a 16:10 aspect ratio)
 - **File Names:** `ben-miles_[project-name]_16x10.png`
 - **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. 
@@ -25,7 +37,7 @@ A custom WordPress theme plus data and plugins, for my portfolio website: [benmi
 - **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. For web site screenshots, I prefer to use [FastStone Image Resizer](https://www.faststone.org/FSResizerDownload.htm) with the following settings:
   - Format: JPG, Quality: 70, Photometric: RGB, Color Subsampling: Disabled, Smoothing: 0, Optimize Huffman Table: Enabled, Progressive: Disabled, Keep EXIF: Enabled
   - Advanced Options: Resize ( Based on one side, Width, Exactly 720px, Filter: Lancos3 )
-### Video
+### Videos
 - **Audio:** Muted or removed
 - **Dimensions:** 960x600 for original capture, and 384x240 for optimized assets
 - **Duration:** Optimized assets should be no longer than 15 seconds
