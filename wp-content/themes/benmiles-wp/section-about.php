@@ -24,7 +24,10 @@ Template Name: Section - About
 					<?php 
 					if( is_front_page() ){
 						// Display this content on the Home Page ?>
-						<a href="<?php echo home_url(); ?>/about" target="_self" class="button cta animated" data-animation="fadeInUp" style="animation-delay: .2s;"><span>Learn more about me</span><?php echo displaySVG('right'); ?></a>
+						<div class="button-group">
+							<a href="#portfolio" target="_self" class="button cta animated" data-animation="fadeInUp" style="animation-delay: .2s;"><span>My Work</span><?php echo displaySVG('down'); ?></a>
+							<a href="<?php echo home_url(); ?>/about" target="_self" class="button cta secondary animated" data-animation="fadeInUp" style="animation-delay: .3s;"><span>More About Me</span><?php echo displaySVG('right'); ?></a>
+						</div>
 					<?php } else { 
 						// Display this content on the About Page ?>
 						<a href="#experience-and-skills" target="_self" class="button cta animated" data-animation="fadeInUp" style="animation-delay: .2s;"><span>Experience & Skills</span><?php echo displaySVG('down', 'bounce'); ?></a>

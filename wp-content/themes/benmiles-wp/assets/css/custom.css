@@ -403,6 +403,12 @@ section {
 .button.active {
 	background-color: var(--color-white);
 }
+.button-group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 40px;
+}
 
 /*	BUTTONS > CTA -----------------------------------------------------------*/
 
@@ -431,6 +437,25 @@ section {
 .button.cta .svg-wrapper svg {
 	fill: var(--color-gray2);
 }
+
+/*	BUTTONS > SECONDARY -----------------------------------------------------*/
+
+.button.cta.secondary {
+	background-color: transparent;
+	border: 3px solid;
+	color: var(--color-white);
+}
+.button.cta.secondary:hover {
+	color: var(--color-grayc);
+}
+.button.cta.secondary .svg-wrapper svg {
+	fill: var(--color-white);
+	transition: all .2s ease-in-out;
+}
+.button.cta.secondary:hover .svg-wrapper svg {
+	fill: var(--color-grayc);
+}
+
 
 /*	LABELS ------------------------------------------------------------------*/
 
@@ -1221,10 +1246,7 @@ body.page-portfolio #portfolio > .container {
     line-height: 1;
 }
 .filter .button-group {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 4px;
+	gap: 10px;
 	justify-content: flex-start;
 }
 .filter .button-group .button {
