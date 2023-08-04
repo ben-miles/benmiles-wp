@@ -24,7 +24,10 @@ Instructions in this README are based on the following setup:
 
 ## Updating
 - **Code & Files:** Keep code changes in Git, and migrate file changes via FTP.
-- **Data:** From local, export only those tables effected. Download a backup of the remote database prior to importing, just in case. For the quickest update, make sure that "Drop" and "Create" are both checked for the selected table(s). Do a search-and-replace for the local and remote domains, as noted above in [Installation](#installation). Import the file, watch for errors and check the remote deployment for the new data.
+- **Data:** From local, export the whole database to a SQL file. Make sure to enable "Drop Tables," "Create Tables," and "Replace existing data." Open the file and do the following two search-and-replace operations, in this order:
+  - Find: "benmiles-wp.test", Replace with: "benmiles.com"
+  - Find: "http://benmiles.com", Replace with: "https://benmiles.com"
+Save these changes, then import the file to the remote site's PHPMyAdmin.
 
 ## Notes Regarding Media
 ### Featured Images
