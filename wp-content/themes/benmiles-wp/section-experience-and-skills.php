@@ -110,7 +110,7 @@ $schools = [
 						foreach($schools as $school) {
 							echo '<li class="timeline-item animated" data-animation="fadeInUp">
 									<div class="timeline-badge">
-										' . displaySVG('work') . '
+										' . displaySVG('school') . '
 									</div>
 									<div class="timeline-panel">
 										<h4 class="timeline-title">' . $school['title'] . '</h4>
