@@ -17,45 +17,31 @@ $jobs = [
 		'company' => 'Shire Digital Solutions',
 		'link' => 'https://shire-digital.com/',
 		'dates'	=> 'May 2018 - Present',
-		'location' => 'Remote'
+		'location' => 'Remote',
 		'description' => 'At Shire Digital, I assisted therapists in establishing an online presence through brand creation or optimization, bespoke website development, and pay-per-click ad campaign management. I performed both front-end and back-end development tasks solo or collaboratively on larger projects. As art director, I managed graphics and design needs for all projects. My experience gave me a unique perspective on tech and mental healthcare\'s intersection and the impact of digital tools on people\'s lives.'
 	],
 	[
-		'title' => 'Systems Analyst & Graphic Designer',
-		'company' => 'PIP Printing & Marketing',
-		'link' => 'https://pipbrevard.com/',
-		'dates'	=> 'Nov. 2017 - May 2018',
-		'location' => 'Merritt Island, FL'
-	],
-	[
-		'title' => 'Web Developer & Graphic Designer',
+		'title' => 'Web Developer, Graphic Designer',
 		'company' => 'furryLogic',
 		'link' => 'https://furrylogic.net/',
-		'dates'	=> 'Nov. 2015 - Nov. 2017',
-		'location' => 'Cocoa Village, FL'
+		'dates'	=> 'Nov. 2015 - May 2018',
+		'location' => 'Cocoa Village, FL',
 		'description' => 'furryLogic is a small start-up web development agency. I worked closely with both co-owners to create websites and graphics for a variety of clients. I was also responsible for the upkeep and maintenance of the company\'s website, as well as the creation of all marketing materials.'
 	],
 	[
-		'title' => 'Graphic Designer, Pre-Press Specialist, Large-Format Production & Installation Lead',
+		'title' => 'Graphic Designer, Pre-Press Specialist',
 		'company' => 'PIP Printing & Marketing',
 		'link' => 'https://pipbrevard.com/',
 		'dates'	=> 'Feb. 2012 - Nov. 2015',
-		'location' => 'Merritt Island, FL'
-	],
-	[
-		'title' => 'Graphic Designer, Web Support',
-		'company' => 'Space Coast Coupons',
-		'link' => 'https://spacecoast.coupons/',
-		'dates'	=> 'Nov. 2011 - Feb. 2012',
-		'location' => 'Cocoa Village, FL'
+		'location' => 'Merritt Island, FL',
 		'description' => 'PIP Printing & Marketing is a full-service print shop. I was responsible for the creation of all marketing materials, including brochures, flyers, business cards, and more. I also worked closely with the owner to create custom graphics for a variety of clients. I was also responsible for the upkeep and maintenance of the company\'s website, as well as the creation of all marketing materials.'
 	],
 	[
 		'title' => 'Owner, Graphic Designer, Web Developer',
 		'company' => 'BCGM3 Studios',
 		'link' => 'https://bcgm3.com/',
-		'dates'	=> 'Jan. 2009 - Nov. 2011',
-		'location' => 'Cocoa Village, FL'
+		'dates'	=> 'March 2009 - Sept. 2012',
+		'location' => 'Merritt Island, FL',
 		'description' => 'I incorporated as BCGM3 Studios, LLC after graduating from UCF, and operated out of a store in the Merritt Square Mall, back in my home town of Merritt Island. Most of my work was in print design, but I also created numerous websites, and even did some large-format signage installation. I got to work with a huge variety of local businesses, and slowly but surely, I made a name for myself.'
 	]
 ];
