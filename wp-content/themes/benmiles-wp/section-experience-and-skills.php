@@ -6,6 +6,14 @@ Template Name: Section - Experience & Skills
 $jobs = [
 	[
 		'title' => 'Art Director & Web Developer',
+		'company' => 'iTherapy',
+		'link' => 'https://itherapy.com/',
+		'dates'	=> 'March 2019 - Present',
+		'location' => 'Remote',
+		'description' => 'iTherapy is a one-stop SaaS for mental health professionals. When I started at Shire Digital, iTherapy was our biggest client, and the two companies joined together shortly after. All of my duties at Shire carried over to iTherapy, and I was also given the opportunity to lead a complete overhaul of iTherapy\'s branding, plus the creation of new sub-brands iThrive and myPractice.'
+	],
+	[
+		'title' => 'Art Director & Web Developer',
 		'company' => 'Shire Digital Solutions',
 		'link' => 'https://shire-digital.com/',
 		'dates'	=> 'May 2018 - Present',
