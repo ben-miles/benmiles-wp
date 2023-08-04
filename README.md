@@ -24,10 +24,7 @@ Instructions in this README are based on the following setup:
 
 ## Updating
 - **Code & Files:** Keep code changes in Git, and migrate file changes via FTP.
-- **Data:** From local, export the whole database to a SQL file. Make sure to enable "Drop Tables," "Create Tables," and "Replace existing data." Open the file and do the following two search-and-replace operations, in this order:
-  - Find: "benmiles-wp.test", Replace with: "benmiles.com"
-  - Find: "http://benmiles.com", Replace with: "https://benmiles.com"
-Save these changes, then import the file to the remote site's PHPMyAdmin.
+- **Data:** From local, export the whole database to a SQL file. Make sure to enable "Drop Tables," "Create Tables," and "Replace existing data." Open the file and do the following two search-and-replace operations, in this order: `benmiles-wp.test` -> `benmiles.com`, then `http://benmiles.com` -> `https://benmiles.com`. Save these changes, then import the file to the remote site's PHPMyAdmin.
 
 ## Notes Regarding Media
 ### Featured Images
