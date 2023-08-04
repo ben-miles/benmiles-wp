@@ -1,17 +1,17 @@
 ﻿=== ACF Photo Gallery Field ===
 Contributors: navzme
+Donate link: https://www.buymeacoffee.com/navzme
 Tags: acf, advanced, custom, fields, photo, gallery, album, fancybox, litebox, lightbox
 Requires at least: 4.7.0
-Tested up to: 6.0.2
+Tested up to: 6.3
 Requires PHP: 5.6
-Stable tag: 1.8.0
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 A lightweight extension of Advanced Custom Field (ACF) that adds Photo Gallery field to any post/pages on your WordPress website.
 
 == Description ==
-
 A lightweight extension of Advanced Custom Field (ACF) that adds **Photo Gallery** field to any post/pages on your WordPress website.
 
 * Visually create your Fields
@@ -25,6 +25,9 @@ A lightweight extension of Advanced Custom Field (ACF) that adds **Photo Gallery
 
 = Note =
 This plugin is alternative of ACF Gallery Pro. You need to have knowledge of coding because you’ll be required to edit your WordPress theme source code. If you are looking for shortcodes and prebuilt gallery then this plugin is **NOT** for you. This plugin will give you PHP array of images and you’ll need to make the gallery layout as you wish.
+
+= Donation =
+Navneil Naicker is the sole developer working on this free WordPress Plugin in his leisure time. He would like to integrate it with premium plugins like Elementor Pro and Advanced Custom Fields Pro. Please donate to support Navneil in continuing further development of this plugin. Click on the link “<https://www.buymeacoffee.com/navzme>” to donate.
 
 = Usage =
 *acf_photo_gallery* is a helper function that takes in **ACF_FIELD_NAME** and **POST_ID** will query the database and compile the images for you. The output of this function will be an array.
@@ -113,6 +116,12 @@ Send HTTP Request to URL to get JSON response of specific post
 
 When you receive the response, see the ACF item which contains ACF photo gallery name and array of images.
 
+= Installation and basic usage tutorial =
+https://www.youtube.com/watch?v=c7u9FwVLe9Q
+
+= How to use Elementor dynamic tags with ACF Photo Gallery Field plugin tutorial =
+https://www.youtube.com/watch?v=XlSx_weZXoU
+
 = Compatibility =
 This ACF field type is compatible with:
 * ACF 4
@@ -124,12 +133,27 @@ Just like any other WordPress plugin, this plugin can also cause issues with oth
 
 == Installation ==
 
-1. Copy the `navz-photo-gallery` folder into your `wp-content/plugins` folder
-2. Activate the Advanced Custom Fields: Photo Gallery plugin via the plugins admin page
-3. Create a new field via ACF and select the Photo Gallery type
-4. Please refer to the description for more info regarding the field type settings
+From your WordPress dashboard
+
+1. **Visit** Plugins > Add New
+2. **Search** for "ACF Photo Gallery Field"
+3. **Install and Activate** ACF Photo Gallery Field from your Plugins page
+4. **Watch** the tutorial to [get started](https://www.youtube.com/watch?v=c7u9FwVLe9Q)
 
 == Changelog ==
+=2.0=
+* [Removed] Removed functionality from profile
+* [Removed] errors and deprecating warnings
+
+=1.9=
+* [Added] Donation link because I'm poor
+* [Removed] errors and deprecating warnings
+
+=1.8.1=
+* [Updated] Renamed function from 'my_profile_update' to 'apg_profile_update'
+* [Bugfix] Backdrop not going away when the "Native" model is closed
+* [Removed] SweetAlert and added native browser alert
+
 =1.8.0=
 * [Added] Support for ACF 6
 

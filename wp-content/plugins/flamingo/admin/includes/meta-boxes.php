@@ -85,27 +85,21 @@ function flamingo_contact_tags_meta_box( $post ) {
 <br />
 
 <?php foreach ( $most_used_tags as $tag ) {
-	echo '<a href="#" class="append-this-to-contact-tags">' . esc_html( $tag ) . '</a> ';
+	echo '<a href="#" class="append-this-to-contact-tags" onclick="appendTag( this.text )">' . esc_html( $tag ) . '</a> ';
 } ?>
 </p>
-<script type='text/javascript'>
-/* <![CDATA[ */
-( function( $ ) {
-	$( function() {
-		$( 'a.append-this-to-contact-tags' ).click( function() {
-			var tagsinput = $( '#tax-input-<?php echo esc_js( $taxonomy->name ); ?>' );
-			tagsinput.val( $.trim( tagsinput.val() ) );
+<script>
+const appendTag = ( tag ) => {
+	const tagsInput = document.querySelector(
+		'#tax-input-<?php echo esc_js( $taxonomy->name ); ?>'
+	);
 
-			if ( tagsinput.val() ) {
-				tagsinput.val( tagsinput.val() + ', ' );
-			}
+	const tags = tagsInput.value.split( /\s*,\s*/ );
+	tags.push( tag );
+	tagsInput.value = tags.filter( tag => '' !== tag ).join( ', ' );
 
-			tagsinput.val( tagsinput.val() + $( this ).text() );
-			return false;
-		} );
-	} );
-} )( jQuery );
-/* ]]> */
+	return false;
+};
 </script>
 <?php endif; ?>
 </div>
@@ -340,71 +334,5 @@ function flamingo_inbound_meta_meta_box( $post ) {
 
 </tbody>
 </table>
-<?php
-}
-
-function flamingo_outbound_submit_meta_box( $post ) {
-	$initial = empty( $post );
-
-?>
-<div class="submitbox" id="submitlink">
-<div id="minor-publishing">
-<div style="display:none;"><?php submit_button( __( 'Save', 'flamingo' ), 'button', 'save' ); ?></div>
-
-<div id="minor-publishing-actions">
-<div id="save-action">
-<?php if ( $initial or 'publish' != $post->post_status ) : ?>
-<input type="submit" name="save" id="save-post" value="<?php echo esc_attr( __( 'Save Draft', 'flamingo' ) ); ?>" class="button" />
-<span class="spinner"></span>
-<?php endif; ?>
-</div>
-<div class="clear"></div>
-</div><!-- #minor-publishing-actions -->
-
-<div id="misc-publishing-actions">
-<div class="clear"></div>
-</div><!-- #misc-publishing-actions -->
-
-</div><!-- #minor-publishing -->
-
-<div id="major-publishing-actions">
-
-<?php if ( ! $initial ) : ?>
-<div id="delete-action">
-<?php
-	if ( current_user_can( 'flamingo_delete_outbound_message', $post->id() ) ) {
-		if ( ! EMPTY_TRASH_DAYS ) {
-			$delete_text = __( 'Delete permanently', 'flamingo' );
-		} else {
-			$delete_text = __( 'Move to trash', 'flamingo' );
-		}
-
-		$delete_link = add_query_arg(
-			array(
-				'post' => $post->id(),
-				'action' => 'trash',
-			),
-			menu_page_url( 'flamingo_outbound', false )
-		);
-
-		$delete_link = wp_nonce_url(
-			$delete_link,
-			'flamingo-trash-outbound-message_' . $post->id()
-		);
-
-?><a class="submitdelete deletion" href="<?php echo esc_url( $delete_link ); ?>"><?php echo esc_html( $delete_text ); ?></a><?php } ?>
-</div>
-<?php endif; ?>
-
-<div id="publishing-action">
-<span class="spinner"></span>
-<input name="send" type="submit" class="button-primary" id="publish" tabindex="4" accesskey="p" value="<?php echo esc_attr( __( 'Send message', 'flamingo' ) ); ?>" />
-</div>
-
-<div class="clear"></div>
-</div><!-- #major-publishing-actions -->
-
-<div class="clear"></div>
-</div>
 <?php
 }

@@ -302,6 +302,7 @@ class TestTab extends PageAbstract {
 		$this->connection = apply_filters( 'wp_mail_smtp_admin_pages_test_tab_process_post_connection', $connection, $data );
 
 		if ( ! empty( $data['test']['email'] ) ) {
+			$data['test']['email'] = wp_unslash( $data['test']['email'] );
 			$data['test']['email'] = filter_var( $data['test']['email'], FILTER_VALIDATE_EMAIL );
 		}
 
@@ -325,13 +326,18 @@ class TestTab extends PageAbstract {
 
 		/* translators: %s - email address a test email will be sent to. */
 		$subject = 'WP Mail SMTP: ' . sprintf( esc_html__( 'Test email to %s', 'wp-mail-smtp' ), $data['test']['email'] );
+		$headers = [ 'X-Mailer-Type:WPMailSMTP/Admin/Test' ];
 
 		if ( $is_html ) {
 			add_filter( 'wp_mail_content_type', array( __CLASS__, 'set_test_html_content_type' ) );
 
 			/* translators: %s - email address a test email will be sent to. */
-			$subject = 'WP Mail SMTP: HTML ' . sprintf( esc_html__( 'Test email to %s', 'wp-mail-smtp' ), $data['test']['email'] );
+			$subject   = 'WP Mail SMTP: HTML ' . sprintf( esc_html__( 'Test email to %s', 'wp-mail-smtp' ), $data['test']['email'] );
+			$headers[] = 'Content-Type: text/html';
 		}
+
+		// Clear debug before send test email.
+		Debug::clear();
 
 		// Start output buffering to grab smtp debugging output.
 		ob_start();
@@ -341,9 +347,7 @@ class TestTab extends PageAbstract {
 			$data['test']['email'],
 			$subject,
 			$this->get_email_message( $is_html ),
-			array(
-				'X-Mailer-Type:WPMailSMTP/Admin/Test',
-			)
+			$headers
 		);
 
 		$smtp_debug = ob_get_clean();

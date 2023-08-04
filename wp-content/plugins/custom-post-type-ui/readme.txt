@@ -1,14 +1,14 @@
 === Custom Post Type UI ===
-Contributors: webdevstudios, pluginize, tw2113, vegasgeek, modemlooper, williamsba1
+Contributors: webdevstudios, pluginize, tw2113, williamsba1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3084056
-Tags: custom post types, CPT, CMS, post, types, post type, taxonomy, tax, custom, content types, post types
+Tags: custom post types, post type, taxonomy, content types, CPT, CMS, post, types, custom
 Requires at least: 5.9
-Tested up to: 6.1.1
-Stable tag: 1.13.4
+Tested up to: 6.2.2
+Stable tag: 1.13.7
 License: GPL-2.0+
 Requires PHP: 5.6
 
-Admin UI for creating custom post types and custom taxonomies for WordPress
+Admin UI for creating custom content types like post types and taxonomies
 
 == Description ==
 
@@ -35,6 +35,21 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 5. Help/support screen.
 
 == Changelog ==
+
+= 1.13.7 - 2023-07-11 =
+* Fixed: "themes" marked as reserved taxonomy slug. Causes issues with featured image metabox.
+* Fixed: PHP notice around `sort` parameter.
+
+= 1.13.6 - 2023-05-30 =
+* Fixed: Prevent PHP errors for dynamic WordPress hooks.
+* Fixed: Prevent PHP errors from array_key_exist() checks on non arrays.
+* Updated: Removed Maintainn graphic and added WP Search with Algolia Pro graphic.
+* Updated: Fixed a lot of text escaping for translation-ready content.
+
+= 1.13.5 - 2023-03-27 =
+* Fixed: Security issue in CPTUI Debug Info screen.
+* Fixed: Added `empty()` check for `can_export` parameters.
+* Updated: Changed textdomain loading from `plugins_loaded` to `init`.
 
 = 1.13.4 - 2022-12-16 =
 * Fixed: Character encoding issue on CPTUI setting save in conjunction with PHP8 compatibility.
@@ -90,6 +105,21 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 * Fixed: PHP warnings around foreach loops in cptui_published_post_format_fix()
 
 == Upgrade Notice ==
+
+= 1.13.7 - 2023-07-11 =
+* Fixed: "themes" marked as reserved taxonomy slug. Causes issues with featured image metabox.
+* Fixed: PHP notice around `sort` parameter.
+
+= 1.13.6 - 2023-05-30 =
+* Fixed: Prevent PHP errors for dynamic WordPress hooks.
+* Fixed: Prevent PHP errors from array_key_exist() checks on non arrays.
+* Updated: Removed Maintainn graphic and added WP Search with Algolia Pro graphic.
+* Updated: Fixed a lot of text escaping for translation-ready content.
+
+= 1.13.5 - 2023-03-27 =
+* Fixed: Security issue in CPTUI Debug Info screen.
+* Fixed: Added `empty()` check for `can_export` parameters.
+* Updated: Changed textdomain loading from `plugins_loaded` to `init`.
 
 = 1.13.4 - 2022-12-16 =
 * Fixed: Character encoding issue on CPTUI setting save in conjunction with PHP8 compatibility.
