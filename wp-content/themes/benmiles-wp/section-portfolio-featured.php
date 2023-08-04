@@ -22,7 +22,7 @@ Template Name: Section - Portfolio (Featured)
 				<div class="category" id="web-development">
 					<h3 class="sub-heading">Web Development</h3>
 					<div class="row">
-						<?php getPortfolioItems('featured+web-development',null,3); ?>
+						<?php getPortfolioItems('featured+web-development',null,4); ?>
 					</div>
 				</div>
 
