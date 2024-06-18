@@ -9,57 +9,73 @@ use AC\ListScreen;
 use AC\Request;
 use AC\View;
 
-abstract class ColumnRequest {
+abstract class ColumnRequest
+{
 
-	abstract protected function get_column( Request $request, ListScreen $list_screen ): ?Column;
+    private $list_screen_factory;
 
-	public function request( Request $request ): void {
-		$list_screen = AC\ListScreenTypes::instance()->get_list_screen_by_key( $request->get( 'list_screen' ) );
+    public function __construct(AC\ListScreenFactory $list_screen_factory)
+    {
+        $this->list_screen_factory = $list_screen_factory;
+    }
 
-		if ( ! $list_screen ) {
-			exit;
-		}
+    abstract protected function get_column(Request $request, ListScreen $list_screen): ?Column;
 
-		$column = $this->get_column( $request, $list_screen );
+    public function request(Request $request): void
+    {
+        $list_key = (string)$request->get('list_screen');
 
-		if ( ! $column ) {
-			wp_send_json_error( [
-				'type'  => 'message',
-				'error' => sprintf( __( 'Please visit the %s screen once to load all available columns', 'codepress-admin-columns' ), ac_helper()->html->link( $list_screen->get_screen_link(), $list_screen->get_label() ) ),
-			] );
-		}
+        if ( ! $this->list_screen_factory->can_create($list_key)) {
+            exit;
+        }
 
-		$current_original_columns = (array) json_decode( $request->get( 'current_original_columns', '' ), true );
+        $list_screen = $this->list_screen_factory->create($list_key);
 
-		// Not cloneable message
-		if ( in_array( $column->get_type(), $current_original_columns, true ) ) {
-			wp_send_json_error( [
-				'type'  => 'message',
-				'error' => sprintf(
-					__( '%s column is already present and can not be duplicated.', 'codepress-admin-columns' ),
-					'<strong>' . $column->get_label() . '</strong>' ),
-			] );
-		}
+        $column = $this->get_column($request, $list_screen);
 
-		// Placeholder message
-		if ( $column instanceof Placeholder ) {
-			wp_send_json_error( [
-				'type'  => 'message',
-				'error' => $column->get_message(),
-			] );
-		}
+        if ( ! $column) {
+            wp_send_json_error([
+                'type'  => 'message',
+                'error' => sprintf(
+                    __('Please visit the %s screen once to load all available columns', 'codepress-admin-columns'),
+                    ac_helper()->html->link((string)$list_screen->get_table_url(), $list_screen->get_label())
+                ),
+            ]);
+        }
 
-		wp_send_json_success( $this->render_column( $column ) );
-	}
+        $current_original_columns = (array)json_decode($request->get('current_original_columns', ''), true);
 
-	private function render_column( Column $column ): string {
-		$view = new View( [
-			'column' => $column,
-		] );
+        // Not cloneable message
+        if (in_array($column->get_type(), $current_original_columns, true)) {
+            wp_send_json_error([
+                'type'  => 'message',
+                'error' => sprintf(
+                    __('%s column is already present and can not be duplicated.', 'codepress-admin-columns'),
+                    '<strong>' . $column->get_label() . '</strong>'
+                ),
+            ]);
+        }
 
-		$view->set_template( 'admin/edit-column' );
+        // Placeholder message
+        if ($column instanceof Placeholder) {
+            wp_send_json_error([
+                'type'  => 'message',
+                'error' => $column->get_message(),
+            ]);
+        }
 
-		return $view->render();
-	}
+        wp_send_json_success($this->render_column($column));
+    }
+
+    private function render_column(Column $column): string
+    {
+        $view = new View([
+            'column' => $column,
+        ]);
+
+        $view->set_template('admin/edit-column');
+
+        return $view->render();
+    }
 
 }

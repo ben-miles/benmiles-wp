@@ -4,23 +4,23 @@ namespace AC\ThirdParty\MediaLibraryAssistant;
 
 use AC;
 use AC\Registerable;
+use AC\Table\ListKeyCollection;
+use AC\Type\ListKey;
 
 class MediaLibraryAssistant implements Registerable {
 
-	public function register() {
+	public function register(): void
+    {
 		if ( ! defined( 'MLA_PLUGIN_PATH' ) ) {
 			return;
 		}
 
-		if ( method_exists( 'MLACore', 'register_list_screen' ) ) {
-			remove_action( 'ac/list_screens', 'MLACore::register_list_screen' );
-		}
-
-		add_action( 'ac/list_screens', [ $this, 'register_list_screens' ] );
+		AC\ListScreenFactory\Aggregate::add( new ListScreenFactory() );
+		add_action( 'ac/list_keys', [ $this, 'add_list_keys' ] );
 	}
 
-	public function register_list_screens(): void {
-		AC\ListScreenTypes::instance()->register_list_screen( new ListScreen\MediaLibrary() );
+	public function add_list_keys( ListKeyCollection $list_keys ): void {
+		$list_keys->add( new ListKey( 'mla-media-assistant' ) );
 	}
 
 }

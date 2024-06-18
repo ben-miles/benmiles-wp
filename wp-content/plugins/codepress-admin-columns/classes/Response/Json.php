@@ -1,84 +1,115 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AC\Response;
 
 use LogicException;
 
-class Json {
+class Json
+{
 
-	const MESSAGE = 'message';
+    const MESSAGE = 'message';
 
-	/**
-	 * @var array
-	 */
-	protected $parameters = [];
+    /**
+     * @var array
+     */
+    protected $parameters = [];
 
-	/**
-	 * @var int
-	 */
-	protected $status_code;
+    /**
+     * @var array
+     */
+    protected $headers = [];
 
-	public function send() {
-		if ( empty( $this->parameters ) ) {
-			throw new LogicException( 'Missing response body.' );
-		}
+    /**
+     * @var int
+     */
+    protected $status_code = 200;
 
-		wp_send_json( $this->parameters, $this->status_code );
-	}
+    public function __construct()
+    {
+        $this->set_header('Content-Type', 'application/json');
+    }
 
-	public function error() {
-		wp_send_json_error( $this->parameters, $this->status_code );
-	}
+    public function send(): void
+    {
+        if (empty($this->parameters)) {
+            throw new LogicException('Missing response body.');
+        }
 
-	public function success() {
-		wp_send_json_success( $this->parameters, $this->status_code );
-	}
+        $this->send_response($this->parameters);
+        wp_send_json($this->parameters, $this->status_code);
+    }
 
-	/**
-	 * @param string $key
-	 * @param mixed  $value
-	 *
-	 * @return $this
-	 */
-	public function set_parameter( $key, $value ) {
-		$this->parameters[ $key ] = $value;
+    private function send_response($data): void
+    {
+        status_header($this->status_code);
 
-		return $this;
-	}
+        foreach ($this->headers as $header) {
+            header($header);
+        }
 
-	/**
-	 * @param array $values
-	 *
-	 * @return $this
-	 */
-	public function set_parameters( array $values ) {
-		foreach ( $values as $key => $value ) {
-			$this->set_parameter( $key, $value );
-		}
+        echo json_encode($data);
+        exit;
+    }
 
-		return $this;
-	}
+    public function error(): void
+    {
+        $this->send_response([
+            'success' => false,
+            'data'    => $this->parameters,
+        ]);
+    }
 
-	/**
-	 * @param string $message
-	 *
-	 * @return $this
-	 */
-	public function set_message( $message ) {
-		$this->set_parameter( self::MESSAGE, $message );
+    public function success(): void
+    {
+        $this->send_response([
+            'success' => true,
+            'data'    => $this->parameters,
+        ]);
+    }
 
-		return $this;
-	}
+    /**
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return $this
+     */
+    public function set_parameter($key, $value): self
+    {
+        $this->parameters[$key] = $value;
 
-	/**
-	 * @param int $code
-	 *
-	 * @return $this
-	 */
-	public function set_status_code( $code ) {
-		$this->status_code = $code;
+        return $this;
+    }
 
-		return $this;
-	}
+    public function set_parameters(array $values): self
+    {
+        foreach ($values as $key => $value) {
+            $this->set_parameter($key, $value);
+        }
+
+        return $this;
+    }
+
+    public function set_header(string $name, string $value): self
+    {
+        $this->headers[] = sprintf('%s: %s', $name, $value);
+
+        return $this;
+    }
+
+    public function set_message(string $message): self
+    {
+        $this->set_parameter(self::MESSAGE, $message);
+
+        return $this;
+    }
+
+    public function set_status_code(int $code): self
+    {
+        $this->status_code = $code;
+
+        return $this;
+    }
 
 }

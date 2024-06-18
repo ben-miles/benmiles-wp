@@ -2,49 +2,58 @@
 
 namespace AC\Controller;
 
-use AC;
+use AC\Capabilities;
 use AC\DefaultColumnsRepository;
-use AC\ListScreen;
+use AC\ListScreenFactory;
 use AC\Registerable;
 use AC\Request;
+use WP_Screen;
 
 class DefaultColumns implements Registerable {
 
-	const ACTION_KEY = 'save-default-headings';
-	const LISTSCREEN_KEY = 'list_screen';
+	public const QUERY_PARAM = 'save-default-headings';
 
-	/** @var ListScreen */
 	private $list_screen;
 
-	/** @var Request */
-	private $request;
+	private $list_screen_factory;
 
-	/** @var DefaultColumns */
 	private $default_columns;
 
-	public function __construct( Request $request, DefaultColumnsRepository $default_columns ) {
-		$this->request = $request;
+	public function __construct(
+		ListScreenFactory $list_screen_factory,
+		DefaultColumnsRepository $default_columns
+	) {
+		$this->list_screen_factory = $list_screen_factory;
 		$this->default_columns = $default_columns;
 	}
 
-	public function register() {
-		add_action( 'admin_init', [ $this, 'handle_request' ] );
+	public function register(): void
+    {
+		add_action( 'current_screen', [ $this, 'handle_request' ] );
 	}
 
-	public function handle_request() {
-		if ( '1' !== $this->request->get( self::ACTION_KEY ) ) {
+	public function handle_request(): void {
+		$request = new Request();
+
+		if ( '1' !== $request->get( self::QUERY_PARAM ) ) {
 			return;
 		}
 
-		if ( ! current_user_can( AC\Capabilities::MANAGE ) ) {
+		if ( ! current_user_can( Capabilities::MANAGE ) ) {
 			return;
 		}
 
-		$this->list_screen = AC\ListScreenTypes::instance()->get_list_screen_by_key( $this->request->get( self::LISTSCREEN_KEY ) );
+		$screen = get_current_screen();
 
-		if ( null === $this->list_screen ) {
+		if ( ! $screen instanceof WP_Screen ) {
 			return;
 		}
+
+		if ( ! $this->list_screen_factory->can_create_from_wp_screen( $screen ) ) {
+			return;
+		}
+
+		$this->list_screen = $this->list_screen_factory->create_from_wp_screen( $screen );
 
 		// Save an empty array in case the hook does not run properly.
 		$this->default_columns->update( $this->list_screen->get_key(), [] );
@@ -56,7 +65,7 @@ class DefaultColumns implements Registerable {
 		ob_start();
 	}
 
-	public function save_headings( $columns ) {
+	public function save_headings( $columns ): void {
 		ob_end_clean();
 
 		$this->default_columns->update( $this->list_screen->get_key(), $columns && is_array( $columns ) ? $columns : [] );
