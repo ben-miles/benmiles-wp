@@ -1,6 +1,8 @@
 <?php
 
-class WPCF7_SWV_MinLengthRule extends WPCF7_SWV_Rule {
+namespace Contactable\SWV;
+
+class MinLengthRule extends Rule {
 
 	const rule_name = 'minlength';
 
@@ -17,8 +19,7 @@ class WPCF7_SWV_MinLengthRule extends WPCF7_SWV_Rule {
 	}
 
 	public function validate( $context ) {
-		$field = $this->get_property( 'field' );
-		$input = isset( $_POST[$field] ) ? $_POST[$field] : '';
+		$input = $this->get_default_input();
 		$input = wpcf7_array_flatten( $input );
 		$input = wpcf7_exclude_blank( $input );
 
@@ -37,13 +38,8 @@ class WPCF7_SWV_MinLengthRule extends WPCF7_SWV_Rule {
 		if ( $threshold <= $total ) {
 			return true;
 		} else {
-			return new WP_Error( 'wpcf7_invalid_minlength',
-				$this->get_property( 'error' )
-			);
+			return $this->create_error();
 		}
 	}
 
-	public function to_array() {
-		return array( 'rule' => self::rule_name ) + (array) $this->properties;
-	}
 }
