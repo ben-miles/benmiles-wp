@@ -16,13 +16,13 @@
  * Plugin URI: https://github.com/WebDevStudios/custom-post-type-ui/
  * Description: Admin UI panel for registering custom post types and taxonomies
  * Author: WebDevStudios
- * Version: 1.13.7
+ * Version: 1.17.0
  * Author URI: https://webdevstudios.com/
  * Text Domain: custom-post-type-ui
  * Domain Path: /languages
  * License: GPL-2.0+
- * Requires at least: 5.9
- * Requires PHP: 5.6
+ * Requires at least: 6.5
+ * Requires PHP: 7.4
  */
 
 // phpcs:disable WebDevStudios.All.RequireAuthor
@@ -33,8 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CPT_VERSION', '1.13.7' ); // Left for legacy purposes.
-define( 'CPTUI_VERSION', '1.13.7' );
+define( 'CPT_VERSION', '1.17.0' ); // Left for legacy purposes.
+define( 'CPTUI_VERSION', '1.17.0' );
 define( 'CPTUI_WP_VERSION', get_bloginfo( 'version' ) );
 
 /**
@@ -197,7 +197,7 @@ add_action( 'plugins_loaded', 'cptui_loaded' );
  *
  * @internal
  */
-function cptui_create_submenus() {
+function cptui_includes() {
 	require_once plugin_dir_path( __FILE__ ) . 'inc/about.php';
 	require_once plugin_dir_path( __FILE__ ) . 'inc/utility.php';
 	require_once plugin_dir_path( __FILE__ ) . 'inc/post-types.php';
@@ -214,7 +214,7 @@ function cptui_create_submenus() {
 		require_once plugin_dir_path( __FILE__ ) . 'inc/wp-cli.php';
 	}
 }
-add_action( 'cptui_loaded', 'cptui_create_submenus' );
+add_action( 'cptui_loaded', 'cptui_includes' );
 
 /**
  * Fire our CPTUI init hook.
@@ -246,8 +246,8 @@ function cptui_add_styles() {
 		return;
 	}
 	$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-	wp_register_script( 'cptui', plugins_url( "build/cptui-scripts{$min}.js", __FILE__ ), [ 'jquery', 'jquery-ui-dialog', 'postbox' ], CPTUI_VERSION, true );
-	wp_register_script( 'dashicons-picker', plugins_url( "build/dashicons-picker{$min}.js", __FILE__ ), [ 'jquery'], '1.0.0', true );
+	wp_register_script( 'cptui', plugins_url( "build/cptui{$min}.js", __FILE__ ), [ 'jquery', 'jquery-ui-dialog', 'postbox' ], CPTUI_VERSION, true );
+	wp_register_script( 'dashicons-picker', plugins_url( "build/dashiconsPicker{$min}.js", __FILE__ ), [ 'jquery'], '1.0.0', true );
 	wp_register_style( 'cptui-css', plugins_url( "build/cptui-styles{$min}.css", __FILE__ ), [ 'wp-jquery-ui-dialog' ], CPTUI_VERSION );
 }
 add_action( 'admin_enqueue_scripts', 'cptui_add_styles' );
@@ -1114,3 +1114,16 @@ function cptui_get_preserved_labels() {
 		],
 	];
 }
+
+
+/**
+ * Add "Back to top" button on admin pages.
+ *
+ * @since 1.14.0
+ */
+function cptui_inside_wrap_callback() {
+	?>
+	<a class="button button-secondary cptui-back-to-top" href="#"><?php esc_html_e( 'Back to top', 'custom-post-type-ui' ); ?> &uarr;</a>
+	<?php
+}
+add_action( 'cptui_inside_wrap', 'cptui_inside_wrap_callback' );
