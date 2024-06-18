@@ -1,9 +1,9 @@
 === Flamingo ===
 Contributors: takayukister, megumithemes, itpixelz
 Tags: bird, contact, mail, crm
-Requires at least: 6.1
-Tested up to: 6.2
-Stable tag: 2.4
+Requires at least: 6.4
+Tested up to: 6.5
+Stable tag: 2.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ A trustworthy message storage plugin for Contact Form 7.
 
 Flamingo is a message storage plugin originally created for [Contact Form 7](https://wordpress.org/plugins/contact-form-7/), which doesn't store submitted messages.
 
-After activation of the plugin, you'll find *Flamingo* on the WordPress admin screen menu. All messages through contact forms are listed there and are searchable. With Flamingo, you are no longer need to worry about losing important messages due to mail server issues or misconfiguration in mail setup.
+After activation of the plugin, you'll find **Flamingo** on the WordPress admin screen menu. All messages through contact forms are listed there and are searchable. With Flamingo, you no longer need to worry about losing important messages due to mail server issues or misconfiguration in mail setup.
 
 For more detailed information, please refer to the [Contact Form 7 documentation page](https://contactform7.com/save-submitted-messages-with-flamingo/).
 
@@ -34,6 +34,13 @@ This plugin stores submission data collected through contact forms, which may in
 
 == Changelog ==
 
+= 2.5 =
+
+* Bumps up the minimum required WordPress version to 6.4.
+* Uses `wp_json_encode()` instead of `json_encode()`.
+* Uses `get_views_links()`.
+* Uses null coalescing operators.
+
 = 2.4 =
 
 * Bumps up the minimum required WordPress version to 6.1.
@@ -43,7 +50,3 @@ This plugin stores submission data collected through contact forms, which may in
 * New filter hook: `flamingo_contact_csv_class`
 * New filter hook: `flamingo_inbound_csv_class`
 * Uses `admin_init` for cron job scheduling.
-
-= 2.3 =
-
-* Sets status to previous when restoring data.
