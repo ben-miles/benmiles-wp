@@ -2,31 +2,30 @@
 
 namespace AC\Admin;
 
-class SectionCollection {
+class SectionCollection
+{
 
-	/**
-	 * @var array
-	 */
-	private $items = [];
+    private $items = [];
 
-	public function add( Section $section, $priority = 10 ) {
-		$this->items[ (int) $priority ][ $section->get_slug() ] = $section;
+    public function add(Section $section, int $priority = 10): self
+    {
+        $this->items[$priority][$section->get_slug()] = $section;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function get( $slug ) {
-		$all = $this->all();
+    public function get(string $slug): ?Section
+    {
+        $all = $this->all();
 
-		return isset( $all[ $slug ] )
-			? $all[ $slug ]
-			: null;
-	}
+        return $all[$slug] ?? null;
+    }
 
-	public function all() {
-		ksort( $this->items );
+    public function all(): array
+    {
+        ksort($this->items);
 
-		return array_merge( ...$this->items );
-	}
+        return array_merge(...$this->items);
+    }
 
 }

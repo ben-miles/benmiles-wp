@@ -13,13 +13,16 @@ Template Name: Section - Portfolio (Featured)
 
 				<h2 class="heading animated" data-animation="fadeIn">Portfolio</h2>
 				<p style="color:#fff;margin: 0 0 30px;">These are just a few of my favorite projects.</p>
-				<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="button cta" style="margin-bottom: 30px;"><span>See all of my work</span><?php echo displaySVG('right'); ?></a>
+				<div class="button-group">
+					<a href="#contact" target="_self" class="button cta" style="margin-bottom: 30px;"><span>Contact Me</span><?php echo displaySVG('down'); ?></a>
+					<a href="<?php bloginfo('url'); ?>/portfolio" target="_self" class="button cta secondary" style="margin-bottom: 30px;"><span>See More of My Work</span><?php echo displaySVG('right'); ?></a>
+				</div>
 
 				<!-- web development -->
 				<div class="category" id="web-development">
 					<h3 class="sub-heading">Web Development</h3>
 					<div class="row">
-						<?php getPortfolioItems('featured+web-development',null,3); ?>
+						<?php getPortfolioItems('featured+web-development',null,4); ?>
 					</div>
 				</div>
 

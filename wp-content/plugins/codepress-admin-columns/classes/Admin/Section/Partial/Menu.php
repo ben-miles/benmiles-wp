@@ -2,76 +2,62 @@
 
 namespace AC\Admin\Section\Partial;
 
-use AC\ListScreen;
-use AC\ListScreenGroups;
-use AC\ListScreenTypes;
+use AC\Admin\MenuListFactory;
+use AC\ListScreenGroupsFactory;
 use AC\View;
 
-class Menu {
+class Menu
+{
 
-	/** @var bool */
-	private $is_network;
+    private $menu_factory;
 
-	public function __construct( $is_network = false ) {
-		$this->is_network = (bool) $is_network;
-	}
+    public function __construct(MenuListFactory $menu_factory)
+    {
+        $this->menu_factory = $menu_factory;
+    }
 
-	public function render( ListScreen $list_screen, $is_hidden = false ) {
-		$menu = new View( [
-			'items'       => $this->get_grouped_list_screens(),
-			'current'     => $list_screen->get_key(),
-			'screen_link' => $list_screen->get_screen_link(),
-			'class'       => $is_hidden ? 'hidden' : '',
-		] );
+    public function render(string $current, string $url, bool $is_hidden = false): string
+    {
+        $menu = new View([
+            'items'       => $this->get_menu_items(),
+            'current'     => $current,
+            'screen_link' => $url,
+            'class'       => $is_hidden ? 'hidden' : '',
+        ]);
 
-		$menu->set_template( 'admin/edit-menu' );
+        return $menu->set_template('admin/edit-menu')
+                    ->render();
+    }
 
-		return $menu->render();
-	}
+    private function get_menu_items(): array
+    {
+        $items = [];
 
-	private function get_network_list_screens() {
-		return ListScreenTypes::instance()->get_list_screens( [ 'network_only' => true ] );
-	}
+        foreach ($this->menu_factory->create()->all() as $item) {
+            $items[$item->get_group()][$item->get_key()] = $item->get_label();
+        }
 
-	private function get_site_list_screens() {
-		return ListScreenTypes::instance()->get_list_screens( [ 'site_only' => true ] );
-	}
+        $grouped = [];
 
-	/**
-	 * @return array
-	 */
-	private function get_grouped_list_screens() {
+        foreach (ListScreenGroupsFactory::create()->get_all() as $group) {
+            $slug = $group['slug'];
 
-		$list_screens = $this->is_network
-			? $this->get_network_list_screens()
-			: $this->get_site_list_screens();
+            if (empty($items[$slug])) {
+                continue;
+            }
 
-		$list_screens_grouped = [];
-		foreach ( $list_screens as $list_screen ) {
-			$list_screens_grouped[ $list_screen->get_group() ][ $list_screen->get_key() ] = $list_screen->get_label();
-		}
+            if ( ! isset($grouped[$slug])) {
+                $grouped[$slug]['title'] = $group['label'];
+            }
 
-		$grouped = [];
+            natcasesort($items[$slug]);
 
-		foreach ( ListScreenGroups::get_groups()->get_groups_sorted() as $group ) {
-			$slug = $group['slug'];
+            $grouped[$slug]['options'] = $items[$slug];
 
-			if ( empty( $list_screens_grouped[ $slug ] ) ) {
-				continue;
-			}
+            unset($items[$slug]);
+        }
 
-			if ( ! isset( $grouped[ $slug ] ) ) {
-				$grouped[ $slug ]['title'] = $group['label'];
-			}
-
-			natcasesort( $list_screens_grouped[ $slug ] );
-
-			$grouped[ $slug ]['options'] = $list_screens_grouped[ $slug ];
-
-			unset( $list_screens_grouped[ $slug ] );
-		}
-
-		return $grouped;
-	}
+        return $grouped;
+    }
 
 }

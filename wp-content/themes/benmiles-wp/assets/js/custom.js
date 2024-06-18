@@ -78,8 +78,8 @@ function applyAnimations(){
 			var animation = animatedElement.getAttribute('data-animation');
             animatedElement.classList.add( animation );
 		}	
-	};
-};
+	}
+}
 
 /* BLOB ***************************************************************************
 	Based on "Build a Smooth, Animated Blob Using SVG + JavaScript" by George Francis
@@ -156,14 +156,14 @@ function createPoints() {
 /* PORTFOLIO VIDEO THUMBNAILS *****************************************************
 	Play Portfolio Items' video thumbnails on hover */
 
-let portfolioItems = document.querySelectorAll('.portfolio-item.has-video');
+let videoPortfolioItems = document.querySelectorAll('.portfolio-item.has-video');
 function controlVideoThumbnails () {
-	for(let portfolioItem of portfolioItems){
-		let video = portfolioItem.querySelector('.thumbnail-video');
-		portfolioItem.addEventListener('mouseenter', function(){
+	for(let videoPortfolioItem of videoPortfolioItems){
+		let video = videoPortfolioItem.querySelector('.thumbnail-video');
+		videoPortfolioItem.addEventListener('mouseenter', function(){
 			video.play();
 		});
-		portfolioItem.addEventListener('mouseleave', function(){
+		videoPortfolioItem.addEventListener('mouseleave', function(){
 			var playPromise = video.play();
 			if (playPromise !== undefined) {
 				playPromise.then(_ => {
@@ -206,6 +206,7 @@ if( document.body.classList.contains('page-portfolio') ){
 
 	/* Declare common vars */
 	var isotopeItems = document.getElementById('portfolio-items');
+	var portfolioItems = document.getElementsByClassName('portfolio-item');
 	var filterButtons = document.getElementsByClassName('filter-button');
 	var metaDescription = document.getElementById('meta-description');
 
@@ -235,6 +236,11 @@ if( document.body.classList.contains('page-portfolio') ){
 			}
 			// Add 'active' class to the clicked filter button
 			filterButton.classList.add('active');
+			// Ensure portolio items are visible
+			for(let portfolioItem of portfolioItems){
+				var animation = portfolioItem.getAttribute('data-animation');
+            	portfolioItem.classList.add( animation );
+			}
 		});
 	}
 }

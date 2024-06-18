@@ -4,76 +4,85 @@ namespace AC\Controller;
 
 use AC\Asset\Location\Absolute;
 use AC\ColumnSize;
+use AC\ListScreen;
+use AC\ListScreenFactory;
 use AC\ListScreenRepository\Storage;
-use AC\ListScreenTypes;
 use AC\Registerable;
 use AC\Request;
+use AC\Settings\General\EditButton;
 use AC\Table;
-use AC\Type\ListScreenId;
 use WP_Screen;
 
-class TableListScreenSetter implements Registerable {
+class TableListScreenSetter implements Registerable
+{
 
-	private $storage;
+    private $storage;
 
-	private $location;
+    private $location;
 
-	private $preference;
+    private $list_screen_factory;
 
-	public function __construct(
-		Storage $storage,
-		Absolute $location,
-		Table\LayoutPreference $preference
-	) {
-		$this->storage = $storage;
-		$this->location = $location;
-		$this->preference = $preference;
-	}
+    private $preference;
 
-	public function register() {
-		add_action( 'current_screen', [ $this, 'handle' ] );
-	}
+    private $primary_column_factory;
 
-	public function handle( WP_Screen $wp_screen ): void {
-		$request = new Request();
-		$request->add_middleware(
-			new Middleware\ListScreenTable(
-				$this->storage,
-				$wp_screen,
-				$this->preference
-			)
-		);
+    private $edit_button;
 
-		$list_key = $request->get( 'list_key' );
-		$list_id = $request->get( 'list_id' );
+    public function __construct(
+        Storage $storage,
+        Absolute $location,
+        ListScreenFactory $list_screen_factory,
+        Table\LayoutPreference $preference,
+        Table\PrimaryColumnFactory $primary_column_factory,
+        EditButton $edit_button
+    ) {
+        $this->storage = $storage;
+        $this->list_screen_factory = $list_screen_factory;
+        $this->location = $location;
+        $this->preference = $preference;
+        $this->primary_column_factory = $primary_column_factory;
+        $this->edit_button = $edit_button;
+    }
 
-		$list_screen = null;
+    public function register(): void
+    {
+        add_action('current_screen', [$this, 'handle']);
+    }
 
-		if ( ListScreenId::is_valid_id( $list_id ) ) {
-			$list_screen = $this->storage->find( new ListScreenId( $list_id ) );
-		}
+    public function handle(WP_Screen $wp_screen): void
+    {
+        $request = new Request();
 
-		if ( ! $list_screen && $list_key && is_string( $list_key ) ) {
-			$list_screen = ListScreenTypes::instance()->get_list_screen_by_key( $list_key );
-		}
+        $request->add_middleware(
+            new Middleware\ListScreenTable(
+                $this->storage,
+                $this->list_screen_factory,
+                $wp_screen,
+                $this->preference
+            )
+        );
 
-		if ( ! $list_screen ) {
-			return;
-		}
+        $list_screen = $request->get('list_screen');
 
-		if ( $list_screen->has_id() ) {
-			$this->preference->set( $list_screen->get_key(), $list_screen->get_id()->get_id() );
-		}
+        if ( ! $list_screen instanceof ListScreen) {
+            return;
+        }
 
-		$table_screen = new Table\Screen(
-			$this->location,
-			$list_screen,
-			new ColumnSize\ListStorage( $this->storage ),
-			new ColumnSize\UserStorage( new ColumnSize\UserPreference( get_current_user_id() ) )
-		);
-		$table_screen->register();
+        if ($list_screen->has_id()) {
+            $this->preference->set($list_screen->get_key(), (string)$list_screen->get_id());
+        }
 
-		do_action( 'ac/table', $table_screen );
-	}
+        $table_screen = new Table\Screen(
+            $this->location,
+            $list_screen,
+            new ColumnSize\ListStorage($this->storage),
+            new ColumnSize\UserStorage(new ColumnSize\UserPreference()),
+            $this->primary_column_factory,
+            $this->edit_button
+        );
+        $table_screen->register();
+
+        do_action('ac/table', $table_screen);
+    }
 
 }

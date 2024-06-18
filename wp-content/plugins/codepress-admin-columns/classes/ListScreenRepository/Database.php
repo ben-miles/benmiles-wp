@@ -1,210 +1,192 @@
 <?php
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace AC\ListScreenRepository;
 
 use AC\Exception\MissingListScreenIdException;
 use AC\ListScreen;
 use AC\ListScreenCollection;
+use AC\ListScreenFactory;
 use AC\ListScreenRepositoryWritable;
-use AC\ListScreenTypes;
 use AC\Type\ListScreenId;
-use DateTime;
 use LogicException;
-use stdClass;
-use WP_User;
 
-final class Database implements ListScreenRepositoryWritable {
+class Database implements ListScreenRepositoryWritable
+{
 
-	use ListScreenPermissionTrait;
+    use ListScreenRepositoryTrait;
 
-	private const TABLE = 'admin_columns';
+    private const TABLE = 'admin_columns';
 
-	private $list_screen_types;
+    private $list_screen_factory;
 
-	public function __construct( ListScreenTypes $list_screen_types ) {
-		$this->list_screen_types = $list_screen_types;
-	}
+    public function __construct(ListScreenFactory $list_screen_factory)
+    {
+        $this->list_screen_factory = $list_screen_factory;
+    }
 
-	private function find_from_database( ListScreenId $id ): ?stdClass {
-		global $wpdb;
-		$sql = $wpdb->prepare( '
+    protected function find_from_source(ListScreenId $id): ?ListScreen
+    {
+        global $wpdb;
+
+        $sql = $wpdb->prepare(
+            '
 			SELECT * 
 			FROM ' . $wpdb->prefix . self::TABLE . '
 			WHERE list_id = %s
 		',
-			(string) $id
-		);
+            (string)$id
+        );
 
-		$data = $wpdb->get_row( $sql );
+        $row = $wpdb->get_row($sql);
 
-		return $data instanceof stdClass
-			? $data
-			: null;
-	}
+        if ( ! $row) {
+            return null;
+        }
 
-	private function find_all_from_database(): array {
-		global $wpdb;
+        return $this->create_list_screen($row);
+    }
 
-		return $wpdb->get_results( '
+    protected function find_all_from_source(): ListScreenCollection
+    {
+        global $wpdb;
+
+        $sql = '
 			SELECT * 
 			FROM ' . $wpdb->prefix . self::TABLE . '
-		' );
-	}
+		';
 
-	private function find_all_by_key_from_database( string $key ): array {
-		global $wpdb;
-		$sql = $wpdb->prepare( '
+        return $this->create_list_screens(
+            $wpdb->get_results($sql)
+        );
+    }
+
+    protected function find_all_by_key_from_source(string $key): ListScreenCollection
+    {
+        global $wpdb;
+
+        $sql = $wpdb->prepare(
+            '
 			SELECT * 
 			FROM ' . $wpdb->prefix . self::TABLE . '
 			WHERE list_key = %s
 		',
-			$key
-		);
+            $key
+        );
 
-		return $wpdb->get_results( $sql );
-	}
+        return $this->create_list_screens(
+            $wpdb->get_results($sql)
+        );
+    }
 
-	public function find_by_user( ListScreenId $id, WP_User $user ): ?ListScreen {
-		$list_screen = $this->find( $id );
+    public function save(ListScreen $list_screen): void
+    {
+        global $wpdb;
 
-		return $list_screen && $this->user_can_view_list_screen( $list_screen, $user )
-			? $list_screen
-			: null;
-	}
+        if ( ! $list_screen->has_id()) {
+            throw MissingListScreenIdException::from_saving_list_screen();
+        }
 
-	public function find_all_by_key( string $key, Sort $sort = null ): ListScreenCollection {
-		$list_screens = $this->create_list_screens(
-			$this->find_all_by_key_from_database( $key )
-		);
+        $list_screen->set_preferences($this->save_preferences($list_screen));
 
-		return $sort
-			? $sort->sort( $list_screens )
-			: $list_screens;
-	}
+        $args = [
+            'list_id'       => (string)$list_screen->get_id(),
+            'list_key'      => $list_screen->get_key(),
+            'title'         => $list_screen->get_title(),
+            'columns'       => $list_screen->get_settings() ? serialize($list_screen->get_settings()) : null,
+            'settings'      => $list_screen->get_preferences() ? serialize($list_screen->get_preferences()) : null,
+            'date_modified' => $list_screen->get_updated()->format('Y-m-d H:i:s'),
+        ];
 
-	public function find_all_by_user( string $key, WP_User $user, Sort $sort = null ): ListScreenCollection {
-		$list_screens = $this->find_all_by_key( $key, $sort );
+        $table = $wpdb->prefix . self::TABLE;
+        $exists = $this->exists($list_screen->get_id());
 
-		return ( new Filter\User( $user ) )->filter( $list_screens );
-	}
+        if ($exists) {
+            $wpdb->update(
+                $table,
+                $args,
+                [
+                    'list_id' => (string)$list_screen->get_id(),
+                ],
+                array_fill(0, 6, '%s')
+            );
+        } else {
+            $args['date_created'] = $args['date_modified'];
 
-	public function find_all( Sort $sort = null ): ListScreenCollection {
-		$list_screens = $this->create_list_screens( $this->find_all_from_database() );
+            $wpdb->insert(
+                $table,
+                $args,
+                array_fill(0, 7, '%s')
+            );
+        }
+    }
 
-		return $sort
-			? $sort->sort( $list_screens )
-			: $list_screens;
-	}
+    public function delete(ListScreen $list_screen): void
+    {
+        global $wpdb;
 
-	private function create_list_screens( array $rows ): ListScreenCollection {
-		$list_screens = array_filter( array_map( [ $this, 'create_list_screen' ], $rows ) );
+        if ( ! $list_screen->has_id()) {
+            throw new LogicException('Cannot delete a ListScreen without an identity.');
+        }
 
-		return new ListScreenCollection( $list_screens );
-	}
+        $wpdb->delete(
+            $wpdb->prefix . self::TABLE,
+            [
+                'list_id' => (string)$list_screen->get_id(),
+            ],
+            [
+                '%s',
+            ]
+        );
+    }
 
-	public function find( ListScreenId $id ): ?ListScreen {
-		$row = $this->find_from_database( $id );
+    /**
+     * Template method to add and remove preferences before save
+     */
+    protected function save_preferences(ListScreen $list_screen): array
+    {
+        return $list_screen->get_preferences();
+    }
 
-		return $row
-			? $this->create_list_screen( $row )
-			: null;
-	}
+    /**
+     * Template method to add and remove preferences before retrieval
+     */
+    protected function get_preferences(ListScreen $list_screen): array
+    {
+        return $list_screen->get_preferences();
+    }
 
-	public function exists( ListScreenId $id ): bool {
-		return null !== $this->find( $id );
-	}
+    private function create_list_screen(object $data): ?ListScreen
+    {
+        if ( ! $this->list_screen_factory->can_create($data->list_key)) {
+            return null;
+        }
 
-	public function save( ListScreen $list_screen ): void {
-		global $wpdb;
+        $list_screen = $this->list_screen_factory->create(
+            $data->list_key,
+            [
+                'title'       => $data->title,
+                'list_id'     => $data->list_id,
+                'date'        => $data->date_modified,
+                'preferences' => $data->settings ? unserialize($data->settings, ['allowed_classes' => false]) : [],
+                'columns'     => $data->columns ? unserialize($data->columns, ['allowed_classes' => false]) : [],
+                'group'       => null,
+            ]
+        );
 
-		if ( ! $list_screen->has_id() ) {
-			throw MissingListScreenIdException::from_saving_list_screen();
-		}
+        $list_screen->set_preferences($this->get_preferences($list_screen));
 
-		$args = [
-			'list_id'       => $list_screen->get_layout_id(),
-			'list_key'      => $list_screen->get_key(),
-			'title'         => $list_screen->get_title(),
-			'columns'       => $list_screen->get_settings() ? serialize( $list_screen->get_settings() ) : null,
-			'settings'      => $list_screen->get_preferences() ? serialize( $list_screen->get_preferences() ) : null,
-			'date_modified' => $list_screen->get_updated()->format( 'Y-m-d H:i:s' ),
-		];
+        return $list_screen;
+    }
 
-		$table = $wpdb->prefix . self::TABLE;
-		$stored = $this->find_from_database( $list_screen->get_id() );
+    private function create_list_screens(array $rows): ListScreenCollection
+    {
+        $list_screens = array_filter(
+            array_map([$this, 'create_list_screen'], $rows)
+        );
 
-		if ( $stored ) {
-			$wpdb->update(
-				$table,
-				$args,
-				[
-					'id' => $stored->id,
-				],
-				array_fill( 0, 6, '%s' ),
-				[
-					'%d',
-				]
-			);
-		} else {
-			$args['date_created'] = $args['date_modified'];
-
-			$wpdb->insert(
-				$table,
-				$args,
-				array_fill( 0, 7, '%s' )
-			);
-		}
-	}
-
-	public function delete( ListScreen $list_screen ): void {
-		global $wpdb;
-
-		if ( ! $list_screen->has_id() ) {
-			throw new LogicException( 'Cannot delete a ListScreen without an identity.' );
-		}
-
-		/**
-		 * Fires before a column setup is removed from the database
-		 * Primarily used when columns are deleted through the Admin Columns settings screen
-		 *
-		 * @param ListScreen $list_screen
-		 *
-		 * @deprecated 4.0
-		 * @since      3.0.8
-		 */
-		do_action( 'ac/columns_delete', $list_screen );
-
-		$wpdb->delete(
-			$wpdb->prefix . self::TABLE,
-			[
-				'list_id' => (string) $list_screen->get_id(),
-			],
-			[
-				'%s',
-			]
-		);
-	}
-
-	private function create_list_screen( object $data ): ?ListScreen {
-		$list_screen = $this->list_screen_types->get_list_screen_by_key( $data->list_key );
-
-		if ( $list_screen ) {
-			$list_screen->set_title( $data->title )
-			            ->set_layout_id( $data->list_id )
-			            ->set_updated( DateTime::createFromFormat( 'Y-m-d H:i:s', $data->date_modified ) );
-
-			if ( $data->settings ) {
-				$list_screen->set_preferences( unserialize( $data->settings, [ 'allowed_classes' => false ] ) ?: [] );
-			}
-
-			if ( $data->columns ) {
-				$list_screen->set_settings( unserialize( $data->columns, [ 'allowed_classes' => false ] ) ?: [] );
-			}
-		}
-
-		return $list_screen;
-	}
+        return new ListScreenCollection($list_screens);
+    }
 
 }

@@ -1,20 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AC;
 
-/**
- * @deprecated 4.0
- */
-class ListScreenFactory {
+use WP_Screen;
 
-	public static function create( $key, $id = null ) {
-		$list_screen = ListScreenTypes::instance()->get_list_screen_by_key( $key );
+interface ListScreenFactory
+{
 
-		if ( $list_screen ) {
-			return clone $list_screen;
-		}
+    public function can_create(string $key): bool;
 
-		return null;
-	}
+    public function create(string $key, array $settings = []): ListScreen;
+
+    public function can_create_from_wp_screen(WP_Screen $screen): bool;
+
+    public function create_from_wp_screen(WP_Screen $screen, array $settings = []): ListScreen;
 
 }
