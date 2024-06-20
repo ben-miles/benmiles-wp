@@ -22,7 +22,7 @@ Template Name: Section - Portfolio (Featured)
 				<div class="category" id="web-development">
 					<h3 class="sub-heading">Web Development</h3>
 					<div class="row">
-						<?php getPortfolioItems('featured+web-development',null,4); ?>
+						<?php getPosts('portfolio','featured+web-development',null,4); ?>
 					</div>
 				</div>
 
@@ -30,7 +30,7 @@ Template Name: Section - Portfolio (Featured)
 				<div class="category" id="web-design">
 					<h3 class="sub-heading">Web Design</h3>
 					<div class="row">
-						<?php getPortfolioItems('featured+web-design',null,4); ?>
+						<?php getPosts('portfolio','featured+web-design',null,4); ?>
 					</div>
 				</div>
 
@@ -38,7 +38,7 @@ Template Name: Section - Portfolio (Featured)
 				<div class="category" id="branding">
 					<h3 class="sub-heading">Branding</h3>
 					<div class="row">
-						<?php getPortfolioItems('featured+branding',null,4); ?>
+						<?php getPosts('portfolio','featured+branding',null,4); ?>
 					</div>
 				</div>
 
@@ -46,7 +46,7 @@ Template Name: Section - Portfolio (Featured)
 				<div class="category" id="print-design">
 					<h3 class="sub-heading">Print Design</h3>
 					<div class="row">
-						<?php getPortfolioItems('featured+print-design',null,4); ?>
+						<?php getPosts('portfolio','featured+print-design',null,4); ?>
 					</div>
 				</div>
 
