@@ -1166,6 +1166,7 @@ textarea.form-control {
 /*	HOME > FEATURED PORTFOLIO -----------------------------------------------*/
 
 .category {
+	background-color: rgba(255,255,255,0.05);
 	margin-bottom: 50px;
 }
 
