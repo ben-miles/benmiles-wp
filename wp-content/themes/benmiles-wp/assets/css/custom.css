@@ -824,6 +824,10 @@ footer .social-media {
 	padding: 25px 30px;
 }
 
+.page-about .hidden-on-about {
+	display: none;
+}
+
 /*	ABOUT > SKILLS ----------------------------------------------------------*/
 
 .skills .row {
@@ -1168,6 +1172,10 @@ textarea.form-control {
 .category {
 	background-color: rgba(255,255,255,0.05);
 	margin-bottom: 50px;
+}
+
+.page-home .hidden-on-home {
+	display: none;
 }
 
 /******************************************************************************
