@@ -19,7 +19,7 @@ Template Name: Section - Portfolio (Featured)
 				</div>
 
 				<!-- web development -->
-				<div class="category" id="web-development">
+				<div class="category animated" id="web-development" data-animation="fadeIn">
 					<h3 class="sub-heading">Web Development</h3>
 					<div class="row">
 						<?php getPosts('portfolio','featured+web-development',null,4); ?>
@@ -27,7 +27,7 @@ Template Name: Section - Portfolio (Featured)
 				</div>
 
 				<!-- web design -->
-				<div class="category" id="web-design">
+				<div class="category animated" id="web-design" data-animation="fadeIn">
 					<h3 class="sub-heading">Web Design</h3>
 					<div class="row">
 						<?php getPosts('portfolio','featured+web-design',null,4); ?>
@@ -35,7 +35,7 @@ Template Name: Section - Portfolio (Featured)
 				</div>
 
 				<!-- branding -->
-				<div class="category" id="branding">
+				<div class="category animated" id="branding" data-animation="fadeIn">
 					<h3 class="sub-heading">Branding</h3>
 					<div class="row">
 						<?php getPosts('portfolio','featured+branding',null,4); ?>
@@ -43,7 +43,7 @@ Template Name: Section - Portfolio (Featured)
 				</div>
 
 				<!-- print design -->
-				<div class="category" id="print-design">
+				<div class="category animated" id="print-design" data-animation="fadeIn">
 					<h3 class="sub-heading">Print Design</h3>
 					<div class="row">
 						<?php getPosts('portfolio','featured+print-design',null,4); ?>
