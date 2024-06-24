@@ -167,11 +167,11 @@ function urlToLabel($url){
 * Accepts: Post Type, Category Name(s), Tag(s), and a Max number of Items to collect, as arguments
 * Returns: String of HTML containing the collection of Portfolio Items, formatted for display
 */
-function getPosts($post_type='any',$category=null,$tag=null,$max_items=-1){
+function getPosts($post_type='any', $category=NULL, $tag=NULL, $max_items=-1, $order='DESC', $orderby='date'){
 	$args = array(
 		'category_name' => $category,
-		'order' => 'DESC',
-		'orderby' => 'date',
+		'order' => $order,
+		'orderby' => $orderby,
 		'post_status' => 'publish',
 		'post_type' => $post_type,
 		'posts_per_page' => $max_items,
