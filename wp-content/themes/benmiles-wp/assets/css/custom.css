@@ -807,9 +807,6 @@ footer .social-media {
 	#about .row {
 		justify-content: flex-start;
 	}
-	#about .column {
-		max-width: 50%;
-	}
 }
 #about > .container > .row {
 	justify-content: flex-start;
