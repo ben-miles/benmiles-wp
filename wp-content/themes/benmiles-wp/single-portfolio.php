@@ -141,15 +141,6 @@ $meta = [
 		</div>
 	</div>
 </section>
-<!-- / about -->
-
-<!-- lightbox -->
-<!-- <div id="lightbox">
-	<div id="lightbox-inner">
-		<button id="lightbox-close">&times;</button>
-		<div id="lightbox-body"></div>
-	</div>
-</div> -->
-<!-- / lightbox -->
+<!-- / single-portfolio -->
 
 <?php get_footer(); ?>
