@@ -1419,6 +1419,60 @@ body.page-portfolio #portfolio > .container {
 }
 
 /******************************************************************************
+	PAGES > REVIEW ITEM
+******************************************************************************/
+
+.page-review-item #single-review {
+	min-height: calc(100vh - var(--header-height));
+	padding: calc( var(--header-height) + var(--header-height) + 30px) 0 calc( var(--header-height) + 30px);
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+	.page-review-item .column-8 {
+		max-width: 100%;
+		flex: 1 1 100%;
+	}
+}
+.page-review-item .post-meta {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+.page-review-item .thumbnail img {
+	aspect-ratio: 1;
+	width: 90px;
+	height: auto;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.page-review-item .name {
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+.page-review-item .title {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.4;
+}
+.page-review-item .content {
+	margin: 0 0 30px;
+}
+.page-review-item .linkedin-link {
+	display: block;
+	font-size: 14px;
+	text-align: center;
+}
+.page-review-item .linkedin-link .svg-wrapper {
+	display: inline-block;
+	width: 14px;
+	height: auto;
+	position: relative;
+	top: 2px;
+}
+
+/******************************************************************************
 	PLUGINS
 ******************************************************************************/
 
