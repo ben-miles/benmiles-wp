@@ -244,3 +244,20 @@ if( document.body.classList.contains('page-portfolio') ){
 		});
 	}
 }
+
+/* FLICKITY ***********************************************************************
+	https://flickity.metafizzy.co/ */
+
+/* Isolate to About & Home Pages */
+if( document.body.classList.contains('page-about') || document.body.classList.contains('page-home') ){
+
+	/* Declare common vars */
+	var flickityElem = document.getElementById('carousel');
+
+	/* Initialize filtering on Portfolio Items */
+	var flickity = new Flickity( flickityElem, {
+		autoPlay: 5000,
+		pageDots: false,
+		wrapAround: true
+	});
+}
