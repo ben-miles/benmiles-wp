@@ -114,6 +114,10 @@ function load_custom_scripts_and_styles(){
 		wp_enqueue_style('glightbox', get_template_directory_uri() . '/assets/css/glightbox.min.css', array(), null, false);
 		wp_enqueue_script('glightbox', get_template_directory_uri() . '/assets/js/glightbox.min.js', array(), null, false);
 	}
+	if(is_page('About') || is_page('Home')){
+		// Contact & Home Pages Only:
+		wp_enqueue_style('flickity', get_template_directory_uri() . '/assets/css/flickity.min.css', array(), null, false);
+	}
 	wp_enqueue_style('custom', get_template_directory_uri() . '/assets/css/custom.css', false, '', 'all');
 	// Load Scripts
 	wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . GOOGLE_RECAPTCHA_SITE_KEY, array(), null, false);
@@ -121,6 +125,10 @@ function load_custom_scripts_and_styles(){
 		// Portfolio Page Only:
 		wp_enqueue_script('imagesloaded', get_template_directory_uri() . '/assets/js/imagesloaded.min.js', array(), null, false);
 		wp_enqueue_script('isotope', get_template_directory_uri() . '/assets/js/isotope.min.js', array('imagesloaded'), null, false);
+	}
+	if(is_page('About') || is_page('Home')){
+		// Contact & Home Pages Only:
+		wp_enqueue_script('flickity', get_template_directory_uri() . '/assets/js/flickity.min.js', array(), null, false);
 	}
 	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js', array(), null, false);
 }
