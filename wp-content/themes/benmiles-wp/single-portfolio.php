@@ -126,8 +126,8 @@ $meta = [
 				<?php 
 				the_post_navigation(
 					array(
-						'next_text' => '<h4 class="label">Next: </h4>%title',
-						'prev_text' => '<h4 class="label">Previous: </h4>%title',
+						'next_text' => '<h4 class="label">Previous: </h4>%title',
+						'prev_text' => '<h4 class="label">Next: </h4>%title'
 						)
 					);
 				?>

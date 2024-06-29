@@ -35,8 +35,8 @@ get_header(null, ['bodyClass' => 'page-review-item']);
 
 				<!-- Post Navigation -->
 				<?php the_post_navigation([
-					'next_text' => '<h4 class="label">Next: </h4>%title',
-					'prev_text' => '<h4 class="label">Previous: </h4>%title',
+					'next_text' => '<h4 class="label">Previous: </h4>%title',
+						'prev_text' => '<h4 class="label">Next: </h4>%title'
 				]) ?>
 
 			</div>
