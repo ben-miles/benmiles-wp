@@ -189,7 +189,7 @@ function getPosts($post_type='any', $category=NULL, $tag=NULL, $max_items=-1, $o
 	$i = 0;
 	while($loop->have_posts()){
 		$loop->the_post();
-		// Format Meta
+		// Gather Data
 		$the_title = get_the_title();
 		$the_categories = get_the_category();
 		$the_categories_classes = "";
@@ -199,40 +199,57 @@ function getPosts($post_type='any', $category=NULL, $tag=NULL, $max_items=-1, $o
 		$the_date = get_the_date();
 		$the_excerpt = get_the_excerpt();
 		$the_thumbnail = get_the_post_thumbnail(null, 'medium', ['class' => 'thumbnail-image']);
-		$the_video = get_field('home_page_video');
-		$the_external_url = get_field('url');
-		$the_external_url_label = mb_strimwidth(urlToLabel($the_external_url), 0, 25, "...");
 		$the_permalink = get_permalink();
 		$max_items = ($max_items > 4 || $max_items === -1) ? 4 : $max_items;
 		$column_class = 12 / $max_items;
 		$animation_delay = $i % $max_items;
-		?>
-		<div class="column column-<?php echo $column_class . ' ' . $the_categories_classes; ?>">
-			<div class="portfolio-item animated <?php echo ($the_video) ? 'has-video' : ''; ?>" data-animation="fadeInUp" style="animation-delay: 0.<?php echo $animation_delay; ?>s;">
-				<a href="<?php echo $the_permalink; ?>" target="_self" class="media">
-					<?php echo $the_thumbnail;
-					if($the_video){ ?>
-					<video loop muted preload="none" class="thumbnail-video">
-						<source src="<?php echo $the_video; ?>" type="video/webm">
-					</video>
-					<?php } ?>
-				</a>
-				<div class="meta">
-					<a href="<?php echo $the_permalink; ?>" target="_self">
-						<h6 class="title"><?php echo $the_title; ?></h6>
-					</a>
-					<!--<div class="date"><?php //echo $the_date; ?></div>-->
-					<p class="excerpt"><?php echo $the_excerpt; ?></p>
-					<?php if($the_external_url){ ?>
-					<a href="<?php echo $the_external_url; ?>" target="_blank" class="external-link"><?php echo displaySVG('external-link'); echo $the_external_url_label; ?></a>
-					<?php } ?>
-				</div>
+		$the_professional_title = get_field('title');
+		$the_external_url = get_field('url');
+		$the_external_url_label = mb_strimwidth(urlToLabel($the_external_url), 0, 25, "...");
+		$the_video = get_field('home_page_video');
+		// Output
+		if($post_type === 'review'){ ?>
+<!-- Review Item -->
+<div class="column column-<?= $column_class . ' ' . $the_categories_classes ?>">
+	<div class="<?= $post_type ?>-item card animated" data-animation="fadeInUp" style="animation-delay: 0.<?= $animation_delay ?>s;">
+		<p class="quote"><?= $the_excerpt ?></p>
+		<a href="<?= $the_permalink ?>" target="_self" class="attribution">
+			<?= $the_thumbnail ?>
+			<div class="text">
+				<h6 class="name"><?= $the_title ?></h6>
+				<h6 class="title"><?= $the_professional_title ?></h6>
 			</div>
+		</a>
+	</div>
+</div>
+		<?php } else { ?>
+<!-- Portfolio Item -->
+<div class="column column-<?= $column_class . ' ' . $the_categories_classes ?>">
+	<div class="<?= $post_type ?>-item animated <?= ($the_video) ? 'has-video' : '' ?>" data-animation="fadeInUp" style="animation-delay: 0.<?= $animation_delay ?>s;">
+		<a href="<?= $the_permalink ?>" target="_self" class="media">
+			<?= $the_thumbnail;
+			if($the_video){ ?>
+			<video loop muted preload="none" class="thumbnail-video">
+				<source src="<?= $the_video ?>" type="video/webm">
+			</video>
+			<?php } ?>
+		</a>
+		<div class="meta">
+			<a href="<?= $the_permalink ?>" target="_self">
+				<h6 class="title"><?= $the_title ?></h6>
+			</a>
+			<p class="excerpt"><?= $the_excerpt ?></p>
+			<?php if($the_external_url){ ?>
+			<a href="<?= $the_external_url ?>" target="_blank" class="external-link">
+				<?= displaySVG('external-link'); echo $the_external_url_label ?>
+			</a>
+			<?php } ?>
 		</div>
-		<?php
+	</div>
+</div>
+		<?php }
 		$i++;
 	}
 	wp_reset_postdata();
-}
-
+} 
 ?>
