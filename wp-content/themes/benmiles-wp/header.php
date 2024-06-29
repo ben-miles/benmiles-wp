@@ -48,6 +48,9 @@
 					<a class="nav-link" href="#about" target="_self">About</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="#about" target="_self">Reviews</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="#portfolio" target="_self">Portfolio</a>
 				</li>
 				<li class="nav-item">
@@ -56,6 +59,9 @@
 			<?php } else {; ?>
 				<li class="nav-item">
 					<a class="nav-link" href="/about" target="_self">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/reviews" target="_self">Reviews</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/portfolio" target="_self">Portfolio</a>
