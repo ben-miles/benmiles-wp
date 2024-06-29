@@ -828,6 +828,53 @@ footer .social-media {
 	display: none;
 }
 
+/*	ABOUT > REVIEWS ---------------------------------------------------------*/
+
+#carousel {
+	width: 100%;
+	margin-bottom: 30px;
+}
+#carousel .column {
+	max-width: 100%;
+	padding: 0 30px;
+}
+.review-item.card {
+	margin-bottom: 0;
+	padding: 25px;
+}
+.review-item .quote {
+	margin: 0 0 20px;
+	padding: 10px 15px;
+	background: rgba(255,255,255,0.05);
+	border-left: 2px solid var(--color-graye);
+	font-style: italic;
+}
+.review-item .attribution {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.review-item .thumbnail-image {
+	aspect-ratio: 1;
+	width: 60px;
+	height: auto;
+	border-radius: 50%;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+.review-item .name {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+.review-item .title {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.4;
+}
+
 /*	ABOUT > SKILLS ----------------------------------------------------------*/
 
 .skills .row {
