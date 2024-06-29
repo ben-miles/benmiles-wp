@@ -1234,9 +1234,12 @@ body.page-portfolio #portfolio > .container {
 }
 
 /*	Category Description ----------------------------------------------------*/
-#meta-description p {
+#meta-description {
 	color: var(--color-white);
-	margin: 0 0 50px;
+	margin: 0 0 20px;
+}
+#meta-description p {
+	margin: 0 auto 20px;
 }
 
 /*	Filter ------------------------------------------------------------------*/
