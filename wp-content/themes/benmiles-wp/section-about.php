@@ -33,7 +33,7 @@ Template Name: Section - About
 					<a href="#portfolio" target="_self" class="button cta animated hidden-on-about" data-animation="fadeInUp" style="animation-delay: .3s;"><span>My Work</span><?php echo displaySVG('down', 'bounce'); ?></a>
 					<a href="<?php echo home_url(); ?>/about" target="_self" class="button cta secondary animated hidden-on-about" data-animation="fadeInUp" style="animation-delay: .4s;"><span>More About Me</span><?php echo displaySVG('right'); ?></a>
 					<a href="#experience-and-skills" target="_self" class="button cta animated hidden-on-home" data-animation="fadeInUp" style="animation-delay: .3s;"><span>Experience & Skills</span><?php echo displaySVG('down', 'bounce'); ?></a>
-					<a href="/reviews" target="_self" class="button cta secondary animated" data-animation="fadeInUp" style="animation-delay: .4s;"><span>More Reviews</span><?php echo displaySVG('right'); ?></a>
+					<a href="/reviews" target="_self" class="button cta secondary animated" data-animation="fadeInUp" style="animation-delay: .5s;"><span>More Reviews</span><?php echo displaySVG('right'); ?></a>
 				</div>
 
             </div>

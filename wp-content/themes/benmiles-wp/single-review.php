@@ -15,22 +15,22 @@ get_header(null, ['bodyClass' => 'page-review-item']);
 
 			<div class="column column-8">
 
-				<div class="card">
+				<div class="card animated" data-animation="fadeIn">
 					<!-- Attribution -->
 					<div class="post-meta">
-						<div class="thumbnail animated" data-animation="fadeInUp">
+						<div class="thumbnail animated" data-animation="fadeInUp" style="animation-delay: .1s;">
 							<?php the_post_thumbnail(); ?>
 						</div>
-						<div class="text animated" data-animation="fadeInUp">
+						<div class="text animated" data-animation="fadeInUp" style="animation-delay: .2s;">
 							<h2 class="name"><?php the_title(); ?></h2>
 							<h2 class="title"><?= get_field('title') ?></h2>
 						</div>
 					</div>
 					<!-- Content -->
-					<div class="content animated" style="animation-delay: .1s;" data-animation="fadeIn">
+					<div class="quote animated" data-animation="fadeIn" style="animation-delay: .3s;">
 						<?php the_content(); ?>
 					</div>
-					<a class="linkedin-link"><?= displaySVG('external-link') ?> Originally written by <?php the_title(); ?> on LinkedIn, <?= get_the_date() ?>.</a>
+					<a class="linkedin-link animated" data-animation="fadeIn" style="animation-delay: .4s;" target="_blank"><?= displaySVG('external-link') ?> Originally written by <?php the_title(); ?> on LinkedIn, <?= get_the_date() ?>.</a>
 				</div>
 
 				<!-- Post Navigation -->
