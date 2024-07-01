@@ -30,7 +30,7 @@ get_header(null, ['bodyClass' => 'page-review-item']);
 					<div class="quote animated" data-animation="fadeIn" style="animation-delay: .3s;">
 						<?php the_content(); ?>
 					</div>
-					<a class="linkedin-link animated" data-animation="fadeIn" style="animation-delay: .4s;" target="_blank"><?= displaySVG('external-link') ?> Originally written by <?php the_title(); ?> on LinkedIn, <?= get_the_date() ?>.</a>
+					<a class="linkedin-link animated" href="https://www.linkedin.com/in/benjaminmiles/" data-animation="fadeIn" style="animation-delay: .4s;" target="_blank"><?= displaySVG('external-link') ?> Originally written by <?php the_title(); ?> on LinkedIn, <?= get_the_date() ?>.</a>
 				</div>
 
 				<!-- Post Navigation -->
