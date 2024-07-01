@@ -9,7 +9,7 @@ Template Name: Section - About
 <section id="about">
 	<div class="container" style="height:100%;">
 		<div class="row">
-			<div class="column column-6">
+			<div class="column column-8">
 
 				<!-- Title -->
 				<h2 class="heading animated" data-animation="fadeIn">About Ben Miles</h2>
