@@ -196,6 +196,7 @@ function getPosts($post_type='any', $category=NULL, $tag=NULL, $max_items=-1, $o
 		foreach($the_categories as $the_category){
 			$the_categories_classes .= $the_category->slug . ' ';
 		}
+		$the_categories_classes = trim($the_categories_classes);
 		$the_date = get_the_date();
 		$the_excerpt = get_the_excerpt();
 		$the_thumbnail = get_the_post_thumbnail(null, 'medium', ['class' => 'thumbnail-image']);
