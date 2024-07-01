@@ -846,6 +846,9 @@ footer .social-media {
 	border-left: 2px solid var(--color-graye);
 	font-style: italic;
 }
+.review-item .quote p {
+	display: inline;
+}
 .review-item .quote p:before {
 	content: '\201C';
 	margin-right: 2px;
@@ -853,6 +856,10 @@ footer .social-media {
 .review-item .quote p:after {
 	content: '\201D';
 	margin-left: 2px;
+}
+.review-item .read-more {
+	font-weight: 300;
+	margin-left: 10px;
 }
 .review-item .attribution {
 	display: flex;
