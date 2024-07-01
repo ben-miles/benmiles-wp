@@ -846,6 +846,14 @@ footer .social-media {
 	border-left: 2px solid var(--color-graye);
 	font-style: italic;
 }
+.review-item .quote p:before {
+	content: '\201C';
+	margin-right: 2px;
+}
+.review-item .quote p:after {
+	content: '\201D';
+	margin-left: 2px;
+}
 .review-item .attribution {
 	display: flex;
 	flex-direction: row;
@@ -1438,6 +1446,7 @@ body.page-portfolio #portfolio > .container {
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+	margin: 0 auto 30px;
 }
 .page-review-item .thumbnail img {
 	aspect-ratio: 1;
@@ -1456,7 +1465,7 @@ body.page-portfolio #portfolio > .container {
 	font-weight: 300;
 	line-height: 1.4;
 }
-.page-review-item .content {
+.page-review-item .quote {
 	margin: 0 0 30px;
 }
 .page-review-item .linkedin-link {

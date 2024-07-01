@@ -7,7 +7,7 @@ get_header(null, ['bodyClass' => 'page-review-item']);
 ?>
 
 <!-- single-review -->
-<section id="single-review">
+<section id="single-review" class="review-item">
     <div class="container">
     	<div class="row">
 
