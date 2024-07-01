@@ -76,48 +76,11 @@ $schools = [
 				<div class="column column-9 experience">
 					<h2 class="heading animated" data-animation="fadeIn">Experience</h2>
                     <ul class="timeline animated" data-animation="fadeIn" style="animation-delay:0.1s;">
-
-						<?php
-							foreach($jobs as $job) {
-								echo '<li class="timeline-item animated" data-animation="fadeInUp">
-										<div class="timeline-badge">
-											' . displaySVG('work') . '
-										</div>
-										<div class="timeline-panel">
-											<h4 class="timeline-title">' . $job['title'] . '</h4>
-											<ul class="timeline-details">
-												<li>' . displaySVG('external-link') . '<a href="' . $job['link'] . '" target="_blank">' . $job['company'] . '</a></li>
-												<li>' . displaySVG('calendar') . $job['dates'] . '</li>
-												<li>' . displaySVG('map-pin') . $job['location'] . '</li>
-											</ul>
-											<p>' . $job['description'] . '</p>
-										</div>
-									</li>';
-							}
-						?>
-
+						<?php getPosts('experience','work'); ?>
 					</ul>
 					<h2 class="heading animated" data-animation="fadeIn">Education</h2>
                     <ul class="timeline animated" data-animation="fadeIn" style="animation-delay:0.1s;">
-
-					<?php
-						foreach($schools as $school) {
-							echo '<li class="timeline-item animated" data-animation="fadeInUp">
-									<div class="timeline-badge">
-										' . displaySVG('school') . '
-									</div>
-									<div class="timeline-panel">
-										<h4 class="timeline-title">' . $school['title'] . '</h4>
-										<ul class="timeline-details">
-											<li>' . displaySVG('external-link') . '<a href="' . $school['link'] . '" target="_blank">' . $school['company'] . '</a></li>
-											<li>' . displaySVG('calendar') . $school['dates'] . '</li>
-											<li>' . displaySVG('map-pin') . $school['location'] . '</li>
-										</ul>
-									</div>
-								</li>';
-						}
-					?>
-
+						<?php getPosts('experience','school'); ?>
                     </ul>
                 </div>
 				<!-- / experience -->
