@@ -995,8 +995,7 @@ footer .social-media {
 .timeline-details {
 	display: flex;
 	flex-direction: column;
-	font-size: 14px;
-	margin: 0;
+	margin: 0 0 10px 0;
 	list-style: none;
 	padding: 0;
 }
@@ -1030,6 +1029,9 @@ footer .social-media {
     .timeline-panel {
       padding: 1.25rem;
     }
+}
+.timeline-panel .wp-block-list {
+	line-height: 1.5em;
 }
 
 /******************************************************************************
