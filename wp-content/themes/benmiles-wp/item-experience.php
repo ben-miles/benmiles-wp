@@ -9,10 +9,10 @@
 				<?= displaySVG('external-link') ?><a href="<?= get_field('link') ?>" target="_blank"><?= get_the_title() ?></a>
 			</li>
 			<li>
-				<?= displaySVG('calendar') ?><?= get_the_date('M Y') ?> - <?= get_field('end_date') ?>
+				<?= displaySVG('map-pin')?><?= get_field('location') ?>
 			</li>
 			<li>
-				<?= displaySVG('map-pin')?><?= get_field('location') ?>
+				<?= displaySVG('calendar') ?><?= get_the_date('M Y') ?> - <?= get_field('end_date') ?>
 			</li>
 		</ul>
 		<?= the_content() ?>
