@@ -801,7 +801,6 @@ footer .social-media {
     #about {
         background-attachment: fixed;
 		background-size: contain;
-		height: 100vh;
 		padding-top: var(--header-height);
     }
 	#about .row {
