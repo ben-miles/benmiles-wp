@@ -53,7 +53,7 @@ get_header(null, ['bodyClass' => 'page-portfolio']);
 
 		<!-- Gallery -->
 		<div class="row" id="portfolio-items">
-			<?php getPortfolioItems(); ?>
+			<?php getPosts('portfolio'); ?>
 		</div>
 
 	</div>

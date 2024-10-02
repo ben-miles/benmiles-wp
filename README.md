@@ -23,8 +23,32 @@ Instructions in this README are based on the following setup:
 6. Save the .SQL file and import it into the destination database
 
 ## Updating
-- **Code & Files:** Keep code changes in Git, and migrate file changes via FTP.
-- **Data:** From local, export the whole database to a SQL file. Make sure to enable "Drop Tables," "Create Tables," and "Replace existing data." Open the file and do the following two search-and-replace operations, in this order: `benmiles-wp.test` -> `benmiles.com`, then `http://benmiles.com` -> `https://benmiles.com`. Save these changes, then import the file to the remote site's PHPMyAdmin.
+1. The idea is to move only what has changed, so keep code changes in Git, and migrate file changes via FTP or File Manager.
+2. Upload **file changes** to the remote server. Generally speaking, the files that will need to be migrated will mostly be in two locations:
+  - Updates to theme files: `~\benmiles-wp\wp-content\themes\benmiles-wp`
+  - Updates to media library: `~\benmiles-wp\wp-content\uploads` (You can further reduce the amount of files to be transferred by drilling down into the subdirectories named for the appropirate year(s) and month(s))
+  - If Plugins are updated on the local dev environment, be sure to also grab files from `~\benmiles-wp\wp-content\plugins`
+3. Export the **database changes** from the local server. Make sure that _Replace existing data_ is selected. Generally speaking, the tables that will need to be migrated will mostly be in five locations:
+  - New Posts (including Custom Post Types): `posts`
+  - New Post Metadata: `post_meta`
+  - Changes to Categories: `terms`
+  - Changes to Tags: `term_taxonomy`
+  - Associations between Posts and Categories/Tags: `term_relationships`
+4. Replace any strings referencing the domain, to reflect the remote host instead of the local dev host. To do this:
+  - Open the SQL file in a text editor, and find-and-replace the following strings:
+  - `benmiles-wp.test` to `benmiles.com`, then
+  - `http://benmiles.com` to `https://benmiles.com`
+5. Import the SQL file into the remote host's database. Make sure the database (even if there's only one) is selected, then use the following settings (these are usually the default):
+  - All the interruption of an import...: `true`
+  - Skip the number of queries...: `0`
+  - Enable foreign key checks: `true`
+  - Format: `SQL`
+  - SQL compatibility mode: `NONE`
+  - Do not use AUTO_INCREMENT for zero values: `true`
+6. If it looks like something isn't showing up after migrating these changes, a good practice is to **regenerate permalinks**. To do this:
+  - Log into the remote WordPress installation
+  - Navigate to _Settings > Permalinks_
+  - Scroll to the bottom of this page and click _Save Changes_ (even though no changes have been made)
 
 ## Notes Regarding Media
 ### Featured Images
@@ -111,3 +135,4 @@ Instructions in this README are based on the following setup:
     - Click "Resize video!"
     - Click "Save"
     - Rename file as per **File Names** above
+s

@@ -37,7 +37,7 @@ get_header(null, ['bodyClass' => 'page-archive']);
 
 				<!-- gallery -->
 				<div class="row">
-					<?php getPortfolioItems($category,$tag); ?>
+					<?php getPosts('portfolio',$category,$tag); ?>
 				</div>
 				<!-- / gallery -->
 

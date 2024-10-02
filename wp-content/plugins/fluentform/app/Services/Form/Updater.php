@@ -17,7 +17,7 @@ class Updater
         $formFields = Arr::get($attributes, 'formFields');
         $status = Arr::get($attributes, 'status', 'published');
         $title = sanitize_text_field(Arr::get($attributes, 'title'));
-
+      
         $this->validate([
             'title'      => $title,
             'formFields' => $formFields,
@@ -50,6 +50,12 @@ class Updater
             $formFields = $this->sanitizeFields($formFields);
             $data['form_fields'] = $formFields;
             
+            /**
+             * Fires before a Form is updated.
+             * @since 5.2.1
+             */
+            do_action('fluentform/before_updating_form', $form, $data);
+    
             $form->fill($data);
 
             if (FormFieldsParser::hasPaymentFields($form)) {
@@ -59,6 +65,7 @@ class Updater
             }
 
             $this->updatePrimaryEmail($form);
+            
         }
 
         $form->fill($data)->save();
@@ -137,6 +144,7 @@ class Updater
             'unique_validation_message' => 'sanitize_text_field',
             'advanced_options'          => 'fluentform_options_sanitize',
             'html_codes'                => 'fluentform_sanitize_html',
+            'description'               => 'fluentform_sanitize_html',
         ];
 
         $settingsKeys = array_keys($settingsMap);
@@ -149,7 +157,7 @@ class Updater
 
         $stylePrefKeys = array_keys($stylePrefMap);
 
-        foreach ($fields as $fieldIndex => $field) {
+        foreach ($fields as $fieldIndex => &$field) {
             $element = Arr::get($field, 'element');
 
             if ('container' == $element) {
@@ -159,6 +167,13 @@ class Updater
                 }
 
                 return $fields;
+            }
+
+            // Welcome Screen element button text sanitization
+            if ('welcome_screen' == $element) {
+                if ($value = Arr::get($field, 'settings.button_ui.text')) {
+                    $field['settings']['button_ui']['text'] = sanitize_text_field($value);
+                }
             }
 
             /*
@@ -191,6 +206,17 @@ class Updater
 
                 foreach ($settings as $key => $value) {
                     $fields[$fieldIndex]['style_pref'][$key] = call_user_func($stylePrefMap[$key], $value);
+                }
+            }
+    
+            $validationRules = Arr::get($field, 'settings.validation_rules');
+            if (!empty($validationRules)) {
+                foreach ($validationRules as $key => $rule) {
+                    if (isset($rule['message'])) {
+                        $message = $rule['message'];
+                        $field['settings']['validation_rules'][$key]['message'] = wp_kses_post($message);
+                        continue;
+                    }
                 }
             }
         }

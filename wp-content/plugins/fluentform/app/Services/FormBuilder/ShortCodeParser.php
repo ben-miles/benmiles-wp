@@ -160,7 +160,7 @@ class ShortCodeParser
             }
 
             if ($isUrl) {
-                $value = urlencode($value);
+                $value = rawurlencode($value);
             }
 
             return $value;
@@ -409,7 +409,9 @@ class ShortCodeParser
             if (apply_filters('fluentform/all_data_skip_password_field', $status)) {
                 $passwords = FormFieldsParser::getInputsByElementTypes(static::getForm(), ['input_password']);
                 if (is_array($passwords) && ! empty($passwords)) {
-                    ArrayHelper::forget($response->user_inputs, array_keys($passwords));
+                    $user_inputs = $response->user_inputs;
+                    ArrayHelper::forget($user_inputs, array_keys($passwords));
+                    $response->user_inputs = $user_inputs;
                 }
             }
 

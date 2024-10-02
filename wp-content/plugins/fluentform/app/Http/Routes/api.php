@@ -24,6 +24,8 @@ $router->prefix('forms')->withPolicy('FormPolicy')->group(function ($router) {
         $router->get('fields', 'FormController@fields');
         $router->get('shortcodes', 'FormController@shortcodes');
         $router->get('findShortCodePage', 'FormController@findShortCodePage');
+        $router->get('editHistory', 'FormController@formEditHistory');
+        $router->post('clearHistory', 'FormController@clearEditHistory');
     });
 });
 
@@ -57,6 +59,7 @@ $router->prefix('submissions')->withPolicy('SubmissionPolicy')->group(function (
     $router->get('/', 'SubmissionController@index');
     $router->get('resources', 'SubmissionController@resources');
     $router->post('bulk-actions', 'SubmissionController@handleBulkActions');
+    $router->get('print', 'SubmissionController@print');
     $router->get('all', 'SubmissionController@all');
     $router->delete('/{entry_id}', 'SubmissionController@remove');
 
