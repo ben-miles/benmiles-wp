@@ -2,9 +2,9 @@
 Contributors: techjewel,adreastrian,heera,pyrobd,hrdelwar,dhrupo,wpmanageninja
 Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 Requires PHP: 7.4
-Stable tag: 5.1.20
+Stable tag: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -248,7 +248,7 @@ Improve your website’s efficiency by bridging the gap from visitor input to em
 * Zapier
 * WebHook
 * Google Sheets
-* Open AI Chat GPT
+* ChatGPT
 * ActiveCampaign
 * Campaign Monitor
 * Constant Contact
@@ -263,7 +263,7 @@ Improve your website’s efficiency by bridging the gap from visitor input to em
 * Trello
 * Drip
 * iContact
-* Sendinblue
+* Brevo (formerly SendInBlue)
 * Automizy
 * User Registration
 * Post/CPT integration
@@ -452,6 +452,49 @@ You can get support from our official support thread at <a href="https://wpmanag
 12. Asset Loading Comparison with Other Plugins
 
 == Changelog ==
+
+= 5.2.4 (Date: October 1, 2024) =
+- Fix calculation issue
+
+= 5.2.3 (Date: September 30, 2024) =
+- Adds form edit history (Beta)
+- Adds editor keyboard navigation and shortcuts
+- Adds form-specific permissions in the permission manager
+- Improved condition change event handling
+- Improved All Forms pages form ordering to retain on reload
+- Fixes exposing the conversational form URL
+- Fixes empty URL GET parameters in conversational form shortcodes
+- Fixes all form filter selections being retained on page reload
+- Fixes next button trapping keyboard focus
+- Fixes confirmation redirect URL handling for spaces
+- Fixes entries export issue for forms with a large number of fields (250+ fields)
+- Fixes dynamic SmartCodes in conditional fields
+- Fixes checkable field “not-equal” condition on conversation form
+- Fixes exporting numeric fields to Excel
+- Fixes label asterisk style with elementor widget
+- Fixes conditional logic with numeric formatting
+- Fixes Checkable Grid submission issue
+
+= 5.2.2 (Date: September 11, 2024) =
+- Update tested WordPress Version
+- Fixes Gutenblock widget
+
+= 5.2.1 (Date: September 10, 2024) =
+- Fixes custom error messages vulnerability (Allowing admin to inject script in custom error messages)
+- Fixes dropdown field in conversational forms after conditional multi-select
+- Fixes checkbox field "not-equal" condition in conversational forms
+
+= 5.2.0 (Date: Aug 7, 2024) =
+- Adds print entries
+- Adds context menu in editor
+- Fixes PDF feed watermarks
+- Fixes inactive conversational form pretty permalink
+- Fixes address field country hide label
+- Fixes GDPR attribute target=_blank
+- Fixes Cloudflare Turnstile multiple widget
+- Fixes PHP 8.3 deprecation warning
+- Fixes Inherit theme style for submit button preview
+- Fixes timezone change deprecated message
 
 = 5.1.20 (Date: July 25, 2024) =
 - Fixes vulnerability in checkboxes (CVE-2024-6518, CVE-2024-6520) reported by WordFence
