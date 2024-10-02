@@ -1,18 +1,57 @@
 # benmiles-wp
 A custom WordPress theme plus data and plugins, for my portfolio website: [benmiles.com](https://benmiles.com/)
 
-![This is an image](/wp-content/themes/benmiles-wp/screenshot.png)
+![BenMiles-WP Screenshot](/wp-content/themes/benmiles-wp/screenshot.png)
 
-## Installation & Updating
+[![WordPress](https://img.shields.io/badge/WordPress-3858E9?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/)
+[![Vultr](https://img.shields.io/badge/Vultr-007BFC?style=for-the-badge&logo=vultr&logoColor=white)](https://vultr.com/)
+
+## Development
+Instructions in this README are based on the following setup:
+
+- **IDE:** [Visual Studio Code](https://code.visualstudio.com/)
+- **Local Server:** [Laragon](https://laragon.org)
+- **Database:** [HeidiSQL](https://www.heidisql.com/)
+- **FTP:** [Filezilla](https://filezilla-project.org/)
+
+## Installation
 1. In the destination environment, complete the steps to install [WordPress](https://wordpress.org/)
-2. Copy the contents of `/wp-content/` into the destination environment
-3. Export a .SQL file from the develpment environment, containing structure + data for all tables
-4. Open the .SQL file in a text editor, and find-and-replace the develpment URL with the destination URL
-5. Save the .SQL file and import it into the destination database
-6. In the WordPress backend, check that the custom theme and all plugins are activated and configured properly
+2. In the WordPress backend, check that the custom theme and all plugins are activated and configured properly
+3. Copy the contents of `/wp-content/` into the destination environment
+4. Export a .SQL file from the develpment environment, containing structure + data for all tables
+5. Open the .SQL file in a text editor, and find-and-replace the develpment URL with the destination URL
+6. Save the .SQL file and import it into the destination database
 
-## Media for Portfolio Items
-### Featured Image
+## Updating
+1. The idea is to move only what has changed, so keep code changes in Git, and migrate file changes via FTP or File Manager.
+2. Upload **file changes** to the remote server. Generally speaking, the files that will need to be migrated will mostly be in two locations:
+  - Updates to theme files: `~\benmiles-wp\wp-content\themes\benmiles-wp`
+  - Updates to media library: `~\benmiles-wp\wp-content\uploads` (You can further reduce the amount of files to be transferred by drilling down into the subdirectories named for the appropirate year(s) and month(s))
+  - If Plugins are updated on the local dev environment, be sure to also grab files from `~\benmiles-wp\wp-content\plugins`
+3. Export the **database changes** from the local server. Make sure that _Replace existing data_ is selected. Generally speaking, the tables that will need to be migrated will mostly be in five locations:
+  - New Posts (including Custom Post Types): `posts`
+  - New Post Metadata: `post_meta`
+  - Changes to Categories: `terms`
+  - Changes to Tags: `term_taxonomy`
+  - Associations between Posts and Categories/Tags: `term_relationships`
+4. Replace any strings referencing the domain, to reflect the remote host instead of the local dev host. To do this:
+  - Open the SQL file in a text editor, and find-and-replace the following strings:
+  - `benmiles-wp.test` to `benmiles.com`, then
+  - `http://benmiles.com` to `https://benmiles.com`
+5. Import the SQL file into the remote host's database. Make sure the database (even if there's only one) is selected, then use the following settings (these are usually the default):
+  - All the interruption of an import...: `true`
+  - Skip the number of queries...: `0`
+  - Enable foreign key checks: `true`
+  - Format: `SQL`
+  - SQL compatibility mode: `NONE`
+  - Do not use AUTO_INCREMENT for zero values: `true`
+6. If it looks like something isn't showing up after migrating these changes, a good practice is to **regenerate permalinks**. To do this:
+  - Log into the remote WordPress installation
+  - Navigate to _Settings > Permalinks_
+  - Scroll to the bottom of this page and click _Save Changes_ (even though no changes have been made)
+
+## Notes Regarding Media
+### Featured Images
 - **Dimensions:** 1200x750 pixels (or similar, but at a 16:10 aspect ratio)
 - **File Names:** `ben-miles_[project-name]_16x10.png`
 - **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. 
@@ -22,7 +61,7 @@ A custom WordPress theme plus data and plugins, for my portfolio website: [benmi
 - **File Types:** PNG is preferable in most cases for visual quality, but JPG is also sufficient. For web site screenshots, I prefer to use [FastStone Image Resizer](https://www.faststone.org/FSResizerDownload.htm) with the following settings:
   - Format: JPG, Quality: 70, Photometric: RGB, Color Subsampling: Disabled, Smoothing: 0, Optimize Huffman Table: Enabled, Progressive: Disabled, Keep EXIF: Enabled
   - Advanced Options: Resize ( Based on one side, Width, Exactly 720px, Filter: Lancos3 )
-### Video
+### Videos
 - **Audio:** Muted or removed
 - **Dimensions:** 960x600 for original capture, and 384x240 for optimized assets
 - **Duration:** Optimized assets should be no longer than 15 seconds
@@ -96,3 +135,4 @@ A custom WordPress theme plus data and plugins, for my portfolio website: [benmi
     - Click "Resize video!"
     - Click "Save"
     - Rename file as per **File Names** above
+s
